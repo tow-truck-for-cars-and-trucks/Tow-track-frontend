@@ -64,11 +64,6 @@
     "stylelint-prettier": "^4.0.2",
     "stylelint-scss": "^5.3.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,jsx}": "npm run lint",
     "*.{js,jsx,scss,md,html,json}": "npm run format"
