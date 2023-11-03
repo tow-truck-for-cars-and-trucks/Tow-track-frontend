@@ -46,6 +46,8 @@
     ]
   },
   "devDependencies": {
+    "commitizen": "4.3.0",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^8.52.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.0.0",
@@ -67,5 +69,10 @@
   "lint-staged": {
     "*.{js,jsx}": "npm run lint",
     "*.{js,jsx,scss,md,html,json}": "npm run format"
+  },
+  "config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
   }
 }
