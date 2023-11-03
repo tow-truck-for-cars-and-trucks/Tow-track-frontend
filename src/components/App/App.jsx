@@ -1,7 +1,7 @@
 import logo from '../../assets/logo.svg';
 import './App.scss';
 
-console.log();
+console.log(123);
 
 function App() {
 	return (
