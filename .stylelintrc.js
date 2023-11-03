@@ -8,4 +8,5 @@ module.exports = {
 	rules: {
 		// Дополнительные правила
 	},
+	ignoreFiles: ['build/**/*'],
 };
