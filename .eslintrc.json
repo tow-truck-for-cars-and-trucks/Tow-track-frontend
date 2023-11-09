@@ -24,7 +24,6 @@
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
-        "react/no-unknown-property": "off",
         "react/prop-types": "off",
         "react/jsx-filename-extension": [
             1,

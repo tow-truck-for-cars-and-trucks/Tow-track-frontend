@@ -15,7 +15,6 @@ function Button({ primary, label, onClick, disabled }) {
 }
 
 Button.defaultProps = {
-	backgroundColor: null,
 	primary: false,
 	onClick: undefined,
 };
