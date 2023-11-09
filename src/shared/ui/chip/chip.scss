@@ -12,6 +12,7 @@
 
 	&_active {
 		border: 2px solid var(--accent-yellow-light);
+		box-shadow: none;
 	}
 
 	&[disabled] {

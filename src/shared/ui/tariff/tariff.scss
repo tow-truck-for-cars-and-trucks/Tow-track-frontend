@@ -1,0 +1,42 @@
+%text-style {
+	margin: 0;
+	color: var(--accent-black-90);
+	font-weight: 500;
+	font-family: Mulish, Helvetica, Arial, sans-serif;
+	line-height: 1.25;
+}
+
+.tariff {
+	padding: 17px 28px;
+	text-align: left;
+	background-color: var(--white);
+	border: none;
+	border-radius: 28px;
+	box-shadow: 0 0 20px 0 rgb(134 146 159 / 15%);
+	cursor: pointer;
+
+	&__title {
+		@extend %text-style;
+
+		padding-bottom: 6px;
+		font-size: 18px;
+	}
+
+	&__description {
+		@extend %text-style;
+
+		padding-bottom: 10px;
+		font-size: 14px;
+	}
+
+	&__price {
+		@extend %text-style;
+
+		font-size: 18px;
+	}
+
+	&_active {
+		border: 2px solid var(--accent-yellow-light);
+		box-shadow: none;
+	}
+}
