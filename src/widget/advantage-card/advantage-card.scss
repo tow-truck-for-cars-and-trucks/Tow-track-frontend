@@ -1,0 +1,26 @@
+.advantage-card {
+	max-width: 176px;
+	padding: 28px;
+	border-radius: 28px;
+	box-shadow: 0 0 20px 0 rgb(134 146 159 / 15%);
+
+	&__title {
+		margin: 0;
+		padding-top: 24px;
+		color: var(--text-black-80);
+		font-weight: 500;
+		font-size: 18px;
+		font-family: Mulish, sans-serif;
+		line-height: 1.25;
+	}
+
+	&__subtitle {
+		margin: 0;
+		padding-top: 20px;
+		color: var(--text-black-80);
+		font-weight: 500;
+		font-size: 14px;
+		font-family: Mulish, sans-serif;
+		line-height: 1.25;
+	}
+}

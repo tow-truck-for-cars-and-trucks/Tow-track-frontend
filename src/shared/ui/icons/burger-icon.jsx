@@ -1,8 +1,8 @@
-export default function BurgerIcon() {
+export default function BurgerIcon({ width, height }) {
 	return (
 		<svg
-			width="36"
-			height="28"
+			width={width}
+			height={height}
 			viewBox="0 0 36 28"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
