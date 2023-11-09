@@ -1,0 +1,39 @@
+@font-face {
+	font-weight: 400;
+	font-family: Mulish;
+	src:
+		url('../../../assets/Mulish-Regular.woff2') format('woff2'),
+		url('../../../assets/Mulish-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-weight: 500;
+	font-family: Mulish;
+	src:
+		url('../../../assets/Mulish-Medium.woff2') format('woff2'),
+		url('../../../assets/Mulish-Medium.woff') format('woff');
+}
+
+@font-face {
+	font-weight: 600;
+	font-family: Mulish;
+	src:
+		url('../../../assets/Mulish-SemiBold.woff2') format('woff2'),
+		url('../../../assets/Mulish-SemiBold.woff') format('woff');
+}
+
+@font-face {
+	font-weight: 700;
+	font-family: Inter;
+	src:
+		url('../../../assets/Mulish-Bold.woff2') format('woff2'),
+		url('../../../assets/Mulish-Bold.woff') format('woff');
+}
+
+@font-face {
+	font-weight: 800;
+	font-family: Inter;
+	src:
+		url('../../../assets/Mulish-ExtraBold.woff2') format('woff2'),
+		url('../../../assets/Mulish-ExtraBold.woff') format('woff');
+}
