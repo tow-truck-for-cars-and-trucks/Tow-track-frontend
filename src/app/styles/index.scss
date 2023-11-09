@@ -1,3 +1,5 @@
+@import './fonts';
+
 body {
 	margin: 0;
 	-webkit-font-smoothing: antialiased;
@@ -21,5 +23,5 @@ body {
 	--system-error: #e11d1f;
 	--system-success: #09bb30;
 	--gradient-orange: linear-gradient(90deg, #ff8901 0%, #fc0 100%);
-	--transparant-white-90: rgb(255 255 255/ 90%);
+	--transparant-white-90: rgb(255 255 255 / 90%);
 }

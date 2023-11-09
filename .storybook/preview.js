@@ -1,5 +1,4 @@
-import '../src/app/styles/index.css';
-import '../src/app/styles/fonts.css';
+import '../src/app/styles/index.scss';
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
