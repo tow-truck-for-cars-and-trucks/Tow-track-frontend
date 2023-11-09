@@ -1,46 +1,49 @@
 footer {
 	width: 390px;
 	height: 575px;
+	color: #fff;
+	font-family: Mulish, sans-serif;
 	background-color: #3b3e49;
-	color: #ffffff;
-	font-family: 'Mulish', sans-serif;
 
 	.container {
-		padding: 20px 16px 0 16px;
 		display: flex;
 		flex-direction: column;
+		padding: 20px 16px 0;
 		row-gap: 50px;
 	}
 
 	.logo {
-		height: 50px;
 		display: inline-block;
+		height: 50px;
 	}
 
 	.main {
 		display: flex;
 		flex-direction: column;
 	}
+
 	.documents {
 		display: flex;
 		flex-direction: column;
-		row-gap: 24px;
 		font-size: 14px;
+		row-gap: 24px;
 
 		* {
 			cursor: pointer;
 		}
 	}
+
 	.offer {
 		display: flex;
 		flex-direction: row;
 		column-gap: 24px;
 	}
+
 	.copyright {
 		display: flex;
 		flex-direction: column;
-		row-gap: 24px;
 		font-size: 12px;
+		row-gap: 24px;
 	}
 }
 
@@ -50,15 +53,16 @@ footer {
 	row-gap: 16px;
 
 	&-span {
-		font-size: 24px;
 		font-weight: 700;
+		font-size: 24px;
 		line-height: 125%; /* 30px */
 	}
 }
+
 .contacts-span {
 	margin-top: 28px;
+	font-weight: 400;
 	font-size: 20px;
 	line-height: 125%; /* 25px */
-	font-weight: 400;
 	cursor: pointer;
 }

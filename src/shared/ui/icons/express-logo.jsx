@@ -1,9 +1,9 @@
-export default function ExpressLogo() {
+export default function ExpressLogo({ width, height }) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			width="158"
-			height="70"
+			width={width}
+			height={height}
 			viewBox="0 0 158 70"
 			fill="none"
 		>

@@ -1,9 +1,9 @@
-export default function ExpressLogoDark() {
+export default function ExpressLogoDark({ width, height }) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			width="182"
-			height="80"
+			width={width}
+			height={height}
 			viewBox="0 0 182 80"
 			fill="none"
 		>

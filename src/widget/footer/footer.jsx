@@ -5,7 +5,7 @@ function Footer() {
 	return (
 		<footer>
 			<div className="container">
-				<ExpressLogo />
+				<ExpressLogo width="158px" height="70px" />
 				<div className="main">
 					<div className="phone">
 						<span className="phone-span">8 880 111 2222</span>
@@ -19,7 +19,7 @@ function Footer() {
 						<span>Политика конфидициальности</span>
 					</div>
 					<span>Пользовавтельское соглашение</span>
-					<span>Сертефикация эвакуаторов</span>
+					<span>Сертификация эвакуаторов</span>
 				</div>
 				<div className="copyright">
 					<span>

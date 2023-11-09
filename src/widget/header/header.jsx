@@ -6,9 +6,9 @@ function Header() {
 	return (
 		<header>
 			<div className="container">
-				<Logo />
+				<Logo width="40px" height="40px" />
 				<span className="phone-span">8 880 111 2222</span>
-				<BurgerIcon />
+				<BurgerIcon width="40px" height="40px" />
 			</div>
 		</header>
 	);
