@@ -7,6 +7,8 @@ module.exports = {
 	plugins: ['stylelint-order', 'stylelint-scss'],
 	rules: {
 		// Дополнительные правила
+		'at-rule-no-unknown': null,
+		'scss/at-rule-no-unknown': true,
 	},
 	ignoreFiles: ['build/**/*'],
 };
