@@ -5,16 +5,6 @@ export default {
 	component: Comment,
 	tags: ['autodocs'],
 };
-/* function Template(args) {
-  return (<Comment args /> )
-}
-
-export const Test = Template({
-  args: {
-    primary: true,
-
-  }
-}) */
 
 export const Default = {
 	args: {
