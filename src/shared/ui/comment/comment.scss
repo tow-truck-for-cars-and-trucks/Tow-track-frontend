@@ -1,0 +1,57 @@
+.comment {
+	&__container {
+		position: relative;
+		width: 358px;
+		min-height: 98px;
+	}
+
+	&__textarea {
+		width: 294px;
+		min-height: 66px;
+		border-radius: 12px;
+		padding: 16px 48px 16px 16px;
+		font-size: 16px;
+		resize: none;
+		border-width: 1px;
+		caret-color: var(--accent-yellow-light);
+		outline: none;
+
+		/*  &:focus {
+      border-color: var(--accent-yellow-light);
+      outline: none;
+      border-width: 1px;
+    }
+
+    &_content_exist {
+			border-color: var(--accent-yellow-light);
+			border-width: 2px;
+		} */
+		&_variant_writing {
+			border-color: var(--accent-yellow-light);
+			caret-color: var(--accent-yellow-light);
+			border-width: 1px;
+		}
+
+		&_variant_done {
+			border-color: var(--accent-yellow-light);
+			caret-color: var(--accent-yellow-light);
+			border-width: 2px;
+		}
+	}
+
+	&__close-icon {
+		position: absolute;
+		right: 16px;
+		top: 16px;
+	}
+	&__counter {
+		position: absolute;
+		right: 16px;
+		bottom: 16px;
+		font-size: 12px;
+		font-style: normal;
+		font-weight: 500;
+		font-family: 'Mulish';
+		color: var(--text-black-40);
+	}
+}
