@@ -5,6 +5,16 @@ import InputMask from 'react-input-mask';
 import CloseIcon from '../icons/close-icon';
 import SuccessfullIcon from '../icons/successfull-icon';
 
+/**
+ * @param {string} value - value displayed within the input
+ * @param {string} placeholder - placeholder of the input
+ * @param {function} onChange: (e: string) => void - fired with the new value of the input each time it changes
+ * @param {JSX.Element} icon - icon of the input
+ * @param {string} mask - mask displayed within the input
+ * @param {boolean} placeholderStatic - placeholder doesn't remain in the input field after entering text
+ * @param {boolean} invalid - invalid input value
+ * @param {string} errorText - error text for invalid value
+ */
 function Input({
 	value,
 	placeholder,
@@ -34,10 +44,9 @@ function Input({
 				<div className="input__icon">{icon}</div>
 				<div
 					role="button"
-					aria-label="Delete text"
+					aria-label="Стереть текст"
 					className="input__delete-icon"
-					onMouseDown={(e) => {
-						e.stopPropagation();
+					onMouseDown={() => {
 						onChange('');
 					}}
 				>

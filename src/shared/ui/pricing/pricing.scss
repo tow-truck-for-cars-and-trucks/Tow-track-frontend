@@ -1,13 +1,12 @@
 %text-style {
 	margin: 0;
 	color: var(--accent-black-90);
-	font-weight: 500;
 	font-family: Mulish, Helvetica, Arial, sans-serif;
 	line-height: 1.25;
 }
 
-.tariff {
-	padding: 17px 28px;
+.pricing {
+	padding: 16px 24px;
 	text-align: left;
 	background-color: var(--white);
 	border: none;
@@ -18,14 +17,16 @@
 	&__title {
 		@extend %text-style;
 
-		padding-bottom: 6px;
+		padding-bottom: 4px;
+		font-weight: 700;
 		font-size: 18px;
 	}
 
 	&__description {
 		@extend %text-style;
 
-		padding-bottom: 10px;
+		padding-bottom: 8px;
+		color: var(--text-black-40);
 		font-size: 14px;
 	}
 
@@ -33,6 +34,7 @@
 		@extend %text-style;
 
 		font-size: 18px;
+		line-height: 1.2;
 	}
 
 	&_active {
