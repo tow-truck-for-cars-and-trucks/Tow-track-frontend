@@ -1,10 +1,10 @@
 import AdvantageCard from './advantage-card';
-import CashIcon from '../../shared/ui/icons/cash-icon';
-import TrackIcon from '../../shared/ui/icons/track-icon';
-import RatingIcon from '../../shared/ui/icons/rating-icon';
+import CashIcon from '../icons/cash-icon';
+import TrackIcon from '../icons/track-icon';
+import RatingIcon from '../icons/rating-icon';
 
 export default {
-	title: 'Widget/AdvantageCard',
+	title: 'Shared/AdvantageCard',
 	component: AdvantageCard,
 	parameters: {
 		layout: 'centered',

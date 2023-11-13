@@ -1,8 +1,8 @@
-import Tariff from './tariff';
+import Pricing from './pricing';
 
 export default {
-	title: 'Shared/Tariff',
-	component: Tariff,
+	title: 'Shared/Pricing',
+	component: Pricing,
 	parameters: {
 		layout: 'centered',
 	},

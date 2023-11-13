@@ -1,7 +1,7 @@
 import Review from './review';
 
 export default {
-	title: 'Widget/Review',
+	title: 'Shared/Review',
 	component: Review,
 	parameters: {
 		layout: 'centered',
@@ -11,7 +11,7 @@ export default {
 
 export const DefaultReviewCard = {
 	args: {
-		rating: '5,0',
+		rating: 5.0,
 		name: 'Констатин Константиновский',
 		feedback:
 			'Всё отлично и профессионально. Действительно самая дешёвая услуга по Москве!',

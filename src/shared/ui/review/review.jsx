@@ -1,5 +1,11 @@
 import './review.scss';
-import StarFillIcon from '../../shared/ui/icons/star-fill-icon';
+import StarFillIcon from '../icons/star-fill-icon';
+
+/**
+ * @param {number} rating - rating from 0 to 5
+ * @param {string} name - author of the comment
+ * @param {string} feedback: comment text
+ */
 
 function Review({ rating, name, feedback }) {
 	return (
