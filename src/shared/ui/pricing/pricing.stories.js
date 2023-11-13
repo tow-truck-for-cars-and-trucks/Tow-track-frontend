@@ -15,7 +15,7 @@ export default {
 export const Default = {
 	args: {
 		title: 'Эконом',
-		description: 'Оптимальный вариант',
+		description: 'Оптимальный',
 		price: '1500',
 	},
 };
@@ -23,7 +23,7 @@ export const Default = {
 export const Active = {
 	args: {
 		title: 'Эконом',
-		description: 'Оптимальный вариант',
+		description: 'Оптимальный',
 		price: '1500',
 		isActive: true,
 	},
