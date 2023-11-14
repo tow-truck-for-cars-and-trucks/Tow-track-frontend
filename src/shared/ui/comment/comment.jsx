@@ -2,6 +2,11 @@ import React from 'react';
 import './comment.scss';
 import CloseIcon from '../icons/close-icon';
 
+/**
+ * @param {string} content - initial text inside textarea
+ * @param {string} variant - field determining textarea view
+ * @param {number} initialCount - initial count of сharacters
+ */
 function Comment({ content = '', variant = '', initialCount = 0 }) {
 	const [count, setCount] = React.useState(initialCount);
 
@@ -15,7 +20,6 @@ function Comment({ content = '', variant = '', initialCount = 0 }) {
 				className={`comment__textarea ${
 					variant ? `comment__textarea_variant_${variant}` : ''
 				}`}
-				// readOnly={`${variant === 'done'}`}
 				placeholder="Комментарий"
 				onChange={handleChange}
 			>
