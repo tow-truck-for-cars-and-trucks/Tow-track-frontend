@@ -49,6 +49,9 @@ function Input({
 					onMouseDown={() => {
 						onChange('');
 					}}
+					onTouchStart={() => {
+						onChange('');
+					}}
 				>
 					<CloseIcon width="16px" height="16px" />
 				</div>
