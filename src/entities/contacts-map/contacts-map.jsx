@@ -11,7 +11,7 @@ function ContactsMap() {
 		<section className="contacts-map">
 			<div className="contacts-map__container">
 				<YMaps>
-					<Map width="358px" height="224px" defaultState={defaultState}>
+					<Map className="contacts-map__ymap" defaultState={defaultState}>
 						<Placemark geometry={[55.588867, 37.031152]} />
 					</Map>
 				</YMaps>

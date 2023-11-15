@@ -6,7 +6,9 @@
 	background-size: cover;
 
 	&__title {
-		padding: 29px 16px 179px;
+		margin: 0;
+		padding-top: 29px;
+		padding-left: 20px;
 		color: var(--text-white);
 		font-weight: 700;
 		font-size: 24px;
@@ -16,13 +18,15 @@
 
 	&__cards {
 		display: flex;
+		margin-top: 179px;
+		padding-left: 20px;
 		overflow-x: auto;
 		scroll-snap-type: x mandatory;
 		scroll-behavior: smooth;
 		-webkit-overflow-scrolling: touch;
 
-		&::-webkit-scrollbar-track {
-			background: transparent;
+		&::-webkit-scrollbar {
+			display: none;
 		}
 	}
 
@@ -32,9 +36,7 @@
 		flex-direction: row;
 		flex-shrink: 0;
 		margin-right: 20px;
-		transform: scale(1);
 		transform-origin: center center;
-		transition: transform 0.5s;
 		scroll-snap-align: start;
 	}
 }

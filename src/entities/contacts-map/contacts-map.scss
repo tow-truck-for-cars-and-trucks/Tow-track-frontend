@@ -6,6 +6,12 @@
 	&__contaner {
 		position: relative;
 		overflow: hidden;
+	}
+
+	&__ymap {
+		width: 358px;
+		height: 224px;
+		overflow: hidden;
 		border-top-left-radius: 12px;
 		border-top-right-radius: 12px;
 	}
