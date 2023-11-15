@@ -12,7 +12,7 @@ function Review({ rating, name, feedback }) {
 		<article>
 			<div className="review-card">
 				<div>
-					<StarFillIcon width="16px" height="16px" />
+					<StarFillIcon width="16px" height="16px" color="#FFCC00" />
 					<span className="review-card__rating">{rating}</span>
 				</div>
 				<h2 className="review-card__name">{name}</h2>
