@@ -10,7 +10,7 @@ function Chip({ label, isActive, disabled }) {
 		<button
 			type="button"
 			disabled={disabled}
-			className={['chip', isActive ? 'chip_active' : ''].join(' ')}
+			className={`chip ${isActive ? 'chip_active' : ''}`}
 		>
 			{label}
 		</button>
