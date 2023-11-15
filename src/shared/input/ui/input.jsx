@@ -2,8 +2,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import './input.scss';
 import InputMask from 'react-input-mask';
-import CloseIcon from '../icons/close-icon';
-import SuccessfullIcon from '../icons/successfull-icon';
+import CloseIcon from '../../icons/close-icon';
+import SuccessfullIcon from '../../icons/successfull-icon';
 
 /**
  * @param {string} value - value displayed within the input

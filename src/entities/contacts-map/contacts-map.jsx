@@ -1,6 +1,6 @@
 import './contacts-map.scss';
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
-import ContactsInfo from '../../shared/ui/contacts-info/contacts-info';
+import ContactsInfo from '../../shared/contacts-info/ui/contacts-info';
 
 function ContactsMap() {
 	const defaultState = {

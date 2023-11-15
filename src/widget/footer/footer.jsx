@@ -1,6 +1,6 @@
 import './footer.scss';
-import ExpressLogo from '../../shared/ui/icons/express-logo';
-import Logo from '../../shared/ui/icons/logo';
+import ExpressLogo from '../../shared/icons/express-logo';
+import Logo from '../../shared/icons/logo';
 
 function Footer() {
 	return (

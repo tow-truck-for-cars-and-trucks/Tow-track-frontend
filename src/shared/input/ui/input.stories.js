@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import { useArgs } from '@storybook/preview-api';
-import NavigationArrowIcon from '../icons/navigation-arrow-icon';
+import NavigationArrowIcon from '../../icons/navigation-arrow-icon';
 import Input from './input';
 
 const defaultStory = {
