@@ -1,0 +1,22 @@
+.buttonCounter {
+	width: 84px;
+	height: 16px;
+	display: flex;
+	margin: 20px;
+	align-items: center;
+
+	&__btn {
+		cursor: pointer;
+		border: none;
+		background-color: #fff;
+	}
+}
+.buttonCounter__count {
+	color: var(--text-black-90, #2b2a29);
+	font-family: 'Mulish', 'Arial', sans-serif;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 125%;
+	margin: 0 20px;
+}

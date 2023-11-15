@@ -25,3 +25,10 @@ body {
 	--gradient-orange: linear-gradient(90deg, #ff8901 0%, #fc0 100%);
 	--transparant-white-90: rgb(255 255 255 / 90%);
 }
+.page {
+	max-width: 1280px;
+	margin: 0 auto;
+	font-family: 'Mulish', 'Arial', sans-serif;
+	color: #fff;
+	box-sizing: border-box;
+}
