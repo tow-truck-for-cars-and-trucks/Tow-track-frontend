@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './accordion.scss';
-import ArrowDownIcon from '../../icons/arrow-down-icon';
-import ArrowUpIcon from '../../icons/arrow-up-icon';
+import ArrowDownIcon from '../icons/arrow-down-icon';
+import ArrowUpIcon from '../icons/arrow-up-icon';
 
 /**
  * @param {string} title - title of the accordion

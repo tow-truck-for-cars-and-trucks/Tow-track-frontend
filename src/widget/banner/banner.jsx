@@ -1,8 +1,8 @@
 import './banner.scss';
-import AdvantageCard from '../../shared/advantage-card/ui/advantage-card';
-import CashIcon from '../../shared/icons/cash-icon';
-import TrackIcon from '../../shared/icons/track-icon';
-import RatingIcon from '../../shared/icons/rating-icon';
+import AdvantageCard from '../../shared/ui/advantage-card/advantage-card';
+import CashIcon from '../../shared/ui/icons/cash-icon';
+import TrackIcon from '../../shared/ui/icons/track-icon';
+import RatingIcon from '../../shared/ui/icons/rating-icon';
 
 function Banner() {
 	return (

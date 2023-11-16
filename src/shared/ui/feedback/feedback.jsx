@@ -1,5 +1,5 @@
 import './feedback.scss';
-import StarFillIcon from '../../icons/star-fill-icon';
+import StarFillIcon from '../icons/star-fill-icon';
 
 /**
  * @param {number} rating - rating from 0 to 5

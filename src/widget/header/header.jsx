@@ -1,7 +1,7 @@
 import './header.scss';
-import BurgerIcon from '../../shared/icons/burger-icon';
-import Logo from '../../shared/icons/logo';
-import PhoneIcon from '../../shared/icons/phone-icon';
+import BurgerIcon from '../../shared/ui/icons/burger-icon';
+import Logo from '../../shared/ui/icons/logo';
+import PhoneIcon from '../../shared/ui/icons/phone-icon';
 
 function Header() {
 	return (
