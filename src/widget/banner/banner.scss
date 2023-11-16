@@ -1,0 +1,42 @@
+.banner {
+	width: 390px;
+	height: 570px;
+	background-image: url('../../../assets/images/banner.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	&__title {
+		margin: 0;
+		padding-top: 29px;
+		padding-left: 20px;
+		color: var(--text-white);
+		font-weight: 700;
+		font-size: 24px;
+		font-family: Mulish, Helvetica, Arial, sans-serif;
+		line-height: 1.25;
+	}
+
+	&__cards {
+		display: flex;
+		margin-top: 179px;
+		padding-left: 20px;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		scroll-behavior: smooth;
+		-webkit-overflow-scrolling: touch;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	&__cards > &__card {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		flex-shrink: 0;
+		margin-right: 20px;
+		transform-origin: center center;
+		scroll-snap-align: start;
+	}
+}

@@ -5,7 +5,7 @@ import Main from '../pages/main/main';
 // import Auth from '../pages/auth/auth';
 // import Order from '../pages/order/order';
 // import Success from '../pages/success/success';
-// import Contacts from '../pages/contacts/contacts';
+import ContactsPage from '../pages/contacts-page/contacts-page';
 // import OrderActive from '../pages/order-active/order-active';
 // import OrderFinished from '../pages/order-finished/order-finished';
 
@@ -16,9 +16,9 @@ function App() {
 			{/* <Route path="/sign-in" element={Auth} />
 			<Route path="/sign-up" element={Register} />
 			<Route path="/order" element={Order} />
-			<Route path="/success" element={Success} />
-			<Route path="/contacts" element={Contacts} />
-			<Route path="/order-active" element={OrderActive} />
+			<Route path="/success" element={Success} /> */}
+			<Route path="/contacts" element={<ContactsPage />} />
+			{/* <Route path="/order-active" element={OrderActive} />
 			<Route path="/order-finished" element={OrderFinished} /> */}
 		</Routes>
 	);
