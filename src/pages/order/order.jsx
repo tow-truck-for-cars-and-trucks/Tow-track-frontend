@@ -5,15 +5,15 @@ import OrderConfirmation from '../../entities/order-confirmation/order-confirmat
 import Questions from '../../widget/questions/questions';
 
 function Order() {
-	return (
-		<>
-			<Header />
-			<OrderConfirmation />
-			<Feedbacks />
-			<Questions />
-			<Footer />
-		</>
-	);
+  return (
+    <>
+      <Header />
+      <OrderConfirmation />
+      <Feedbacks />
+      <Questions />
+      <Footer />
+    </>
+  );
 }
 
 export default Order;

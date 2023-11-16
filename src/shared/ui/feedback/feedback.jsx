@@ -8,22 +8,22 @@ import StarFillIcon from '../icons/star-fill-icon';
  */
 
 function FeedBack({ feedback }) {
-	return (
-		<article>
-			<div className="feedback-card">
-				<div>
-					<StarFillIcon width="16px" height="16px" color="#FFCC00" />
-					<span className="feedback-card__rating">{feedback.rating}</span>
-				</div>
-				<h2 className="feedback-card__name">{feedback.name}</h2>
-				<p className="feedback-card__feedback">{feedback.comment}</p>
-			</div>
-		</article>
-	);
+  return (
+    <article>
+      <div className="feedback-card">
+        <div>
+          <StarFillIcon width="16px" height="16px" color="#FFCC00" />
+          <span className="feedback-card__rating">{feedback.rating}</span>
+        </div>
+        <h2 className="feedback-card__name">{feedback.name}</h2>
+        <p className="feedback-card__feedback">{feedback.comment}</p>
+      </div>
+    </article>
+  );
 }
 
 FeedBack.defaultProps = {
-	rating: 'some-rating',
+  rating: 'some-rating',
 };
 
 export default FeedBack;

@@ -1,30 +1,29 @@
 @import './fonts';
 
 body {
-	margin: 0;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 :root {
-	--accent-yellow-light: #fc0;
-	--accent-yellow: #efbc01;
-	--accent-orange-light: #f90;
-	--accent-orange: #ff8901;
-	--accent-black-90: #232325;
-	--accent-black-80: #3b3e49;
-	--background-grey-light-20: #f3f3f3;
-	--background-grey-blue-40: #dee7ec;
-	--background-grey: #bebebf;
-	--background-grey-light-blue-40: #eff5f8;
-	--background-yellow-light: #fffae6;
-	--white: #fff;
-	--text-white: #fff;
-	--text-black-40: #7c7d7e;
-	--text-black-80: #3b3e49;
-	--system-error: #e11d1f;
-	--system-success: #09bb30;
-	--system-warning: #ff8f01;
-	--gradient-orange: linear-gradient(90deg, #ff8901 0%, #fc0 100%);
-	--transparant-white-90: rgb(255 255 255 / 90%);
+  --accent-yellow-light: #fc0;
+  --accent-yellow: #efbc01;
+  --accent-orange-light: #f90;
+  --accent-black-90: #232325;
+  --accent-black-80: #3b3e49;
+  --background-grey-light-20: #f3f3f3;
+  --background-grey-blue-40: #dee7ec;
+  --background-grey: #bebebf;
+  --background-grey-light-blue-40: #eff5f8;
+  --background-yellow-light: #fffae6;
+  --white: #fff;
+  --text-white: #fff;
+  --text-black-40: #7c7d7e;
+  --text-black-80: #3b3e49;
+  --system-error: #e11d1f;
+  --system-success: #09bb30;
+  --system-warning: #ff8f01;
+  --gradient-orange: linear-gradient(90deg, #ff8901 0%, #fc0 100%);
+  --transparant-white-90: rgb(255 255 255 / 90%);
 }

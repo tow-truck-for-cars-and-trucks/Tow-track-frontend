@@ -1,37 +1,37 @@
 %text-style {
-	margin: 0;
-	color: var(--text-black-80);
-	font-weight: 700;
-	font-family: Mulish, Helvetica, Arial, sans-serif;
-	line-height: 1.25;
+  margin: 0;
+  color: var(--text-black-80);
+  font-weight: 700;
+  font-family: Mulish, Helvetica, Arial, sans-serif;
+  line-height: 1.25;
 }
 
 .total-price {
-	width: 100%;
-	width: fit-content;
-	padding: 16px 16px 20px;
-	background-color: var(--transparant-white-90);
-	border-radius: 12px;
-	box-shadow: 0 0 20px 0 rgb(134 146 159 / 15%);
+  width: 100%;
+  width: fit-content;
+  padding: 16px 16px 20px;
+  background-color: var(--transparant-white-90);
+  border-radius: 12px;
+  box-shadow: 0 0 20px 0 rgb(134 146 159 / 15%);
 
-	&__wrapper {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		padding-right: 8px;
-		padding-bottom: 20px;
-		padding-left: 8px;
-	}
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 8px;
+    padding-bottom: 20px;
+    padding-left: 8px;
+  }
 
-	&__title {
-		@extend %text-style;
+  &__title {
+    @extend %text-style;
 
-		font-size: 20px;
-	}
+    font-size: 20px;
+  }
 
-	&__full-price {
-		@extend %text-style;
+  &__full-price {
+    @extend %text-style;
 
-		font-size: 24px;
-	}
+    font-size: 24px;
+  }
 }

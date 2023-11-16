@@ -1,52 +1,52 @@
 .button {
-	display: inline-block;
-	min-width: 328px;
-	padding: 15px 20px 14px;
-	font-weight: 500;
-	font-size: 20px;
-	font-family: Mulish, Helvetica, Arial, sans-serif;
-	line-height: 1.45;
-	border-radius: 12px;
-	cursor: pointer;
+  display: inline-block;
+  min-width: 328px;
+  padding: 15px 20px 14px;
+  font-weight: 500;
+  font-size: 20px;
+  font-family: Mulish, Helvetica, Arial, sans-serif;
+  line-height: 1.45;
+  border-radius: 12px;
+  cursor: pointer;
 
-	&__primary {
-		color: var(--accent-black-90);
-		background-color: var(--accent-yellow-light);
-		border: 0;
+  &__primary {
+    color: var(--accent-black-90);
+    background-color: var(--accent-yellow-light);
+    border: 0;
 
-		&:hover {
-			background-color: var(--accent-yellow);
-		}
+    &:hover {
+      background-color: var(--accent-yellow);
+    }
 
-		&:active {
-			background-color: var(--accent-orange-light);
-		}
+    &:active {
+      background-color: var(--accent-orange-light);
+    }
 
-		&[disabled] {
-			color: var(--text-black-40);
-			background-color: var(--background-grey);
-			cursor: default;
-		}
-	}
+    &[disabled] {
+      color: var(--text-black-40);
+      background-color: var(--background-grey);
+      cursor: default;
+    }
+  }
 
-	&__secondary {
-		color: var(--accent-black-90);
-		background-color: var(--white);
-		border: 2px solid var(--accent-yellow);
+  &__secondary {
+    color: var(--accent-black-90);
+    background-color: var(--white);
+    border: 2px solid var(--accent-yellow);
 
-		&:hover {
-			background-color: var(--accent-orange);
-		}
+    &:hover {
+      background-color: var(--accent-orange);
+    }
 
-		&:active {
-			background-color: var(--accent-yellow);
-		}
+    &:active {
+      background-color: var(--accent-yellow);
+    }
 
-		&[disabled] {
-			color: var(--background-grey);
-			background-color: var(--background-grey-light-20);
-			border: 2px solid var(--background-grey);
-			cursor: default;
-		}
-	}
+    &[disabled] {
+      color: var(--background-grey);
+      background-color: var(--background-grey-light-20);
+      border: 2px solid var(--background-grey);
+      cursor: default;
+    }
+  }
 }

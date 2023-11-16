@@ -1,47 +1,47 @@
 .question {
-	display: flex;
-	flex-direction: column;
-	gap: 24px;
-	max-width: 390px;
-	padding: 28px 16px;
-	border-top: 1px solid var(--background-grey-blue-40, #dee7ec);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 390px;
+  padding: 28px 16px;
+  border-top: 1px solid var(--background-grey-blue-40, #dee7ec);
 
-	&:last-child {
-		border-bottom: 1px solid var(--background-grey-blue-40, #dee7ec);
-	}
+  &:last-child {
+    border-bottom: 1px solid var(--background-grey-blue-40, #dee7ec);
+  }
 
-	&__button {
-		position: relative;
-		display: flex;
-		flex-direction: row;
-		gap: 20px;
-		justify-content: space-between;
-		padding: 0;
-		overflow: hidden;
-		color: var(--text-black-90, #2b2a29);
-		font-weight: 400;
-		font-size: 20px;
-		font-family: Mulish, Helvetica, Arial, sans-serif;
-		font-style: normal;
-		line-height: 29px; /* 29px */
-		text-align: start;
-		text-overflow: ellipsis;
-		background: var(--background-white, #fff);
-		border: none;
-		cursor: pointer;
-	}
+  &__button {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 0;
+    overflow: hidden;
+    color: var(--text-black-90, #2b2a29);
+    font-weight: 400;
+    font-size: 20px;
+    font-family: Mulish, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    line-height: 29px; /* 29px */
+    text-align: start;
+    text-overflow: ellipsis;
+    background: var(--background-white, #fff);
+    border: none;
+    cursor: pointer;
+  }
 
-	&__icon {
-		display: flex;
-		align-self: center;
-	}
+  &__icon {
+    display: flex;
+    align-self: center;
+  }
 
-	&__answer {
-		color: var(--text-black-90, #2b2a29);
-		font-weight: 400;
-		font-size: 16px;
-		font-family: Mulish, Helvetica, Arial, sans-serif;
-		font-style: normal;
-		line-height: 145%; /* 23.2px */
-	}
+  &__answer {
+    color: var(--text-black-90, #2b2a29);
+    font-weight: 400;
+    font-size: 16px;
+    font-family: Mulish, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    line-height: 145%; /* 23.2px */
+  }
 }
