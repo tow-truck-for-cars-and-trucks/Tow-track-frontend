@@ -1,4 +1,4 @@
-import './review.scss';
+import './feedback.scss';
 import StarFillIcon from '../icons/star-fill-icon';
 
 /**
@@ -7,23 +7,23 @@ import StarFillIcon from '../icons/star-fill-icon';
  * @param {string} feedback: comment text
  */
 
-function Review({ rating, name, feedback }) {
+function FeedBack({ feedback }) {
 	return (
 		<article>
-			<div className="review-card">
+			<div className="feedback-card">
 				<div>
 					<StarFillIcon width="16px" height="16px" color="#FFCC00" />
-					<span className="review-card__rating">{rating}</span>
+					<span className="feedback-card__rating">{feedback.rating}</span>
 				</div>
-				<h2 className="review-card__name">{name}</h2>
-				<p className="review-card__feedback">{feedback}</p>
+				<h2 className="feedback-card__name">{feedback.name}</h2>
+				<p className="feedback-card__feedback">{feedback.comment}</p>
 			</div>
 		</article>
 	);
 }
 
-Review.defaultProps = {
+FeedBack.defaultProps = {
 	rating: 'some-rating',
 };
 
-export default Review;
+export default FeedBack;

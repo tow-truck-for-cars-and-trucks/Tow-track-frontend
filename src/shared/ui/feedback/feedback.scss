@@ -4,10 +4,12 @@
 	font-family: Mulish, Helvetica, Arial, sans-serif;
 }
 
-.review-card {
+.feedback-card {
 	max-width: 264px;
 	height: 180px;
+	margin-right: 20px;
 	padding: 28px;
+	background-color: var(--white);
 	border-radius: 28px;
 	box-shadow: 0 0 20px 0 rgb(134 146 159 / 15%);
 
