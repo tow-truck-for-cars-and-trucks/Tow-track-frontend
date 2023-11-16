@@ -1,16 +1,17 @@
 import Header from '../../widget/header/header';
 import Footer from '../../widget/footer/footer';
-import Banner from '../../widget/banner/banner';
-import './main.scss';
 import Feedbacks from '../../entities/feedbacks/feedbacks';
+import OrderConfirmation from '../../entities/order-confirmation/order-confirmation';
 
-export default function Main() {
+function Order() {
 	return (
 		<>
 			<Header />
-			<Banner />
+			<OrderConfirmation />
 			<Feedbacks />
 			<Footer />
 		</>
 	);
 }
+
+export default Order;

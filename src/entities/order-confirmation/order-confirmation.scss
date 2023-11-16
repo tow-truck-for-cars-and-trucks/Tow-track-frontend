@@ -1,0 +1,76 @@
+%border-style {
+	padding-bottom: 28px;
+	border-bottom: 1px solid var(--background-grey-blue-40);
+}
+
+%text-style {
+	margin: 0;
+	color: var(--text-black-80);
+	font-weight: 700;
+	font-family: Mulish, Helvetica, Arial, sans-serif;
+	line-height: 1.25;
+}
+
+.order-confirmation {
+	width: fit-content;
+	max-width: 358px;
+	padding-right: 16px;
+	padding-left: 16px;
+	background-color: var(--background-grey-light-blue-40);
+
+	&__back-button {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+
+	&__form {
+		@extend %border-style;
+	}
+
+	&__adress {
+		padding-top: 28px;
+	}
+
+	&__submission-time {
+		@extend %border-style;
+
+		display: flex;
+		flex-direction: row;
+		align-items: end;
+		justify-content: space-between;
+		padding-top: 28px;
+	}
+
+	&__description {
+		@extend %text-style;
+
+		font-size: 18px;
+	}
+
+	&__payment {
+		@extend %border-style;
+
+		padding-top: 28px;
+	}
+
+	&__payment-title {
+		@extend %text-style;
+
+		font-size: 24px;
+	}
+
+	&__payment-container {
+		display: flex;
+		flex-direction: row;
+		padding-top: 20px;
+	}
+
+	&__info {
+		padding-top: 28px;
+	}
+
+	&__price {
+		padding-top: 28px;
+		padding-bottom: 28px;
+	}
+}

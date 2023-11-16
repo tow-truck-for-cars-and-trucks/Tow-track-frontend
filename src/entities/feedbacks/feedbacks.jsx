@@ -10,9 +10,7 @@ function Feedbacks() {
 		.then((feedbacks) => {
 			setAllFeedbacks(feedbacks);
 		})
-		.catch((error) => {
-			console.log(error);
-		});
+		.catch();
 
 	return (
 		<section className="feedbacks">
