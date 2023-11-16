@@ -1,22 +1,22 @@
 .chip {
-	padding: 16px 20px;
-	font-weight: 500;
-	font-size: 18px;
-	font-family: Mulish, Helvetica, Arial, sans-serif;
-	line-height: 1.25;
-	background-color: var(--white);
-	border: none;
-	border-radius: 28px;
-	box-shadow: 0 0 20px 0 rgb(134 146 159 / 15%);
-	cursor: pointer;
+  padding: 16px 20px;
+  font-weight: 500;
+  font-size: 18px;
+  font-family: Mulish, Helvetica, Arial, sans-serif;
+  line-height: 1.25;
+  background-color: var(--white);
+  border: none;
+  border-radius: 28px;
+  box-shadow: 0 0 20px 0 rgb(134 146 159 / 15%);
+  cursor: pointer;
 
-	&_active {
-		border: 2px solid var(--accent-yellow-light);
-		box-shadow: none;
-	}
+  &_active {
+    border: 2px solid var(--accent-yellow-light);
+    box-shadow: none;
+  }
 
-	&[disabled] {
-		color: var(--background-grey-blue-40);
-		cursor: default;
-	}
+  &[disabled] {
+    color: var(--background-grey-blue-40);
+    cursor: default;
+  }
 }

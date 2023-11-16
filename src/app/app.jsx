@@ -9,18 +9,18 @@ import ContactsPage from '../pages/contacts-page/contacts-page';
 // import OrderFinished from '../pages/order-finished/order-finished';
 
 function App() {
-	return (
-		<Routes>
-			<Route path="/" element={<Main />} />
-			{/* <Route path="/sign-in" element={Auth} />
+  return (
+    <Routes>
+      <Route path="/" element={<Main />} />
+      {/* <Route path="/sign-in" element={Auth} />
 			<Route path="/sign-up" element={Register} />
 			<Route path="/order" element={Order} />
 			<Route path="/success" element={Success} /> */}
-			<Route path="/contacts" element={<ContactsPage />} />
-			{/* <Route path="/order-active" element={OrderActive} />
+      <Route path="/contacts" element={<ContactsPage />} />
+      {/* <Route path="/order-active" element={OrderActive} />
 			<Route path="/order-finished" element={OrderFinished} /> */}
-		</Routes>
-	);
+    </Routes>
+  );
 }
 
 export default App;

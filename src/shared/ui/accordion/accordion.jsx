@@ -8,44 +8,44 @@ import ArrowUpIcon from '../icons/arrow-up-icon';
  */
 
 function Accordion({ title, children }) {
-	const [isShow, setIsShow] = useState(false);
+  const [isShow, setIsShow] = useState(false);
 
-	return (
-		<div className="accordion">
-			<div className="accordion__header">
-				<h2 className="accordion__title">{title}</h2>
-				{!isShow && (
-					<button
-						type="button"
-						aria-label="Развернуть"
-						className="accordion__icon"
-						onClick={() => setIsShow(true)}
-					>
-						<ArrowDownIcon width="16px" height="16px" />
-					</button>
-				)}
-				{isShow && (
-					<button
-						type="button"
-						aria-label="Свернуть"
-						className="accordion__icon"
-						onClick={() => setIsShow(false)}
-					>
-						<ArrowUpIcon width="16px" height="16px" />
-					</button>
-				)}
-			</div>
-			{isShow && (
-				<div className={isShow ? 'accordion-content_opened' : ''}>
-					{children}
-				</div>
-			)}
-		</div>
-	);
+  return (
+    <div className="accordion">
+      <div className="accordion__header">
+        <h2 className="accordion__title">{title}</h2>
+        {!isShow && (
+          <button
+            type="button"
+            aria-label="Развернуть"
+            className="accordion__icon"
+            onClick={() => setIsShow(true)}
+          >
+            <ArrowDownIcon width="16px" height="16px" />
+          </button>
+        )}
+        {isShow && (
+          <button
+            type="button"
+            aria-label="Свернуть"
+            className="accordion__icon"
+            onClick={() => setIsShow(false)}
+          >
+            <ArrowUpIcon width="16px" height="16px" />
+          </button>
+        )}
+      </div>
+      {isShow && (
+        <div className={isShow ? 'accordion-content_opened' : ''}>
+          {children}
+        </div>
+      )}
+    </div>
+  );
 }
 
 Accordion.defaultProps = {
-	isShow: false,
+  isShow: false,
 };
 
 export default Accordion;

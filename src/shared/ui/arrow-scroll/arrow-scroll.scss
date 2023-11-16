@@ -1,0 +1,18 @@
+.arrow__container {
+  // display: inline-block;
+  position: absolute;
+  bottom: 538px;
+  left: 306px;
+  display: flex;
+  width: 64px;
+  height: 64px;
+  padding: 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  background-color: var(--transparant-white-90, rgba(255, 255, 255, 0.9));
+  border-radius: 40px;
+  border: 1px solid var(--accent-yellow-light, #fc0);
+  box-shadow: 0px 0px 20px 0px rgba(134, 146, 159, 0.15);
+}

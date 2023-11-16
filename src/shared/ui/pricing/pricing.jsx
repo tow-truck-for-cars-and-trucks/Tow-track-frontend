@@ -8,20 +8,20 @@ import './pricing.scss';
  */
 
 function Pricing({ title, description, price, isActive }) {
-	return (
-		<button
-			type="button"
-			className={['pricing', isActive ? 'pricing_active' : ''].join(' ')}
-		>
-			<h2 className="pricing__title">{title}</h2>
-			<p className="pricing__description">{description}</p>
-			<p className="pricing__price">oт {price} ₽</p>
-		</button>
-	);
+  return (
+    <button
+      type="button"
+      className={['pricing', isActive ? 'pricing_active' : ''].join(' ')}
+    >
+      <h2 className="pricing__title">{title}</h2>
+      <p className="pricing__description">{description}</p>
+      <p className="pricing__price">oт {price} ₽</p>
+    </button>
+  );
 }
 
 Pricing.defaultProps = {
-	isActive: false,
+  isActive: false,
 };
 
 export default Pricing;

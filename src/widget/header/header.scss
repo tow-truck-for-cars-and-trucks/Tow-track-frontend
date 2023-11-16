@@ -1,31 +1,31 @@
 .header {
-	width: 390px;
-	height: 64px;
-	color: #3b3e49;
-	background-color: white;
-	font-family: Mulish, Helvetica, Arial, sans-serif;
-	box-shadow: 0 0 20px 0 rgb(134 146 159 / 15%);
-	position: relative;
-	z-index: 100;
+  width: 390px;
+  height: 64px;
+  color: var(--text-black-80);
+  background-color: white;
+  font-family: Mulish, Helvetica, Arial, sans-serif;
+  box-shadow: 0 0 20px 0 rgb(134 146 159 / 15%);
+  position: relative;
+  z-index: 100;
 
-	&__container {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 6px 24px 8px;
-	}
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 24px 8px;
+  }
 
-	&__phone-number {
-		font-weight: 700;
-		font-size: 20px;
-		line-height: 145%; /* 29px */
-		margin-left: 8px;
-	}
+  &__phone-number {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 145%; /* 29px */
+    margin-left: 8px;
+  }
 
-	&__button {
-		border: none;
-		background-color: white;
-		cursor: pointer;
-		padding: 0;
-	}
+  &__button {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    padding: 0;
+  }
 }
