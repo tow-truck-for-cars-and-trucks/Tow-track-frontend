@@ -1,7 +1,7 @@
 import './feedbacks.scss';
 import { useState } from 'react';
-import getFeedBack from '../../shared/feedback/api/feedback-api';
-import Feedback from '../../shared/feedback/ui/feedback';
+import getFeedBack from '../../shared/api/api';
+import Feedback from '../../shared/ui/feedback/feedback';
 
 function Feedbacks() {
 	const [allFeedbacks, setAllFeedbacks] = useState([]);

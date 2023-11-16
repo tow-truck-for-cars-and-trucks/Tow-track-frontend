@@ -1,4 +1,4 @@
-import feedback from './test-review.json';
+import feedback from '../utils/test-review.json';
 
 async function getFeedBack() {
 	return feedback;

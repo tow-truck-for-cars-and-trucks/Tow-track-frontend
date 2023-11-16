@@ -1,7 +1,7 @@
 import AdvantageCard from './advantage-card';
-import CashIcon from '../../icons/cash-icon';
-import TrackIcon from '../../icons/track-icon';
-import RatingIcon from '../../icons/rating-icon';
+import CashIcon from '../icons/cash-icon';
+import TrackIcon from '../icons/track-icon';
+import RatingIcon from '../icons/rating-icon';
 
 export default {
 	title: 'Shared/AdvantageCard',

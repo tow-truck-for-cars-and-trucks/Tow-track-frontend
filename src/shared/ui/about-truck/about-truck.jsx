@@ -1,5 +1,5 @@
 import './about-truck.scss';
-import StarFillIcon from '../../icons/star-fill-icon';
+import StarFillIcon from '../icons/star-fill-icon';
 
 /**
  * @param {string} carModel - title of the car model

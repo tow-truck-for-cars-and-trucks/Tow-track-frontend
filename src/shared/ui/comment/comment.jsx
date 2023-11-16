@@ -1,6 +1,6 @@
 import React from 'react';
 import './comment.scss';
-import CloseIcon from '../../icons/close-icon';
+import CloseIcon from '../icons/close-icon';
 
 /**
  * @param {string} content - initial text inside textarea
