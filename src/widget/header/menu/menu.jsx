@@ -22,7 +22,7 @@ function Menu({ visible = false /* location = '/' */ }) {
 					<NavLink to="/contacts" className={setActive}>
 						Контакты
 					</NavLink>
-					<NavLink to="/my-orders" className={setActive}>
+					<NavLink to="/orders" className={setActive}>
 						Мои заказы
 					</NavLink>
 				</nav>

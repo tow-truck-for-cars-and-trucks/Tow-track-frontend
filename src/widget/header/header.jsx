@@ -4,7 +4,7 @@ import BurgerIcon from '../../shared/ui/icons/burger-icon';
 import PhoneIcon from '../../shared/ui/icons/phone-icon';
 import LogoMin from '../../shared/ui/icons/logo-min';
 import CloseIcon from '../../shared/ui/icons/close-icon';
-import Menu from './menu/menu';
+// import Menu from './menu/menu';
 
 function Header() {
 	const [showMenu, setIsShowMenu] = React.useState(false);
@@ -32,7 +32,7 @@ function Header() {
 					</button>
 				</div>
 			</header>
-			<Menu visible={showMenu} />
+			{/* <Menu visible={showMenu} /> */}
 		</>
 	);
 }

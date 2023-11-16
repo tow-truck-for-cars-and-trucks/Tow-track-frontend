@@ -12,6 +12,7 @@
 	font-weight: 700;
 	line-height: 125%; /* 25px */
 	transition: top 0.35s ease;
+	z-index: 50;
 
 	&__container {
 		padding: 40px 130px 56px 56px;
