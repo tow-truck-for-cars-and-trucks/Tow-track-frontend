@@ -1,19 +1,19 @@
 import Header from '../../widget/header/header';
 import Footer from '../../widget/footer/footer';
-import Banner from '../../widget/banner/banner';
 import Feedbacks from '../../entities/feedbacks/feedbacks';
+import OrderConfirmation from '../../entities/order-confirmation/order-confirmation';
 import Questions from '../../widget/questions/questions';
-import ArrowTop from '../../shared/ui/arrow-scroll/arrow-scroll';
 
-export default function Main() {
+function Order() {
   return (
-    <div className="container">
+    <>
       <Header />
-      <Banner />
+      <OrderConfirmation />
       <Feedbacks />
       <Questions />
-      <ArrowTop />
       <Footer />
-    </div>
+    </>
   );
 }
+
+export default Order;

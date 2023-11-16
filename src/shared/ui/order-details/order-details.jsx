@@ -7,7 +7,6 @@ import './order-details.scss';
  * @param {number} wheelLock - how many wheels are blocked
  * @param {boolean} cuvetteWork - cuvette work is needed or not needed
  * @param {string} deferredOrder - deferred order needed/not needed
- * @param {string} comment - comment on the order
  */
 
 function OrderDetails({
@@ -16,7 +15,6 @@ function OrderDetails({
   wheelLock,
   cuvetteWork,
   deferredOrder,
-  comment,
 }) {
   return (
     <div className="order-details">
@@ -37,13 +35,22 @@ function OrderDetails({
         <li className="order-details__selected">{cuvetteWork}</li>
       </ul>
       <ul className="order-details__content">
-        <li className="order-details__title">Комментарий</li>
-        <li className="order-details__selected">{comment}</li>
-      </ul>
-      <ul className="order-details__content">
         <li className="order-details__title">Отложенный заказ</li>
         <li className="order-details__selected">{deferredOrder}</li>
       </ul>
+      <ul className="order-details__content">
+        <li className="order-details__title">Комментарий</li>
+        <button
+          type="button"
+          aria-label="Читать"
+          className="order-details__button"
+        >
+          Читать
+        </button>
+      </ul>
+      <p className="order-details__caption">
+        Здесь&nbsp;можно&nbsp;прочесть&nbsp;оставленный комментарий
+      </p>
     </div>
   );
 }

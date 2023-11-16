@@ -14,11 +14,9 @@ function App() {
       <Route path="/" element={<Main />} />
       {/* <Route path="/sign-in" element={Auth} />
 			<Route path="/sign-up" element={Register} />
-			<Route path="/order" element={Order} />
 			<Route path="/success" element={Success} /> */}
       <Route path="/contacts" element={<ContactsPage />} />
-      {/* <Route path="/order-active" element={OrderActive} />
-			<Route path="/order-finished" element={OrderFinished} /> */}
+      {/* <Route path="/order-finished" element={OrderFinished} /> */}
     </Routes>
   );
 }

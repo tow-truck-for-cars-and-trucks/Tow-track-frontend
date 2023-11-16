@@ -16,6 +16,5 @@ export const Default = {
     wheelLock: 0,
     cuvetteWork: 'Нет',
     deferredOrder: 'Нет',
-    comment: 'Пробито колесо',
   },
 };

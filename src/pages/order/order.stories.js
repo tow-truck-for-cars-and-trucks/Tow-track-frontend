@@ -1,10 +1,13 @@
 import { MemoryRouter } from 'react-router-dom';
-import BackButton from './back-button';
+import Order from './order';
 
 export default {
-  title: 'shared/BackButton',
-  component: BackButton,
+  title: 'pages/Order',
+  component: Order,
   tags: ['autodocs'],
+  arg: {
+    primary: true,
+  },
   decorators: [
     (Story) => (
       <MemoryRouter>
