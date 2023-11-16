@@ -1,14 +1,15 @@
 import Header from '../../widget/header/header';
 import Footer from '../../widget/footer/footer';
-import './main.scss';
-import Feedbacks from '../../entities/feedbacks/feedbacks';
+import Contacts from '../../widget/contacts/contacts';
 
-export default function Main() {
+function ContactsPage() {
 	return (
 		<>
 			<Header />
-			<Feedbacks />
+			<Contacts />
 			<Footer />
 		</>
 	);
 }
+
+export default ContactsPage;

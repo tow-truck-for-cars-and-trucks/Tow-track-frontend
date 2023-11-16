@@ -1,4 +1,4 @@
-export default function CloseIcon({ width, height }) {
+export default function ArrowDownIcon({ width, height }) {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

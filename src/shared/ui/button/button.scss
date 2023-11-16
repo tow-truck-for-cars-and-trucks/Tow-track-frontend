@@ -18,6 +18,10 @@
 			background-color: var(--accent-yellow);
 		}
 
+		&:focus {
+			background-color: var(--accent-orange-light);
+		}
+
 		&[disabled] {
 			color: var(--text-black-40);
 			background-color: var(--background-grey);
@@ -32,6 +36,10 @@
 
 		&:hover {
 			background-color: var(--background-yellow-light);
+		}
+
+		&:focus {
+			background-color: #ffefae;
 		}
 
 		&[disabled] {
