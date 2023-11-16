@@ -1,4 +1,5 @@
 import '../src/app/styles/index.scss';
+import './preview.scss';
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
