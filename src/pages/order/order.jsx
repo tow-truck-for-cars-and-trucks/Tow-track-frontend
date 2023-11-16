@@ -1,17 +1,19 @@
 import Header from '../../widget/header/header';
 import Footer from '../../widget/footer/footer';
-import Banner from '../../widget/banner/banner';
 import Feedbacks from '../../entities/feedbacks/feedbacks';
+import OrderConfirmation from '../../entities/order-confirmation/order-confirmation';
 import Questions from '../../widget/questions/questions';
 
-export default function Main() {
+function Order() {
 	return (
 		<>
 			<Header />
-			<Banner />
+			<OrderConfirmation />
 			<Feedbacks />
 			<Questions />
 			<Footer />
 		</>
 	);
 }
+
+export default Order;

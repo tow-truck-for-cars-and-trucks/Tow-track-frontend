@@ -27,6 +27,7 @@ const defaultStory = {
 		invalid: true,
 		errorText: 'Введите адрес',
 		placeholderStatic: false,
+		readonly: false,
 	},
 };
 
@@ -131,6 +132,16 @@ export const FilledTextField = {
 		placeholderStatic: true,
 		invalid: false,
 		errorText: '',
+	},
+};
+
+export const ReadOnlyTextField = {
+	args: {
+		value: 'Ольга',
+		placeholderStatic: true,
+		invalid: false,
+		errorText: '',
+		readonly: true,
 	},
 };
 

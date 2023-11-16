@@ -19,7 +19,7 @@ function BackButton() {
 			>
 				<ArrowBackIcon width="16px" height="16px" />
 			</button>
-			<p className="back-icon__title">Назад</p>
+			<p className="back-button__title">Назад</p>
 		</div>
 	);
 }
