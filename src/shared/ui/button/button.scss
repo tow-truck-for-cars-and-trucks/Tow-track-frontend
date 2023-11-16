@@ -18,6 +18,10 @@
 			background-color: var(--accent-yellow);
 		}
 
+		&:focus {
+			background-color: var(--accent-orange-light);
+		}
+
 		&[disabled] {
 			color: var(--text-black-40);
 			background-color: var(--background-grey);
@@ -34,10 +38,15 @@
 			background-color: var(--background-yellow-light);
 		}
 
+		&:focus {
+			background-color: #ffefae;
+		}
+
 		&[disabled] {
 			color: var(--background-grey);
 			background-color: var(--background-grey-light-20);
 			border: 2px solid var(--background-grey);
+			cursor: default;
 		}
 	}
 }

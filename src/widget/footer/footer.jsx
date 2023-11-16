@@ -24,7 +24,7 @@ function Footer() {
 								Оферта
 							</a>
 							<a href="/" className="footer__link">
-								Политика конфидициальности
+								Политика конфиденциальности
 							</a>
 							<a href="/" className="footer__link">
 								Пользовательское соглашение
