@@ -3,6 +3,7 @@ import Footer from '../../widget/footer/footer';
 import Banner from '../../widget/banner/banner';
 import './main.scss';
 import Feedbacks from '../../entities/feedbacks/feedbacks';
+import Questions from '../../widget/questions/questions';
 
 export default function Main() {
 	return (
@@ -10,6 +11,7 @@ export default function Main() {
 			<Header />
 			<Banner />
 			<Feedbacks />
+			<Questions />
 			<Footer />
 		</>
 	);
