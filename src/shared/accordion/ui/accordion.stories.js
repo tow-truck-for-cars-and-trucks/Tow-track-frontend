@@ -1,5 +1,5 @@
-import AboutTruck from '../about-truck/about-truck';
-import OrderDetails from '../order-details/order-details';
+import AboutTruck from '../../about-truck/ui/about-truck';
+import OrderDetails from '../../order-details/ui/order-details';
 import Accordion from './accordion';
 
 export default {
