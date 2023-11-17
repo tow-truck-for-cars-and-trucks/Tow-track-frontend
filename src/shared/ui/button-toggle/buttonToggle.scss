@@ -4,8 +4,8 @@
 .buttonToggle__input {
 	position: absolute;
 	opacity: 0;
-	width: 0;
-	height: 0;
+	width: 51px;
+	height: 31px;
 	appearance: none;
 }
 .buttonToggle__span {
@@ -17,9 +17,9 @@
 		content: '';
 		width: 51px;
 		height: 31px;
-		position: absolute;
-		left: 0;
-		top: 0;
+		//position: absolute;
+		// left: 0;
+		// top: 0;
 		background: var(--fills-secondary-dark, rgba(120, 120, 128, 0.32));
 		border-radius: 18px;
 		transition: 0.5s ease;

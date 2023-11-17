@@ -8,7 +8,7 @@
 	&__btn {
 		cursor: pointer;
 		border: none;
-		background-color: #fff;
+		background: var(--background-grey-light-blue-40, #eff5f8);
 	}
 }
 .buttonCounter__count {

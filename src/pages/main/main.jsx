@@ -8,8 +8,8 @@ export default function Main() {
 	return (
 		<>
 			<Header />
-			<Feedbacks />
 			<Application />
+			<Feedbacks />
 			<Footer />
 		</>
 	);
