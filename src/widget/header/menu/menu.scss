@@ -1,0 +1,45 @@
+.menu {
+  position: absolute;
+  top: 64px;
+  z-index: 50;
+  width: 390px;
+  color: var(--text-black-80, #3b3e49);
+  font-weight: 700;
+  font-size: 20px;
+  font-family: Mulish, Helvetica, Arial, sans-serif;
+  font-style: normal;
+  line-height: 125%;
+  background-color: var(--white);
+  border-radius: 0 0 28px 28px;
+  transition: top 0.35s ease;
+
+  &__container {
+    padding: 40px 130px 56px 56px;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+  }
+
+  &__item {
+    display: block;
+    color: var(--text-black-40, #7c7d7e);
+    font-weight: 700;
+    font-size: 20px;
+    font-style: normal;
+    line-height: 125%;
+    text-decoration: none;
+  }
+
+  &__item_active {
+    color: var(--text-black-80, #3b3e49);
+    text-decoration: none;
+  }
+
+  &_display_none {
+    top: -260px;
+    transition: top 0.35s ease;
+  }
+}

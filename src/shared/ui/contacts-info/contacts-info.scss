@@ -1,35 +1,35 @@
 %text-style {
-	margin: 0;
-	font-weight: 500;
-	font-family: Mulish, Helvetica, Arial, sans-serif;
+  margin: 0;
+  font-weight: 500;
+  font-family: Mulish, Helvetica, Arial, sans-serif;
 }
 
 .contacts-info {
-	padding-top: 20px;
-	padding-right: 20px;
-	padding-left: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
 
-	&__item {
-		margin: 0;
-		padding-bottom: 28px;
-		padding-left: 0;
-		list-style-type: none;
-	}
+  &__item {
+    margin: 0;
+    padding-bottom: 28px;
+    padding-left: 0;
+    list-style-type: none;
+  }
 
-	&__title {
-		@extend %text-style;
+  &__title {
+    @extend %text-style;
 
-		padding-bottom: 8px;
-		color: var(--text-black-40);
-		font-size: 14px;
-		line-height: 1.25;
-	}
+    padding-bottom: 8px;
+    color: var(--text-black-40);
+    font-size: 14px;
+    line-height: 1.25;
+  }
 
-	&__description {
-		@extend %text-style;
+  &__description {
+    @extend %text-style;
 
-		color: var(--text-black-80);
-		font-size: 18px;
-		line-height: 1.2;
-	}
+    color: var(--text-black-80);
+    font-size: 18px;
+    line-height: 1.2;
+  }
 }

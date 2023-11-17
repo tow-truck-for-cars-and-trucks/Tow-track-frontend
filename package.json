@@ -1,5 +1,6 @@
 {
   "name": "tow-track-frontend",
+  "homepage": "/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,6 +16,7 @@
     "react-router-dom": "^6.18.0",
     "react-scripts": "5.0.1",
     "sass": "^1.69.5",
+    "storybook-addon-react-router-v6": "^2.0.10",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -24,6 +26,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "predeploy-storybook": "npm run build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static",
     "lint": "eslint . --ext .js,.jsx .",
     "lint:fix": "eslint --fix . --ext .jsx",
     "stylelint": "stylelint '**/*{.css,.scss}'",
@@ -77,8 +81,10 @@
     "eslint-plugin-storybook": "^0.6.15",
     "gh-pages": "^6.0.0",
     "husky": "^8.0.3",
+    "install": "^0.13.0",
     "jsdoc": "^4.0.2",
     "lint-staged": "^15.0.2",
+    "npm": "^10.2.4",
     "prettier": "3.0.3",
     "storybook": "^7.5.2",
     "stylelint": "^15.10.0",
