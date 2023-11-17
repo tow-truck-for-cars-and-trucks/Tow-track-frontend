@@ -6,6 +6,10 @@ import Accordion from '../../../shared/ui/accordion/accordion';
 import OrderDetails from '../../../shared/ui/order-details/order-details';
 import Alert from '../../../shared/ui/alert/alert';
 import Button from '../../../shared/ui/button/button';
+import StepOneDefaultIcon from '../../../shared/ui/icons/step-one-default-icon';
+import StepTwoFillIcon from '../../../shared/ui/icons/step-two-fill-icon';
+import StepThreeDisableIcon from '../../../shared/ui/icons/step-three-disable-icon';
+import StepFourDisableIcon from '../../../shared/ui/icons/step-four-disable-icon';
 
 function OrderSuccess() {
   return (
@@ -13,7 +17,16 @@ function OrderSuccess() {
       <div className="order-success__time">
         <DeliveryTime time="16:45" />
       </div>
-      <ProgressBar />
+      <ProgressBar
+        icons={[
+          <StepOneDefaultIcon width="40px" height="40px" />,
+          <StepTwoFillIcon width="40px" height="40px" />,
+          <StepThreeDisableIcon width="40px" height="40px" />,
+          <StepFourDisableIcon width="40px" height="40px" />,
+        ]}
+        activeIndex={1}
+        activeText="В пути"
+      />
       <div className="order-success__adress">
         <Adress
           adressFrom="Москва, ул. Ленинградская, 28"

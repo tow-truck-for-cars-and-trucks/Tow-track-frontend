@@ -1,4 +1,4 @@
-export default function StepOneDefaultIcon({ width, height }) {
+export default function StepOneDefaultIcon({ width, height, className }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,6 +6,7 @@ export default function StepOneDefaultIcon({ width, height }) {
       height={height}
       viewBox="0 0 40 40"
       fill="none"
+      className={className}
     >
       <g clipPath="url(#clip0_1716_675)">
         <path

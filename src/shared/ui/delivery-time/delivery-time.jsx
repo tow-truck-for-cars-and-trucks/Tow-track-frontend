@@ -7,7 +7,7 @@ function DeliveryTime({ time }) {
   return (
     <div className="delivery-time">
       <p className="delivery-time__description">
-        Примерное&nbsp;время подачи&nbsp;эвакуатора
+        Примерное время подачи эвакуатора
       </p>
       <p className="delivery-time__description">{time}</p>
     </div>

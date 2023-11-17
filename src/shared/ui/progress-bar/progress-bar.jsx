@@ -1,20 +1,30 @@
 import './progress-bar.scss';
-import StepOneDefaultIcon from '../icons/step-one-default-icon';
-import StepTwoFillIcon from '../icons/step-two-fill-icon';
-import StepThreeDisableIcon from '../icons/step-three-disable-icon';
-import StepFourDisableIcon from '../icons/step-four-disable-icon';
 
-function ProgressBar() {
+/**
+ * @param {JSX element} icon - icon of the progress-bar
+ * @param {number} activeIndex - active element index
+ * @param {string} activeText - active element description
+ */
+function ProgressBar({ icons, activeIndex, activeText }) {
   return (
     <div className="progress-bar">
-      <StepOneDefaultIcon width="40px" height="40px" />
-      <div className="progress-bar__border" />
-      <StepTwoFillIcon width="40px" height="40px" />
-      <p className="progress-bar__description">В пути</p>
-      <div className="progress-bar__border" />
-      <StepThreeDisableIcon width="40px" height="40px" />
-      <div className="progress-bar__border" />
-      <StepFourDisableIcon width="40px" height="40px" />
+      <div className="progress-bar__container">
+        {icons.map((icon) => (
+          <div className="progress-bar__item">{icon}</div>
+        ))}
+      </div>
+      <div className="progress-bar__text-container">
+        {icons.map((e, i) => (
+          <div
+            className={[
+              'progress-bar__description',
+              i === activeIndex ? 'progress-bar__description_active' : '',
+            ].join(' ')}
+          >
+            {i === activeIndex ? activeText : null}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
