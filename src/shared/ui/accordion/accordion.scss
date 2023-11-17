@@ -1,0 +1,40 @@
+%text-style {
+  margin: 0;
+  font-family: Mulish, Helvetica, Arial, sans-serif;
+}
+
+.accordion {
+  width: 318px;
+  margin: 0;
+  padding-top: 24px;
+  padding-bottom: 28px;
+  border-top: 1px solid var(--accent-yellow-light);
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 24px;
+  }
+
+  &__title {
+    @extend %text-style;
+
+    color: var(--text-black-80);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.25;
+    cursor: pointer;
+  }
+
+  &__icon {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &-content_opened {
+    border-top: 1px solid var(--background-grey-blue-40);
+  }
+}

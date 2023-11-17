@@ -1,0 +1,21 @@
+.questions {
+  width: fit-content;
+  max-width: 390px;
+  padding: 48px 0;
+  background: var(--background-white, #fff);
+
+  &__header {
+    padding: 0 16px;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 24px 0 36px;
+    color: var(--text-black-90, #2b2a29);
+    font-weight: 700;
+    font-size: 24px;
+    font-family: Mulish, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    line-height: 1.25;
+  }
+}

@@ -1,8 +1,10 @@
 {
   "name": "tow-track-frontend",
+  "homepage": "/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@pbe/react-yandex-maps": "^1.2.5",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -23,6 +25,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "predeploy-storybook": "npm run build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static",
     "lint": "eslint . --ext .js,.jsx .",
     "lint:fix": "eslint --fix . --ext .jsx",
     "stylelint": "stylelint '**/*{.css,.scss}'",
@@ -58,6 +62,7 @@
     "@storybook/addon-links": "^7.5.2",
     "@storybook/addon-onboarding": "^1.0.8",
     "@storybook/blocks": "^7.5.2",
+    "@storybook/client-api": "^7.5.3",
     "@storybook/manager-api": "^7.5.3",
     "@storybook/preset-create-react-app": "^7.5.2",
     "@storybook/preview-api": "^7.5.3",
@@ -76,7 +81,6 @@
     "eslint-plugin-storybook": "^0.6.15",
     "gh-pages": "^6.0.0",
     "husky": "^8.0.3",
-    "init": "0.1.2",
     "jsdoc": "^4.0.2",
     "lint-staged": "^15.0.2",
     "prettier": "3.0.3",
@@ -87,6 +91,7 @@
     "stylelint-order": "^6.0.3",
     "stylelint-prettier": "^4.0.2",
     "stylelint-scss": "^5.3.0",
+    "stylelint-selector-bem-pattern": "^3.0.1",
     "webpack": "^5.89.0"
   },
   "lint-staged": {

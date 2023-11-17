@@ -1,0 +1,23 @@
+.back-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+
+  &__icon {
+    padding: 0;
+    background: transparent;
+    border: none;
+  }
+
+  &__title {
+    margin: 0;
+    padding-bottom: 3px;
+    padding-left: 4px;
+    color: var(--accent-black-80);
+    font-weight: 500;
+    font-size: 14px;
+    font-family: Mulish, Helvetica, Arial, sans-serif;
+    line-height: 1.25;
+  }
+}
