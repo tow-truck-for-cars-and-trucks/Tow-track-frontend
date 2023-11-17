@@ -42,7 +42,7 @@
     flex-direction: column;
     font-weight: 500;
     font-size: 12px;
-    line-height: 135%; /* 16.2px */
+    line-height: 135%;
     row-gap: 24px;
   }
 
@@ -61,7 +61,7 @@
   &__phone-number {
     font-weight: 700;
     font-size: 24px;
-    line-height: 125%; /* 30px */
+    line-height: 125%;
   }
 
   &__link {
@@ -70,13 +70,13 @@
     font-weight: 500;
     font-size: 14px;
     font-style: normal;
-    line-height: 125%; /* 17.5px */
+    line-height: 125%;
     text-decoration: none;
   }
 
   &__contacts {
     font-weight: 700;
     font-size: 20px;
-    line-height: 125%; /* 25px */
+    line-height: 125%;
   }
 }
