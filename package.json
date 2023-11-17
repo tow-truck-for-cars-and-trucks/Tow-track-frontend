@@ -16,6 +16,7 @@
     "react-router-dom": "^6.18.0",
     "react-scripts": "5.0.1",
     "sass": "^1.69.5",
+    "storybook-addon-react-router-v6": "^2.0.10",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -86,7 +87,6 @@
     "npm": "^10.2.4",
     "prettier": "3.0.3",
     "storybook": "^7.5.2",
-    "storybook-addon-react-router-v6": "^2.0.10",
     "stylelint": "^15.10.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard-scss": "^11.1.0",
