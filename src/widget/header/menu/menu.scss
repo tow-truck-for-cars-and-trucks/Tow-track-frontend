@@ -8,8 +8,8 @@
   font-size: 20px;
   font-family: Mulish, Helvetica, Arial, sans-serif;
   font-style: normal;
-  line-height: 125%; /* 25px */
-  background-color: white;
+  line-height: 125%;
+  background-color: var(--white);
   border-radius: 0 0 28px 28px;
   transition: top 0.35s ease;
 
@@ -29,7 +29,7 @@
     font-weight: 700;
     font-size: 20px;
     font-style: normal;
-    line-height: 125%; /* 25px */
+    line-height: 125%;
     text-decoration: none;
   }
 
