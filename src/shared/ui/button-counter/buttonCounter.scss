@@ -1,4 +1,4 @@
-.buttonCounter {
+.counter {
 	width: 84px;
 	height: 16px;
 	display: flex;
@@ -8,15 +8,6 @@
 	&__btn {
 		cursor: pointer;
 		border: none;
-		background: var(--background-grey-light-blue-40, #eff5f8);
+		background: var(--background-grey-light-blue-40);
 	}
-}
-.buttonCounter__count {
-	color: var(--text-black-90, #2b2a29);
-	font-family: 'Mulish', 'Arial', sans-serif;
-	font-size: 24px;
-	font-style: normal;
-	font-weight: 700;
-	line-height: 125%;
-	margin: 0 20px;
 }

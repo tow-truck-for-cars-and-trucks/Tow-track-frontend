@@ -8,7 +8,7 @@ import './buttonCounter.scss';
 function ButtonCounter({ onClick, icon, disabled }) {
 	return (
 		<button
-			className="buttonCounter__btn"
+			className="counter__btn"
 			type="button"
 			onClick={onClick}
 			disabled={disabled}
