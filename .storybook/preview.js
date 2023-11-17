@@ -3,7 +3,6 @@ import {
   withRouter,
 } from 'storybook-addon-react-router-v6';
 import '../src/app/styles/index.scss';
-import './preview.scss';
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
