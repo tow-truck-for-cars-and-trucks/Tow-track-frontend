@@ -1,81 +1,82 @@
 .footer {
-	width: 390px;
-	height: 575px;
-	color: #fff;
-	font-family: Mulish, Helvetica, Arial, sans-serif;
-	background-color: #3b3e49;
+  position: relative;
+  width: 390px;
+  height: 575px;
+  color: #fff;
+  font-family: Mulish, Helvetica, Arial, sans-serif;
+  background-color: #3b3e49;
 
-	&__container {
-		display: flex;
-		flex-direction: column;
-		padding: 40px 16px 0;
-		row-gap: 50px;
-	}
+  &__container {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 16px 0;
+    row-gap: 50px;
+  }
 
-	&__main {
-		display: flex;
-		flex-direction: row;
-		column-gap: 26px;
-	}
+  &__main {
+    display: flex;
+    flex-direction: row;
+    column-gap: 26px;
+  }
 
-	&__logo {
-		display: inline-block;
-		height: 50px;
-	}
+  &__logo {
+    display: inline-block;
+    height: 50px;
+  }
 
-	&__column {
-		row-gap: 30px;
-		display: flex;
-		flex-direction: column;
-	}
+  &__column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+  }
 
-	&__documents {
-		display: flex;
-		flex-direction: column;
-		font-size: 14px;
-		row-gap: 15px;
-	}
+  &__documents {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    row-gap: 15px;
+  }
 
-	&__copyright {
-		display: flex;
-		flex-direction: column;
-		font-weight: 500;
-		font-size: 12px;
-		line-height: 135%; /* 16.2px */
-		row-gap: 24px;
-	}
+  &__copyright {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 135%; /* 16.2px */
+    row-gap: 24px;
+  }
 
-	&__main-contacts {
-		display: flex;
-		flex-direction: column;
-		row-gap: 20px;
-	}
+  &__main-contacts {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
 
-	&__phone-block {
-		display: flex;
-		flex-direction: column;
-		row-gap: 8px;
-	}
+  &__phone-block {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
 
-	&__phone-number {
-		font-weight: 700;
-		font-size: 24px;
-		line-height: 125%; /* 30px */
-	}
+  &__phone-number {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 125%; /* 30px */
+  }
 
-	&__link {
-		display: inline-block;
-		color: #fff;
-		font-weight: 500;
-		font-size: 14px;
-		font-style: normal;
-		line-height: 125%; /* 17.5px */
-		text-decoration: none;
-	}
+  &__link {
+    display: inline-block;
+    color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 125%; /* 17.5px */
+    text-decoration: none;
+  }
 
-	&__contacts {
-		font-weight: 700;
-		font-size: 20px;
-		line-height: 125%; /* 25px */
-	}
+  &__contacts {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 125%; /* 25px */
+  }
 }
