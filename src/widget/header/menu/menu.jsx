@@ -17,13 +17,13 @@ function Menu({ visible = false /* location = '/' */ }) {
           <NavLink to="/" className={setActive}>
             Главная
           </NavLink>
-          <NavLink to="/order" className={setActive}>
+          <NavLink to="/make-order" className={setActive}>
             Заказать эвакуатор
           </NavLink>
           <NavLink to="/contacts" className={setActive}>
             Контакты
           </NavLink>
-          <NavLink to="/orders" className={setActive}>
+          <NavLink to="/my-orders" className={setActive}>
             Мои заказы
           </NavLink>
         </nav>

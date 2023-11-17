@@ -1,3 +1,4 @@
+import { reactRouterParameters } from 'storybook-addon-react-router-v6';
 import Header from './header';
 
 export default {
@@ -6,6 +7,13 @@ export default {
   tags: ['autodocs'],
   arg: {
     primary: true,
+  },
+  parameters: {
+    reactRouter: reactRouterParameters({
+      location: {
+        path: '/',
+      },
+    }),
   },
 };
 

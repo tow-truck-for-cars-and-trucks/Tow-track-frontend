@@ -1,11 +1,13 @@
 import './footer.scss';
 import ExpressLogo from '../../shared/ui/icons/express-logo';
 import Logo from '../../shared/ui/icons/logo';
+import ArrowScroll from '../../shared/ui/arrow-scroll/arrow-scroll';
 
 function Footer() {
   return (
     <footer className="footer">
       <div className="footer__container">
+        <ArrowScroll />
         <div className="footer__main">
           <div className="footer__logo">
             <Logo width="100px" height="100px" />

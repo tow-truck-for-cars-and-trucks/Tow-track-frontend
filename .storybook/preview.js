@@ -1,3 +1,4 @@
+import { withRouter } from 'storybook-addon-react-router-v6';
 import '../src/app/styles/index.scss';
 import './preview.scss';
 
@@ -12,6 +13,7 @@ const preview = {
       },
     },
   },
+  decorators: [withRouter],
 };
 
 export default preview;
