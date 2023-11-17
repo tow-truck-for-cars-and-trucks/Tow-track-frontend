@@ -69,7 +69,6 @@
     "@storybook/react": "^7.5.2",
     "@storybook/react-webpack5": "^7.5.2",
     "@storybook/testing-library": "^0.2.2",
-    "@types/swiper": "^6.0.0",
     "babel-plugin-named-exports-order": "^0.0.2",
     "commitizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",

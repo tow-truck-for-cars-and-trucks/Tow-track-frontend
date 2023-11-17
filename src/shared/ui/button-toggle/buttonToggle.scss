@@ -1,46 +1,46 @@
 .buttonToggle__lab {
-	display: inline-block;
+  display: inline-block;
 }
 .buttonToggle__input {
-	position: absolute;
-	opacity: 0;
-	width: 51px;
-	height: 31px;
-	appearance: none;
+  position: absolute;
+  opacity: 0;
+  width: 51px;
+  height: 31px;
+  appearance: none;
 }
 .buttonToggle__span {
-	display: inline-block;
-	position: relative;
-	z-index: 1;
-	&:before {
-		display: block;
-		content: '';
-		width: 51px;
-		height: 31px;
-		//position: absolute;
-		// left: 0;
-		// top: 0;
-		background: var(--fills-secondary-dark, rgba(120, 120, 128, 0.32));
-		border-radius: 18px;
-		transition: 0.5s ease;
-	}
-	&:after {
-		display: block;
-		content: '';
-		position: absolute;
-		top: 2px;
-		left: 3px;
-		width: 27px;
-		height: 27px;
-		border-radius: 50%;
-		background-color: #fff;
-		transition: 0.5s ease;
-	}
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  &:before {
+    display: block;
+    content: '';
+    width: 51px;
+    height: 31px;
+    //position: absolute;
+    // left: 0;
+    // top: 0;
+    background: var(--fills-secondary-dark, rgba(120, 120, 128, 0.32));
+    border-radius: 18px;
+    transition: 0.5s ease;
+  }
+  &:after {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 3px;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: 0.5s ease;
+  }
 }
 .buttonToggle__input:checked + .buttonToggle__span::before {
-	background: var(--accent-yellow-light, #fc0);
+  background: var(--accent-yellow-light, #fc0);
 }
 .buttonToggle__input:checked + .buttonToggle__span::after {
-	background-color: #fff;
-	left: 20px;
+  background-color: #fff;
+  left: 20px;
 }

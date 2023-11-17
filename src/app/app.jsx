@@ -1,4 +1,3 @@
-import './styles/index.scss';
 import { Route, Routes } from 'react-router-dom';
 import Main from '../pages/main/main';
 // import Register from '../pages/register/register';

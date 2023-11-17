@@ -1,10 +1,10 @@
 import ButtonCheckbox from './buttonToggle';
 
 export default {
-	title: 'checkboxTogl',
-	component: ButtonCheckbox,
+  title: 'Shared/checkboxTogl',
+  component: ButtonCheckbox,
 };
 
 export function Default() {
-	return <ButtonCheckbox />;
+  return <ButtonCheckbox />;
 }
