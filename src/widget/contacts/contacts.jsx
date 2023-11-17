@@ -1,5 +1,5 @@
 import './contacts.scss';
-import ContactsMap from '../../entities/contacts-map/contacts-map';
+import ContactsMap from '../../entities/ui/contacts-map/contacts-map';
 import PagesTitle from '../../shared/ui/pages-title/pages-title';
 
 function Contacts() {

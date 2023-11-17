@@ -1,5 +1,5 @@
 import './questions.scss';
-import QuestionInfo from '../../entities/questions-info/questions-info';
+import QuestionInfo from '../../entities/ui/questions-info/questions-info';
 
 function Questions() {
   return (

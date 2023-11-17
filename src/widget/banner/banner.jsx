@@ -7,9 +7,11 @@ import RatingIcon from '../../shared/ui/icons/rating-icon';
 function Banner() {
   return (
     <section className="banner">
-      <h1 className="banner__title">
-        TT Express — удобный&nbsp;сервис&nbsp;для&nbsp;вызова эвакуатора 24/7
-      </h1>
+      <div className="banner__header">
+        <p className="banner__title">TT Express — </p>
+        <p className="banner__title">удобный сервис для вызова</p>
+        <p className="banner__title">эвакуатора 24/7</p>
+      </div>
       <div className="banner__cards">
         <div className="banner__card">
           <AdvantageCard

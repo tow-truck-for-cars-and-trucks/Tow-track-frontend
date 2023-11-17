@@ -1,7 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable react/jsx-props-no-spreading */
-
-import { useArgs } from '@storybook/preview-api';
+import { useArgs } from '@storybook/client-api';
 import NavigationArrowIcon from '../icons/navigation-arrow-icon';
 import Input from './input';
 
