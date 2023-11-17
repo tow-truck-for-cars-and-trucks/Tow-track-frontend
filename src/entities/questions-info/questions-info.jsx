@@ -3,11 +3,10 @@ import './questions-info.scss';
 import IcPlusIcon from '../../shared/ui/icons/ic-plus-icon';
 import IcMinusIcon from '../../shared/ui/icons/ic-minus-icon';
 /**
- * @param {question} label - frequently asked question
- * @param {answer} primary - answer to the question
+ * @param {string} label - frequently asked question
+ * @param {string} primary - answer to the question
  */
-
-function QuestionInfo({ question, answer }) {
+function QuestionInfo({ label, primary }) {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggleAccordion = () => {
@@ -21,7 +20,7 @@ function QuestionInfo({ question, answer }) {
 				className="question__button"
 				onClick={toggleAccordion}
 			>
-				{question}
+				{label}
 				<span className="question__icon" aria-hidden="true">
 					{isOpen ? (
 						<IcMinusIcon width="40px" height="40px" />
@@ -31,7 +30,7 @@ function QuestionInfo({ question, answer }) {
 				</span>
 			</button>
 
-			{isOpen && <div className="question__answer">{answer}</div>}
+			{isOpen && <div className="question__answer">{primary}</div>}
 		</div>
 	);
 }
