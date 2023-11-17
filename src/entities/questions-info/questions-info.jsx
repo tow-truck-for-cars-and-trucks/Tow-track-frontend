@@ -5,7 +5,6 @@ import IcMinusIcon from '../../shared/ui/icons/ic-minus-icon';
 /**
  * @param {string} label - frequently asked question
  * @param {string} primary - answer to the question
- *
  */
 function QuestionInfo({ label, primary }) {
 	const [isOpen, setIsOpen] = useState(false);
