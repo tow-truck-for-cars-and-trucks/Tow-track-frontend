@@ -37,6 +37,7 @@ function Transports() {
 					<Chip label="Спецтехника" />
 				</div>
 			</div>
+
 			<div className="transports__counter">
 				<Description title="Блокировка колес" subtitle="Не могут вращаться" />
 				<div className="transports__count">

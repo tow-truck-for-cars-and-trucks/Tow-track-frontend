@@ -15,6 +15,7 @@
     "react-router-dom": "^6.18.0",
     "react-scripts": "5.0.1",
     "sass": "^1.69.5",
+    "swiper": "^11.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -65,6 +66,7 @@
     "@storybook/react": "^7.5.2",
     "@storybook/react-webpack5": "^7.5.2",
     "@storybook/testing-library": "^0.2.2",
+    "@types/swiper": "^6.0.0",
     "babel-plugin-named-exports-order": "^0.0.2",
     "commitizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",
