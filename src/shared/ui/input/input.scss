@@ -1,4 +1,3 @@
-/* stylelint-disable selector-class-pattern */
 %icon-style {
   position: absolute;
   top: 30px;
@@ -52,10 +51,7 @@
     display: inherit;
   }
 
-  /* stylelint-disable-next-line selector-not-notation */
-  &_filled:not(&_invalid):not(&_readonly)
-    &__text:not(:focus)
-    ~ &__success-icon {
+  &_filled:not(&_invalid, &_readonly) &__text:not(:focus) ~ &__success-icon {
     display: inherit;
   }
 
@@ -91,8 +87,7 @@
     }
   }
 
-  /* stylelint-disable-next-line selector-not-notation */
-  &_filled:not(&_readonly):not(&_invalid) &__text:not(:focus) {
+  &_filled:not(&_readonly, &_invalid) &__text:not(:focus) {
     padding: 37px 41px 11px 11px;
     border: 2px solid var(--accent-yellow-light);
     box-shadow: none;
@@ -103,11 +98,18 @@
       top: 16px;
     }
 
+    &_filled &__placeholder,
+    &__text:focus ~ .input__placeholder {
+      top: 12px;
+      font-size: 14px;
+    }
+
     &.input_filled .input__placeholder,
     & .input__text:focus ~ .input__placeholder {
       display: none;
     }
 
+    // Не удается вынести выше, т.к стиль перестает работать
     /* stylelint-disable-next-line no-descending-specificity */
     .input__text {
       padding: 16px 42px 16px 16px;
@@ -123,12 +125,5 @@
     .input_static.input_filled:not(&_invalid) .input__text:not(:focus) {
       padding: 15px 41px 15px 15px;
     }
-  }
-
-  /* stylelint-disable-next-line no-descending-specificity */
-  &_filled &__placeholder,
-  &__text:focus ~ .input__placeholder {
-    top: 12px;
-    font-size: 14px;
   }
 }

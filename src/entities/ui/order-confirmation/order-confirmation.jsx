@@ -1,10 +1,10 @@
 import './order-confirmation.scss';
-import PagesTitle from '../../shared/ui/pages-title/pages-title';
-import Input from '../../shared/ui/input/input';
-import Chip from '../../shared/ui/chip/chip';
-import OrderDetails from '../../shared/ui/order-details/order-details';
-import BackButton from '../../shared/ui/back-button/back-button';
-import TotalPrice from '../../shared/ui/total-price/total-price';
+import PagesTitle from '../../../shared/ui/pages-title/pages-title';
+import Input from '../../../shared/ui/input/input';
+import Chip from '../../../shared/ui/chip/chip';
+import OrderDetails from '../../../shared/ui/order-details/order-details';
+import BackButton from '../../../shared/ui/back-button/back-button';
+import TotalPrice from '../../../shared/ui/total-price/total-price';
 
 function OrderConfirmation() {
   return (

@@ -5,10 +5,15 @@
   background-repeat: no-repeat;
   background-size: cover;
 
-  &__title {
-    margin: 0;
+  &__header {
+    display: flex;
+    flex-direction: column;
     padding-top: 29px;
     padding-left: 20px;
+  }
+
+  &__title {
+    margin: 0;
     color: var(--text-white);
     font-weight: 700;
     font-size: 24px;
