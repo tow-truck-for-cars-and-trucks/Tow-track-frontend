@@ -93,15 +93,15 @@
     box-shadow: none;
   }
 
+  &_filled &__placeholder,
+  &__text:focus ~ .input__placeholder {
+    top: 12px;
+    font-size: 14px;
+  }
+
   &_static.input {
     .input__placeholder {
       top: 16px;
-    }
-
-    &_filled &__placeholder,
-    &__text:focus ~ .input__placeholder {
-      top: 12px;
-      font-size: 14px;
     }
 
     &.input_filled .input__placeholder,
