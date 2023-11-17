@@ -10,11 +10,11 @@ function ProgressBar() {
       <StepOneDefaultIcon width="40px" height="40px" />
       <div className="progress-bar__border" />
       <StepTwoFillIcon width="40px" height="40px" />
+      <p className="progress-bar__description">В пути</p>
       <div className="progress-bar__border" />
       <StepThreeDisableIcon width="40px" height="40px" />
       <div className="progress-bar__border" />
       <StepFourDisableIcon width="40px" height="40px" />
-      <div className="progress-bar__border" />
     </div>
   );
 }
