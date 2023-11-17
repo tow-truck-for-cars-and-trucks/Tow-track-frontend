@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './questions-info.scss';
-import IcPlusIcon from '../../shared/ui/icons/ic-plus-icon';
-import IcMinusIcon from '../../shared/ui/icons/ic-minus-icon';
+import IcPlusIcon from '../../../shared/ui/icons/ic-plus-icon';
+import IcMinusIcon from '../../../shared/ui/icons/ic-minus-icon';
 /**
  * @param {question} label - frequently asked question
  * @param {answer} primary - answer to the question
