@@ -48,7 +48,7 @@
     cursor: pointer;
   }
 
-  &__caption {
+  &_opened {
     @extend %text-style;
 
     padding-top: 12px;

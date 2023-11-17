@@ -49,6 +49,7 @@ function OrderConfirmation() {
           wheelLock="0"
           cuvetteWork="Нет"
           deferredOrder="Нет"
+          comment="Еще один очень важный комментарий"
         />
       </div>
       <div className="order-confirmation__price">

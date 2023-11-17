@@ -1,4 +1,5 @@
 import './order-details.scss';
+import { useState } from 'react';
 
 /**
  * @param {string} pricing - pricing chosen by the user
@@ -7,6 +8,7 @@ import './order-details.scss';
  * @param {number} wheelLock - how many wheels are blocked
  * @param {boolean} cuvetteWork - cuvette work is needed or not needed
  * @param {string} deferredOrder - deferred order needed/not needed
+ * @param {string} comment - comment of the user
  */
 
 function OrderDetails({
@@ -15,7 +17,10 @@ function OrderDetails({
   wheelLock,
   cuvetteWork,
   deferredOrder,
+  comment,
 }) {
+  const [isShow, setIsShow] = useState(false);
+
   return (
     <div className="order-details">
       <ul className="order-details__content">
@@ -40,17 +45,30 @@ function OrderDetails({
       </ul>
       <ul className="order-details__content">
         <li className="order-details__title">Комментарий</li>
-        <button
-          type="button"
-          aria-label="Читать"
-          className="order-details__button"
-        >
-          Читать
-        </button>
+        {!isShow && (
+          <button
+            type="button"
+            aria-label="Читать"
+            className="order-details__button"
+            onClick={() => setIsShow(true)}
+          >
+            Читать
+          </button>
+        )}
+        {isShow && (
+          <button
+            type="button"
+            aria-label="Свернуть"
+            className="order-details__button"
+            onClick={() => setIsShow(false)}
+          >
+            Свернуть
+          </button>
+        )}
       </ul>
-      <p className="order-details__caption">
-        Здесь&nbsp;можно&nbsp;прочесть&nbsp;оставленный комментарий
-      </p>
+      {isShow && (
+        <p className={isShow ? 'order-details_opened' : ''}>{comment}</p>
+      )}
     </div>
   );
 }
