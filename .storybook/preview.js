@@ -1,7 +1,4 @@
-import {
-  reactRouterParameters,
-  withRouter,
-} from 'storybook-addon-react-router-v6';
+import { MemoryRouter } from 'react-router-dom';
 import '../src/app/styles/index.scss';
 
 /** @type { import('@storybook/react').Preview } */
@@ -14,9 +11,14 @@ const preview = {
         date: /Date$/i,
       },
     },
-    reactRouter: reactRouterParameters({}),
   },
-  decorators: [withRouter],
+  decorators: [
+    (Story) => (
+      <MemoryRouter>
+        <Story />
+      </MemoryRouter>
+    ),
+  ],
 };
 
 export default preview;
