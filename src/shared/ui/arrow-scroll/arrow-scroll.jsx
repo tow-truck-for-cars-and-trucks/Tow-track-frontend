@@ -3,7 +3,7 @@ import './arrow-scroll.scss';
 
 function ArrowScroll() {
   return (
-    <a href="#header" className="arrow__container" aria-label="anchor">
+    <a href="#header" className="arrow" aria-label="anchor">
       <ArrowUpwardIcon width="16px" height="40px" />
     </a>
   );

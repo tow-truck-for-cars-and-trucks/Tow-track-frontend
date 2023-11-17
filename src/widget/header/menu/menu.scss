@@ -1,18 +1,17 @@
 .menu {
-  width: 390px;
-  border-radius: 0 0 28px 28px;
-  background-color: white;
-  font-family: Mulish, Helvetica, Arial, sans-serif;
   position: absolute;
-
   top: 64px;
-  color: var(--text-black-80, #3b3e49);
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 125%; /* 25px */
-  transition: top 0.35s ease;
   z-index: 50;
+  width: 390px;
+  color: var(--text-black-80, #3b3e49);
+  font-weight: 700;
+  font-size: 20px;
+  font-family: Mulish, Helvetica, Arial, sans-serif;
+  font-style: normal;
+  line-height: 125%; /* 25px */
+  background-color: white;
+  border-radius: 0 0 28px 28px;
+  transition: top 0.35s ease;
 
   &__container {
     padding: 40px 130px 56px 56px;
@@ -26,17 +25,17 @@
 
   &__item {
     display: block;
-    text-decoration: none;
     color: var(--text-black-40, #7c7d7e);
+    font-weight: 700;
     font-size: 20px;
     font-style: normal;
-    font-weight: 700;
     line-height: 125%; /* 25px */
+    text-decoration: none;
   }
 
   &__item_active {
-    text-decoration: none;
     color: var(--text-black-80, #3b3e49);
+    text-decoration: none;
   }
 
   &_display_none {
