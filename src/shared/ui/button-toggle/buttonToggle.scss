@@ -1,14 +1,14 @@
-.buttonToggle__lab {
+.button-toggle__lab {
   display: inline-block;
 }
-.buttonToggle__input {
+.button-toggle__input {
   position: absolute;
   opacity: 0;
   width: 51px;
   height: 31px;
   appearance: none;
 }
-.buttonToggle__span {
+.button-toggle__span {
   display: inline-block;
   position: relative;
   z-index: 1;
@@ -17,9 +17,6 @@
     content: '';
     width: 51px;
     height: 31px;
-    //position: absolute;
-    // left: 0;
-    // top: 0;
     background: var(--fills-secondary-dark, rgba(120, 120, 128, 0.32));
     border-radius: 18px;
     transition: 0.5s ease;
@@ -37,10 +34,10 @@
     transition: 0.5s ease;
   }
 }
-.buttonToggle__input:checked + .buttonToggle__span::before {
+.button-toggle__input:checked + .button-toggle__span::before {
   background: var(--accent-yellow-light, #fc0);
 }
-.buttonToggle__input:checked + .buttonToggle__span::after {
+.button-toggle__input:checked + .button-toggle__span::after {
   background-color: #fff;
   left: 20px;
 }

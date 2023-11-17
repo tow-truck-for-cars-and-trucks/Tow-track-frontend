@@ -2,15 +2,14 @@
   max-width: 390px;
   padding: 56px 0 28px;
   background: var(--background-grey-light-blue-40);
-  //padding: 0 16px;
   &__title {
     margin: 0 16px 16px;
     color: var(--accent-black-80);
-    font-size: 28px;
     font-weight: 700;
+    font-size: 28px;
     line-height: 125%;
   }
   &__span {
-    text-decoration: underline solid #ffcc00;
+    text-decoration: underline solid #fc0;
   }
 }

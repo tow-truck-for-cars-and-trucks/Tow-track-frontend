@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import { reactRouterParameters } from 'storybook-addon-react-router-v6';
 import Header from './header';
 

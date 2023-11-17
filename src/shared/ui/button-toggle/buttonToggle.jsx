@@ -1,11 +1,11 @@
 import './buttonToggle.scss';
 
-function ButtonToggle({ id }) {
+function ButtonToggle({ id, title }) {
   return (
-    <label className="buttonToggle__lab" htmlFor={id}>
-      {/* <p className="filterCheckbox__title"></p> */}
-      <input className="buttonToggle__input" type="checkbox" id={id} />
-      <span className="buttonToggle__span" />
+    <label className="button-toggle__lab" htmlFor={id}>
+      <p className="filterCheckbox__title">{title}</p>
+      <input className="button-toggle__input" type="checkbox" id={id} />
+      <span className="button-toggle__span" />
     </label>
   );
 }
