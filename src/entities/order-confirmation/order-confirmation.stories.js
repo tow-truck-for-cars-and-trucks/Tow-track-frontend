@@ -1,4 +1,4 @@
-import { MemoryRouter } from 'react-router-dom';
+// import { MemoryRouter } from 'react-router-dom';
 import OrderConfirmation from './order-confirmation';
 
 export default {
@@ -8,13 +8,13 @@ export default {
   arg: {
     primary: true,
   },
-  decorators: [
+  /* decorators: [
     (Story) => (
       <MemoryRouter>
         <Story />
       </MemoryRouter>
     ),
-  ],
+  ], */
 };
 
 export const Default = {};
