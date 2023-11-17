@@ -1,0 +1,31 @@
+.adress {
+  &__content {
+    margin: 0;
+    padding-bottom: 12px;
+    padding-left: 0;
+    list-style-type: none;
+
+    &:last-of-type {
+      padding: 0;
+    }
+  }
+
+  &__caption {
+    margin: 0;
+    padding-bottom: 4px;
+    color: var(--text-black-40);
+    font-weight: 500;
+    font-size: 14px;
+    font-family: Mulish, Helvetica, Arial, sans-serif;
+    line-height: 1.25;
+  }
+
+  &__value {
+    margin: 0;
+    color: var(--accent-black-80);
+    font-weight: 500;
+    font-size: 18px;
+    font-family: Mulish, Helvetica, Arial, sans-serif;
+    line-height: 1.2;
+  }
+}

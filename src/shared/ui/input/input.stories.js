@@ -1,6 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable react/jsx-props-no-spreading */
-import { reactRouterParameters } from 'storybook-addon-react-router-v6';
 import { useArgs } from '@storybook/preview-api';
 import NavigationArrowIcon from '../icons/navigation-arrow-icon';
 import Input from './input';
@@ -21,11 +18,6 @@ const defaultStory = {
   ],
   parameters: {
     layout: 'centered',
-    reactRouter: reactRouterParameters({
-      location: {
-        path: '/',
-      },
-    }),
   },
   tags: ['autodocs'],
   args: {

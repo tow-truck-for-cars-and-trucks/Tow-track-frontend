@@ -1,0 +1,20 @@
+%text-style {
+  margin: 0;
+  color: var(--text-black-80);
+  font-weight: 700;
+  font-family: Mulish, Helvetica, Arial, sans-serif;
+  line-height: 1.25;
+}
+
+.delivery-time {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: space-between;
+
+  &__description {
+    @extend %text-style;
+
+    font-size: 20px;
+  }
+}

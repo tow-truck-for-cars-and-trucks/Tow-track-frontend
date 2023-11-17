@@ -1,10 +1,10 @@
 import './order-confirmation.scss';
-import PagesTitle from '../../shared/ui/pages-title/pages-title';
-import Input from '../../shared/ui/input/input';
-import Chip from '../../shared/ui/chip/chip';
-import OrderDetails from '../../shared/ui/order-details/order-details';
-import BackButton from '../../shared/ui/back-button/back-button';
-import TotalPrice from '../../shared/ui/total-price/total-price';
+import PagesTitle from '../../../shared/ui/pages-title/pages-title';
+import Input from '../../../shared/ui/input/input';
+import Chip from '../../../shared/ui/chip/chip';
+import OrderDetails from '../../../shared/ui/order-details/order-details';
+import BackButton from '../../../shared/ui/back-button/back-button';
+import TotalPrice from '../../../shared/ui/total-price/total-price';
 
 function OrderConfirmation() {
   return (
@@ -42,16 +42,14 @@ function OrderConfirmation() {
           <Chip label="Перевод по СБП" disabled="true" />
         </div>
       </div>
-      <div className="order-confirmation__info">
-        <OrderDetails
-          pricing="Эконом"
-          carType="Легковой автомобиль"
-          wheelLock="0"
-          cuvetteWork="Нет"
-          deferredOrder="Нет"
-          comment="Еще один очень важный комментарий"
-        />
-      </div>
+      <OrderDetails
+        pricing="Эконом"
+        carType="Легковой автомобиль"
+        wheelLock="0"
+        cuvetteWork="Нет"
+        deferredOrder="Нет"
+        comment="Еще один очень важный комментарий"
+      />
       <div className="order-confirmation__price">
         <TotalPrice total="1820" />
       </div>

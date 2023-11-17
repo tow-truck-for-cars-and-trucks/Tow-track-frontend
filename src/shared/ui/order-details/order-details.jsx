@@ -7,10 +7,9 @@ import { useState } from 'react';
  * @param {string} carType - the type of car specified by the user
  * @param {number} wheelLock - how many wheels are blocked
  * @param {boolean} cuvetteWork - cuvette work is needed or not needed
- * @param {string} deferredOrder - deferred order needed/not needed
  * @param {string} comment - comment of the user
+ * @param {boolean} deferredOrder - deferred order needed/not needed
  */
-
 function OrderDetails({
   pricing,
   carType,

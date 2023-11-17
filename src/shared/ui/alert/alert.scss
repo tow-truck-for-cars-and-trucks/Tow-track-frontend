@@ -1,10 +1,14 @@
 .alert {
   display: grid;
   grid-template-columns: 16px auto;
-  width: 100%;
+  width: fit-content;
   padding: 16px 12px;
   background-color: rgb(255 204 0 / 10%);
   border-radius: 12px;
+
+  &__icon {
+    padding-top: 2px;
+  }
 
   &__description {
     margin: 0;

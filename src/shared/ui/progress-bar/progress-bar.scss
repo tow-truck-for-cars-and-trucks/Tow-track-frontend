@@ -1,0 +1,16 @@
+.progress-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 28px;
+  border-top: 1px solid var(--background-grey-blue-40);
+  border-bottom: 1px solid var(--background-grey-blue-40);
+
+  &__border {
+    width: 28px;
+    margin-right: 4px;
+    margin-left: 4px;
+    border-bottom: 1px solid var(--accent-yellow-light);
+  }
+}

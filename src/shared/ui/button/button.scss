@@ -1,7 +1,7 @@
 .button {
   display: inline-block;
-  min-width: 328px;
-  padding: 15px 20px 14px;
+  width: 100%;
+  padding: 16px;
   font-weight: 500;
   font-size: 20px;
   font-family: Mulish, Helvetica, Arial, sans-serif;
@@ -30,12 +30,13 @@
   }
 
   &__secondary {
-    color: var(--accent-black-90);
+    padding: 14px;
+    color: var(--text-black-40);
     background-color: var(--white);
     border: 2px solid var(--accent-yellow);
 
     &:hover {
-      background-color: var(--accent-orange);
+      background-color: #fffae6;
     }
 
     &:active {
