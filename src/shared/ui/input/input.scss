@@ -16,7 +16,6 @@
     display: block;
     color: var(--text-black-40);
     font-size: 18px;
-    font-family: Mulish, Helvetica, Arial, sans-serif;
   }
 
   &__container {
@@ -39,7 +38,6 @@
     padding-left: 16px;
     color: var(--system-error);
     font-size: 12px;
-    font-family: Mulish, Helvetica, Arial, sans-serif;
   }
 
   &:not(&_filled) &__text:not(:focus) ~ &__icon {
@@ -63,7 +61,6 @@
     color: var(--text-black-90);
     font-weight: 500;
     font-size: 18px;
-    font-family: Mulish, Helvetica, Arial, sans-serif;
     line-height: 1.25;
     background: var(--background-white);
     border: none;

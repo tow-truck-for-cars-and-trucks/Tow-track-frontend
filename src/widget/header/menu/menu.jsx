@@ -11,7 +11,7 @@ function Menu({ visible = false /* location = '/' */ }) {
   const setActive = ({ isActive }) =>
     isActive ? 'menu__item_active' : 'menu__item';
   return (
-    <div className={`menu ${!visible && 'menu_display_none'}`}>
+    <div className={`menu ${!visible && 'menu_display-none'}`}>
       <div className="menu__container">
         <nav className="menu__nav">
           <NavLink to="/" className={setActive}>
