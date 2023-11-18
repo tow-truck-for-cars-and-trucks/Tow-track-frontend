@@ -5,9 +5,12 @@
 .accordion {
   width: 318px;
   margin: 0;
-  padding-top: 24px;
-  padding-bottom: 28px;
-  border-top: 1px solid var(--accent-yellow-light);
+
+  &_with-border {
+    padding-top: 24px;
+    padding-bottom: 28px;
+    border-top: 1px solid var(--accent-yellow-light);
+  }
 
   &__header {
     display: flex;

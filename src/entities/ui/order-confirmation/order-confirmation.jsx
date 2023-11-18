@@ -42,15 +42,14 @@ function OrderConfirmation() {
           <Chip label="Перевод по СБП" disabled="true" />
         </div>
       </div>
-      <div className="order-confirmation__info">
-        <OrderDetails
-          pricing="Эконом"
-          carType="Легковой автомобиль"
-          wheelLock="0"
-          cuvetteWork="Нет"
-          deferredOrder="Нет"
-        />
-      </div>
+      <OrderDetails
+        pricing="Эконом"
+        carType="Легковой автомобиль"
+        wheelLock="0"
+        cuvetteWork="Нет"
+        deferredOrder="Нет"
+        comment="Еще один очень важный комментарий"
+      />
       <div className="order-confirmation__price">
         <TotalPrice total="1820" />
       </div>

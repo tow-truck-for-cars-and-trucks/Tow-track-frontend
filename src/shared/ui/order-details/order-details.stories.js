@@ -16,5 +16,6 @@ export const Default = {
     wheelLock: 0,
     cuvetteWork: 'Нет',
     deferredOrder: 'Нет',
+    comment: 'Какой-то очень важный комментарий',
   },
 };

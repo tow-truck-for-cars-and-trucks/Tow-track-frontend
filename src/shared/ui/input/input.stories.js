@@ -1,4 +1,4 @@
-import { useArgs } from '@storybook/client-api';
+import { useArgs } from '@storybook/preview-api';
 import NavigationArrowIcon from '../icons/navigation-arrow-icon';
 import Input from './input';
 
