@@ -1,13 +1,16 @@
 .transports {
+  padding-left: 16px;
+
   &__weight {
-    margin-top: 32px;
+    padding-top: 32px;
   }
 
   &__title {
-    margin: 0 16px 20px;
+    margin: 0;
+    padding-bottom: 20px;
     color: var(--text-black-80, #3b3e49);
-    font-size: 20px;
     font-weight: 700;
+    font-size: 20px;
     line-height: 125%;
   }
 
@@ -22,20 +25,22 @@
       display: none;
     }
   }
+
   &__views > &__card {
     position: relative;
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
-    margin-right: 20px;
     transform-origin: center center;
     scroll-snap-align: start;
   }
+
   &__counter {
-    margin: 32px 16px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-top: 32px;
+    padding-right: 16px;
   }
 
   &__count {
@@ -43,24 +48,28 @@
   }
 
   &__span {
+    padding-right: 16px;
+    padding-left: 16px;
     color: var(--text-black-90, #2b2a29);
+    font-weight: 700;
     font-size: 24px;
     font-style: normal;
-    font-weight: 700;
     line-height: 125%;
-    margin: 0 20px;
   }
 
   &__ditch {
-    margin: 32px 16px 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    padding-top: 29px;
+    padding-right: 16px;
   }
+
   &__price {
-    margin: 0 16px 0;
+    padding-right: 16px;
   }
+
   &__comment {
-    margin: 32px 16px 28px;
+    padding: 32px 16px 28px 0;
   }
 }

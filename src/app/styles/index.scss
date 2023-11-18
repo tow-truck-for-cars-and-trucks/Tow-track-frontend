@@ -1,7 +1,10 @@
 @import './fonts';
 
 body {
+  box-sizing: border-box;
+  max-width: 1280px;
   margin: 0;
+  font-family: Mulish, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -26,11 +29,4 @@ body {
   --system-warning: #ff8f01;
   --gradient-orange: linear-gradient(90deg, #ff8901 0%, #fc0 100%);
   --transparant-white-90: rgb(255 255 255 / 90%);
-}
-.page {
-  max-width: 1280px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  color: #fff;
-  font-family: Mulish, Arial, sans-serif;
 }

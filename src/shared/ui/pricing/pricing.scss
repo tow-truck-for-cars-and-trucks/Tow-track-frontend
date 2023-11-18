@@ -1,11 +1,11 @@
 %text-style {
   margin: 0;
   color: var(--accent-black-90);
-  font-family: Mulish, Helvetica, Arial, sans-serif;
   line-height: 1.25;
 }
 
 .pricing {
+  margin-right: 12px;
   padding: 16px 24px;
   text-align: left;
   background-color: var(--white);
@@ -38,6 +38,7 @@
   }
 
   &_active {
+    padding: 14px 22px;
     border: 2px solid var(--accent-yellow-light);
     box-shadow: none;
   }
