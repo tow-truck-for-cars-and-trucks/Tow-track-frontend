@@ -5,6 +5,7 @@ import NavigationArrowIcon from '../../shared/ui/icons/navigation-arrow-icon';
 
 function Addresses() {
   const [isValue, setIsValue] = useState('');
+  const [isAddressToValue, setIsAddressToValue] = useState('');
 
   return (
     <section className="addresses">
@@ -20,8 +21,8 @@ function Addresses() {
         <Input
           placeholder="Куда доставить"
           icon={<NavigationArrowIcon width="16px" height="16px" />}
-          value={isValue}
-          onChange={(value) => setIsValue(value)}
+          value={isAddressToValue}
+          onChange={(value) => setIsAddressToValue(value)}
         />
       </div>
     </section>

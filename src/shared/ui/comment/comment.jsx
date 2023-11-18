@@ -18,7 +18,7 @@ function Comment({ content = '', variant = '', initialCount = 0 }) {
     <div className="comment__container">
       <textarea
         className={`comment__textarea ${
-          variant ? `comment__textarea_variant_${variant}` : ''
+          variant ? `comment__textarea_variant-${variant}` : ''
         }`}
         placeholder="Комментарий"
         onChange={handleChange}

@@ -17,12 +17,12 @@
     resize: none;
     caret-color: var(--accent-yellow-light);
 
-    &_variant_writing {
+    &_variant-writing {
       border: 1px solid var(--accent-yellow-light);
       caret-color: var(--accent-yellow-light);
     }
 
-    &_variant_done {
+    &_variant-done {
       border: 2px solid var(--accent-yellow-light);
       caret-color: var(--accent-yellow-light);
     }
@@ -41,7 +41,6 @@
     color: var(--text-black-40);
     font-weight: 500;
     font-size: 12px;
-    font-family: Mulish, Helvetica, Arial, sans-serif;
     font-style: normal;
   }
 }
