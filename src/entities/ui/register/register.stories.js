@@ -1,8 +1,8 @@
-import AuthEmail from './auth-email';
+import Register from './register';
 
 export default {
-  title: 'entities/AuthEmail',
-  component: AuthEmail,
+  title: 'entities/Register',
+  component: Register,
   tags: ['autodocs'],
   arg: {
     primary: true,

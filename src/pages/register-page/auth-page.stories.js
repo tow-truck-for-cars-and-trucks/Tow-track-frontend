@@ -1,8 +1,8 @@
-import AuthPage from './auth-page';
+import RegisterPage from './register-page';
 
 export default {
-  title: 'pages/AuthPage',
-  component: AuthPage,
+  title: 'pages/RegisterPage',
+  component: RegisterPage,
   tags: ['autodocs'],
   arg: {
     primary: true,

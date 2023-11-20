@@ -1,5 +1,6 @@
 import './transports.scss';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ButtonCounter from '../../shared/ui/button-counter/buttonCounter';
 import MinusDarkIcon from '../../shared/ui/icons/minus-dark-icon';
 import MinusIcon from '../../shared/ui/icons/minus-icon';
@@ -14,6 +15,7 @@ import TotalPrice from '../../shared/ui/total-price/total-price';
 
 function Transports() {
   const [count, setCount] = useState(0);
+  const navigate = useNavigate();
 
   const handleIncrement = () => {
     if (count < 4) {
@@ -114,7 +116,10 @@ function Transports() {
         <Comment />
       </div>
       <div className="transports__price">
-        <TotalPrice total={1820} />
+        <TotalPrice
+          onClick={() => navigate('/register', { replace: true })}
+          total={1820}
+        />
       </div>
     </div>
   );
