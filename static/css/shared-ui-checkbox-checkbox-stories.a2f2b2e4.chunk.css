@@ -1,0 +1,4 @@
+.checkbox{display:flex;flex-direction:row;width:100%}.checkbox_right{flex-direction:row-reverse}.checkbox__icons{height:-webkit-fit-content;height:-moz-fit-content;height:fit-content;padding:0;padding-top:4px;background-color:rgba(0,0,0,0);border:none}.checkbox__input{display:none}
+.description__link,.description__title{margin:0;color:var(--text-black-80);font-weight:500;font-size:14px;line-height:1.25}.description{padding-left:16px}.description__link{text-decoration:none;cursor:pointer;text-decoration-line:underline}
+
+/*# sourceMappingURL=shared-ui-checkbox-checkbox-stories.a2f2b2e4.chunk.css.map*/

@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/shared-ui-pages-title-pages-title-stories.da9d4981.chunk.css","mappings":"AAAA","sources":["webpack://tow-track-frontend/./src/shared/ui/pages-title/pages-title.scss"],"sourcesContent":[".pages-title {\n  margin: 0;\n  color: var(--accent-black-80);\n  font-weight: 700;\n  font-size: 24px;\n  line-height: 1.25;\n}\n"],"names":[],"sourceRoot":""}
