@@ -2,30 +2,28 @@
   margin: 0;
 }
 
-.accordion {
-  width: 318px;
-  margin: 0;
+.order-number {
+  max-width: 390px;
+  margin: 0 16px;
+  color: var(--white);
 
-  &_with-border {
-    padding-top: 24px;
-    padding-bottom: 24px;
-    border-top: 1px solid var(--accent-yellow-light);
-  }
-
-  &_with-border:last-child {
-    border-bottom: 1px solid var(--accent-yellow-light);
+  &__container {
+    height: 65px;
+    background-color: var(--text-black-40);
+    border-radius: 12px;
   }
 
   &__header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 20px;
   }
 
   &__title {
     @extend %text-style;
 
-    color: var(--text-black-80);
+    color: var(--background-white);
     font-weight: 700;
     font-size: 20px;
     line-height: 1.25;
