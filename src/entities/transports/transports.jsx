@@ -14,6 +14,7 @@ import TotalPrice from '../../shared/ui/total-price/total-price';
 
 function Transports() {
   const [count, setCount] = useState(0);
+  // const [modalActive, setModalActive] = useState(true);
 
   const handleIncrement = () => {
     if (count < 4) {
