@@ -1,0 +1,29 @@
+.order-completed {
+  width: fit-content;
+  max-width: 390px;
+  padding: 56px 0;
+  background-color: var(--background-grey-light-blue-40);
+
+  &__header {
+    padding: 0 16px;
+  }
+
+  &__elect-container {
+    padding: 40px 0 28px 16px;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
