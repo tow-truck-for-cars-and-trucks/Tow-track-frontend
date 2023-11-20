@@ -1,0 +1,18 @@
+.auth-confirmation {
+  max-width: 358px;
+  padding: 20px 16px 0;
+  background-color: var(--white);
+
+  &__button {
+    padding-top: 32px;
+    padding-bottom: 12px;
+  }
+
+  &__caption {
+    margin: 0;
+    color: var(--text-black-80);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.25;
+  }
+}
