@@ -1,0 +1,52 @@
+%text-style {
+  margin: 0;
+  color: var(--text-black-80);
+  font-family: Mulish, Helvetica, Arial, sans-serif;
+  line-height: 1.25;
+}
+
+.order-active {
+  background-color: var(--white);
+  max-width: 358px;
+  padding: 0 20px 28px 20px;
+  border-radius: 12px;
+
+  &__submission-time {
+    padding: 28px 0;
+  }
+
+  &__adress {
+    padding-top: 28px;
+  }
+
+  &__price {
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+
+    @extend %text-style;
+
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  &__price-title {
+    margin: 0;
+  }
+
+  &__price-total {
+    margin: 0;
+  }
+
+  &__alert {
+    padding-top: 28px;
+  }
+
+  &__button {
+    padding: 28px 0 24px;
+  }
+
+  &__info {
+    padding-top: 28px;
+  }
+}
