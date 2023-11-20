@@ -1,0 +1,16 @@
+.popup-reviews {
+  &__title {
+    margin: 0;
+    color: var(--accent-black-80, #3b3e49);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 125%;
+  }
+
+  &__stars {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin: 24px 0 32px;
+  }
+}

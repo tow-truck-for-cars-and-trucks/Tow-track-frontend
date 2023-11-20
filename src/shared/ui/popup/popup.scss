@@ -22,9 +22,10 @@ $finalWidth: 358px;
     visibility: visible;
   }
   &__content {
+    padding: 40px 28px 28px;
     border-radius: 20px;
     background: var(--background-white, #fff);
-    width: $finalWidth - (2 * $padding);
+    width: 308px;
     min-height: 292px;
     position: relative;
   }

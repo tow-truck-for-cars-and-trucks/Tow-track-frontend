@@ -11,10 +11,15 @@ import Chip from '../../shared/ui/chip/chip';
 import Prising from '../../shared/ui/pricing/pricing';
 import Comment from '../../shared/ui/comment/comment';
 import TotalPrice from '../../shared/ui/total-price/total-price';
+import Button from '../../shared/ui/button/button';
+import PopupReviews from '../ui/popup-reviews/popup-reviews';
 
 function Transports() {
   const [count, setCount] = useState(0);
-  // const [modalActive, setModalActive] = useState(true);
+  const [isActiveRewies, setIsActiveRewies] = useState(false);
+  const closeAllPopups = () => {
+    setIsActiveRewies(false);
+  };
 
   const handleIncrement = () => {
     if (count < 4) {
@@ -117,6 +122,9 @@ function Transports() {
       <div className="transports__price">
         <TotalPrice total={1820} />
       </div>
+
+      <Button label="Оставить отзыв" onClick={() => setIsActiveRewies(true)} />
+      <PopupReviews isOpen={isActiveRewies} onClose={closeAllPopups} />
     </div>
   );
 }
