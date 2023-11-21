@@ -12,14 +12,9 @@ import Prising from '../../shared/ui/pricing/pricing';
 import Comment from '../../shared/ui/comment/comment';
 import TotalPrice from '../../shared/ui/total-price/total-price';
 import Button from '../../shared/ui/button/button';
-import PopupReviews from '../ui/popup-reviews/popup-reviews';
 
 function Transports() {
   const [count, setCount] = useState(0);
-  const [isActiveRewies, setIsActiveRewies] = useState(false);
-  const closeAllPopups = () => {
-    setIsActiveRewies(false);
-  };
 
   const handleIncrement = () => {
     if (count < 4) {
@@ -117,14 +112,13 @@ function Transports() {
       </div>
       <div className="transports__comment">
         <h2 className="transports__title">Дополнительно</h2>
-        <Comment />
+        <Comment placeholder="Коментарий" />
       </div>
       <div className="transports__price">
         <TotalPrice total={1820} />
       </div>
 
-      <Button label="Оставить отзыв" onClick={() => setIsActiveRewies(true)} />
-      <PopupReviews isOpen={isActiveRewies} onClose={closeAllPopups} />
+      <Button label="Оставить отзыв" />
     </div>
   );
 }

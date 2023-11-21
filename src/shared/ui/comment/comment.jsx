@@ -7,7 +7,12 @@ import CloseIcon from '../icons/close-icon';
  * @param {string} variant - field determining textarea view
  * @param {number} initialCount - initial count of сharacters
  */
-function Comment({ content = '', variant = '', initialCount = 0 }) {
+function Comment({
+  content = '',
+  variant = '',
+  initialCount = 0,
+  placeholder,
+}) {
   const [count, setCount] = React.useState(initialCount);
 
   const handleChange = (e) => {
@@ -15,12 +20,12 @@ function Comment({ content = '', variant = '', initialCount = 0 }) {
   };
 
   return (
-    <div className="comment__container">
+    <div className="comment__container ">
       <textarea
         className={`comment__textarea ${
           variant ? `comment__textarea_variant-${variant}` : ''
         }`}
-        placeholder="Комментарий"
+        placeholder={placeholder}
         onChange={handleChange}
       >
         {content}
