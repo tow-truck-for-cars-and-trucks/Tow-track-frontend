@@ -84,6 +84,7 @@
     "jsdoc": "^4.0.2",
     "lint-staged": "^15.0.2",
     "prettier": "3.0.3",
+    "react-hook-form": "^7.48.2",
     "storybook": "^7.5.2",
     "stylelint": "^15.10.0",
     "stylelint-config-rational-order": "^0.1.2",
