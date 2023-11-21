@@ -3,12 +3,11 @@
 }
 
 .order-number {
-  max-width: 390px;
   margin: 0 16px;
   color: var(--white);
 
   &__container {
-    height: 65px;
+    min-width: 358px;
     background-color: var(--text-black-40);
     border-radius: 12px;
   }

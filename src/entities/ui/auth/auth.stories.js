@@ -1,8 +1,8 @@
-import AuthEmail from './auth-email';
+import Auth from './auth';
 
 export default {
-  title: 'entities/AuthEmail',
-  component: AuthEmail,
+  title: 'entities/Auth',
+  component: Auth,
   tags: ['autodocs'],
   arg: {
     primary: true,

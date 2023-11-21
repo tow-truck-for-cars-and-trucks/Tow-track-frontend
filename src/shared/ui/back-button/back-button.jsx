@@ -5,22 +5,18 @@ import ArrowBackIcon from '../icons/arrow-back-icon';
 function BackButton() {
   const navigate = useNavigate();
 
-  function goBack() {
-    navigate(-1);
-  }
-
   return (
-    <div className="back-button">
-      <button
-        type="button"
-        aria-label="Назад"
-        className="back-button__icon"
-        onClick={goBack}
-      >
+    <button
+      type="button"
+      aria-label="Назад"
+      className="back-button"
+      onClick={() => navigate('/', { replace: true })}
+    >
+      <div className="back-button__icon">
         <ArrowBackIcon width="16px" height="16px" />
-      </button>
-      <p className="back-button__title">Назад</p>
-    </div>
+      </div>
+      <span className="back-button__title">Назад</span>
+    </button>
   );
 }
 

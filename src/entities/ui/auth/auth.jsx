@@ -1,4 +1,4 @@
-import './number-auth.scss';
+import './auth.scss';
 import { useState } from 'react';
 import AuthTitle from '../../../shared/ui/auth-title/auth-title';
 import Input from '../../../shared/ui/input/input';
@@ -6,12 +6,12 @@ import Button from '../../../shared/ui/button/button';
 import Checkbox from '../../../shared/ui/checkbox/checkbox';
 import CheckboxAuthDescription from '../../../shared/ui/checkbox-auth-description/checkbox-auth-description';
 
-function NumberAuth() {
+function Auth() {
   const [numberValue, setNumberValue] = useState('');
   const [isCheckedValue, setIsCheckedValue] = useState('');
 
   return (
-    <main className="number-auth">
+    <main className="auth">
       <AuthTitle subtitle="Введите номер телефона, мы вышлем на него код для проверки" />
       <Input
         value={numberValue}
@@ -20,7 +20,7 @@ function NumberAuth() {
         placeholder="+ 7 (___) ___ __ __"
         placeholderStatic="true"
       />
-      <div className="number-auth__button">
+      <div className="auth__button">
         <Button primary="true" label="Получить код" />
       </div>
       <Checkbox
@@ -35,4 +35,4 @@ function NumberAuth() {
   );
 }
 
-export default NumberAuth;
+export default Auth;

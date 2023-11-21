@@ -1,8 +1,8 @@
-import CompletOrder from './complet-order';
+import RegisterPage from './register-page';
 
 export default {
-  title: 'pages/CompletOrder',
-  component: CompletOrder,
+  title: 'pages/RegisterPage',
+  component: RegisterPage,
   tags: ['autodocs'],
   arg: {
     primary: true,

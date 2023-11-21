@@ -7,7 +7,7 @@ import StarFillIcon from '../icons/star-fill-icon';
  * @param {string} feedback: comment text
  */
 
-function FeedBack({ feedback }) {
+function Feedback({ feedback }) {
   return (
     <article>
       <div className="feedback-card">
@@ -22,8 +22,8 @@ function FeedBack({ feedback }) {
   );
 }
 
-FeedBack.defaultProps = {
+Feedback.defaultProps = {
   rating: 'some-rating',
 };
 
-export default FeedBack;
+export default Feedback;

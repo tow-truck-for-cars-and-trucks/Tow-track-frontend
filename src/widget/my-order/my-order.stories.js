@@ -1,8 +1,8 @@
-import NumberAuth from './number-auth';
+import MyOrder from './my-order';
 
 export default {
-  title: 'entities/NumberAuth',
-  component: NumberAuth,
+  title: 'widget/MyOrder',
+  component: MyOrder,
   tags: ['autodocs'],
   arg: {
     primary: true,

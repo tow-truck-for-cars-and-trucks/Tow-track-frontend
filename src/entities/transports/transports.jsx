@@ -1,5 +1,6 @@
 import './transports.scss';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ButtonCounter from '../../shared/ui/button-counter/buttonCounter';
 import MinusDarkIcon from '../../shared/ui/icons/minus-dark-icon';
 import MinusIcon from '../../shared/ui/icons/minus-icon';
@@ -7,13 +8,16 @@ import PlusDarkIcon from '../../shared/ui/icons/plus-dark-icon';
 import PlusIcon from '../../shared/ui/icons/plus-icon';
 import Description from '../../shared/ui/description/description';
 import ButtonToggle from '../../shared/ui/button-toggle/buttonToggle';
-import Chip from '../../shared/ui/chip/chip';
-import Prising from '../../shared/ui/pricing/pricing';
+import PricingList from '../ui/pricing-list/pricing-list';
+import ChipsList from '../ui/chips-list/chips-list';
 import Comment from '../../shared/ui/comment/comment';
 import TotalPrice from '../../shared/ui/total-price/total-price';
 
 function Transports() {
+  const [activeTab, setActiveTab] = useState('passenger-car');
+  const [activePrice, setActivePrice] = useState('optimal');
   const [count, setCount] = useState(0);
+  const navigate = useNavigate();
 
   const handleIncrement = () => {
     if (count < 4) {
@@ -32,18 +36,16 @@ function Transports() {
       <div className="transports__weight">
         <h2 className="transports__title">Что перевозим?</h2>
         <div className="transports__views">
-          <div className="transports__card">
-            <Chip label="Легковой" />
-          </div>
-          <div className="transports__card">
-            <Chip label="Грузовой" />
-          </div>
-          <div className="transports__card">
-            <Chip label="Мото" />
-          </div>
-          <div className="transports__card">
-            <Chip label="Спецтехника" />
-          </div>
+          <ChipsList
+            chips={[
+              { label: 'Легковой', id: 'passenger-car' },
+              { label: 'Грузовой', id: 'cargo' },
+              { label: 'Мото', id: 'moto' },
+              { label: 'Спецтехника', id: 'special-equipment' },
+            ]}
+            value={activeTab}
+            onChange={(chips) => setActiveTab(chips)}
+          />
         </div>
       </div>
       <div className="transports__counter">
@@ -83,23 +85,30 @@ function Transports() {
       <div className="transports__weight">
         <h2 className="transports__title">Выберите тариф</h2>
         <div className="transports__views">
-          <div className="transports__card">
-            <Prising description="Оптимальный" price="1500" title="Эконом" />
-          </div>
-          <div className="transports__card">
-            <Prising
-              description="Самый быстрый"
-              price="1800"
-              title="Экспресс"
-            />
-          </div>
-          <div className="transports__card">
-            <Prising
-              description="Спецвариант"
-              price="1800"
-              title="Манипулятор"
-            />
-          </div>
+          <PricingList
+            pricings={[
+              {
+                title: 'Эконом',
+                price: '1500',
+                description: 'Оптимальный',
+                id: 'optimal',
+              },
+              {
+                title: 'Экспресс',
+                price: '1800',
+                description: 'Самый быстрый',
+                id: 'express',
+              },
+              {
+                title: 'Манипулятор',
+                price: '1800',
+                description: 'Спецвариант',
+                id: 'manipulator',
+              },
+            ]}
+            value={activePrice}
+            onChange={(pricings) => setActivePrice(pricings)}
+          />
         </div>
       </div>
       <div className="transports__ditch">
@@ -114,7 +123,10 @@ function Transports() {
         <Comment />
       </div>
       <div className="transports__price">
-        <TotalPrice total={1820} />
+        <TotalPrice
+          onClick={() => navigate('/register', { replace: true })}
+          total={1820}
+        />
       </div>
     </div>
   );

@@ -1,21 +1,22 @@
-import './auth-email.scss';
+import './register.scss';
 import { useState } from 'react';
 import Input from '../../../shared/ui/input/input';
 import Button from '../../../shared/ui/button/button';
-import AuthTitle from '../../../shared/ui/auth-title/auth-title';
+import Checkbox from '../../../shared/ui/checkbox/checkbox';
+import CheckboxAuthDescription from '../../../shared/ui/checkbox-auth-description/checkbox-auth-description';
 
-function AuthEmail() {
+function Register() {
   const [nameValue, setNameValue] = useState('');
   const [lastNameValue, setLastNameValue] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [numberValue, setNumberValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const [confirmPasswordValue, setConfirmPasswordValue] = useState('');
+  const [isCheckedValue, setIsCheckedValue] = useState('');
 
   return (
-    <main className="auth-email">
-      <AuthTitle subtitle="Введите почту, пароль и номер телефона" />
-      <div className="auth-email__input">
+    <main className="register">
+      <div className="register__input">
         <Input
           value={nameValue}
           onChange={(value) => setNameValue(value)}
@@ -23,7 +24,7 @@ function AuthEmail() {
           placeholderStatic="true"
         />
       </div>
-      <div className="auth-email__input">
+      <div className="register__input">
         <Input
           value={lastNameValue}
           onChange={(value) => setLastNameValue(value)}
@@ -31,7 +32,7 @@ function AuthEmail() {
           placeholderStatic="true"
         />
       </div>
-      <div className="auth-email__input">
+      <div className="register__input">
         <Input
           value={numberValue}
           onChange={(value) => setNumberValue(value)}
@@ -40,7 +41,7 @@ function AuthEmail() {
           placeholderStatic="true"
         />
       </div>
-      <div className="auth-email__input">
+      <div className="register__input">
         <Input
           value={emailValue}
           onChange={(value) => setEmailValue(value)}
@@ -48,7 +49,7 @@ function AuthEmail() {
           placeholderStatic="true"
         />
       </div>
-      <div className="auth-email__input">
+      <div className="register__input">
         <Input
           value={passwordValue}
           onChange={(value) => setPasswordValue(value)}
@@ -56,7 +57,7 @@ function AuthEmail() {
           placeholderStatic="true"
         />
       </div>
-      <div className="auth-email__input">
+      <div className="register__input">
         <Input
           value={confirmPasswordValue}
           onChange={(value) => setConfirmPasswordValue(value)}
@@ -64,11 +65,19 @@ function AuthEmail() {
           placeholderStatic="true"
         />
       </div>
-      <div className="auth-email__button">
+      <div className="register__button">
         <Button primary="true" label="Зарегистрироваться" />
       </div>
+      <Checkbox
+        height="16px"
+        width="16px"
+        value={isCheckedValue}
+        onChange={(value) => setIsCheckedValue(value)}
+      >
+        <CheckboxAuthDescription />
+      </Checkbox>
     </main>
   );
 }
 
-export default AuthEmail;
+export default Register;

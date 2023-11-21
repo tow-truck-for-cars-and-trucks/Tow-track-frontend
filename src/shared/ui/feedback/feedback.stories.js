@@ -1,8 +1,8 @@
-import FeedBack from './feedback';
+import Feedback from './feedback';
 
 export default {
-  title: 'Shared/FeedBack',
-  component: FeedBack,
+  title: 'Shared/Feedback',
+  component: Feedback,
   parameters: {
     layout: 'centered',
   },
