@@ -1,14 +1,29 @@
 .register {
   max-width: 358px;
-  padding: 20px 16px 0;
-  background-color: var(--white);
+  padding: 4px 16px 0;
+  background-color: var(--background-grey-light-blue-40);
 
   &__input {
-    padding-top: 20px;
+    padding-top: 24px;
+  }
+
+  &__input-caption {
+    margin: 0;
+    padding-top: 8px;
+    padding-right: 16px;
+    padding-left: 16px;
+    color: var(--text-black-40);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  &__checkbox {
+    padding-top: 24px;
   }
 
   &__button {
-    padding-top: 32px;
-    padding-bottom: 12px;
+    padding-top: 28px;
+    padding-bottom: 56px;
   }
 }

@@ -1,6 +1,7 @@
 import './register.scss';
 import { useState } from 'react';
 import Input from '../../../shared/ui/input/input';
+import PasswordInput from '../../../shared/ui/password-input/password-input';
 import Button from '../../../shared/ui/button/button';
 import Checkbox from '../../../shared/ui/checkbox/checkbox';
 import CheckboxAuthDescription from '../../../shared/ui/checkbox-auth-description/checkbox-auth-description';
@@ -21,7 +22,7 @@ function Register() {
           value={nameValue}
           onChange={(value) => setNameValue(value)}
           placeholder="Имя"
-          placeholderStatic="true"
+          id="name-input"
         />
       </div>
       <div className="register__input">
@@ -29,7 +30,7 @@ function Register() {
           value={lastNameValue}
           onChange={(value) => setLastNameValue(value)}
           placeholder="Фамилия"
-          placeholderStatic="true"
+          id="last-name-input"
         />
       </div>
       <div className="register__input">
@@ -38,7 +39,7 @@ function Register() {
           onChange={(value) => setNumberValue(value)}
           mask="+7 (999) 999 99 99"
           placeholder="+ 7 (___) ___ __ __"
-          placeholderStatic="true"
+          id="phone-input"
         />
       </div>
       <div className="register__input">
@@ -46,36 +47,41 @@ function Register() {
           value={emailValue}
           onChange={(value) => setEmailValue(value)}
           placeholder="Введите почту"
-          placeholderStatic="true"
+          id="email-input"
         />
       </div>
       <div className="register__input">
-        <Input
+        <PasswordInput
           value={passwordValue}
           onChange={(value) => setPasswordValue(value)}
           placeholder="Введите пароль"
-          placeholderStatic="true"
+          id="password-input"
         />
+        <p className="register__input-caption">
+          Пароль должен содержать латинские символы, цифры и символы /!-?:
+        </p>
       </div>
       <div className="register__input">
-        <Input
+        <PasswordInput
           value={confirmPasswordValue}
           onChange={(value) => setConfirmPasswordValue(value)}
           placeholder="Подтвердите пароль"
-          placeholderStatic="true"
+          id="confirm-password-input"
         />
+      </div>
+      <div className="register__checkbox">
+        <Checkbox
+          height="16px"
+          width="16px"
+          value={isCheckedValue}
+          onChange={(value) => setIsCheckedValue(value)}
+        >
+          <CheckboxAuthDescription />
+        </Checkbox>
       </div>
       <div className="register__button">
         <Button primary="true" label="Зарегистрироваться" />
       </div>
-      <Checkbox
-        height="16px"
-        width="16px"
-        value={isCheckedValue}
-        onChange={(value) => setIsCheckedValue(value)}
-      >
-        <CheckboxAuthDescription />
-      </Checkbox>
     </main>
   );
 }

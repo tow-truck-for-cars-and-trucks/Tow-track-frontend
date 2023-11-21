@@ -1,36 +1,34 @@
 import './auth.scss';
 import { useState } from 'react';
-import AuthTitle from '../../../shared/ui/auth-title/auth-title';
 import Input from '../../../shared/ui/input/input';
+import PasswordInput from '../../../shared/ui/password-input/password-input';
 import Button from '../../../shared/ui/button/button';
-import Checkbox from '../../../shared/ui/checkbox/checkbox';
-import CheckboxAuthDescription from '../../../shared/ui/checkbox-auth-description/checkbox-auth-description';
 
 function Auth() {
-  const [numberValue, setNumberValue] = useState('');
-  const [isCheckedValue, setIsCheckedValue] = useState('');
+  const [emailValue, setEmailValue] = useState('');
+  const [passwordValue, setPasswordValue] = useState('');
 
   return (
     <main className="auth">
-      <AuthTitle subtitle="Введите номер телефона, мы вышлем на него код для проверки" />
-      <Input
-        value={numberValue}
-        onChange={(value) => setNumberValue(value)}
-        mask="+7 (999) 999 99 99"
-        placeholder="+ 7 (___) ___ __ __"
-        placeholderStatic="true"
-      />
+      <div className="auth__input">
+        <Input
+          value={emailValue}
+          onChange={(value) => setEmailValue(value)}
+          placeholder="Введите почту"
+          id="email-input"
+        />
+      </div>
+      <div className="auth__input">
+        <PasswordInput
+          value={passwordValue}
+          onChange={(value) => setPasswordValue(value)}
+          placeholder="Введите пароль"
+          id="password-input"
+        />
+      </div>
       <div className="auth__button">
         <Button primary="true" label="Получить код" />
       </div>
-      <Checkbox
-        height="16px"
-        width="16px"
-        value={isCheckedValue}
-        onChange={(value) => setIsCheckedValue(value)}
-      >
-        <CheckboxAuthDescription />
-      </Checkbox>
     </main>
   );
 }

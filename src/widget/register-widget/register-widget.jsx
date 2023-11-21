@@ -16,8 +16,8 @@ function RegisterWidget() {
       <div className="register-widget__navigation">
         <ChipsList
           chips={[
-            { label: 'Войти', id: 'login' },
-            { label: 'Зарегестрироваться', id: 'register' },
+            { label: 'Вход', id: 'login' },
+            { label: 'Регистрация', id: 'register' },
           ]}
           value={activeTab}
           onChange={(chips) => setActiveTab(chips)}
