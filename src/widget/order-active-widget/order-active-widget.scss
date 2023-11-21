@@ -9,8 +9,8 @@
   }
 
   &__elect-container {
-    padding: 40px 0 28px 16px;
     display: flex;
+    padding: 40px 0 28px 16px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;

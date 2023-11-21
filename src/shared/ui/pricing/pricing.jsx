@@ -1,5 +1,4 @@
 import './pricing.scss';
-import { useState } from 'react';
 
 /**
  * @param {string} title - title of the prising
@@ -8,14 +7,12 @@ import { useState } from 'react';
  * @param {number} price - price offer
  */
 
-function Pricing({ title, description, price }) {
-  const [isActive, setActive] = useState(false);
-
+function Pricing({ title, description, price, setActive, isActive }) {
   return (
     <button
       type="button"
       className={`pricing ${isActive ? 'pricing_active' : ''}`}
-      onClick={() => setActive(!isActive)}
+      onClick={() => setActive(true)}
     >
       <h2 className="pricing__title">{title}</h2>
       <p className="pricing__description">{description}</p>

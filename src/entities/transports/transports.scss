@@ -26,15 +26,6 @@
     }
   }
 
-  &__views > &__card {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    flex-shrink: 0;
-    transform-origin: center center;
-    scroll-snap-align: start;
-  }
-
   &__counter {
     display: flex;
     align-items: center;

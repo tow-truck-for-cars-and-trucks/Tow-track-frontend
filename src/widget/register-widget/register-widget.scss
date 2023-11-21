@@ -1,0 +1,19 @@
+.register-widget {
+  &__back-button {
+    padding-top: 20px;
+  }
+
+  &__navigation {
+    display: flex;
+    padding-top: 32px;
+    padding-bottom: 28px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

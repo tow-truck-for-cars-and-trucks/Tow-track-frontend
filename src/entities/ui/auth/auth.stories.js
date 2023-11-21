@@ -1,8 +1,8 @@
-import NumberAuth from './number-auth';
+import Auth from './auth';
 
 export default {
-  title: 'entities/NumberAuth',
-  component: NumberAuth,
+  title: 'entities/Auth',
+  component: Auth,
   tags: ['autodocs'],
   arg: {
     primary: true,

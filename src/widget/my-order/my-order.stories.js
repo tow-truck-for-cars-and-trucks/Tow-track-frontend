@@ -1,8 +1,8 @@
-import CompletOrder from './complet-order';
+import MyOrder from './my-order';
 
 export default {
-  title: 'pages/CompletOrder',
-  component: CompletOrder,
+  title: 'widget/MyOrder',
+  component: MyOrder,
   tags: ['autodocs'],
   arg: {
     primary: true,

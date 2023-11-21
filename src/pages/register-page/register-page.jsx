@@ -1,11 +1,11 @@
 import Header from '../../widget/header/header';
-import Register from '../../entities/ui/register/register';
+import RegisterWidget from '../../widget/register-widget/register-widget';
 
 function RegisterPage() {
   return (
     <>
       <Header />
-      <Register />
+      <RegisterWidget />
     </>
   );
 }
