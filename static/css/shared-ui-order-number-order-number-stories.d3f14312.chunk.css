@@ -1,0 +1,3 @@
+.order-number__title{margin:0}.order-number{margin:0 16px;color:var(--white)}.order-number__container{min-width:358px;background-color:var(--text-black-40);border-radius:12px}.order-number__header{display:flex;flex-direction:row;justify-content:space-between;padding:20px}.order-number__title{color:var(--background-white);font-weight:700;font-size:20px;line-height:1.25;cursor:pointer}.order-number__icon{padding:0;background-color:rgba(0,0,0,0);border:none;cursor:pointer}.order-number-content_opened{border-top:1px solid var(--background-grey-blue-40)}
+
+/*# sourceMappingURL=shared-ui-order-number-order-number-stories.d3f14312.chunk.css.map*/
