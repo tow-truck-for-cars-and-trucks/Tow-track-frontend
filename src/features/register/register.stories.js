@@ -1,7 +1,7 @@
 import Register from './register';
 
 export default {
-  title: 'entities/Register',
+  title: 'features/Register',
   component: Register,
   tags: ['autodocs'],
   arg: {

@@ -1,23 +1,23 @@
-export function setLocalStorageAuth() {
+export function getLocalStorageAuth() {
   return localStorage.getItem('CREATE_AUTH_FORM');
 }
 
-export function getLocalStorageAuth(value) {
+export function setLocalStorageAuth(value) {
   return localStorage.setItem('CREATE_AUTH_FORM', JSON.stringify(value));
 }
 
-export function setLocalStorageRegister() {
+export function getLocalStorageRegister() {
   return localStorage.getItem('CREATE_REGISTER_FORM');
 }
 
-export function getLocalStorageRegister(value) {
+export function setLocalStorageRegister(value) {
   return localStorage.setItem('CREATE_REGISTER_FORM', JSON.stringify(value));
 }
 
-export function setLocalStorageOrder() {
+export function getLocalStorageOrder() {
   return localStorage.getItem('CREATE_ORDER_FORM');
 }
 
-export function getLocalStorageOrder(value) {
+export function setLocalStorageOrder(value) {
   return localStorage.setItem('CREATE_ORDER_FORM', JSON.stringify(value));
 }

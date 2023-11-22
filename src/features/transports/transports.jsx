@@ -1,7 +1,7 @@
 import './transports.scss';
-import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 import {
   setLocalStorageOrder,
   getLocalStorageOrder,
@@ -10,18 +10,19 @@ import Input from '../../shared/ui/input/input';
 import NavigationArrowIcon from '../../shared/ui/icons/navigation-arrow-icon';
 import Description from '../../shared/ui/description/description';
 import ButtonToggle from '../../shared/ui/button-toggle/buttonToggle';
-import PricingList from '../ui/pricing-list/pricing-list';
-import ChipsList from '../ui/chips-list/chips-list';
+import PricingList from '../../entities/ui/pricing-list/pricing-list';
+import ChipsList from '../../entities/ui/chips-list/chips-list';
 import Comment from '../../shared/ui/comment/comment';
 import TotalPrice from '../../shared/ui/total-price/total-price';
-import ButtonCounterController from '../ui/button-counter-controller/button-counter-controller';
+import ButtonCounterController from '../../entities/ui/button-counter-controller/button-counter-controller';
 
 function Transports() {
   const navigate = useNavigate();
-  const orderData = setLocalStorageOrder();
-  const onSubmit = () => {
-    console.log(orderData);
+  const orderData = getLocalStorageOrder();
+  const onSubmit = (value) => {
+    console.log(value);
   };
+  const timerRef = useRef(null);
 
   const { control, watch, handleSubmit } = useForm({
     defaultValues: orderData
@@ -40,8 +41,12 @@ function Transports() {
 
   useEffect(() => {
     const subscription = watch((value) => {
-      getLocalStorageOrder(value);
-      handleSubmit(onSubmit);
+      clearTimeout(timerRef.current);
+
+      timerRef.current = setTimeout(() => {
+        setLocalStorageOrder(value);
+        handleSubmit(onSubmit).apply(this);
+      }, 1000);
     });
     return () => subscription.unsubscribe();
   }, [handleSubmit, watch]);

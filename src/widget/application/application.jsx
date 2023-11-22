@@ -1,5 +1,5 @@
 import './application.scss';
-import Transports from '../../entities/transports/transports';
+import Transports from '../../features/transports/transports';
 
 function Application() {
   return (

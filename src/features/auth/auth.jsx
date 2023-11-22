@@ -4,13 +4,13 @@ import { Controller, useForm } from 'react-hook-form';
 import {
   setLocalStorageAuth,
   getLocalStorageAuth,
-} from '../../../shared/api/storage-api';
-import Input from '../../../shared/ui/input/input';
-import PasswordInput from '../../../shared/ui/password-input/password-input';
-import Button from '../../../shared/ui/button/button';
+} from '../../shared/api/storage-api';
+import Input from '../../shared/ui/input/input';
+import PasswordInput from '../../shared/ui/password-input/password-input';
+import Button from '../../shared/ui/button/button';
 
 function Auth() {
-  const authData = setLocalStorageAuth();
+  const authData = getLocalStorageAuth();
 
   const submit = () => {
     console.log(authData);
@@ -27,7 +27,7 @@ function Auth() {
 
   useEffect(() => {
     const subscription = watch((value) => {
-      getLocalStorageAuth(value);
+      setLocalStorageAuth(value);
     });
     return () => subscription.unsubscribe();
   }, [watch]);

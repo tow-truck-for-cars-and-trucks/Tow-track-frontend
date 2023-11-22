@@ -1,18 +1,18 @@
 import './register.scss';
 import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import Input from '../../../shared/ui/input/input';
+import Input from '../../shared/ui/input/input';
 import {
   setLocalStorageRegister,
   getLocalStorageRegister,
-} from '../../../shared/api/storage-api';
-import PasswordInput from '../../../shared/ui/password-input/password-input';
-import Button from '../../../shared/ui/button/button';
-import Checkbox from '../../../shared/ui/checkbox/checkbox';
-import CheckboxAuthDescription from '../../../shared/ui/checkbox-auth-description/checkbox-auth-description';
+} from '../../shared/api/storage-api';
+import PasswordInput from '../../shared/ui/password-input/password-input';
+import Button from '../../shared/ui/button/button';
+import Checkbox from '../../shared/ui/checkbox/checkbox';
+import CheckboxAuthDescription from '../../shared/ui/checkbox-auth-description/checkbox-auth-description';
 
 function Register() {
-  const registerData = setLocalStorageRegister();
+  const registerData = getLocalStorageRegister();
 
   const submit = () => {
     console.log(registerData);
@@ -34,7 +34,7 @@ function Register() {
 
   useEffect(() => {
     const subscription = watch((value) => {
-      getLocalStorageRegister(value);
+      setLocalStorageRegister(value);
     });
     return () => subscription.unsubscribe();
   }, [watch]);

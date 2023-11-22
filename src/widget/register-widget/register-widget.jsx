@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './register-widget.scss';
 import ChipsList from '../../entities/ui/chips-list/chips-list';
-import Auth from '../../entities/ui/auth/auth';
-import Register from '../../entities/ui/register/register';
+import Auth from '../../features/auth/auth';
+import Register from '../../features/register/register';
 import BackButton from '../../shared/ui/back-button/back-button';
 
 function RegisterWidget() {
