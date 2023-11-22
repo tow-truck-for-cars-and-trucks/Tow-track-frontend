@@ -6,9 +6,9 @@
 }
 
 .order-active {
-  background-color: var(--white);
   max-width: 358px;
-  padding: 0 20px 28px 20px;
+  padding: 0 20px 28px;
+  background-color: var(--white);
   border-radius: 12px;
 
   &__submission-time {
@@ -20,14 +20,13 @@
   }
 
   &__price {
-    padding-top: 28px;
     display: flex;
     justify-content: space-between;
-
-    @extend %text-style;
-
+    padding-top: 28px;
     font-weight: 700;
     font-size: 20px;
+
+    @extend %text-style;
   }
 
   &__price-title {

@@ -1,34 +1,75 @@
 import './auth.scss';
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import {
+  setLocalStorageAuth,
+  getLocalStorageAuth,
+} from '../../../shared/api/storage-api';
 import Input from '../../../shared/ui/input/input';
 import PasswordInput from '../../../shared/ui/password-input/password-input';
 import Button from '../../../shared/ui/button/button';
 
 function Auth() {
-  const [emailValue, setEmailValue] = useState('');
-  const [passwordValue, setPasswordValue] = useState('');
+  const authData = setLocalStorageAuth();
+
+  const submit = () => {
+    console.log(authData);
+  };
+
+  const { control, handleSubmit, watch } = useForm({
+    defaultValues: authData
+      ? JSON.parse(authData)
+      : {
+          email: '',
+          password: '',
+        },
+  });
+
+  useEffect(() => {
+    const subscription = watch((value) => {
+      getLocalStorageAuth(value);
+    });
+    return () => subscription.unsubscribe();
+  }, [watch]);
 
   return (
     <main className="auth">
-      <div className="auth__input">
-        <Input
-          value={emailValue}
-          onChange={(value) => setEmailValue(value)}
-          placeholder="Введите почту"
-          id="email-input"
-        />
-      </div>
-      <div className="auth__input">
-        <PasswordInput
-          value={passwordValue}
-          onChange={(value) => setPasswordValue(value)}
-          placeholder="Введите пароль"
-          id="password-input"
-        />
-      </div>
-      <div className="auth__button">
-        <Button primary="true" label="Получить код" />
-      </div>
+      <form>
+        <div className="auth__input">
+          <Controller
+            name="email"
+            control={control}
+            rules={{ required: true }}
+            render={({ field: { value, onChange } }) => (
+              <Input
+                value={value}
+                type="email"
+                onChange={onChange}
+                placeholder="Введите почту"
+                id="email-input"
+              />
+            )}
+          />
+        </div>
+        <div className="auth__input">
+          <Controller
+            name="password"
+            control={control}
+            rules={{ required: true }}
+            render={({ field: { value, onChange } }) => (
+              <PasswordInput
+                value={value}
+                onChange={onChange}
+                placeholder="Введите пароль"
+                id="password-input"
+              />
+            )}
+          />
+        </div>
+        <div className="auth__button">
+          <Button primary="true" label="Войти" onClick={handleSubmit(submit)} />
+        </div>
+      </form>
     </main>
   );
 }

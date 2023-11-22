@@ -33,7 +33,7 @@ function PasswordInput({
       <div className="password-input__container">
         <input
           type={showInput ? 'text' : 'password'}
-          id={id}
+          name={id}
           className="password-input__text"
           value={value}
           onChange={(e) => onChange(e.target.value)}

@@ -15,6 +15,7 @@ import SuccessfullIcon from '../icons/successfull-icon';
  * @param {boolean} invalid - invalid input value
  * @param {boolean} readonly - user cannot enter data
  * @param {string} id - identificator for the input
+ * @param {string} type - type of the input
  * @param {string} errorText - error text for invalid value
  */
 function Input({
@@ -29,6 +30,7 @@ function Input({
   readonly,
   password,
   id,
+  type,
 }) {
   return (
     <div
@@ -42,8 +44,9 @@ function Input({
       <div className="input__container">
         <InputMask
           mask={mask}
+          name={id}
           readOnly={readonly}
-          type="text"
+          type={type || 'text'}
           className="input__text"
           value={value}
           onChange={(e) => onChange(e.target.value)}

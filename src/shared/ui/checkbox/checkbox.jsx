@@ -30,9 +30,9 @@ function Checkbox({ children, onChange, value, width, height, isRight }) {
         onClick={() => onChange(!value)}
       >
         {value ? (
-          <CheckboxIcon width={width} height={height} />
-        ) : (
           <CheckboxCheckedIcon width={width} height={height} />
+        ) : (
+          <CheckboxIcon width={width} height={height} />
         )}
       </button>
       {children}
