@@ -8,12 +8,11 @@ export default {
 
 export const Default = {
   args: {
-    variant: 'default',
+    // variant: 'default',
   },
 };
 export const Writing = {
   args: {
-    variant: 'writing',
     content: 'Не крутится руль, слома',
     initialCount: 23,
   },
@@ -21,7 +20,6 @@ export const Writing = {
 
 export const Done = {
   args: {
-    variant: 'done',
     content: 'Не крутится руль, сломался усилитель',
   },
 };

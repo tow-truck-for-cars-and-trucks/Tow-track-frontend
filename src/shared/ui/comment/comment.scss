@@ -1,8 +1,20 @@
+%icon-style {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
 .comment {
   &__container {
     position: relative;
     width: 358px;
     min-height: 98px;
+  }
+
+  &__close-icon {
+    @extend %icon-style;
+
+    display: none;
   }
 
   &__textarea {
@@ -17,21 +29,19 @@
     resize: none;
     caret-color: var(--accent-yellow-light);
 
-    &_variant-writing {
+    &:focus {
       border: 1px solid var(--accent-yellow-light);
       caret-color: var(--accent-yellow-light);
     }
 
-    &_variant-done {
+    &:focus:not(:placeholder-shown) + .comment__close-icon {
+      display: block;
+    }
+
+    &:not(:focus, :placeholder-shown) {
       border: 2px solid var(--accent-yellow-light);
       caret-color: var(--accent-yellow-light);
     }
-  }
-
-  &__close-icon {
-    position: absolute;
-    top: 16px;
-    right: 16px;
   }
 
   &__counter {
