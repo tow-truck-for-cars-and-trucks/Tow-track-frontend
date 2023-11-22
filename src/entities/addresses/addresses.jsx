@@ -17,12 +17,14 @@ function Addresses() {
           icon={<NavigationArrowIcon width="16px" height="16px" />}
           value={isValue}
           onChange={(value) => setIsValue(value)}
+          id="address-from"
         />
         <Input
           placeholder="Куда доставить"
           icon={<NavigationArrowIcon width="16px" height="16px" />}
           value={isAddressToValue}
           onChange={(value) => setIsAddressToValue(value)}
+          id="address-to"
         />
       </div>
     </section>

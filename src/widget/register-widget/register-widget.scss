@@ -1,4 +1,7 @@
 .register-widget {
+  max-width: 390px;
+  background-color: var(--background-grey-light-blue-40);
+
   &__back-button {
     padding-top: 20px;
   }
@@ -6,7 +9,7 @@
   &__navigation {
     display: flex;
     padding-top: 32px;
-    padding-bottom: 28px;
+    padding-left: 16px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;

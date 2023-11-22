@@ -14,6 +14,7 @@ import SuccessfullIcon from '../icons/successfull-icon';
  * @param {boolean} placeholderStatic - placeholder doesn't remain in the input field after entering text
  * @param {boolean} invalid - invalid input value
  * @param {boolean} readonly - user cannot enter data
+ * @param {string} id - identificator for the input
  * @param {string} errorText - error text for invalid value
  */
 function Input({
@@ -26,6 +27,8 @@ function Input({
   invalid,
   errorText,
   readonly,
+  password,
+  id,
 }) {
   return (
     <div
@@ -33,7 +36,8 @@ function Input({
       ${placeholderStatic ? 'input_static' : ''}
       ${invalid ? 'input_invalid' : ''}
       ${value ? 'input_filled' : ''}
-      ${readonly ? 'input_readonly' : ''}`}
+      ${readonly ? 'input_readonly' : ''}
+      ${password ? 'input_password' : ''}`}
     >
       <div className="input__container">
         <InputMask
@@ -49,7 +53,9 @@ function Input({
             }
           }}
         />
-        <div className="input__placeholder">{placeholder}</div>
+        <label htmlFor={id} className="input__placeholder">
+          {placeholder}
+        </label>
         <div className="input__icon">{icon}</div>
         <div
           role="button"
