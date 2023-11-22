@@ -1,4 +1,4 @@
-import React from 'react';
+// import { useState } from 'react';
 import './comment.scss';
 import CloseIcon from '../icons/close-icon';
 
@@ -7,13 +7,7 @@ import CloseIcon from '../icons/close-icon';
  * @param {string} variant - field determining textarea view
  * @param {number} initialCount - initial count of сharacters
  */
-function Comment({ content = '', variant = '', initialCount = 0 }) {
-  const [count, setCount] = React.useState(initialCount);
-
-  const handleChange = (e) => {
-    setCount(e.target.value.length);
-  };
-
+function Comment({ content, variant, value, onChange }) {
   return (
     <div className="comment__container">
       <textarea
@@ -21,17 +15,17 @@ function Comment({ content = '', variant = '', initialCount = 0 }) {
           variant ? `comment__textarea_variant-${variant}` : ''
         }`}
         placeholder="Комментарий"
-        onChange={handleChange}
+        value={value}
+        onChange={(e) => {
+          onChange(e.target.value);
+        }}
       >
         {content}
       </textarea>
       {content !== '' && variant === 'writing' && (
-        <>
-          <div className="comment__close-icon">
-            <CloseIcon width="16px" height="16px" />
-          </div>
-          <div className="comment__counter">{`${count}/100`}</div>
-        </>
+        <div className="comment__close-icon">
+          <CloseIcon width="16px" height="16px" />
+        </div>
       )}
     </div>
   );

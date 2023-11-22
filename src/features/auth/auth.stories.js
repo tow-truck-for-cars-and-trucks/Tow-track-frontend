@@ -1,7 +1,7 @@
 import Auth from './auth';
 
 export default {
-  title: 'entities/Auth',
+  title: 'features/Auth',
   component: Auth,
   tags: ['autodocs'],
   arg: {
