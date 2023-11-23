@@ -42,7 +42,7 @@ function Auth() {
       setLocalStorageAuth(value);
     });
     return () => subscription.unsubscribe();
-  }, [watch, errors]);
+  }, [watch]);
 
   return (
     <main className="auth">
