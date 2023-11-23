@@ -14,14 +14,7 @@ import CloseIcon from '../icons/close-icon';
  * @param {string} id - identificator for the input
  * @param {string} errorText - error text for invalid value
  */
-function PasswordInput({
-  value,
-  placeholder,
-  onChange,
-  invalid,
-  errorText,
-  id,
-}) {
+function PasswordInput({ value, placeholder, onChange, invalid, id }) {
   const [showInput, setShowInput] = useState(false);
 
   return (
@@ -75,7 +68,9 @@ function PasswordInput({
             </div>
           )}
         </div>
-        <div className="password-input__error-text">{errorText}</div>
+        {invalid ? (
+          <div className="password-input__error-text">{invalid}</div>
+        ) : null}
       </div>
     </div>
   );

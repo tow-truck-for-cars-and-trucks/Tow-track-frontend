@@ -5,7 +5,6 @@
 }
 
 .input {
-  background-color: var(--white);
   border-radius: 12px;
 
   &__placeholder {
@@ -67,7 +66,7 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 1.25;
-    background: var(--background-white);
+    background-color: var(--white);
     border: none;
     border-radius: 12px;
     outline: none;
