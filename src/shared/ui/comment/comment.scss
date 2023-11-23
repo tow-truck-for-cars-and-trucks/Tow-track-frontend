@@ -34,6 +34,14 @@
       caret-color: var(--accent-yellow-light);
     }
 
+    ~ .comment__counter {
+      display: none;
+    }
+
+    &:focus ~ .comment__counter {
+      display: block;
+    }
+
     &:focus:not(:placeholder-shown) + .comment__close-icon {
       display: block;
     }
