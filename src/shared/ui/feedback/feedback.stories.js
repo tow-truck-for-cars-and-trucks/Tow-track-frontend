@@ -12,7 +12,7 @@ export default {
 export const DefaultReviewCard = {
   args: {
     feedback: {
-      rating: 5.0,
+      score: 5.0,
       name: 'Констатин Константиновский',
       comment:
         'Всё отлично и профессионально. Действительно самая дешёвая услуга по Москве!',

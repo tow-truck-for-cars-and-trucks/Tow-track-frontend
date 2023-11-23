@@ -1,11 +1,7 @@
-// import feedback from '../utils/test-review.json';
 import request from '../utils/utils';
 
 const { REACT_APP_BASE_URL } = process.env;
 
-// async function getFeedBack() {
-//   return feedback;
-// }
 class FeedbackApi {
   constructor({ baseUrl, headers }) {
     this.baseUrl = baseUrl;
@@ -13,7 +9,10 @@ class FeedbackApi {
   }
 
   getFeedbacks() {
-    return request(`${this.baseUrl}/feedback/`).then((res) => res.data);
+    // eslint-disable-next-line arrow-body-style
+    return request(`${this.baseUrl}/feedback`).then((res) => {
+      return res.data;
+    });
   }
 
   postFeedback(feedback) {
@@ -61,5 +60,4 @@ const feedbackApi = new FeedbackApi({
   },
 });
 
-// export default getFeedBack;
 export default feedbackApi;
