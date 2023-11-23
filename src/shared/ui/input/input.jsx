@@ -16,7 +16,6 @@ import SuccessfullIcon from '../icons/successfull-icon';
  * @param {boolean} readonly - user cannot enter data
  * @param {string} id - identificator for the input
  * @param {string} type - type of the input
- * @param {string} errorText - error text for invalid value
  */
 function Input({
   value,
@@ -26,7 +25,6 @@ function Input({
   mask,
   placeholderStatic,
   invalid,
-  errorText,
   readonly,
   password,
   id,
@@ -76,7 +74,7 @@ function Input({
         <div className="input__success-icon">
           <SuccessfullIcon width="16px" height="16px" />
         </div>
-        <div className="input__error-text">{errorText}</div>
+        {invalid ? <div className="input__error-text">{invalid}</div> : null}
       </div>
     </div>
   );

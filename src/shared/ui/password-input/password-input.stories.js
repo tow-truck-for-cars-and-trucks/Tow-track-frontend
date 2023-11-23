@@ -21,7 +21,6 @@ const defaultStory = {
   tags: ['autodocs'],
   args: {
     invalid: true,
-    errorText: 'Введите адрес',
   },
 };
 
@@ -31,6 +30,5 @@ export const Default = {
   args: {
     placeholder: 'Введите пароль',
     invalid: false,
-    errorText: '',
   },
 };

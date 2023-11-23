@@ -1,12 +1,14 @@
 import './register.scss';
 import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import Input from '../../shared/ui/input/input';
 import {
   setLocalStorageRegister,
   getLocalStorageRegister,
   removeLocalStorageRegister,
 } from '../../shared/api/storage-api';
+import { registerFormSchema } from '../../shared/schema/schema';
 import PasswordInput from '../../shared/ui/password-input/password-input';
 import Button from '../../shared/ui/button/button';
 import Checkbox from '../../shared/ui/checkbox/checkbox';
@@ -20,7 +22,12 @@ function Register() {
     removeLocalStorageRegister();
   };
 
-  const { control, watch, handleSubmit } = useForm({
+  const {
+    control,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     defaultValues: registerData
       ? JSON.parse(registerData)
       : {
@@ -32,6 +39,9 @@ function Register() {
           confirmPassword: '',
           checkbox: '',
         },
+    mode: 'onChange',
+    reValidateMode: 'onChange',
+    resolver: yupResolver(registerFormSchema),
   });
 
   useEffect(() => {
@@ -46,37 +56,39 @@ function Register() {
       <form>
         <div className="register__input">
           <Controller
-            name="userName"
+            name="firstName"
             control={control}
             rules={{ required: true }}
             render={({ field: { value, onChange } }) => (
               <Input
+                invalid={errors.firstName?.message}
                 value={value}
                 onChange={onChange}
                 placeholder="Имя"
-                id="name-input"
+                id="firstName"
               />
             )}
           />
         </div>
         <div className="register__input">
           <Controller
-            name="userLastName"
+            name="lastName"
             control={control}
             rules={{ required: true }}
             render={({ field: { value, onChange } }) => (
               <Input
+                invalid={errors.lastName?.message}
                 value={value}
                 onChange={onChange}
                 placeholder="Фамилия"
-                id="last-name-input"
+                id="lastName"
               />
             )}
           />
         </div>
         <div className="register__input">
           <Controller
-            name="phoneInput"
+            name="phoneNumber"
             control={control}
             rules={{ required: true }}
             render={({ field: { value, onChange } }) => (
@@ -85,7 +97,7 @@ function Register() {
                 onChange={onChange}
                 mask="+7 (999) 999 99 99"
                 placeholder="Телефон"
-                id="phone-input"
+                id="phoneNumber"
               />
             )}
           />
@@ -98,9 +110,10 @@ function Register() {
             render={({ field: { value, onChange } }) => (
               <Input
                 value={value}
+                invalid={errors.email?.message}
                 onChange={onChange}
                 placeholder="Введите почту"
-                id="email-input"
+                id="email"
               />
             )}
           />
@@ -112,10 +125,11 @@ function Register() {
             rules={{ required: true }}
             render={({ field: { value, onChange } }) => (
               <PasswordInput
+                invalid={errors.password?.message}
                 value={value}
                 onChange={onChange}
                 placeholder="Введите пароль"
-                id="password-input"
+                id="password"
               />
             )}
           />
@@ -131,9 +145,10 @@ function Register() {
             render={({ field: { value, onChange } }) => (
               <PasswordInput
                 value={value}
+                invalid={errors.confirmPassword?.message}
                 onChange={onChange}
                 placeholder="Подтвердите пароль"
-                id="confirm-password-input"
+                id="confirmPassword"
               />
             )}
           />
@@ -161,6 +176,7 @@ function Register() {
           primary="true"
           label="Зарегистрироваться"
           onClick={handleSubmit(submit)}
+          disabled={!!Object.keys(errors).length}
         />
       </div>
     </main>

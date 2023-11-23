@@ -9,10 +9,7 @@ class FeedbackApi {
   }
 
   getFeedbacks() {
-    // eslint-disable-next-line arrow-body-style
-    return request(`${this.baseUrl}/feedback`).then((res) => {
-      return res.data;
-    });
+    return request(`${this.baseUrl}/feedback`);
   }
 
   postFeedback(feedback) {

@@ -9,7 +9,7 @@ class CarTypeApi {
   }
 
   getCarType() {
-    return request(`${this.baseUrl}/cartype/`).then((res) => res.data);
+    return request(`${this.baseUrl}/cartype/`);
   }
 }
 

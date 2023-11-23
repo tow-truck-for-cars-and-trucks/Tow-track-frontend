@@ -1,25 +1,28 @@
 import './create-order.scss';
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect, useRef, useState } from 'react';
 import {
   setLocalStorageOrder,
   getLocalStorageOrder,
 } from '../../shared/api/storage-api';
-// import carTypeApi from '../../shared/api/car-type-api';
-// import tariffApi from '../../shared/api/tariff-api';
+import { addressFormSchema } from '../../shared/schema/schema';
+import carTypeApi from '../../shared/api/car-type-api';
+import tariffApi from '../../shared/api/tariff-api';
 import Input from '../../shared/ui/input/input';
 import NavigationArrowIcon from '../../shared/ui/icons/navigation-arrow-icon';
 import Description from '../../shared/ui/description/description';
 import ButtonToggle from '../../shared/ui/button-toggle/buttonToggle';
 import PricingList from '../../entities/ui/pricing-list/pricing-list';
-// import ChipsList from '../../entities/ui/chips-list/chips-list';
+import ChipsList from '../../entities/ui/chips-list/chips-list';
 import Comment from '../../shared/ui/comment/comment';
 import TotalPrice from '../../shared/ui/total-price/total-price';
 import ButtonCounterController from '../../entities/ui/button-counter-controller/button-counter-controller';
 
 function CreateOrder() {
-  // const [allCars, setAllCars] = useState([]);
+  const [allCars, setAllCars] = useState([]);
+  const [allPricing, setAllPricing] = useState([]);
   const navigate = useNavigate();
   const orderData = getLocalStorageOrder();
   const onSubmit = (value) => {
@@ -27,21 +30,29 @@ function CreateOrder() {
   };
   const timerRef = useRef(null);
 
-  // carTypeApi
-  // .getCarType()
-  // .then((carTypes) => setAllCars(carTypes))
-  // .catch((error) => {
-  //   console.log(error);
-  // });
+  carTypeApi
+    .getCarType()
+    .then((carType) => setAllCars(carType))
+    .catch((error) => {
+      console.log(error);
+    });
 
-  // tariffApi
-  // .getTariffApi()
-  // .then((tariffs) => tariffs)
-  // .catch((error) => {
-  //   console.log(error);
-  // });
+  tariffApi
+    .getTariffType()
+    // eslint-disable-next-line arrow-body-style
+    .then((tariff) => {
+      return setAllPricing(tariff);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 
-  const { control, watch, handleSubmit } = useForm({
+  const {
+    control,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     defaultValues: orderData
       ? JSON.parse(orderData)
       : {
@@ -54,6 +65,9 @@ function CreateOrder() {
           towinCheckbox: '',
           comment: '',
         },
+    mode: 'onChange',
+    reValidateMode: 'onChange',
+    resolver: yupResolver(addressFormSchema),
   });
 
   useEffect(() => {
@@ -79,7 +93,7 @@ function CreateOrder() {
             rules={{ required: true }}
             render={({ field: { value, onChange } }) => (
               <Input
-                errorText=""
+                invalid={errors.addressFrom?.message}
                 placeholder="Откуда забрать"
                 icon={<NavigationArrowIcon width="16px" height="16px" />}
                 value={value}
@@ -95,6 +109,7 @@ function CreateOrder() {
             render={({ field: { value, onChange } }) => (
               <Input
                 placeholder="Куда доставить"
+                invalid={errors.addressTo?.message}
                 icon={<NavigationArrowIcon width="16px" height="16px" />}
                 value={value}
                 onChange={onChange}
@@ -105,17 +120,20 @@ function CreateOrder() {
         </div>
         <h2 className="create-order__title">Что перевозим?</h2>
         <div className="create-order__views">
-          {/* <Controller
+          <Controller
             name="activeTab"
             control={control}
             render={({ field: { value, onChange } }) => (
               <ChipsList
-                chips={allCars.map((carType) => ({label: carType.car_type.title, id: carType.car_type.title}))}
+                chips={allCars.map((carType) => ({
+                  label: carType.car_type,
+                  id: carType.car_type,
+                }))}
                 value={value}
                 onChange={onChange}
               />
             )}
-          /> */}
+          />
         </div>
         <div className="create-order__ditch">
           <Description title="Кюветные работы" subtitle="Сложность доступа" />
@@ -136,30 +154,16 @@ function CreateOrder() {
         <h2 className="create-order__title">Выберите тариф</h2>
         <div className="create-order__views">
           <Controller
-            name="activeTab"
+            name="activePrice"
             control={control}
             render={({ field: { value, onChange } }) => (
               <PricingList
-                pricings={[
-                  {
-                    title: 'Эконом',
-                    price: '1500',
-                    description: 'Оптимальный',
-                    id: 'optimal',
-                  },
-                  {
-                    title: 'Экспресс',
-                    price: '1800',
-                    description: 'Самый быстрый',
-                    id: 'express',
-                  },
-                  {
-                    title: 'Манипулятор',
-                    price: '1800',
-                    description: 'Спецвариант',
-                    id: 'manipulator',
-                  },
-                ]}
+                pricings={allPricing.map((tariff) => ({
+                  title: tariff.name,
+                  description: tariff.description,
+                  price: tariff.price,
+                  id: tariff.id,
+                }))}
                 value={value}
                 onChange={onChange}
               />
