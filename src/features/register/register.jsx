@@ -5,6 +5,7 @@ import Input from '../../shared/ui/input/input';
 import {
   setLocalStorageRegister,
   getLocalStorageRegister,
+  removeLocalStorageRegister,
 } from '../../shared/api/storage-api';
 import PasswordInput from '../../shared/ui/password-input/password-input';
 import Button from '../../shared/ui/button/button';
@@ -16,6 +17,7 @@ function Register() {
 
   const submit = () => {
     console.log(registerData);
+    removeLocalStorageRegister();
   };
 
   const { control, watch, handleSubmit } = useForm({

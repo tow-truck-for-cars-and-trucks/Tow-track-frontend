@@ -1,5 +1,5 @@
 import './application.scss';
-import Transports from '../../features/transports/transports';
+import CreateOrder from '../../features/create-order/create-order';
 
 function Application() {
   return (
@@ -7,7 +7,7 @@ function Application() {
       <h1 className="application__title">
         Вызвать эвакуатор в <span className="application__span">Москве</span>
       </h1>
-      <Transports />
+      <CreateOrder />
     </section>
   );
 }

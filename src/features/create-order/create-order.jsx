@@ -1,4 +1,4 @@
-import './transports.scss';
+import './create-order.scss';
 import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
@@ -6,23 +6,40 @@ import {
   setLocalStorageOrder,
   getLocalStorageOrder,
 } from '../../shared/api/storage-api';
+// import carTypeApi from '../../shared/api/car-type-api';
+// import tariffApi from '../../shared/api/tariff-api';
 import Input from '../../shared/ui/input/input';
 import NavigationArrowIcon from '../../shared/ui/icons/navigation-arrow-icon';
 import Description from '../../shared/ui/description/description';
 import ButtonToggle from '../../shared/ui/button-toggle/buttonToggle';
 import PricingList from '../../entities/ui/pricing-list/pricing-list';
-import ChipsList from '../../entities/ui/chips-list/chips-list';
+// import ChipsList from '../../entities/ui/chips-list/chips-list';
 import Comment from '../../shared/ui/comment/comment';
 import TotalPrice from '../../shared/ui/total-price/total-price';
 import ButtonCounterController from '../../entities/ui/button-counter-controller/button-counter-controller';
 
-function Transports() {
+function CreateOrder() {
+  // const [allCars, setAllCars] = useState([]);
   const navigate = useNavigate();
   const orderData = getLocalStorageOrder();
   const onSubmit = (value) => {
     console.log(value);
   };
   const timerRef = useRef(null);
+
+  // carTypeApi
+  // .getCarType()
+  // .then((carTypes) => setAllCars(carTypes))
+  // .catch((error) => {
+  //   console.log(error);
+  // });
+
+  // tariffApi
+  // .getTariffApi()
+  // .then((tariffs) => tariffs)
+  // .catch((error) => {
+  //   console.log(error);
+  // });
 
   const { control, watch, handleSubmit } = useForm({
     defaultValues: orderData
@@ -52,10 +69,10 @@ function Transports() {
   }, [handleSubmit, watch]);
 
   return (
-    <div className="transports">
-      <h2 className="transports__title">Адреса</h2>
+    <div className="create-order">
+      <h2 className="create-order__title">Адреса</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="transports__input">
+        <div className="create-order__input">
           <Controller
             name="addressFrom"
             control={control}
@@ -86,28 +103,23 @@ function Transports() {
             )}
           />
         </div>
-        <h2 className="transports__title">Что перевозим?</h2>
-        <div className="transports__views">
-          <Controller
+        <h2 className="create-order__title">Что перевозим?</h2>
+        <div className="create-order__views">
+          {/* <Controller
             name="activeTab"
             control={control}
             render={({ field: { value, onChange } }) => (
               <ChipsList
-                chips={[
-                  { label: 'Легковой', id: 'passenger-car' },
-                  { label: 'Грузовой', id: 'cargo' },
-                  { label: 'Мото', id: 'moto' },
-                  { label: 'Спецтехника', id: 'special-equipment' },
-                ]}
+                chips={allCars.map((carType) => ({label: carType.car_type.title, id: carType.car_type.title}))}
                 value={value}
                 onChange={onChange}
               />
             )}
-          />
+          /> */}
         </div>
-        <div className="transports__ditch">
+        <div className="create-order__ditch">
           <Description title="Кюветные работы" subtitle="Сложность доступа" />
-          <div className="transports__toggle">
+          <div className="create-order__toggle">
             <Controller
               name="towinCheckbox"
               control={control}
@@ -121,8 +133,8 @@ function Transports() {
             />
           </div>
         </div>
-        <h2 className="transports__title">Выберите тариф</h2>
-        <div className="transports__views">
+        <h2 className="create-order__title">Выберите тариф</h2>
+        <div className="create-order__views">
           <Controller
             name="activeTab"
             control={control}
@@ -161,7 +173,7 @@ function Transports() {
             <ButtonCounterController value={value} onChange={onChange} />
           )}
         />
-        <div className="transports__ditch">
+        <div className="create-order__ditch">
           <Description
             title="Отложенный заказ"
             subtitle="Выберите день и время"
@@ -178,8 +190,8 @@ function Transports() {
             )}
           />
         </div>
-        <div className="transports__comment">
-          <h2 className="transports__title">Дополнительно</h2>
+        <div className="create-order__comment">
+          <h2 className="create-order__title">Дополнительно</h2>
           <Controller
             name="comment"
             control={control}
@@ -188,7 +200,7 @@ function Transports() {
             )}
           />
         </div>
-        <div className="transports__price">
+        <div className="create-order__price">
           <TotalPrice
             onClick={() => navigate('/register', { replace: true })}
             total={1820}
@@ -198,4 +210,4 @@ function Transports() {
     </div>
   );
 }
-export default Transports;
+export default CreateOrder;

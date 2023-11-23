@@ -4,6 +4,7 @@ import { Controller, useForm } from 'react-hook-form';
 import {
   setLocalStorageAuth,
   getLocalStorageAuth,
+  removeLocalStorageAuth,
 } from '../../shared/api/storage-api';
 import Input from '../../shared/ui/input/input';
 import PasswordInput from '../../shared/ui/password-input/password-input';
@@ -14,6 +15,7 @@ function Auth() {
 
   const submit = () => {
     console.log(authData);
+    removeLocalStorageAuth();
   };
 
   const { control, handleSubmit, watch } = useForm({

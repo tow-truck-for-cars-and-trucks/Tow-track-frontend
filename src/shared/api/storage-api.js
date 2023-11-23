@@ -1,9 +1,20 @@
+function setToLocalStorage(key, value) {
+  if (value) {
+    return localStorage.setItem(key, JSON.stringify(value));
+  }
+  return localStorage.removeItem(key);
+}
+
 export function getLocalStorageAuth() {
   return localStorage.getItem('CREATE_AUTH_FORM');
 }
 
 export function setLocalStorageAuth(value) {
-  return localStorage.setItem('CREATE_AUTH_FORM', JSON.stringify(value));
+  return setToLocalStorage('CREATE_AUTH_FORM', value);
+}
+
+export function removeLocalStorageAuth() {
+  return localStorage.removeItem('CREATE_AUTH_FORM');
 }
 
 export function getLocalStorageRegister() {
@@ -11,7 +22,11 @@ export function getLocalStorageRegister() {
 }
 
 export function setLocalStorageRegister(value) {
-  return localStorage.setItem('CREATE_REGISTER_FORM', JSON.stringify(value));
+  return setToLocalStorage('CREATE_REGISTER_FORM', value);
+}
+
+export function removeLocalStorageRegister() {
+  return localStorage.removeItem('CREATE_REGISTER_FORM');
 }
 
 export function getLocalStorageOrder() {
@@ -19,5 +34,9 @@ export function getLocalStorageOrder() {
 }
 
 export function setLocalStorageOrder(value) {
-  return localStorage.setItem('CREATE_ORDER_FORM', JSON.stringify(value));
+  return setToLocalStorage('CREATE_ORDER_FORM', value);
+}
+
+export function removeLocalStorageOrder() {
+  return localStorage.removeItem('CREATE_ORDER_FORM');
 }
