@@ -50,6 +50,14 @@
       border: 2px solid var(--accent-yellow-light);
       caret-color: var(--accent-yellow-light);
     }
+    .popup-reviews__form & {
+      width: 245px;
+      margin-bottom: 32px;
+    }
+    .popup-cancellations__container & {
+      width: 245px;
+      margin-bottom: 28px;
+    }
   }
 
   &__counter {

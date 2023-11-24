@@ -1,5 +1,5 @@
 import './order-active.scss';
-
+import React, { useState } from 'react';
 import DeliveryTime from '../../../shared/ui/delivery-time/delivery-time';
 import ProgressBar from '../../../shared/ui/progress-bar/progress-bar';
 import StepOneDefaultIcon from '../../../shared/ui/icons/step-one-default-icon';
@@ -12,8 +12,10 @@ import Button from '../../../shared/ui/button/button';
 import Accordion from '../../../shared/ui/accordion/accordion';
 import OrderDetails from '../../../shared/ui/order-details/order-details';
 import AboutTrack from '../../../shared/ui/about-truck/about-truck';
+import PopupCancel from '../popup-cancel/popup-cancel';
 
 function OrderActive() {
+  const [isPopupCancel, setIsPopupCancel] = useState(false);
   return (
     <main className="order-active">
       <div className="order-active__submission-time">
@@ -45,7 +47,15 @@ function OrderActive() {
       <div className="order-active__button">
         <Button primary="true" label="Связаться с водителем" />
       </div>
-      <Button secondary="true" label="Отменить заказ" />
+      <Button
+        secondary="true"
+        label="Отменить заказ"
+        onClick={() => setIsPopupCancel(true)}
+      />
+      <PopupCancel
+        isOpen={isPopupCancel}
+        onClose={() => setIsPopupCancel(false)}
+      />
       <div className="order-active__info">
         <Accordion title="Детали заказа" withBorder>
           <OrderDetails
