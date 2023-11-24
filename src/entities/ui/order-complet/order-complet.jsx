@@ -1,12 +1,15 @@
 import './order-complet.scss';
+import React, { useState } from 'react';
 import Adress from '../../../shared/ui/adress/adress';
 import Button from '../../../shared/ui/button/button';
 import Accordion from '../../../shared/ui/accordion/accordion';
 import OrderDetails from '../../../shared/ui/order-details/order-details';
 import AboutTrack from '../../../shared/ui/about-truck/about-truck';
 import CloseIcon from '../../../shared/ui/icons/close-icon';
+import PopupReviews from '../popup-reviews/popup-reviews';
 
 function OrderComplet() {
+  const [isPopupReviews, setIsPopupReviews] = useState(false);
   return (
     <main className="order-complet">
       <div className="order-complet__adress">
@@ -20,8 +23,16 @@ function OrderComplet() {
         <p className="order-complet__price-total">1820 ₽</p>
       </div>
       <div className="order-complet__button">
-        <Button primary="true" label="Оставить отзыв" />
+        <Button
+          primary="true"
+          label="Оставить отзыв"
+          onClick={() => setIsPopupReviews(true)}
+        />
       </div>
+      <PopupReviews
+        isOpen={isPopupReviews}
+        onClose={() => setIsPopupReviews(false)}
+      />
       <div className="order-complet__info">
         <Accordion title="Детали заказа" withBorder>
           <OrderDetails

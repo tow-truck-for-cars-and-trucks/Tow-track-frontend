@@ -1,7 +1,14 @@
 import './popup-cancel.scss';
+import React, { useState } from 'react';
 import Button from '../../../shared/ui/button/button';
+import PopupCancellations from '../popup-cancellations/popup-cancellations';
 
 function PopupCancel({ isOpen, onClose }) {
+  const [isPopupCancellation, setIsPopupCancellation] = useState(false);
+  const handleClose = () => {
+    setIsPopupCancellation(false);
+    onClose();
+  };
   return (
     <div>
       <div className={isOpen ? 'popup-cancel active' : 'popup-cancel'}>
@@ -12,8 +19,15 @@ function PopupCancel({ isOpen, onClose }) {
           </h1>
           <div className="popup-cancel__btn">
             <Button label="Вернуться" primary="true" onClick={onClose} />
-            <Button label="Да, отменить" />
+            <Button
+              label="Да, отменить"
+              onClick={() => setIsPopupCancellation(true)}
+            />
           </div>
+          <PopupCancellations
+            isOpen={isPopupCancellation}
+            onClose={handleClose}
+          />
         </div>
       </div>
     </div>

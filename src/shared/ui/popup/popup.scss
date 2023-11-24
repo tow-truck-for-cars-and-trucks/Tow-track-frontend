@@ -15,7 +15,7 @@ $finalWidth: 358px;
   visibility: hidden;
   opacity: 0;
 
-  &.active {
+  &_active {
     opacity: 1;
     visibility: visible;
   }

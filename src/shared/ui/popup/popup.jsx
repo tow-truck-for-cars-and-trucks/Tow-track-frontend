@@ -4,7 +4,7 @@ import CloseIcon from '../icons/close-icon';
 function Popup({ children, active, setActive }) {
   return (
     <div>
-      <div className={active ? 'popup active' : 'popup'}>
+      <div className={active ? 'popup popup_active' : 'popup'}>
         <div>
           <div className="popup__content">
             <button
