@@ -11,10 +11,22 @@ import Chip from '../../shared/ui/chip/chip';
 import Prising from '../../shared/ui/pricing/pricing';
 import Comment from '../../shared/ui/comment/comment';
 import TotalPrice from '../../shared/ui/total-price/total-price';
-import Button from '../../shared/ui/button/button';
+import PopupDeferredOrder from '../ui/popup-deferred-order/popup-deferred-order';
 
 function Transports() {
   const [count, setCount] = useState(0);
+  const [isActive, setIsActive] = useState(false);
+  const [toggle, setToggle] = useState(false);
+
+  const handleToggle = (e) => {
+    setIsActive(e.target.checked);
+    setToggle(!toggle);
+  };
+
+  const handleClose = () => {
+    setIsActive(false);
+    setToggle(!toggle);
+  };
 
   const handleIncrement = () => {
     if (count < 4) {
@@ -108,8 +120,9 @@ function Transports() {
           title="Отложенный заказ"
           subtitle="Выберите день и время"
         />
-        <ButtonToggle id="checkbox" />
+        <ButtonToggle id="checkbox" onChange={handleToggle} checked={toggle} />
       </div>
+      <PopupDeferredOrder isOpen={isActive} onClose={handleClose} />
       <div className="transports__comment">
         <h2 className="transports__title">Дополнительно</h2>
         <Comment placeholder="Коментарий" />
@@ -117,8 +130,6 @@ function Transports() {
       <div className="transports__price">
         <TotalPrice total={1820} />
       </div>
-
-      <Button label="Оставить отзыв" />
     </div>
   );
 }
