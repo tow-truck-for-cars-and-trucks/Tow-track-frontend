@@ -1,0 +1,23 @@
+.my-order {
+  max-width: 390px;
+  padding-top: 56px;
+  background: var(--background-grey-light-blue-40);
+
+  &__title {
+    padding-bottom: 40px;
+    padding-left: 16px;
+  }
+
+  &__navigation {
+    display: flex;
+    padding-left: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

@@ -24,7 +24,7 @@ function Accordion({ title, children, withBorder }) {
             className="accordion__icon"
             onClick={() => setIsShow(true)}
           >
-            <ArrowDownIcon width="16px" height="16px" />
+            <ArrowDownIcon width="16px" height="16px" fill="#3B3E49" />
           </button>
         )}
         {isShow && (
@@ -34,7 +34,7 @@ function Accordion({ title, children, withBorder }) {
             className="accordion__icon"
             onClick={() => setIsShow(false)}
           >
-            <ArrowUpIcon width="16px" height="16px" />
+            <ArrowUpIcon width="16px" height="16px" fill="#3B3E49" />
           </button>
         )}
       </div>

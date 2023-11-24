@@ -14,7 +14,8 @@ import SuccessfullIcon from '../icons/successfull-icon';
  * @param {boolean} placeholderStatic - placeholder doesn't remain in the input field after entering text
  * @param {boolean} invalid - invalid input value
  * @param {boolean} readonly - user cannot enter data
- * @param {string} errorText - error text for invalid value
+ * @param {string} id - identificator for the input
+ * @param {string} type - type of the input
  */
 function Input({
   value,
@@ -24,8 +25,10 @@ function Input({
   mask,
   placeholderStatic,
   invalid,
-  errorText,
   readonly,
+  password,
+  id,
+  type,
 }) {
   return (
     <div
@@ -33,13 +36,15 @@ function Input({
       ${placeholderStatic ? 'input_static' : ''}
       ${invalid ? 'input_invalid' : ''}
       ${value ? 'input_filled' : ''}
-      ${readonly ? 'input_readonly' : ''}`}
+      ${readonly ? 'input_readonly' : ''}
+      ${password ? 'input_password' : ''}`}
     >
       <div className="input__container">
         <InputMask
           mask={mask}
+          name={id}
           readOnly={readonly}
-          type="text"
+          type={type || 'text'}
           className="input__text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
@@ -49,7 +54,9 @@ function Input({
             }
           }}
         />
-        <div className="input__placeholder">{placeholder}</div>
+        <label htmlFor={id} className="input__placeholder">
+          {placeholder}
+        </label>
         <div className="input__icon">{icon}</div>
         <div
           role="button"
@@ -67,7 +74,7 @@ function Input({
         <div className="input__success-icon">
           <SuccessfullIcon width="16px" height="16px" />
         </div>
-        <div className="input__error-text">{errorText}</div>
+        {invalid ? <div className="input__error-text">{invalid}</div> : null}
       </div>
     </div>
   );
