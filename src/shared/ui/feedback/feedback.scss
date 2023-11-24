@@ -24,7 +24,7 @@
   &__name {
     @extend %text-style;
 
-    padding-top: 20px;
+    padding-top: 16px;
     overflow: hidden;
     font-weight: 500;
     font-size: 18px;
@@ -37,15 +37,11 @@
     @extend %text-style;
 
     display: -webkit-box;
-    padding-top: 20px;
+    padding-top: 16px;
     overflow: hidden;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.35;
     text-overflow: ellipsis;
-    -webkit-box-orient: vertical;
-    /* stylelint-disable-next-line property-no-unknown */
-    box-orient: vertical;
-    -webkit-line-clamp: 5;
   }
 }
