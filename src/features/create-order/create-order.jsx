@@ -30,22 +30,21 @@ function CreateOrder() {
   };
   const timerRef = useRef(null);
 
-  carTypeApi
-    .getCarType()
-    .then((carType) => setAllCars(carType))
-    .catch((error) => {
-      console.log(error);
-    });
+  useEffect(() => {
+    carTypeApi
+      .getCarType()
+      .then((carType) => setAllCars(carType))
+      .catch((error) => {
+        console.log(error);
+      });
 
-  tariffApi
-    .getTariffType()
-    // eslint-disable-next-line arrow-body-style
-    .then((tariff) => {
-      return setAllPricing(tariff);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    tariffApi
+      .getTariffType()
+      .then((tariff) => setAllPricing(tariff))
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const {
     control,

@@ -31,9 +31,9 @@ function Register() {
     defaultValues: registerData
       ? JSON.parse(registerData)
       : {
-          userName: '',
-          userLastName: '',
-          phoneInput: '',
+          firstName: '',
+          lastName: '',
+          phoneNumber: '',
           email: '',
           password: '',
           confirmPassword: '',
