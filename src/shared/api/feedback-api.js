@@ -9,7 +9,7 @@ class FeedbackApi {
   }
 
   getFeedbacks() {
-    return request(`${this.baseUrl}/feedback`);
+    return request(`${this.baseUrl}/feedback/`);
   }
 
   postFeedback(feedback) {
