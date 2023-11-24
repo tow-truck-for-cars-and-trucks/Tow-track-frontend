@@ -19,6 +19,7 @@ function ChipsList({ chips, onActivate, value, onChange }) {
     <>
       {chips.map((chip) => (
         <Chip
+          key={Math.random()}
           label={chip.label}
           disabled={chip.disabled}
           isActive={value === chip.id}
