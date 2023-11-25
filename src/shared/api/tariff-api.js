@@ -3,9 +3,8 @@ import request from '../utils/utils';
 const { REACT_APP_BASE_URL } = process.env;
 
 class TariffApi {
-  constructor({ baseUrl, headers }) {
+  constructor({ baseUrl }) {
     this.baseUrl = baseUrl;
-    this.headers = headers;
   }
 
   getTariffType() {
@@ -15,9 +14,6 @@ class TariffApi {
 
 const tariffApi = new TariffApi({
   baseUrl: REACT_APP_BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
 });
 
 export default tariffApi;

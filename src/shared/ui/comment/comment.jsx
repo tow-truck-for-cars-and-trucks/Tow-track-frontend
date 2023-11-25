@@ -44,7 +44,7 @@ function Comment({ value, onChange }) {
       >
         <CloseIcon width="16px" height="16px" />
       </div>
-      {value ? <div className="comment__counter">{`${count}/100`}</div> : null}
+      {!!value && <div className="comment__counter">{`${count}/100`}</div>}
     </div>
   );
 }

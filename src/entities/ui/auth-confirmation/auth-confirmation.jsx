@@ -6,7 +6,7 @@ import AuthTitle from '../../../shared/ui/auth-title/auth-title';
 
 /**
  * @param {number} seconds - seconds to new message
- * @param {number} phoneNumber - phone number from the input value
+ * @param {string} phoneNumber - phone number from the input value
  */
 function AuthConfirmation({ seconds, phoneNumber }) {
   const [codeValue, setCodeValue] = useState('');
@@ -24,7 +24,7 @@ function AuthConfirmation({ seconds, phoneNumber }) {
         placeholderStatic="true"
       />
       <div className="auth-confirmation__button">
-        <Button primary="true" label="Подтвердить" />
+        <Button label="Подтвердить" />
       </div>
       <p className="auth-confirmation__caption">
         Получить код повторно можно через {seconds} секунд

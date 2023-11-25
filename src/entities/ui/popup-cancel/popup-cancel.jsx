@@ -18,7 +18,7 @@ function PopupCancel({ isOpen, onClose }) {
             Вы уверены, что хотите отменить заказ?
           </h1>
           <div className="popup-cancel__btn">
-            <Button label="Вернуться" primary="true" onClick={onClose} />
+            <Button label="Вернуться" primary onClick={onClose} />
             <Button
               label="Да, отменить"
               onClick={() => setIsPopupCancellation(true)}

@@ -13,7 +13,7 @@ function TotalPrice({ total, onClick }) {
         <h2 className="total-price__title">Стоимость заказа:</h2>
         <h2 className="total-price__full-price"> {total} ₽</h2>
       </div>
-      <Button primary="true" label="Оформить заказ" onClick={() => onClick()} />
+      <Button primary label="Оформить заказ" onClick={() => onClick()} />
     </div>
   );
 }

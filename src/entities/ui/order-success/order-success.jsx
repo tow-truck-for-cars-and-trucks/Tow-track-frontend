@@ -51,9 +51,9 @@ function OrderSuccess() {
         <Alert />
       </div>
       <div className="order-success__button">
-        <Button primary="true" label="Связаться с водителем" />
+        <Button primary label="Связаться с водителем" />
       </div>
-      <Button secondary="true" label="Отменить заказ" />
+      <Button secondary label="Отменить заказ" />
     </section>
   );
 }
