@@ -69,6 +69,8 @@ function CreateOrder() {
     resolver: yupResolver(addressFormSchema),
   });
 
+  const isButtonActive = !(errors.addressFrom || errors.addressTo);
+
   useEffect(() => {
     const subscription = watch((value) => {
       clearTimeout(timerRef.current);
@@ -207,6 +209,7 @@ function CreateOrder() {
           <TotalPrice
             onClick={() => navigate('/register', { replace: true })}
             total={1820}
+            isButtonActive={isButtonActive}
           />
         </div>
       </form>

@@ -1,8 +1,8 @@
-import OrderComplet from './order-complet';
+import OrderComplete from './order-complet';
 
 export default {
-  title: 'entities/OrderComplet',
-  component: OrderComplet,
+  title: 'entities/OrderComplete',
+  component: OrderComplete,
   tags: ['autodocs'],
   arg: {
     primary: true,
