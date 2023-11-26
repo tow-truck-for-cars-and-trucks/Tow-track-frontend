@@ -3,10 +3,6 @@ import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useRef, useState } from 'react';
-import {
-  setLocalStorageOrder,
-  getLocalStorageOrder,
-} from '../../shared/api/storage-api';
 import { addressFormSchema } from '../../shared/schema/schema';
 import carTypeApi from '../../shared/api/car-type-api';
 import tariffApi from '../../shared/api/tariff-api';
@@ -24,7 +20,6 @@ function CreateOrder() {
   const [allCars, setAllCars] = useState([]);
   const [allPricing, setAllPricing] = useState([]);
   const navigate = useNavigate();
-  const orderData = getLocalStorageOrder();
   const onSubmit = (value) => {
     console.log(value);
   };
@@ -52,29 +47,28 @@ function CreateOrder() {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    defaultValues: orderData
-      ? JSON.parse(orderData)
-      : {
-          addressFrom: '',
-          addressTo: '',
-          activeTab: '',
-          activePrice: '',
-          buttonCounter: '0',
-          deferredOrderCheckbox: '',
-          towinCheckbox: '',
-          comment: '',
-        },
+    defaultValues: {
+      addressFrom: '',
+      addressTo: '',
+      activeTab: '',
+      activePrice: '',
+      buttonCounter: '0',
+      deferredOrderCheckbox: '',
+      towinCheckbox: '',
+      comment: '',
+    },
     mode: 'onChange',
     reValidateMode: 'onChange',
     resolver: yupResolver(addressFormSchema),
   });
 
+  const isButtonActive = !(errors.addressFrom || errors.addressTo);
+
   useEffect(() => {
-    const subscription = watch((value) => {
+    const subscription = watch(() => {
       clearTimeout(timerRef.current);
 
       timerRef.current = setTimeout(() => {
-        setLocalStorageOrder(value);
         handleSubmit(onSubmit).apply(this);
       }, 1000);
     });
@@ -207,6 +201,7 @@ function CreateOrder() {
           <TotalPrice
             onClick={() => navigate('/register', { replace: true })}
             total={1820}
+            isButtonActive={isButtonActive}
           />
         </div>
       </form>

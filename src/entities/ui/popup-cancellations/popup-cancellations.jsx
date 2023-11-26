@@ -96,7 +96,7 @@ function PopupCancellations({ isOpen, onClose }) {
 
           {isValueOther && <Comment placeholder="Опишите, что случилось" />}
 
-          <Button label="Применить" primary="true" />
+          <Button label="Применить" primary />
         </div>
       </Popup>
     </div>

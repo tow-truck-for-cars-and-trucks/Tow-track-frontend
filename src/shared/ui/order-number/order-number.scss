@@ -12,6 +12,10 @@
     border-radius: 12px;
   }
 
+  &__container_opened {
+    border-radius: 12px 12px 0 0;
+  }
+
   &__header {
     display: flex;
     flex-direction: row;

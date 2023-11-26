@@ -19,38 +19,41 @@ class FeedbackApi {
     return request(`${this.baseUrl}/feedback/`);
   }
 
-  postFeedback(feedback) {
-    return request(`${this.baseUrl}/feedback/`, {
+  async postFeedback(feedback) {
+    const res = await request(`${this.baseUrl}/feedback/`, {
       method: 'POST',
       headers: this.getHeaders(),
       body: JSON.stringify(feedback),
-    }).then((res) => res.data);
+    });
+    return res;
   }
 
-  getFeedback(id) {
-    return request(`${this.baseUrl}/feedback/${id}/`, {
+  async getFeedback(id) {
+    const res = await request(`${this.baseUrl}/feedback/${id}/`, {
       method: 'GET',
       headers: this.getHeaders(),
-    }).then((res) => res.data);
+    });
+    return res;
   }
 
-  putFeedback(id) {
-    return request(`${this.baseUrl}/feedback/${id}/`, {
+  async putFeedback(id) {
+    const res = await request(`${this.baseUrl}/feedback/${id}/`, {
       method: 'PUT',
       headers: this.getHeaders(),
-    }).then((res) => res.data);
+    });
+    return res;
   }
 
-  editFeedback(id, feedback) {
-    return request(`${this.baseUrl}/feedback/${id}/`, {
+  async editFeedback(id, feedback) {
+    await request(`${this.baseUrl}/feedback/${id}/`, {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify(feedback),
     });
   }
 
-  deleteFeedback(id) {
-    return request(`${this.baseUrl}/feedback/${id}`, {
+  async deleteFeedback(id) {
+    await request(`${this.baseUrl}/feedback/${id}/`, {
       method: 'DELETE',
       headers: this.headers,
     });

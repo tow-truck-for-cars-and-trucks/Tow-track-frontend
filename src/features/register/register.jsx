@@ -29,7 +29,12 @@ function Register() {
     formState: { errors },
   } = useForm({
     defaultValues: registerData
-      ? JSON.parse(registerData)
+      ? {
+          firstName: registerData,
+          lastName: registerData,
+          email: registerData,
+          phoneNumber: registerData,
+        }
       : {
           firstName: '',
           lastName: '',
@@ -45,9 +50,16 @@ function Register() {
   });
 
   useEffect(() => {
-    const subscription = watch((value) => {
-      setLocalStorageRegister(value);
-    });
+    const subscription = watch(
+      ({ firstName, lastName, email, phoneNumber }) => {
+        setLocalStorageRegister({
+          firstName,
+          lastName,
+          email,
+          phoneNumber,
+        });
+      }
+    );
     return () => subscription.unsubscribe();
   }, [watch]);
 
@@ -95,6 +107,7 @@ function Register() {
               <Input
                 value={value}
                 onChange={onChange}
+                invalid={errors.phoneNumber?.message}
                 mask="+7 (999) 999 99 99"
                 placeholder="Телефон"
                 id="phoneNumber"
@@ -173,8 +186,8 @@ function Register() {
       </form>
       <div className="register__button">
         <Button
-          primary="true"
           label="Зарегистрироваться"
+          primary
           onClick={handleSubmit(submit)}
           disabled={!!Object.keys(errors).length}
         />

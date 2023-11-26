@@ -13,7 +13,11 @@ function OrderNumber({ number, date, time, children }) {
 
   return (
     <div className="order-number">
-      <div className="order-number__container">
+      <div
+        className={`order-number__container ${
+          isShow ? 'order-number__container_opened' : ''
+        }`}
+      >
         <div className="order-number__header">
           <h2 className="order-number__title">
             №{number} от {date} {time}{' '}
