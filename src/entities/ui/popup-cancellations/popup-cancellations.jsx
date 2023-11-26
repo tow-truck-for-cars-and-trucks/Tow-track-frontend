@@ -11,8 +11,9 @@ function PopupCancellations({ isOpen, onClose }) {
   const [isValueLong, setIsValueLong] = useState('');
   const [isValueCancell, setIsValueCancell] = useState('');
   const [isValueFast, setIsValueFast] = useState('');
-  const [isValueNotNeed, setIsValueNotNeed] = useState('');
-  const [isValueOther, setIsValueOther] = useState('');
+  const [isValueNotNeed, setIsValueNotNeed] = useState(false);
+  const [isValue, setIsValue] = useState(false);
+
   return (
     <div className="popup-cancellations">
       <Popup active={isOpen} setActive={onClose}>
@@ -20,84 +21,62 @@ function PopupCancellations({ isOpen, onClose }) {
         <h2 className="popup-cancellations__subtitle">Что пошло не так?</h2>
         <div className="popup-cancellations__container">
           <CheckboxRadio
-            name="error"
-            width="24px"
-            height="24px"
+            name="radio"
             value={isValueError}
             onChange={(val) => setIsValueError(val)}
-          >
-            <p className="popup-cancellations__text"> Заказал по ошибке</p>
-          </CheckboxRadio>
+            type="radio"
+            title="Заказал по ошибке"
+          />
           <CheckboxRadio
-            name="cancel"
-            width="24px"
-            height="24px"
+            name="radio"
             value={isValueCancell}
             onChange={(val) => setIsValueCancell(val)}
-          >
-            <p className="popup-cancellations__text">
-              {' '}
-              Отменил по просьбе водителя
-            </p>
-          </CheckboxRadio>
+            type="radio"
+            title="Отменил по просьбе водителя"
+          />
           <CheckboxRadio
-            name="not-suit"
-            width="24px"
-            height="24px"
+            name="radio"
             value={isValueNotSuit}
             onChange={(val) => setIsValueSuit(val)}
-          >
-            <p className="popup-cancellations__text"> Не устроил эвакуатор</p>
-          </CheckboxRadio>
+            type="radio"
+            title="Не устроил эвакуатор"
+          />
           <CheckboxRadio
-            name="long"
-            width="24px"
-            height="24px"
+            name="radio"
             value={isValueLong}
             onChange={(val) => setIsValueLong(val)}
-          >
-            <p className="popup-cancellations__text">
-              {' '}
-              Слишком долго жду эвакуатор
-            </p>
-          </CheckboxRadio>
+            type="radio"
+            title="Слишком долго жду эвакуатор"
+          />
           <CheckboxRadio
-            name="fast"
-            width="24px"
-            height="24px"
+            id="fast"
+            name="radio"
             value={isValueFast}
             onChange={(val) => setIsValueFast(val)}
-          >
-            <p className="popup-cancellations__text">
-              {' '}
-              Конкурент приехал быстрее
-            </p>
-          </CheckboxRadio>
+            type="radio"
+            title="Конкурент приехал быстрее"
+          />
           <CheckboxRadio
-            name="not-need"
-            width="24px"
-            height="24px"
+            id="need"
+            name="radio"
             value={isValueNotNeed}
-            onChange={(val) => setIsValueNotNeed(val)}
-          >
-            <p className="popup-cancellations__text">
-              Авто больше не нуждается в эвакуации
-            </p>
-          </CheckboxRadio>
+            onChange={(e) => setIsValueNotNeed(e)}
+            type="radio"
+            title="Авто больше не нуждается в эвакуации"
+          />
+
           <CheckboxRadio
-            name="other"
-            width="24px"
-            height="24px"
-            value={isValueOther}
-            onChange={(val) => setIsValueOther(val)}
-          >
-            <p className="popup-cancellations__text"> Другое</p>
-          </CheckboxRadio>
+            id="other"
+            name="radio"
+            value={isValue}
+            onChange={(e) => setIsValue(e)}
+            type="radio"
+            title="Другое"
+          />
 
-          {isValueOther && <Comment placeholder="Опишите, что случилось" />}
-
-          <Button label="Применить" primary="true" />
+          {isValue && <Comment placeholder="Опишите, что случилось" />}
         </div>
+        <Button label="Применить" primary="true" onClick={onClose} />
       </Popup>
     </div>
   );

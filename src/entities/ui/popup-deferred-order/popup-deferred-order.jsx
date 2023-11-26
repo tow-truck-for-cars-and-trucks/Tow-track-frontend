@@ -14,7 +14,7 @@ function PopupDeferredOrder({ isOpen, onClose, onSubmit }) {
         >
           <CloseIcon width="16px" height="16px" />
         </button>
-        <h1 className="popup-deferred__title">Отложенный заказ</h1>
+        <h2 className="popup-deferred__title">Отложенный заказ</h2>
         <p className="popup-deferred__text">
           Отложенный заказ можно сделать не ранее чем за 2 часа и не позднее 3
           дней, начиная с текущей даты
@@ -25,11 +25,11 @@ function PopupDeferredOrder({ isOpen, onClose, onSubmit }) {
           onSubmit={onSubmit}
         >
           <div className="popup-deferred__box">
-            <h2 className="popup-deferred__subtitle">Дата</h2>
+            <h3 className="popup-deferred__subtitle">Дата</h3>
             <input className="popup-deferred__input" />
           </div>
           <div className="popup-deferred__times">
-            <h2 className="popup-deferred__subtitle">Время</h2>
+            <h3 className="popup-deferred__subtitle">Время</h3>
             <div className="popup-deferred__box-time">
               <input className="popup-deferred__time" />
               <p className="popup-deferred__colon">:</p>

@@ -1,19 +1,69 @@
+// .checkbox-radio {
+//   // display: flex;
+//   // flex-direction: row-reverse;
+//   // width: 100%;
+//   // align-items: center;
+//   // height: 44px;
+//   &__span {
+//     color: var(--accent-black-80, #3b3e49);
+//     font-size: 18px;
+//     font-weight: 500;
+//     line-height: 120%;
+//     margin: 0;
+//     margin-right: auto;
+//     max-width: 250px;
+//   }
+
+//   &__icons {
+//     height: fit-content;
+//     padding: 0;
+//     padding-top: 4px;
+//     background-color: transparent;
+//     border: none;
+//   }
+
+//   &__input {
+//     display: none;
+//   }
+// }
 .checkbox-radio {
   display: flex;
-  flex-direction: row-reverse;
-  width: 100%;
   align-items: center;
   height: 44px;
-
-  &__icons {
-    height: fit-content;
-    padding: 0;
-    padding-top: 4px;
-    background-color: transparent;
-    border: none;
-  }
-
-  &__input {
-    display: none;
-  }
+}
+.checkbox-radio__input {
+  display: none;
+}
+.checkbox-radio__fake {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #7c7d7e;
+  position: relative;
+  border-radius: 50%;
+}
+.checkbox-radio__fake::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 13px;
+  height: 13px;
+  background-color: #3b3e49;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  border-radius: 50%;
+}
+.checkbox-radio__span {
+  color: var(--accent-black-80, #3b3e49);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 120%;
+  margin: 0;
+  margin-right: auto;
+  max-width: 250px;
+}
+.checkbox-radio__input:checked + .checkbox-radio__fake::before {
+  opacity: 1;
 }
