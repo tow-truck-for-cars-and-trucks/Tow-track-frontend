@@ -14,7 +14,7 @@ function TotalPrice({ total, onClick, isButtonActive }) {
         <h2 className="total-price__full-price"> {total} ₽</h2>
       </div>
       <Button
-        primary="true"
+        primary
         label="Оформить заказ"
         onClick={() => onClick()}
         disabled={!isButtonActive}

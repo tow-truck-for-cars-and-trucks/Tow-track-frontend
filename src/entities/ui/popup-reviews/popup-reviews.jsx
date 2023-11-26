@@ -44,7 +44,7 @@ function PopupReviews({ isOpen, onClose, name, onSubmit }) {
         <form className="popup-reviews__form" name={name} onSubmit={onSubmit}>
           <h3 className="popup-reviews__subtitle"> Комментарий</h3>
           <Comment placeholder="Вы можете оставить отзыв" />
-          <Button label="Оставить отзыв" primary="true" />
+          <Button label="Оставить отзыв" primary />
         </form>
       </Popup>
     </section>

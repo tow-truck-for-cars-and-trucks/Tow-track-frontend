@@ -3,16 +3,15 @@ import Chip from '../../../shared/ui/chip/chip';
 
 /**
  * @param {Array} chips - Chip component array
- * @param {function} onActivate - callback-function
  * @param {string} value - value of the Chip component
- * @param {function} onChange - (e: string) => void - tracks id changes
+ * @param {function} onChange - (e: string) => void - tracks id changes (callback-function)
  */
-function ChipsList({ chips, onActivate, value, onChange }) {
+function ChipsList({ chips, value, onChange }) {
   const onChipActivation = useCallback(
     (id) => {
       onChange(id);
     },
-    [onActivate]
+    [onChange]
   );
 
   return (

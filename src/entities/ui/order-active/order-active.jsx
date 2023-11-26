@@ -45,10 +45,10 @@ function OrderActive() {
         <Alert />
       </div>
       <div className="order-active__button">
-        <Button primary="true" label="Связаться с водителем" />
+        <Button primary label="Связаться с водителем" />
       </div>
       <Button
-        secondary="true"
+        secondary
         label="Отменить заказ"
         onClick={() => setIsPopupCancel(true)}
       />

@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/interactive-supports-focus */
 import { useState } from 'react';
 import './password-input.scss';
 import EyeIcon from '../icons/eye-icon';
@@ -36,6 +34,7 @@ function PasswordInput({ value, placeholder, onChange, invalid, id }) {
         </label>
         <div
           role="button"
+          tabIndex={0}
           aria-label="Стереть текст"
           className="password-input__delete-icon"
           onMouseDown={() => {
@@ -49,6 +48,7 @@ function PasswordInput({ value, placeholder, onChange, invalid, id }) {
         </div>
         <div
           role="button"
+          tabIndex={0}
           aria-label="Показать пароль"
           className="password-input__eye-icons"
           onMouseDown={() => {
