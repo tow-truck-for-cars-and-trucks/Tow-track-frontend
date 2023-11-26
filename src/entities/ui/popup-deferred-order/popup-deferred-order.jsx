@@ -3,7 +3,11 @@ import CloseIcon from '../../../shared/ui/icons/close-icon';
 import Button from '../../../shared/ui/button/button';
 // import MinuteDropdown from '../../../features/minute-dropdown/minute-dropdown';
 
-function PopupDeferredOrder({ isOpen, onClose, onSubmit }) {
+function PopupDeferredOrder({ isOpen, onClose }) {
+  // const onSubmit = (value) => {
+  //   console.log(value);
+  // };
+
   return (
     <div className={`popup-deferred ${isOpen ? 'popup-deferred_active' : ''}`}>
       <div className="popup-deferred__content">
@@ -23,7 +27,7 @@ function PopupDeferredOrder({ isOpen, onClose, onSubmit }) {
         <form
           className="popup-deferred__form"
           name="deferred-order"
-          onSubmit={onSubmit}
+          // onSubmit={handleSubmit(onSubmit)}
         >
           <div className="popup-deferred__box">
             <h2 className="popup-deferred__subtitle">Дата</h2>
