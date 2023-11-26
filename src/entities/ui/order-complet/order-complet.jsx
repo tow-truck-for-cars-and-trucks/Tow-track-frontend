@@ -8,11 +8,11 @@ import AboutTrack from '../../../shared/ui/about-truck/about-truck';
 import CloseIcon from '../../../shared/ui/icons/close-icon';
 import PopupReviews from '../popup-reviews/popup-reviews';
 
-function OrderComplet() {
+function OrderComplete() {
   const [isPopupReviews, setIsPopupReviews] = useState(false);
   return (
     <main className="order-complet">
-      <div className="order-complet__adress">
+      <div className="order-complet__address">
         <Adress
           adressFrom="Москва, ул. Ленинградская, 28"
           adressTo="​Московская область, г. Сергиев Посад, Сергиевская улица, 10"
@@ -61,4 +61,4 @@ function OrderComplet() {
   );
 }
 
-export default OrderComplet;
+export default OrderComplete;

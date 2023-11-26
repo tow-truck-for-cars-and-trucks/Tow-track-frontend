@@ -6,14 +6,19 @@ import Button from '../button/button';
  * @param {boolean} isRegister - is the user logged in or not
  */
 
-function TotalPrice({ total, onClick }) {
+function TotalPrice({ total, onClick, isButtonActive }) {
   return (
     <div className="total-price">
       <div className="total-price__wrapper">
         <h2 className="total-price__title">Стоимость заказа:</h2>
         <h2 className="total-price__full-price"> {total} ₽</h2>
       </div>
-      <Button primary label="Оформить заказ" onClick={() => onClick()} />
+      <Button
+        primary
+        label="Оформить заказ"
+        onClick={() => onClick()}
+        disabled={!isButtonActive}
+      />
     </div>
   );
 }

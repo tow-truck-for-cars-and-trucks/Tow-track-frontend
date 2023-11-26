@@ -39,8 +39,12 @@
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
-    margin-right: 20px;
+    margin-right: 4px;
     transform-origin: center center;
     scroll-snap-align: start;
+
+    &:last-child {
+      margin-right: 16px;
+    }
   }
 }
