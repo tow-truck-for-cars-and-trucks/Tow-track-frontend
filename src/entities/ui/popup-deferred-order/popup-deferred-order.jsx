@@ -1,6 +1,7 @@
 import './popup-deferred-order.scss';
 import CloseIcon from '../../../shared/ui/icons/close-icon';
 import Button from '../../../shared/ui/button/button';
+// import MinuteDropdown from '../../../features/minute-dropdown/minute-dropdown';
 
 function PopupDeferredOrder({ isOpen, onClose, onSubmit }) {
   return (
@@ -33,7 +34,7 @@ function PopupDeferredOrder({ isOpen, onClose, onSubmit }) {
             <div className="popup-deferred__box-time">
               <input className="popup-deferred__time" />
               <p className="popup-deferred__colon">:</p>
-              <input className="popup-deferred__time" />
+              {/* <MinuteDropdown value={10} onChange={() => onChange()} /> */}
             </div>
           </div>
           <Button label="Сохранить" primary="true" />
