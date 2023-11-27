@@ -1,7 +1,45 @@
-export default function mapOrderDataToBackend(data) {
+export function mapOrderDataToBackend(data) {
   return {
-    adress_from: data.adressFrom,
-    adress_to: data.adressTo,
-    car_type: data.CarType,
+    address_from: data.addressFrom,
+    address_to: data.addressTo,
+    delay: data.delay,
+    order_date: data.orderDate,
+    price: {
+      car_type: [data.carType],
+      tariff: [data.tariff],
+      wheel_lock: data.wheelLock,
+    },
+  };
+}
+
+export function mapOrderDataPriceToBackend(data) {
+  return {
+    address_from: data.addressFrom,
+    address_to: data.addressTo,
+    car_type: [1],
+    addition: data.addition,
+    tariff: [data.tariff],
+    delay: data.delay,
+    order_date: data.orderDate,
+    price: {
+      wheel_lock: data.wheelLock,
+      towin: false,
+    },
+  };
+}
+
+export function mapOrderPriceFromBackend(data) {
+  return data.price;
+}
+
+export function mapOrderDataFromBackend(data) {
+  return {
+    addressFrom: data.address_from,
+    addressTo: data.address_to,
+    delay: data.delay,
+    orderDate: data.order_date,
+    carType: data.price.car_type?.[0],
+    tariff: data.tariff?.[0],
+    wheelLock: data.wheelLock,
   };
 }
