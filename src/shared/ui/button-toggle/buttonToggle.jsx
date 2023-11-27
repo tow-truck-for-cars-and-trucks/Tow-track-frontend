@@ -1,6 +1,6 @@
 import './buttonToggle.scss';
 
-function ButtonToggle({ id, children, onChange, checked }) {
+function ButtonToggle({ id, children, onChange, value }) {
   return (
     <label className="button-toggle__lab" htmlFor={id}>
       {children}
@@ -8,8 +8,8 @@ function ButtonToggle({ id, children, onChange, checked }) {
         className="button-toggle__input"
         type="checkbox"
         id={id}
-        onChange={onChange}
-        checked={checked}
+        onChange={(e) => onChange(e.target.checked)}
+        checked={value}
       />
       <span className="button-toggle__span" />
     </label>
