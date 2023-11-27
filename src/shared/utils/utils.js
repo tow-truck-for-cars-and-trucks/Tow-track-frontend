@@ -1,7 +1,8 @@
 function getResponseData(response) {
-  return response.ok
-    ? response.json()
-    : response.json().then((e) => Promise.reject(e));
+  if (!response.ok) {
+    return Promise.reject(new Error(`Ошибка: ${response.status}`));
+  }
+  return response.json();
 }
 
 export default function request(url, options) {
