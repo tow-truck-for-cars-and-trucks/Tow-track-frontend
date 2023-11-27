@@ -5,7 +5,7 @@ import Contacts from '../../widget/contacts/contacts';
 function ContactsPage() {
   return (
     <>
-      <Header />
+      <Header onCreateOrderClick={() => {}} />
       <Contacts />
       <Footer />
     </>
