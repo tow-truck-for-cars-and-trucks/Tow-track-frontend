@@ -1,6 +1,12 @@
 function getResponseData(response) {
   if (!response.ok) {
-    return Promise.reject(new Error(`Ошибка: ${response.status}`));
+    return response
+      .json()
+      .then((err) =>
+        Promise.reject(
+          new Error(JSON.stringify({ 'Код ошибки': response.status, ...err }))
+        )
+      );
   }
   return response.json();
 }
