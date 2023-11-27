@@ -34,6 +34,14 @@
       caret-color: var(--accent-yellow-light);
     }
 
+    ~ .comment__counter {
+      display: none;
+    }
+
+    &:focus ~ .comment__counter {
+      display: block;
+    }
+
     &:focus:not(:placeholder-shown) + .comment__close-icon {
       display: block;
     }
@@ -41,6 +49,14 @@
     &:not(:focus, :placeholder-shown) {
       border: 2px solid var(--accent-yellow-light);
       caret-color: var(--accent-yellow-light);
+    }
+    .popup-reviews__form & {
+      width: 245px;
+      margin-bottom: 32px;
+    }
+    .popup-cancellations__container & {
+      width: 245px;
+      margin-bottom: 28px;
     }
   }
 

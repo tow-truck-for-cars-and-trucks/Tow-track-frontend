@@ -1,12 +1,9 @@
-.checkbox {
+.checkbox-radio {
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   width: 100%;
   align-items: center;
-
-  &_right {
-    flex-direction: row-reverse;
-  }
+  height: 44px;
 
   &__icons {
     height: fit-content;

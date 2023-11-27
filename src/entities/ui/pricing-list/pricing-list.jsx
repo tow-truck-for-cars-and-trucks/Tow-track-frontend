@@ -19,6 +19,7 @@ function PricingList({ pricings, onActivate, value, onChange }) {
     <>
       {pricings.map((pricing) => (
         <Pricing
+          key={pricing.id}
           title={pricing.title}
           description={pricing.description}
           price={pricing.price}

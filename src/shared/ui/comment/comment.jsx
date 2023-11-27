@@ -9,15 +9,19 @@ import CloseIcon from '../icons/close-icon';
  * @param {string} value - value displayed within the textarea
  */
 function Comment({ value, onChange }) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState((value || '').length);
 
-  const changeValue = useCallback((v) => {
-    setCount(v.length);
-    onChange(v);
-  }, []);
+  const changeValue = useCallback(
+    (v) => {
+      const cutValue = v.slice(0, 100);
+      if (cutValue !== value) setCount(cutValue.length);
+      onChange(cutValue);
+    },
+    [onChange, value]
+  );
 
   return (
-    <div className="comment__container">
+    <div className="comment__container ">
       <textarea
         className="comment__textarea"
         placeholder="Комментарий"

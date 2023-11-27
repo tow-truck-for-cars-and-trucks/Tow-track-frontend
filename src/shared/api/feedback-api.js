@@ -8,6 +8,13 @@ class FeedbackApi {
     this.headers = headers;
   }
 
+  getHeaders() {
+    return {
+      ...this.headers,
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    };
+  }
+
   getFeedbacks() {
     return request(`${this.baseUrl}/feedback/`);
   }
