@@ -13,15 +13,15 @@ class AuthApi {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify(inputs),
-    }).then((res) => res.data);
+    }).then((res) => res.auth_token);
   }
 
   postLogout(inputs) {
     return request(`${this.baseUrl}/auth/token/logout/`, {
       method: 'POST',
       headers: this.headers,
-      body: JSON.stringify(inputs),
-    }).then((res) => res.data);
+      body: inputs,
+    }).then((res) => res);
   }
 }
 

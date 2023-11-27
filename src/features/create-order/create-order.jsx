@@ -153,24 +153,26 @@ function CreateOrder() {
           </div>
         </div>
         <h2 className="create-order__title">Выберите тариф</h2>
-        <div className="create-order__views">
-          <Controller
-            name="activePrice"
-            control={control}
-            render={({ field: { value, onChange } }) => (
-              <PricingList
-                pricings={allPricing.map((tariff) => ({
-                  title: tariff.name,
-                  description: tariff.description,
-                  price: tariff.price,
-                  id: tariff.id,
-                }))}
-                value={value}
-                onChange={onChange}
-              />
-            )}
-          />
-        </div>
+        {allPricing && (
+          <div className="create-order__views">
+            <Controller
+              name="activePrice"
+              control={control}
+              render={({ field: { value, onChange } }) => (
+                <PricingList
+                  pricings={allPricing.map((tariff) => ({
+                    title: tariff.name,
+                    description: tariff.description,
+                    price: tariff.price,
+                    id: tariff.id,
+                  }))}
+                  value={value}
+                  onChange={onChange}
+                />
+              )}
+            />
+          </div>
+        )}
         <Controller
           name="buttonCounter"
           control={control}

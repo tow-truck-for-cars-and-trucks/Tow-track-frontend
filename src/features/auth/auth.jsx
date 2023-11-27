@@ -11,17 +11,21 @@ import { authFormSchema } from '../../shared/schema/schema';
 import Input from '../../shared/ui/input/input';
 import PasswordInput from '../../shared/ui/password-input/password-input';
 import Button from '../../shared/ui/button/button';
-// import authApi from '../../shared/api/auth-api';
+import authApi from '../../shared/api/auth-api';
 
 function Auth() {
   const authData = getLocalStorageAuth();
-
-  const onSubmit = () => {
-    console.log(authData);
-    /*   authApi.postLogin()
-    .then((data) => console.log(data))
-    .catch((error) => console.log(error)); */
-    removeLocalStorageAuth();
+  const onSubmit = (inputData) => {
+    console.log('делаем запрос с :', inputData);
+    authApi
+      .postLogin(inputData)
+      .then((data) => {
+        console.log('Успешная авторизация, токен записан');
+        localStorage.setItem('token', JSON.stringify(data));
+        removeLocalStorageAuth();
+      })
+      .catch((error) => console.log(error));
+    // сделать метод стирающий поля паролей в локалсторидже
   };
 
   const {

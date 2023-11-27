@@ -5,7 +5,5 @@ export default function mapUserDataToBackend(data) {
     first_name: data.firstName,
     password: data.password,
     re_password: data.confirmPassword,
-    // last_name: data.lastName,
-    // username: data.username,
   };
 }

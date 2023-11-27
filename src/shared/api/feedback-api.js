@@ -11,7 +11,7 @@ class FeedbackApi {
   getHeaders() {
     return {
       ...this.headers,
-      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      authorization: `Bearer ${localStorage.getItem('token')}`,
     };
   }
 

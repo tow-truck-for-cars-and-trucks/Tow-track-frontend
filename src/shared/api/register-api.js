@@ -29,7 +29,7 @@ class RegisterApi {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify(mapped),
-    }).then((res) => res.data);
+    }).then((res) => res);
   }
 }
 
