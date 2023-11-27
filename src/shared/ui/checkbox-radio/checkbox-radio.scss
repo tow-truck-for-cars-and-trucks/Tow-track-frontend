@@ -1,0 +1,19 @@
+.checkbox-radio {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  align-items: center;
+  height: 44px;
+
+  &__icons {
+    height: fit-content;
+    padding: 0;
+    padding-top: 4px;
+    background-color: transparent;
+    border: none;
+  }
+
+  &__input {
+    display: none;
+  }
+}

@@ -1,0 +1,13 @@
+.counter {
+  display: flex;
+  align-items: center;
+  width: 84px;
+  height: 16px;
+  margin: 20px;
+
+  &__btn {
+    background: var(--background-grey-light-blue-40);
+    border: none;
+    cursor: pointer;
+  }
+}

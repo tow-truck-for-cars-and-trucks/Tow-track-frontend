@@ -17,7 +17,6 @@
     color: var(--text-white);
     font-weight: 700;
     font-size: 24px;
-    font-family: Mulish, Helvetica, Arial, sans-serif;
     line-height: 1.25;
   }
 
@@ -40,8 +39,12 @@
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
-    margin-right: 20px;
+    margin-right: 4px;
     transform-origin: center center;
     scroll-snap-align: start;
+
+    &:last-child {
+      margin-right: 16px;
+    }
   }
 }

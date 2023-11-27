@@ -1,0 +1,53 @@
+%text-style {
+  margin: 0;
+  color: var(--text-black-80);
+  line-height: 1.25;
+}
+
+.order-success {
+  width: fit-content;
+  max-width: 320px;
+  padding: 28px 20px;
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 0 20px 0 rgb(134 146 159 / 15%);
+
+  &__time {
+    padding-bottom: 28px;
+  }
+
+  &__adress {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 28px;
+  }
+
+  &__price-title {
+    @extend %text-style;
+
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  &__price-total {
+    @extend %text-style;
+
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  &__alert {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+  &__button {
+    padding-bottom: 28px;
+  }
+}

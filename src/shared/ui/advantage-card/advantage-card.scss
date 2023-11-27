@@ -2,7 +2,8 @@
   max-width: 174px;
   max-height: 172px;
   padding: 28px 28px 23px;
-  background-color: var(--white);
+  margin-left: 16px;
+  background-color: var(--transparant-white-90);
   border-radius: 28px;
   box-shadow: 0 0 20px 0 rgb(134 146 159 / 15%);
 
@@ -12,7 +13,6 @@
     color: var(--text-black-80);
     font-weight: 500;
     font-size: 18px;
-    font-family: Mulish, Helvetica, Arial, sans-serif;
     line-height: 1.25;
   }
 
@@ -22,7 +22,6 @@
     color: var(--text-black-80);
     font-weight: 500;
     font-size: 14px;
-    font-family: Mulish, Helvetica, Arial, sans-serif;
     line-height: 1.25;
   }
 }

@@ -1,0 +1,38 @@
+.popup-cancel {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  &__content {
+    padding: 40px 28px 28px;
+    border-radius: 20px;
+    background: var(--background-white, #fff);
+    width: 308px;
+    position: relative;
+  }
+  &__btn {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  &__title {
+    margin: 0 0 28px;
+    color: var(--accent-black-80, #3b3e49);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 125%;
+  }
+}

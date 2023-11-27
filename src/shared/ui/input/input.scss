@@ -1,22 +1,19 @@
 %icon-style {
   position: absolute;
   top: 30px;
-  right: 20px;
+  right: 12px;
 }
 
 .input {
-  background-color: var(--white);
   border-radius: 12px;
 
   &__placeholder {
     position: absolute;
     top: 25px;
     left: 12px;
-    z-index: 9;
     display: block;
     color: var(--text-black-40);
     font-size: 18px;
-    font-family: Mulish, Helvetica, Arial, sans-serif;
   }
 
   &__container {
@@ -39,7 +36,6 @@
     padding-left: 16px;
     color: var(--system-error);
     font-size: 12px;
-    font-family: Mulish, Helvetica, Arial, sans-serif;
   }
 
   &:not(&_filled) &__text:not(:focus) ~ &__icon {
@@ -55,6 +51,12 @@
     display: inherit;
   }
 
+  &_filled.input_password:not(&_invalid, &_readonly)
+    &__text:not(:focus)
+    ~ &__eye-icon {
+    display: inherit;
+  }
+
   &__text {
     box-sizing: border-box;
     width: 100%;
@@ -63,9 +65,8 @@
     color: var(--text-black-90);
     font-weight: 500;
     font-size: 18px;
-    font-family: Mulish, Helvetica, Arial, sans-serif;
     line-height: 1.25;
-    background: var(--background-white);
+    background-color: var(--white);
     border: none;
     border-radius: 12px;
     outline: none;
@@ -93,15 +94,15 @@
     box-shadow: none;
   }
 
+  &_filled &__placeholder,
+  &__text:focus ~ .input__placeholder {
+    top: 12px;
+    font-size: 14px;
+  }
+
   &_static.input {
     .input__placeholder {
       top: 16px;
-    }
-
-    &_filled &__placeholder,
-    &__text:focus ~ .input__placeholder {
-      top: 12px;
-      font-size: 14px;
     }
 
     &.input_filled .input__placeholder,

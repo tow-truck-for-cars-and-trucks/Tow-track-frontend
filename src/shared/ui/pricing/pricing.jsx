@@ -7,11 +7,12 @@ import './pricing.scss';
  * @param {number} price - price offer
  */
 
-function Pricing({ title, description, price, isActive }) {
+function Pricing({ title, description, price, setActive, isActive }) {
   return (
     <button
       type="button"
-      className={['pricing', isActive ? 'pricing_active' : ''].join(' ')}
+      className={`pricing ${isActive ? 'pricing_active' : ''}`}
+      onClick={() => setActive(true)}
     >
       <h2 className="pricing__title">{title}</h2>
       <p className="pricing__description">{description}</p>

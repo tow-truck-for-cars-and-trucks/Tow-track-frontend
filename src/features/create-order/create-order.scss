@@ -1,0 +1,49 @@
+.create-order {
+  padding-left: 16px;
+
+  &__title {
+    margin: 0;
+    padding-bottom: 20px;
+    color: var(--text-black-80);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.25;
+  }
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 16px;
+    padding-bottom: 28px;
+  }
+
+  &__views {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__ditch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 29px;
+    padding-right: 16px;
+    padding-bottom: 32px;
+  }
+
+  &__price {
+    padding-right: 16px;
+  }
+
+  &__comment {
+    padding: 0 16px 28px 0;
+  }
+}

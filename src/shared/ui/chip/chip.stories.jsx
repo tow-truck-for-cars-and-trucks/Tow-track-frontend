@@ -18,13 +18,6 @@ export const Default = {
   },
 };
 
-export const Active = {
-  args: {
-    label: 'Легковой',
-    isActive: true,
-  },
-};
-
 export const Disabled = {
   args: {
     label: 'Легковой',

@@ -5,13 +5,16 @@ import ArrowUpIcon from '../icons/arrow-up-icon';
 
 /**
  * @param {string} title - title of the accordion
+ * @param {boolean} withBorder - accordion style with or without border
  */
-
-function Accordion({ title, children }) {
+function Accordion({ title, children, withBorder }) {
   const [isShow, setIsShow] = useState(false);
 
   return (
-    <div className="accordion">
+    <div
+      className={`accordion
+    ${withBorder ? 'accordion_with-border' : ''}`}
+    >
       <div className="accordion__header">
         <h2 className="accordion__title">{title}</h2>
         {!isShow && (
@@ -21,7 +24,7 @@ function Accordion({ title, children }) {
             className="accordion__icon"
             onClick={() => setIsShow(true)}
           >
-            <ArrowDownIcon width="16px" height="16px" />
+            <ArrowDownIcon width="16px" height="16px" fill="#3B3E49" />
           </button>
         )}
         {isShow && (
@@ -31,7 +34,7 @@ function Accordion({ title, children }) {
             className="accordion__icon"
             onClick={() => setIsShow(false)}
           >
-            <ArrowUpIcon width="16px" height="16px" />
+            <ArrowUpIcon width="16px" height="16px" fill="#3B3E49" />
           </button>
         )}
       </div>
@@ -46,6 +49,7 @@ function Accordion({ title, children }) {
 
 Accordion.defaultProps = {
   isShow: false,
+  withBorder: true,
 };
 
 export default Accordion;

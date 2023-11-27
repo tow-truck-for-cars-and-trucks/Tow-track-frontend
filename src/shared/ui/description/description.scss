@@ -1,0 +1,23 @@
+.description {
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__title {
+    margin: 0;
+    color: var(--text-black-80, #3b3e49);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 125%;
+  }
+
+  &__subtitle {
+    margin: 0;
+    color: var(--text-black-40, #7c7d7e);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 135%;
+  }
+}

@@ -1,6 +1,6 @@
 import './feedbacks.scss';
-import { useState } from 'react';
-import getFeedBack from '../../../shared/api/api';
+import { useState, useEffect } from 'react';
+import feedbackApi from '../../../shared/api/feedback-api';
 import Feedback from '../../../shared/ui/feedback/feedback';
 import useHorizontalScroll from '../../hooks/useHorizontalScroll';
 
@@ -8,11 +8,14 @@ function Feedbacks() {
   const [allFeedbacks, setAllFeedbacks] = useState([]);
   const { elRef } = useHorizontalScroll();
 
-  getFeedBack()
-    .then((feedbacks) => {
-      setAllFeedbacks(feedbacks);
-    })
-    .catch();
+  useEffect(() => {
+    feedbackApi
+      .getFeedbacks()
+      .then((feedbacks) => setAllFeedbacks(feedbacks))
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <section className="feedbacks">

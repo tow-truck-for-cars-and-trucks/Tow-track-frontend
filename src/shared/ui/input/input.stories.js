@@ -1,4 +1,4 @@
-import { useArgs } from '@storybook/client-api';
+import { useArgs } from '@storybook/preview-api';
 import NavigationArrowIcon from '../icons/navigation-arrow-icon';
 import Input from './input';
 
@@ -22,7 +22,6 @@ const defaultStory = {
   tags: ['autodocs'],
   args: {
     invalid: true,
-    errorText: 'Введите адрес',
     placeholderStatic: false,
     readonly: false,
   },
@@ -35,7 +34,6 @@ export const EmptyTextInput = {
     placeholder: 'Откуда забрать',
     icon: <NavigationArrowIcon width="16px" height="16px" />,
     invalid: false,
-    errorText: '',
   },
 };
 
@@ -45,7 +43,6 @@ export const FilledTextInput = {
     value: 'Москва, ул. Ленинградская, д. 28',
     icon: <NavigationArrowIcon width="16px" height="16px" />,
     invalid: false,
-    errorText: '',
   },
 };
 
@@ -54,7 +51,6 @@ export const ErrorTextInput = {
     placeholder: 'Откуда забрать',
     icon: <NavigationArrowIcon width="16px" height="16px" />,
     invalid: true,
-    errorText: 'Введите адрес',
   },
 };
 
@@ -64,7 +60,6 @@ export const EmptyNumber = {
     placeholder: '000 000 000',
     placeholderStatic: true,
     invalid: false,
-    errorText: '',
   },
 };
 
@@ -73,7 +68,6 @@ export const FilledNumber = {
     value: '123 123 123',
     placeholderStatic: true,
     invalid: false,
-    errorText: '',
   },
 };
 
@@ -92,7 +86,6 @@ export const EmptyPhoneNumber = {
     placeholder: '+ 7 (___) ___ __ __',
     placeholderStatic: true,
     invalid: false,
-    errorText: '',
   },
 };
 
@@ -101,7 +94,6 @@ export const FilledPhoneNumber = {
     value: '+7 (999) 999 99 99',
     placeholderStatic: true,
     invalid: false,
-    errorText: '',
   },
 };
 
@@ -110,7 +102,6 @@ export const ErrorPhoneNumber = {
     value: '+7 (999) 999 99 99',
     placeholderStatic: true,
     invalid: true,
-    errorText: 'Проверьте правильность номера',
   },
 };
 
@@ -119,7 +110,6 @@ export const EmptyTextField = {
     placeholder: 'Ваше имя',
     placeholderStatic: true,
     invalid: false,
-    errorText: '',
   },
 };
 
@@ -128,7 +118,6 @@ export const FilledTextField = {
     value: 'Ольга',
     placeholderStatic: true,
     invalid: false,
-    errorText: '',
   },
 };
 
@@ -137,7 +126,6 @@ export const ReadOnlyTextField = {
     value: 'Ольга',
     placeholderStatic: true,
     invalid: false,
-    errorText: '',
     readonly: true,
   },
 };
@@ -147,6 +135,5 @@ export const ErrorTextField = {
     value: '12345',
     placeholderStatic: true,
     invalid: true,
-    errorText: 'Введите буквенное значение',
   },
 };

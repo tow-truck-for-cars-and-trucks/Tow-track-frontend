@@ -1,6 +1,7 @@
 .chip {
   margin-right: 12px;
   padding: 16px 20px;
+  color: var(--accent-black-90);
   font-weight: 500;
   font-size: 18px;
   font-family: Mulish, Helvetica, Arial, sans-serif;
@@ -12,6 +13,7 @@
   cursor: pointer;
 
   &_active {
+    padding: 14px 18px;
     border: 2px solid var(--accent-yellow-light);
     box-shadow: none;
   }

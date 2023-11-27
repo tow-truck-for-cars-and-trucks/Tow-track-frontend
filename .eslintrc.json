@@ -41,7 +41,6 @@
               "**/*.stories.*",
               "**/.storybook/**/*.*"
             ],
-            // "devDependencies": true,
             "peerDependencies": true
           }
         ]

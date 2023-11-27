@@ -5,12 +5,13 @@ import './chip.scss';
  * @param {string} disabled - flag indicating that the button is disabled for clicking
  * @param {boolean} isActive - selected chip
  */
-function Chip({ label, isActive, disabled }) {
+function Chip({ label, disabled, setActive, isActive }) {
   return (
     <button
       type="button"
       disabled={disabled}
       className={`chip ${isActive ? 'chip_active' : ''}`}
+      onClick={() => setActive(true)}
     >
       {label}
     </button>

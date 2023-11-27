@@ -1,14 +1,19 @@
 %text-style {
   margin: 0;
-  font-family: Mulish, Helvetica, Arial, sans-serif;
 }
 
 .accordion {
   width: 318px;
   margin: 0;
-  padding-top: 24px;
-  padding-bottom: 28px;
-  border-top: 1px solid var(--accent-yellow-light);
+
+  &_with-border {
+    padding-top: 24px;
+    border-top: 1px solid var(--accent-yellow-light);
+  }
+
+  &_with-border:last-child {
+    border-bottom: 1px solid var(--accent-yellow-light);
+  }
 
   &__header {
     display: flex;
@@ -21,7 +26,7 @@
     @extend %text-style;
 
     color: var(--text-black-80);
-    font-weight: 600;
+    font-weight: 700;
     font-size: 20px;
     line-height: 1.25;
     cursor: pointer;

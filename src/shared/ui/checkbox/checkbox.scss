@@ -1,0 +1,22 @@
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+
+  &_right {
+    flex-direction: row-reverse;
+  }
+
+  &__icons {
+    height: fit-content;
+    padding: 0;
+    padding-top: 4px;
+    background-color: transparent;
+    border: none;
+  }
+
+  &__input {
+    display: none;
+  }
+}

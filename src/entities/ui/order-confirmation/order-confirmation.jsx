@@ -31,26 +31,25 @@ function OrderConfirmation() {
       </form>
       <div className="order-confirmation__submission-time">
         <p className="order-confirmation__description">
-          Примерное&nbsp;время&nbsp;подачи эвакуатора
+          Примерное время <span>подачи эвакуатора</span>
         </p>
         <p className="order-confirmation__description">16:45</p>
       </div>
       <div className="order-confirmation__payment">
         <h2 className="order-confirmation__payment-title">Способ оплаты</h2>
         <div className="order-confirmation__payment-container">
-          <Chip label="Наличные" isActive="true" />
+          <Chip label="Наличные" />
           <Chip label="Перевод по СБП" disabled="true" />
         </div>
       </div>
-      <div className="order-confirmation__info">
-        <OrderDetails
-          pricing="Эконом"
-          carType="Легковой автомобиль"
-          wheelLock="0"
-          cuvetteWork="Нет"
-          deferredOrder="Нет"
-        />
-      </div>
+      <OrderDetails
+        pricing="Эконом"
+        carType="Легковой автомобиль"
+        wheelLock="0"
+        cuvetteWork="Нет"
+        deferredOrder="Нет"
+        comment="Еще один очень важный комментарий"
+      />
       <div className="order-confirmation__price">
         <TotalPrice total="1820" />
       </div>

@@ -6,7 +6,10 @@
 }
 
 .pricing {
+  max-height: 107px;
+  margin-right: 12px;
   padding: 16px 24px;
+  white-space: nowrap;
   text-align: left;
   background-color: var(--white);
   border: none;
@@ -38,6 +41,7 @@
   }
 
   &_active {
+    padding: 14px 22px;
     border: 2px solid var(--accent-yellow-light);
     box-shadow: none;
   }

@@ -1,7 +1,10 @@
 @import './fonts';
 
 body {
+  box-sizing: border-box;
+  max-width: 1280px;
   margin: 0;
+  font-family: Mulish, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

@@ -1,0 +1,46 @@
+%text-style {
+  margin: 0;
+}
+
+.order-number {
+  margin: 0 16px;
+  color: var(--white);
+
+  &__container {
+    min-width: 358px;
+    background-color: var(--text-black-40);
+    border-radius: 12px;
+  }
+
+  &__container_opened {
+    border-radius: 12px 12px 0 0;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  &__title {
+    @extend %text-style;
+
+    color: var(--background-white);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.25;
+    cursor: pointer;
+  }
+
+  &__icon {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &-content_opened {
+    border-top: 1px solid var(--background-grey-blue-40);
+  }
+}

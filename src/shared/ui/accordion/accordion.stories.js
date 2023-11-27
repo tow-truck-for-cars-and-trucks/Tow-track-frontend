@@ -25,6 +25,21 @@ export const AboutTruckStory = {
   },
 };
 
+export const AboutTruckWithOutBorder = {
+  args: {
+    title: 'Информация о машине и водителе',
+    withBorder: false,
+    children: [
+      <AboutTruck
+        carModel="Isuzu NPR-75LK"
+        carNumber="А 123 АА 77 RUS"
+        carDriver="Константинопольский Иван"
+        rating="5,0"
+      />,
+    ],
+  },
+};
+
 export const OrderDetailsStory = {
   args: {
     title: 'Детали заказа',
