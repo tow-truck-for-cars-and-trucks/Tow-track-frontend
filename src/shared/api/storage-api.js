@@ -28,15 +28,3 @@ export function setLocalStorageRegister(value) {
 export function removeLocalStorageRegister() {
   return localStorage.removeItem('CREATE_REGISTER_FORM');
 }
-
-export function getLocalStorageOrder() {
-  return localStorage.getItem('CREATE_ORDER_FORM');
-}
-
-export function setLocalStorageOrder(value) {
-  return setToLocalStorage('CREATE_ORDER_FORM', value);
-}
-
-export function removeLocalStorageOrder() {
-  return localStorage.removeItem('CREATE_ORDER_FORM');
-}

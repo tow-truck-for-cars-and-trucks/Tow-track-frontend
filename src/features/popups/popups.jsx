@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PopupReviews from '../entities/ui/popup-reviews/popup-reviews';
+import PopupReviews from '../../entities/ui/popup-reviews/popup-reviews';
 
 function Popups() {
   const [isActiveRewies, setIsActiveRewies] = useState(true);

@@ -11,7 +11,7 @@ export const authFormSchema = yup.object().shape({
     .required('Введите почту'),
   password: yup
     .string()
-    .min(5, 'Пароль слишком короткий')
+    .min(5, 'Пароль слишком короткий.Нужно миминум 5 символов')
     .max(128, 'Пароль слишком длинный')
     .required('Введите пароль'),
 });
@@ -37,14 +37,15 @@ export const registerFormSchema = yup.object().shape({
       'Введите почту'
     )
     .required('Введите почту'),
+  phoneNumber: yup.string().required('Введите номер телефона'),
   password: yup
     .string()
-    .min(5, 'Пароль слишком короткий')
+    .min(5, 'Пароль слишком короткий.Нужно миминум 5 символов')
     .max(128, 'Пароль слишком длинный')
     .required('Введите пароль'),
   confirmPassword: yup
     .string()
-    .min(5, 'Пароль слишком короткий')
+    .min(5, 'Пароль слишком короткий.Нужно миминум 5 символов')
     .max(128, 'Пароль слишком длинный')
     .required('Введите пароль')
     .oneOf([yup.ref('password'), null], 'Пароли должны совпадать'),

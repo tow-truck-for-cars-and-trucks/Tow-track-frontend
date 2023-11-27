@@ -1,4 +1,5 @@
 import './order-confirmation.scss';
+import { useNavigate } from 'react-router-dom';
 import PagesTitle from '../../../shared/ui/pages-title/pages-title';
 import Input from '../../../shared/ui/input/input';
 import Chip from '../../../shared/ui/chip/chip';
@@ -7,6 +8,8 @@ import BackButton from '../../../shared/ui/back-button/back-button';
 import TotalPrice from '../../../shared/ui/total-price/total-price';
 
 function OrderConfirmation() {
+  const navigate = useNavigate();
+
   return (
     <main className="order-confirmation">
       <div className="order-confirmation__back-button">
@@ -51,7 +54,11 @@ function OrderConfirmation() {
         comment="Еще один очень важный комментарий"
       />
       <div className="order-confirmation__price">
-        <TotalPrice total="1820" />
+        <TotalPrice
+          total="1820"
+          onClick={() => navigate('/my-orders', { replace: true })}
+          isButtonActive
+        />
       </div>
     </main>
   );

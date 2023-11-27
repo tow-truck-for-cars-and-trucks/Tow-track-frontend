@@ -35,7 +35,9 @@ function Auth() {
     formState: { errors },
   } = useForm({
     defaultValues: authData
-      ? JSON.parse(authData)
+      ? {
+          email: JSON.parse(authData),
+        }
       : {
           email: '',
           password: '',
@@ -47,7 +49,7 @@ function Auth() {
 
   useEffect(() => {
     const subscription = watch((value) => {
-      setLocalStorageAuth(value);
+      setLocalStorageAuth(value.email);
     });
     return () => subscription.unsubscribe();
   }, [watch]);
@@ -90,9 +92,9 @@ function Auth() {
         </div>
         <div className="auth__button">
           <Button
-            primary="true"
             label="Войти"
             onClick={handleSubmit(onSubmit)}
+            primary
             disabled={!!Object.keys(errors).length}
           />
         </div>

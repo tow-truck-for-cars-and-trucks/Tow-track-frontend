@@ -3,9 +3,8 @@ import request from '../utils/utils';
 const { REACT_APP_BASE_URL } = process.env;
 
 class CarTypeApi {
-  constructor({ baseUrl, headers }) {
+  constructor({ baseUrl }) {
     this.baseUrl = baseUrl;
-    this.headers = headers;
   }
 
   getCarType() {
@@ -15,9 +14,6 @@ class CarTypeApi {
 
 const carTypeApi = new CarTypeApi({
   baseUrl: REACT_APP_BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
 });
 
 export default carTypeApi;
