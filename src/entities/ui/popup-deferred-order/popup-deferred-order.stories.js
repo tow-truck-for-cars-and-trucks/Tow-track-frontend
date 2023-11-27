@@ -9,4 +9,8 @@ export default {
   },
 };
 
-export const Default = {};
+export const Default = {
+  args: {
+    isOpen: true,
+  },
+};

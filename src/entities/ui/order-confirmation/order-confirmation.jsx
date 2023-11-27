@@ -51,7 +51,7 @@ function OrderConfirmation() {
         comment="Еще один очень важный комментарий"
       />
       <div className="order-confirmation__price">
-        <TotalPrice total="1820" />
+        <TotalPrice total="1820" scrollOffset={400} />
       </div>
     </main>
   );

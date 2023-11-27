@@ -12,6 +12,14 @@
   border-radius: 12px;
   box-shadow: 0 0 20px 0 rgb(134 146 159 / 15%);
 
+  &.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 33px;
+    width: 326px;
+    z-index: 1000;
+  }
+
   &__wrapper {
     display: flex;
     flex-direction: row;

@@ -202,6 +202,7 @@ function CreateOrder() {
             onClick={() => navigate('/register', { replace: true })}
             total={1820}
             isButtonActive={isButtonActive}
+            scrollOffset={1070}
           />
         </div>
       </form>

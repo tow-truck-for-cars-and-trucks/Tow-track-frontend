@@ -12,6 +12,21 @@ import StepThreeDisableIcon from '../../../shared/ui/icons/step-three-disable-ic
 import StepFourDisableIcon from '../../../shared/ui/icons/step-four-disable-icon';
 
 function OrderSuccess() {
+  const driverPhoneNumber = '88801112222';
+
+  const handleCallDriver = () => {
+    // console.log('Пробуем сделать вызов водителя:', driverPhoneNumber);
+    // try {
+    //   window.location.href = `tel:${driverPhoneNumber}`;
+    //   console.log('Выполнили вызов водителя.');
+    // } catch (error) {
+    //   console.error('Ошибка при вызове водителя:', error);
+    // }
+
+    console.log('Выполняется вызов водителя:', driverPhoneNumber);
+    window.location.href = `tel:${driverPhoneNumber}`;
+  };
+
   return (
     <section className="order-success">
       <div className="order-success__time">
@@ -51,7 +66,11 @@ function OrderSuccess() {
         <Alert />
       </div>
       <div className="order-success__button">
-        <Button primary label="Связаться с водителем" />
+        <Button
+          primary
+          label="Связаться с водителем"
+          onClick={handleCallDriver}
+        />
       </div>
       <Button secondary label="Отменить заказ" />
     </section>

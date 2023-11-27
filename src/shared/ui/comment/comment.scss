@@ -7,7 +7,7 @@
 .comment {
   &__container {
     position: relative;
-    width: 358px;
+    max-width: 358px;
     min-height: 98px;
   }
 
@@ -51,7 +51,7 @@
       caret-color: var(--accent-yellow-light);
     }
     .popup-reviews__form & {
-      width: 245px;
+      width: 240px;
       margin-bottom: 32px;
     }
     .popup-cancellations__container & {
