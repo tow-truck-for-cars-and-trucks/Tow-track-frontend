@@ -6,7 +6,7 @@ import Questions from '../../widget/questions/questions';
 function SuccessOrderPage() {
   return (
     <>
-      <Header />
+      <Header onCreateOrderClick={() => {}} />
       <OrderSuccessWidget />
       <Questions />
       <Footer />

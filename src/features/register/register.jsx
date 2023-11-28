@@ -13,13 +13,21 @@ import PasswordInput from '../../shared/ui/password-input/password-input';
 import Button from '../../shared/ui/button/button';
 import Checkbox from '../../shared/ui/checkbox/checkbox';
 import CheckboxAuthDescription from '../../shared/ui/checkbox-auth-description/checkbox-auth-description';
+import registerApi from '../../shared/api/register-api';
 
 function Register() {
   const registerData = getLocalStorageRegister();
-
-  const submit = () => {
-    console.log(registerData);
-    removeLocalStorageRegister();
+  const onSubmit = (inputData) => {
+    console.log('делаем запрос с:', inputData);
+    registerApi
+      .postRegister(inputData)
+      .then((data) => {
+        console.log('Успешная регистрация');
+        console.log(data);
+        removeLocalStorageRegister();
+      })
+      .catch((error) => console.log(error));
+    // метод стирающий поля паролей в локалсторидже
   };
 
   const {
@@ -42,7 +50,7 @@ function Register() {
           email: '',
           password: '',
           confirmPassword: '',
-          checkbox: '',
+          checkbox: false,
         },
     mode: 'onChange',
     reValidateMode: 'onChange',
@@ -187,8 +195,8 @@ function Register() {
       <div className="register__button">
         <Button
           label="Зарегистрироваться"
+          onClick={handleSubmit(onSubmit)}
           primary
-          onClick={handleSubmit(submit)}
           disabled={!!Object.keys(errors).length}
         />
       </div>

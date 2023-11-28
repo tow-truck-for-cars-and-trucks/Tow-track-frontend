@@ -1,12 +1,17 @@
 import './order-confirmation.scss';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PagesTitle from '../../../shared/ui/pages-title/pages-title';
 import Input from '../../../shared/ui/input/input';
-import Chip from '../../../shared/ui/chip/chip';
+import ChipsList from '../chips-list/chips-list';
 import OrderDetails from '../../../shared/ui/order-details/order-details';
 import BackButton from '../../../shared/ui/back-button/back-button';
 import TotalPrice from '../../../shared/ui/total-price/total-price';
 
 function OrderConfirmation() {
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState('cash');
+
   return (
     <main className="order-confirmation">
       <div className="order-confirmation__back-button">
@@ -38,8 +43,14 @@ function OrderConfirmation() {
       <div className="order-confirmation__payment">
         <h2 className="order-confirmation__payment-title">Способ оплаты</h2>
         <div className="order-confirmation__payment-container">
-          <Chip label="Наличные" />
-          <Chip label="Перевод по СБП" disabled="true" />
+          <ChipsList
+            chips={[
+              { label: 'Наличные', id: 'cash' },
+              { label: 'Оплата по СБП', disabled: 'true', id: 'byCard' },
+            ]}
+            value={activeTab}
+            onChange={(chips) => setActiveTab(chips)}
+          />
         </div>
       </div>
       <OrderDetails
@@ -51,7 +62,12 @@ function OrderConfirmation() {
         comment="Еще один очень важный комментарий"
       />
       <div className="order-confirmation__price">
-        <TotalPrice total="1820" scrollOffset={400} />
+        <TotalPrice
+          total="1820"
+          onClick={() => navigate('/my-orders', { replace: true })}
+          isButtonActive
+          scrollOffset={400}
+        />
       </div>
     </main>
   );

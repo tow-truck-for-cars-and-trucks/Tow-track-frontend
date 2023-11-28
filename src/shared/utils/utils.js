@@ -1,8 +1,14 @@
-function getResponseData(res) {
-  if (!res.ok) {
-    return Promise.reject(new Error(`Ошибка: ${res.status}`));
+function getResponseData(response) {
+  if (!response.ok) {
+    return response
+      .json()
+      .then((err) =>
+        Promise.reject(
+          new Error(JSON.stringify({ 'Код ошибки': response.status, ...err }))
+        )
+      );
   }
-  return res.json();
+  return response.json();
 }
 
 export default function request(url, options) {
