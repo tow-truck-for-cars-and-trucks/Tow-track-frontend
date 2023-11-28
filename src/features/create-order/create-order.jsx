@@ -225,6 +225,7 @@ function CreateOrder() {
             )}
             total={total}
             isButtonActive={isButtonActive}
+            scrollOffset={1070}
           />
         </div>
       </form>

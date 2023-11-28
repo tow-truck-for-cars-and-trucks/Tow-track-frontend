@@ -66,6 +66,7 @@ function OrderConfirmation() {
           total="1820"
           onClick={() => navigate('/my-orders', { replace: true })}
           isButtonActive
+          scrollOffset={400}
         />
       </div>
     </main>
