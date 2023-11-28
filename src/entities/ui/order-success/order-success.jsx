@@ -15,14 +15,6 @@ function OrderSuccess() {
   const driverPhoneNumber = '88801112222';
 
   const handleCallDriver = () => {
-    // console.log('Пробуем сделать вызов водителя:', driverPhoneNumber);
-    // try {
-    //   window.location.href = `tel:${driverPhoneNumber}`;
-    //   console.log('Выполнили вызов водителя.');
-    // } catch (error) {
-    //   console.error('Ошибка при вызове водителя:', error);
-    // }
-
     console.log('Выполняется вызов водителя:', driverPhoneNumber);
     window.location.href = `tel:${driverPhoneNumber}`;
   };
