@@ -23,6 +23,6 @@ jobs:
     - name: Push to Docker Hub frontend
       uses: docker/build-push-action@v3
       with:
-        context: ./frontend/
+        context: ./
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/tte_frontend:latest
