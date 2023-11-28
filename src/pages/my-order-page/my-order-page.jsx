@@ -5,7 +5,7 @@ import Footer from '../../widget/footer/footer';
 function MyOrderPage() {
   return (
     <>
-      <Header />
+      <Header onCreateOrderClick={() => {}} />
       <MyOrder />
       <Footer />
     </>

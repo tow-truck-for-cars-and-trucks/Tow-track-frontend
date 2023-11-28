@@ -1,5 +1,6 @@
 import './register.scss';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Input from '../../shared/ui/input/input';
@@ -16,6 +17,7 @@ import CheckboxAuthDescription from '../../shared/ui/checkbox-auth-description/c
 
 function Register() {
   const registerData = getLocalStorageRegister();
+  const navigate = useNavigate();
 
   const submit = () => {
     console.log(registerData);
@@ -188,7 +190,12 @@ function Register() {
         <Button
           label="Зарегистрироваться"
           primary
-          onClick={handleSubmit(submit)}
+          onClick={() =>
+            handleSubmit(() => {
+              submit();
+              navigate('/success-order', { replace: true });
+            })
+          }
           disabled={!!Object.keys(errors).length}
         />
       </div>

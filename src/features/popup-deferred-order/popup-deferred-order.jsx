@@ -59,7 +59,6 @@ function PopupDeferredOrder({ isOpen, onClose, onSave }) {
           Отложенный заказ можно сделать не ранее чем за 2 часа и не позднее 3
           дней, начиная с текущей даты
         </p>
-        {selectedDate.toISOString()}
         <div className="popup-deferred__form" name="deferred-order">
           <div className="popup-deferred__box">
             <h2 className="popup-deferred__subtitle">Дата</h2>

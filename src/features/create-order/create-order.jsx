@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import { addressFormSchema } from '../../shared/schema/schema';
 import carTypeApi from '../../shared/api/car-type-api';
 import tariffApi from '../../shared/api/tariff-api';
+import orderApi from '../../shared/api/order-api';
 import Input from '../../shared/ui/input/input';
 import NavigationArrowIcon from '../../shared/ui/icons/navigation-arrow-icon';
 import Description from '../../shared/ui/description/description';
@@ -21,23 +22,23 @@ function CreateOrder() {
   const [allCars, setAllCars] = useState([]);
   const [allPricing, setAllPricing] = useState([]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [total, setTotal] = useState(null);
   const navigate = useNavigate();
-  const onSubmit = (value) => {
-    console.log(value);
-  };
+
   const timerRef = useRef(null);
 
-  useEffect(() => {
-    carTypeApi
-      .getCarType()
-      .then((carType) => setAllCars(carType))
-      .catch((error) => {
-        console.log(error);
-      });
+  function calculatePrice(order) {
+    return orderApi.getOrderPrice(order).then((orderPrice) => {
+      setTotal(orderPrice);
+    });
+  }
 
-    tariffApi
-      .getTariffType()
-      .then((tariff) => setAllPricing(tariff))
+  useEffect(() => {
+    Promise.all([carTypeApi.getCarType(), tariffApi.getTariffType()])
+      .then(([carType, tariff]) => {
+        setAllCars(carType);
+        setAllPricing(tariff);
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -53,11 +54,12 @@ function CreateOrder() {
     defaultValues: {
       addressFrom: '',
       addressTo: '',
-      activeTab: 'Легковой',
-      activePrice: 2,
-      buttonCounter: 0,
-      deferredOrderCheckbox: false,
-      towinCheckbox: false,
+      carType: 'Легковой',
+      orderDate: '',
+      tariff: 2,
+      wheelLock: 0,
+      delay: false,
+      towin: false,
       comment: '',
     },
     mode: 'onChange',
@@ -72,7 +74,7 @@ function CreateOrder() {
       clearTimeout(timerRef.current);
 
       timerRef.current = setTimeout(() => {
-        handleSubmit(onSubmit).apply(this);
+        handleSubmit(calculatePrice).apply(this);
       }, 1000);
     });
     return () => subscription.unsubscribe();
@@ -81,7 +83,7 @@ function CreateOrder() {
   return (
     <div className="create-order">
       <h2 className="create-order__title">Адреса</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form>
         <div className="create-order__input">
           <Controller
             name="addressFrom"
@@ -117,7 +119,7 @@ function CreateOrder() {
         <h2 className="create-order__title">Что перевозим?</h2>
         <div className="create-order__views">
           <Controller
-            name="activeTab"
+            name="carType"
             control={control}
             render={({ field: { value, onChange } }) => (
               <ChipsList
@@ -135,14 +137,10 @@ function CreateOrder() {
           <Description title="Кюветные работы" subtitle="Сложность доступа" />
           <div className="create-order__toggle">
             <Controller
-              name="towinCheckbox"
+              name="towin"
               control={control}
               render={({ field: { value, onChange } }) => (
-                <ButtonToggle
-                  id="towinCheckbox"
-                  value={value}
-                  onChange={onChange}
-                />
+                <ButtonToggle id="towin" value={value} onChange={onChange} />
               )}
             />
           </div>
@@ -150,7 +148,7 @@ function CreateOrder() {
         <h2 className="create-order__title">Выберите тариф</h2>
         <div className="create-order__views">
           <Controller
-            name="activePrice"
+            name="tariff"
             control={control}
             render={({ field: { value, onChange } }) => (
               <PricingList
@@ -167,7 +165,7 @@ function CreateOrder() {
           />
         </div>
         <Controller
-          name="buttonCounter"
+          name="wheelLock"
           control={control}
           render={({ field: { value, onChange } }) => (
             <ButtonCounterController value={value} onChange={onChange} />
@@ -179,17 +177,17 @@ function CreateOrder() {
             subtitle="Выберите день и время"
           />
           <Controller
-            name="deferredOrderCheckbox"
+            name="delay"
             control={control}
             render={({ field: { value } }) => (
               <ButtonToggle
-                id="deferredOrderCheckbox"
+                id="delay"
                 value={value}
                 onChange={(toggle) => {
                   if (toggle) {
                     setIsPopupOpen(true);
                   } else {
-                    setValue('deferredOrderCheckbox', false);
+                    setValue('delay', false);
                   }
                 }}
               />
@@ -199,12 +197,13 @@ function CreateOrder() {
         <PopupDeferredOrder
           isOpen={isPopupOpen}
           onSave={(date) => {
-            setValue('deferredOrderCheckbox', date);
+            setValue('orderDate', date);
+            setValue('delay', true);
             setIsPopupOpen(false);
           }}
           onClose={() => {
             setIsPopupOpen(false);
-            setValue('deferredOrderCheckbox', false);
+            setValue('delay', false);
           }}
         />
         <div className="create-order__comment">
@@ -222,7 +221,7 @@ function CreateOrder() {
             onClick={handleSubmit(() =>
               navigate('/register', { replace: true })
             )}
-            total={1820}
+            total={total}
             isButtonActive={isButtonActive}
           />
         </div>
