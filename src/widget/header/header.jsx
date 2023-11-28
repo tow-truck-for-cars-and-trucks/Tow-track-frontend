@@ -6,7 +6,7 @@ import LogoCombined from '../../shared/ui/icons/logo-combined';
 import CloseIcon from '../../shared/ui/icons/close-icon';
 import Menu from './menu/menu';
 
-function Header() {
+function Header({ onCreateOrderClick }) {
   const [showMenu, setIsShowMenu] = React.useState(false);
   const handleClick = () => {
     setIsShowMenu(!showMenu);
@@ -32,7 +32,7 @@ function Header() {
           </button>
         </div>
       </header>
-      <Menu visible={showMenu} />
+      <Menu visible={showMenu} onCreateOrderClick={onCreateOrderClick} />
     </>
   );
 }

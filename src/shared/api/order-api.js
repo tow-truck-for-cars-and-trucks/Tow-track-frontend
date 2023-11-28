@@ -1,4 +1,8 @@
 import request from '../utils/utils';
+import {
+  mapOrderDataPriceToBackend,
+  mapOrderPriceFromBackend,
+} from '../mappers/order-mapper';
 
 const { REACT_APP_BASE_URL } = process.env;
 
@@ -15,14 +19,14 @@ class OrderApi {
     };
   }
 
-  postOrder() {
-    // const mapped = mapOrderDataToBackend(data);
-
-    return request(`${this.baseUrl}/order/`, {
-      // body: mapped,
+  async getOrderPrice(order) {
+    const res = await request(`${this.baseUrl}/order/total_price/`, {
       method: 'POST',
-      headers: this.getHeaders(),
-    }).then((res) => res.data);
+      headers: this.headers,
+      body: JSON.stringify(mapOrderDataPriceToBackend(order)),
+    });
+
+    return mapOrderPriceFromBackend(res);
   }
 }
 

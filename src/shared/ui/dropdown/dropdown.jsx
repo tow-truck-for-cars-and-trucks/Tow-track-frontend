@@ -19,7 +19,6 @@ function Dropdown({ value, options, onChange, valueComparator }) {
         className={`dropdown__header ${
           isActive ? 'dropdown__header_active' : ''
         }`}
-        onTouchStart={() => setIsActive(!isActive)}
         onMouseDown={() => setIsActive(!isActive)}
         role="button"
         tabIndex={0}
@@ -43,7 +42,6 @@ function Dropdown({ value, options, onChange, valueComparator }) {
             tabIndex={0}
             aria-label="Дробдаун-меню"
             className="dropdown__item"
-            onTouchStart={() => onValueSelect(option)}
             onMouseDown={() => onValueSelect(option)}
           >
             {option.label}
