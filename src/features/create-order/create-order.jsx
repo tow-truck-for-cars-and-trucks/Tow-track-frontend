@@ -23,6 +23,7 @@ function CreateOrder() {
   const [allPricing, setAllPricing] = useState([]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [total, setTotal] = useState(null);
+  const [newOrder, setNewOrder] = useState([]);
   const navigate = useNavigate();
 
   const timerRef = useRef(null);
@@ -66,6 +67,18 @@ function CreateOrder() {
     reValidateMode: 'onChange',
     resolver: yupResolver(addressFormSchema),
   });
+
+  function createOrder(order) {
+    return orderApi
+      .createOrder(order)
+      .then((ord) => {
+        setNewOrder(ord);
+      })
+      .then((defaultValues) => {
+        setValue(defaultValues);
+        navigate('/register', { replace: true });
+      });
+  }
 
   const isButtonActive = !(errors.addressFrom || errors.addressTo);
 
@@ -218,9 +231,7 @@ function CreateOrder() {
         </div>
         <div className="create-order__price">
           <TotalPrice
-            onClick={handleSubmit(() =>
-              navigate('/register', { replace: true })
-            )}
+            onClick={handleSubmit(() => createOrder(newOrder))}
             total={total}
             isButtonActive={isButtonActive}
           />

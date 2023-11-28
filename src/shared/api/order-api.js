@@ -2,6 +2,8 @@ import request from '../utils/utils';
 import {
   mapOrderDataPriceToBackend,
   mapOrderPriceFromBackend,
+  mapOrderDataToBackend,
+  mapOrderDataFromBackend,
 } from '../mappers/order-mapper';
 
 const { REACT_APP_BASE_URL } = process.env;
@@ -15,8 +17,18 @@ class OrderApi {
   getHeaders() {
     return {
       ...this.headers,
-      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      authorization: `Bearer ${localStorage.getItem('token')}`,
     };
+  }
+
+  async createOrder(order) {
+    const res = await request(`${this.baseUrl}/order/`, {
+      method: 'POST',
+      headers: this.getHeaders(),
+      body: JSON.stringify(mapOrderDataToBackend(order)),
+    });
+
+    return mapOrderDataFromBackend(res);
   }
 
   async getOrderPrice(order) {

@@ -10,21 +10,14 @@ import { useState } from 'react';
  * @param {string} comment - comment of the user
  * @param {boolean} deferredOrder - deferred order needed/not needed
  */
-function OrderDetails({
-  pricing,
-  carType,
-  wheelLock,
-  cuvetteWork,
-  deferredOrder,
-  comment,
-}) {
+function OrderDetails({ tariff, carType, wheelLock, towin, delay, comment }) {
   const [isShow, setIsShow] = useState(false);
 
   return (
     <div className="order-details">
       <ul className="order-details__content">
         <li className="order-details__title">Выбранный тариф</li>
-        <li className="order-details__selected">{pricing}</li>
+        <li className="order-details__selected">{tariff}</li>
       </ul>
       <ul className="order-details__content">
         <li className="order-details__title">Что везем</li>
@@ -36,11 +29,11 @@ function OrderDetails({
       </ul>
       <ul className="order-details__content">
         <li className="order-details__title">Кюветные работы</li>
-        <li className="order-details__selected">{cuvetteWork}</li>
+        <li className="order-details__selected">{towin}</li>
       </ul>
       <ul className="order-details__content">
         <li className="order-details__title">Отложенный заказ</li>
-        <li className="order-details__selected">{deferredOrder}</li>
+        <li className="order-details__selected">{delay}</li>
       </ul>
       <ul className="order-details__content">
         <li className="order-details__title">Комментарий</li>
