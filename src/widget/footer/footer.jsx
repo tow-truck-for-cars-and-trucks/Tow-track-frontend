@@ -1,4 +1,5 @@
 import './footer.scss';
+import { Link } from 'react-router-dom';
 import ExpressLogo from '../../shared/ui/icons/express-logo';
 import Logo from '../../shared/ui/icons/logo';
 import ArrowScroll from '../../shared/ui/arrow-scroll/arrow-scroll';
@@ -19,7 +20,9 @@ function Footer() {
                 <span className="footer__phone-number">8 880 111 2222</span>
                 <div>Круглосуточно</div>
               </div>
-              <div className="footer__contacts">Контакты</div>
+              <Link className="footer__link footer__contacts" to="/contacts">
+                Контакты
+              </Link>
             </div>
             <div className="footer__documents">
               <a href="/" className="footer__link">
