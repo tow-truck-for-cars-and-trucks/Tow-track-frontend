@@ -28,3 +28,11 @@ export function setLocalStorageRegister(value) {
 export function removeLocalStorageRegister() {
   return localStorage.removeItem('CREATE_REGISTER_FORM');
 }
+
+export function getLocalStorageToken() {
+  return JSON.parse(localStorage.getItem('token'));
+}
+
+export function setLocalStorageToken(value) {
+  return setToLocalStorage('token', value);
+}

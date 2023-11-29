@@ -11,7 +11,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Main />} />
       <Route path="/contacts" element={<ContactsPage />} />
-      <Route path="/order" element={<Order />} />
+      <Route path="/order/:id" element={<Order />} />
       <Route path="/success-order" element={<SuccessOrderPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/my-orders" element={<MyOrderPage />} />

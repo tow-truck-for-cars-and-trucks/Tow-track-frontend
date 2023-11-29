@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useRef, useState } from 'react';
 import { addressFormSchema } from '../../shared/schema/schema';
+import { getLocalStorageToken } from '../../shared/api/storage-api';
 import carTypeApi from '../../shared/api/car-type-api';
 import tariffApi from '../../shared/api/tariff-api';
 import orderApi from '../../shared/api/order-api';
@@ -23,7 +24,6 @@ function CreateOrder() {
   const [allPricing, setAllPricing] = useState([]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [total, setTotal] = useState(null);
-  const [newOrder, setNewOrder] = useState([]);
   const navigate = useNavigate();
 
   const timerRef = useRef(null);
@@ -45,6 +45,18 @@ function CreateOrder() {
       });
   }, []);
 
+  const defaultValues = {
+    addressFrom: '',
+    addressTo: '',
+    carType: 2,
+    orderDate: '',
+    tariff: 2,
+    wheelLock: 0,
+    delay: false,
+    towin: false,
+    comment: '',
+  };
+
   const {
     control,
     watch,
@@ -52,32 +64,21 @@ function CreateOrder() {
     setValue,
     formState: { errors },
   } = useForm({
-    defaultValues: {
-      addressFrom: '',
-      addressTo: '',
-      carType: 'Легковой',
-      orderDate: '',
-      tariff: 2,
-      wheelLock: 0,
-      delay: false,
-      towin: false,
-      comment: '',
-    },
+    defaultValues,
     mode: 'onChange',
     reValidateMode: 'onChange',
     resolver: yupResolver(addressFormSchema),
   });
 
   function createOrder(order) {
-    return orderApi
-      .createOrder(order)
-      .then((ord) => {
-        setNewOrder(ord);
-      })
-      .then((defaultValues) => {
-        setValue(defaultValues);
-        navigate('/register', { replace: true });
+    if (getLocalStorageToken()) {
+      orderApi.createOrder(order).then((data) => {
+        navigate(`/order/${data.id}`, { replace: true });
       });
+    } else {
+      localStorage.setItem('ORDER_FOR_CREATION', JSON.stringify(order));
+      navigate('/register', { replace: true });
+    }
   }
 
   const isButtonActive = !(errors.addressFrom || errors.addressTo);
@@ -138,7 +139,7 @@ function CreateOrder() {
               <ChipsList
                 chips={allCars.map((carType) => ({
                   label: carType.car_type,
-                  id: carType.car_type,
+                  id: carType.id,
                 }))}
                 value={value}
                 onChange={onChange}
@@ -159,24 +160,26 @@ function CreateOrder() {
           </div>
         </div>
         <h2 className="create-order__title">Выберите тариф</h2>
-        <div className="create-order__views">
-          <Controller
-            name="tariff"
-            control={control}
-            render={({ field: { value, onChange } }) => (
-              <PricingList
-                pricings={allPricing.map((tariff) => ({
-                  title: tariff.name,
-                  description: tariff.description,
-                  price: tariff.price,
-                  id: tariff.id,
-                }))}
-                value={value}
-                onChange={onChange}
-              />
-            )}
-          />
-        </div>
+        {allPricing && (
+          <div className="create-order__views">
+            <Controller
+              name="tariff"
+              control={control}
+              render={({ field: { value, onChange } }) => (
+                <PricingList
+                  pricings={allPricing.map((tariff) => ({
+                    title: tariff.name,
+                    description: tariff.description,
+                    price: tariff.price,
+                    id: tariff.id,
+                  }))}
+                  value={value}
+                  onChange={onChange}
+                />
+              )}
+            />
+          </div>
+        )}
         <Controller
           name="wheelLock"
           control={control}
@@ -231,7 +234,7 @@ function CreateOrder() {
         </div>
         <div className="create-order__price">
           <TotalPrice
-            onClick={handleSubmit(() => createOrder(newOrder))}
+            onClick={handleSubmit((order) => createOrder(order))}
             total={total}
             isButtonActive={isButtonActive}
           />

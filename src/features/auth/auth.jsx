@@ -6,18 +6,24 @@ import {
   setLocalStorageAuth,
   getLocalStorageAuth,
   removeLocalStorageAuth,
+  setLocalStorageToken,
 } from '../../shared/api/storage-api';
 import { authFormSchema } from '../../shared/schema/schema';
 import Input from '../../shared/ui/input/input';
 import PasswordInput from '../../shared/ui/password-input/password-input';
 import Button from '../../shared/ui/button/button';
+import authApi from '../../shared/api/auth-api';
 
 function Auth() {
   const authData = getLocalStorageAuth();
-
-  const submit = () => {
-    console.log(authData);
-    removeLocalStorageAuth();
+  const onSubmit = (inputData) => {
+    authApi
+      .postLogin(inputData)
+      .then((data) => {
+        setLocalStorageToken(data);
+        removeLocalStorageAuth();
+      })
+      .catch((error) => console.log(error));
   };
 
   const {
@@ -28,7 +34,7 @@ function Auth() {
   } = useForm({
     defaultValues: authData
       ? {
-          email: authData,
+          email: JSON.parse(authData),
         }
       : {
           email: '',
@@ -85,8 +91,8 @@ function Auth() {
         <div className="auth__button">
           <Button
             label="Войти"
+            onClick={handleSubmit(onSubmit)}
             primary
-            onClick={handleSubmit(submit)}
             disabled={!!Object.keys(errors).length}
           />
         </div>
