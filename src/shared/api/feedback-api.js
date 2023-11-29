@@ -16,7 +16,7 @@ class FeedbackApi {
   }
 
   getFeedbacks() {
-    return request(`${this.baseUrl}/feedback/`);
+    return request(`${this.baseUrl}/api/feedback/`);
   }
 
   async postFeedback(feedback) {
@@ -61,7 +61,7 @@ class FeedbackApi {
 }
 
 const feedbackApi = new FeedbackApi({
-  baseUrl: REACT_APP_BASE_URL,
+  baseUrl: REACT_APP_BASE_URL || '',
   headers: {
     'Content-Type': 'application/json',
   },
