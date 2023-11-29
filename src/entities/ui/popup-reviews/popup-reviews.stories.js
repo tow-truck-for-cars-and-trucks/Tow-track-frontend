@@ -10,5 +10,7 @@ export default {
 };
 
 export const Default = {
-  arg: {},
+  arg: {
+    isOpen: true,
+  },
 };

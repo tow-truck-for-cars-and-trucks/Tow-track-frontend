@@ -9,7 +9,13 @@ import Comment from '../../../shared/ui/comment/comment';
 
 function PopupReviews({ isOpen, onClose, name, onSubmit }) {
   const [value, setValue] = useState('');
-  const [isButtonValue, setIsButtonValue] = useState('');
+  const [isDriverOnTime, setIsDriverOnTime] = useState(false);
+  const [isAdditionalQuestion, setIsAdditionalQuestion] = useState(false);
+
+  const handleCommentChange = (val) => {
+    setValue(val);
+  };
+
   return (
     <section className="popup-reviews">
       <Popup active={isOpen} setActive={onClose}>
@@ -25,8 +31,8 @@ function PopupReviews({ isOpen, onClose, name, onSubmit }) {
         <Checkbox
           width="24px"
           height="24px"
-          value={value}
-          onChange={(val) => setValue(val)}
+          value={isDriverOnTime}
+          onChange={(val) => setIsDriverOnTime(val)}
           isRight={true / false}
         >
           <p className="popup-reviews__text"> Водитель приехал вовремя?</p>
@@ -34,8 +40,8 @@ function PopupReviews({ isOpen, onClose, name, onSubmit }) {
         <Checkbox
           width="24px"
           height="24px"
-          value={isButtonValue}
-          onChange={(val) => setIsButtonValue(val)}
+          value={isAdditionalQuestion}
+          onChange={(val) => setIsAdditionalQuestion(val)}
           isRight={true / false}
         >
           <p className="popup-reviews__text"> Что еще можно спросить?</p>
@@ -43,7 +49,11 @@ function PopupReviews({ isOpen, onClose, name, onSubmit }) {
 
         <form className="popup-reviews__form" name={name} onSubmit={onSubmit}>
           <h3 className="popup-reviews__subtitle"> Комментарий</h3>
-          <Comment placeholder="Вы можете оставить отзыв" />
+          <Comment
+            placeholder="Вы можете оставить отзыв"
+            value={value}
+            onChange={handleCommentChange}
+          />
           <Button label="Оставить отзыв" primary />
         </form>
       </Popup>
