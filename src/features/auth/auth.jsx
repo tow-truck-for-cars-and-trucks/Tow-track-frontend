@@ -6,6 +6,7 @@ import {
   setLocalStorageAuth,
   getLocalStorageAuth,
   removeLocalStorageAuth,
+  setLocalStorageToken,
 } from '../../shared/api/storage-api';
 import { authFormSchema } from '../../shared/schema/schema';
 import Input from '../../shared/ui/input/input';
@@ -16,16 +17,13 @@ import authApi from '../../shared/api/auth-api';
 function Auth() {
   const authData = getLocalStorageAuth();
   const onSubmit = (inputData) => {
-    console.log('делаем запрос с :', inputData);
     authApi
       .postLogin(inputData)
       .then((data) => {
-        console.log('Успешная авторизация, токен записан');
-        localStorage.setItem('token', JSON.stringify(data));
+        setLocalStorageToken(data);
         removeLocalStorageAuth();
       })
       .catch((error) => console.log(error));
-    // сделать метод стирающий поля паролей в локалсторидже
   };
 
   const {

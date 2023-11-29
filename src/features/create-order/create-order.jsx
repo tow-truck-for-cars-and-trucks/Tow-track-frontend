@@ -4,6 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useRef, useState } from 'react';
 import { addressFormSchema } from '../../shared/schema/schema';
+import {
+  getLocalStorageToken,
+  setTariffStorage,
+  setCarTypeStorage,
+} from '../../shared/api/storage-api';
 import carTypeApi from '../../shared/api/car-type-api';
 import tariffApi from '../../shared/api/tariff-api';
 import orderApi from '../../shared/api/order-api';
@@ -38,11 +43,25 @@ function CreateOrder() {
       .then(([carType, tariff]) => {
         setAllCars(carType);
         setAllPricing(tariff);
+        setTariffStorage(tariff);
+        setCarTypeStorage(carType);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
+  const defaultValues = {
+    addressFrom: '',
+    addressTo: '',
+    carType: 2,
+    orderDate: '',
+    tariff: 2,
+    wheelLock: 0,
+    delay: false,
+    towin: false,
+    comment: '',
+  };
 
   const {
     control,
@@ -51,21 +70,22 @@ function CreateOrder() {
     setValue,
     formState: { errors },
   } = useForm({
-    defaultValues: {
-      addressFrom: '',
-      addressTo: '',
-      carType: 'Легковой',
-      orderDate: '',
-      tariff: 2,
-      wheelLock: 0,
-      delay: false,
-      towin: false,
-      comment: '',
-    },
+    defaultValues,
     mode: 'onChange',
     reValidateMode: 'onChange',
     resolver: yupResolver(addressFormSchema),
   });
+
+  function createOrder(order) {
+    if (getLocalStorageToken()) {
+      orderApi.createOrder(order).then((data) => {
+        navigate(`/order/${data.id}`, { replace: true });
+      });
+    } else {
+      localStorage.setItem('ORDER_FOR_CREATION', JSON.stringify(order));
+      navigate('/register', { replace: true });
+    }
+  }
 
   const isButtonActive = !(errors.addressFrom || errors.addressTo);
 
@@ -125,7 +145,7 @@ function CreateOrder() {
               <ChipsList
                 chips={allCars.map((carType) => ({
                   label: carType.car_type,
-                  id: carType.car_type,
+                  id: carType.id,
                 }))}
                 value={value}
                 onChange={onChange}
@@ -220,9 +240,7 @@ function CreateOrder() {
         </div>
         <div className="create-order__price">
           <TotalPrice
-            onClick={handleSubmit(() =>
-              navigate('/register', { replace: true })
-            )}
+            onClick={handleSubmit((order) => createOrder(order))}
             total={total}
             isButtonActive={isButtonActive}
             scrollOffset={1070}

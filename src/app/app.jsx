@@ -14,7 +14,7 @@ function App() {
       <Route path="/" element={<Main />} />
       <Route path="/contacts" element={<ContactsPage />} />
       <Route
-        path="/order"
+        path="/order/:id"
         element={
           <ProtectedRoute
             forLoggedUser

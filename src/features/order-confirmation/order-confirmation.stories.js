@@ -1,7 +1,7 @@
 import OrderConfirmation from './order-confirmation';
 
 export default {
-  title: 'entities/OrderConfirmation',
+  title: 'features/OrderConfirmation',
   component: OrderConfirmation,
   tags: ['autodocs'],
   arg: {
