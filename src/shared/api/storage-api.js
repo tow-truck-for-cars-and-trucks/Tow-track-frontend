@@ -36,3 +36,19 @@ export function getLocalStorageToken() {
 export function setLocalStorageToken(value) {
   return setToLocalStorage('token', value);
 }
+
+export function getTariffStorage() {
+  return JSON.parse(localStorage.getItem('TARIFF'));
+}
+
+export function setTariffStorage(value) {
+  return setToLocalStorage('TARIFF', value);
+}
+
+export function getCarTypeStorage() {
+  return JSON.parse(localStorage.getItem('CAR_TYPE'));
+}
+
+export function setCarTypeStorage(value) {
+  return setToLocalStorage('CAR_TYPE', value);
+}

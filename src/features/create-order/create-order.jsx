@@ -4,7 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useRef, useState } from 'react';
 import { addressFormSchema } from '../../shared/schema/schema';
-import { getLocalStorageToken } from '../../shared/api/storage-api';
+import {
+  getLocalStorageToken,
+  setTariffStorage,
+  setCarTypeStorage,
+} from '../../shared/api/storage-api';
 import carTypeApi from '../../shared/api/car-type-api';
 import tariffApi from '../../shared/api/tariff-api';
 import orderApi from '../../shared/api/order-api';
@@ -39,6 +43,8 @@ function CreateOrder() {
       .then(([carType, tariff]) => {
         setAllCars(carType);
         setAllPricing(tariff);
+        setTariffStorage(tariff);
+        setCarTypeStorage(carType);
       })
       .catch((error) => {
         console.log(error);

@@ -3,7 +3,7 @@ export function mapOrderDataToBackend(data) {
     address_from: data.addressFrom,
     address_to: data.addressTo,
     delay: data.delay,
-    car_type: data.car_type,
+    car_type: data.carType,
     order_date: data.orderDate || null,
     addition: data.comment,
     tariff: data.tariff,
@@ -21,12 +21,13 @@ export function mapOrderDataFromBackend(data) {
     addressTo: data.address_to,
     delay: data.delay,
     orderDate: data.order_date,
-    carType: data.price.car_type,
+    carType: data.car_type,
     tariff: data.tariff,
-    wheelLock: data.wheelLock,
+    wheelLock: data.wheel_lock,
     towin: data.towin,
     comment: data.addition,
     id: data.id,
+    total: data.price,
   };
 }
 
@@ -35,7 +36,7 @@ export function mapOrderDataPriceToBackend(data) {
     address_from: data.addressFrom,
     address_to: data.addressTo,
     car_type: data.carType,
-    addition: data.addition,
+    addition: data.comment,
     tariff: data.tariff,
     delay: data.delay,
     order_date: data.orderDate,

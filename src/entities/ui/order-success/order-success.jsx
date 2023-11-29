@@ -39,11 +39,11 @@ function OrderSuccess() {
       </div>
       <Accordion title="Информация о машине и водителе" withBorder={false}>
         <OrderDetails
-          pricing="Эконом"
+          tariff="Эконом"
           carType="Легковой автомобиль"
           wheelLock="0"
-          cuvetteWork="Нет"
-          deferredOrder="Нет"
+          towin="Нет"
+          delay="Нет"
           comment="Еще один очень важный комментарий"
         />
       </Accordion>

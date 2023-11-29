@@ -32,17 +32,8 @@ class OrderApi {
     return mapOrderDataFromBackend(res);
   }
 
-  async getNewOrder() {
-    const res = await request(`${this.baseUrl}/order/`, {
-      method: 'GET',
-      headers: this.getHeaders(),
-    });
-
-    return mapOrderDataFromBackend(res);
-  }
-
   async getOrder(id) {
-    const res = await request(`${this.baseUrl}/order/${id}`, {
+    const res = await request(`${this.baseUrl}/order/${id}/`, {
       method: 'GET',
       headers: this.getHeaders(),
     });
