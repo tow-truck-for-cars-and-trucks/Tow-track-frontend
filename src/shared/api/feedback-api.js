@@ -11,12 +11,12 @@ class FeedbackApi {
   getHeaders() {
     return {
       ...this.headers,
-      authorization: `Bearer ${localStorage.getItem('token')}`,
+      authorization: `Token ${localStorage.getItem('token')}`,
     };
   }
 
   getFeedbacks() {
-    return request(`${this.baseUrl}/api/feedback/`);
+    return request(`${this.baseUrl}/feedback/`);
   }
 
   async postFeedback(feedback) {

@@ -22,15 +22,25 @@ class OrderApi {
     };
   }
 
-  async createOrder(order) {
+  async createOrder(order, method = 'POST') {
     const res = await request(`${this.baseUrl}/order/`, {
-      method: 'POST',
+      method,
       headers: this.getHeaders(),
       body: JSON.stringify(mapOrderDataToBackend(order)),
     });
 
     return mapOrderDataFromBackend(res);
   }
+
+  /* async putOrder(order) {
+    const res = await request(`${this.baseUrl}/order/`, {
+      method: 'PUT',
+      headers: this.getHeaders(),
+      body: JSON.stringify(mapOrderDataToBackend(order)),
+    });
+
+    return mapOrderDataFromBackend(res);
+  } */
 
   async getOrder(id) {
     const res = await request(`${this.baseUrl}/order/${id}/`, {

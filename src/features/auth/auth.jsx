@@ -2,6 +2,7 @@ import './auth.scss';
 import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   setLocalStorageAuth,
   getLocalStorageAuth,
@@ -16,12 +17,15 @@ import authApi from '../../shared/api/auth-api';
 
 function Auth() {
   const authData = getLocalStorageAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
   const onSubmit = (inputData) => {
     authApi
       .postLogin(inputData)
       .then((data) => {
         setLocalStorageToken(data);
         removeLocalStorageAuth();
+        navigate(location.state.from);
       })
       .catch((error) => console.log(error));
   };

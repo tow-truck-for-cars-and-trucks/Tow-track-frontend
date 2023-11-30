@@ -1,6 +1,6 @@
 import './order-confirmation.scss';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getMinutes, getHours } from 'date-fns';
 import orderApi from '../../shared/api/order-api';
 import {
@@ -28,7 +28,12 @@ function OrderConfirmation() {
     comment: null,
   });
   const { id } = useParams();
-
+  const navigate = useNavigate();
+  const confirmOrder = (order) => {
+    orderApi.createOrder(order).then((data) => {
+      navigate('/success-order', { state: { id: data.id } });
+    });
+  };
   useEffect(() => {
     orderApi
       .getOrder(id)
@@ -36,7 +41,7 @@ function OrderConfirmation() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [id]);
 
   return (
     <main className="order-confirmation">
@@ -44,7 +49,7 @@ function OrderConfirmation() {
         <BackButton />
       </div>
       <PagesTitle title="Подтверждение заказа" />
-      <div className="order-confirmation__form">
+      <form className="order-confirmation__form">
         <div className="order-confirmation__adress">
           <Input
             placeholder="Откуда забрать"
@@ -65,6 +70,9 @@ function OrderConfirmation() {
           </p>
           <p className="order-confirmation__description">
             {' '}
+            {/* стили подкрутить
+            {String(getHours(new Date(newOrder.orderDate))).padStart(2, '0')}:
+            {String(getMinutes(new Date(newOrder.orderDate))).padStart(2, '0')} */}
             {getHours(new Date(newOrder.orderDate))}:
             {getMinutes(new Date(newOrder.orderDate))}
           </p>
@@ -92,13 +100,17 @@ function OrderConfirmation() {
           }
           wheelLock={newOrder.wheelLock}
           towin={newOrder.towin ? 'Да' : 'Нет'}
-          delay={newOrder.delay ? newOrder.orderDate : 'Нет'}
+          delay={newOrder.orderDate ? 'Да' : 'Нет'}
           comment={newOrder.comment}
         />
         <div className="order-confirmation__price">
-          <TotalPrice total={newOrder.total} isButtonActive />
+          <TotalPrice
+            onClick={() => confirmOrder(newOrder)}
+            total={newOrder.total}
+            isButtonActive
+          />
         </div>
-      </div>
+      </form>
     </main>
   );
 }
