@@ -8,12 +8,12 @@ class CarTypeApi {
   }
 
   getCarType() {
-    return request(`${this.baseUrl}/cartype/`);
+    return request(`${this.baseUrl}/api/cartype/`);
   }
 }
 
 const carTypeApi = new CarTypeApi({
-  baseUrl: REACT_APP_BASE_URL,
+  baseUrl: REACT_APP_BASE_URL || '',
 });
 
 export default carTypeApi;
