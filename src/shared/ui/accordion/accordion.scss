@@ -3,7 +3,8 @@
 }
 
 .accordion {
-  width: 318px;
+  min-width: 358px;
+  width: 100%;
   margin: 0;
 
   &_with-border {
