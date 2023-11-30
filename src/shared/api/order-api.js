@@ -23,7 +23,7 @@ class OrderApi {
   }
 
   async createOrder(order) {
-    const res = await request(`${this.baseUrl}/order/`, {
+    const res = await request(`${this.baseUrl}/api/order/`, {
       method: 'POST',
       headers: this.getHeaders(),
       body: JSON.stringify(mapOrderDataToBackend(order)),
@@ -33,7 +33,7 @@ class OrderApi {
   }
 
   async getOrder(id) {
-    const res = await request(`${this.baseUrl}/order/${id}/`, {
+    const res = await request(`${this.baseUrl}/api/order/${id}/`, {
       method: 'GET',
       headers: this.getHeaders(),
     });
@@ -42,7 +42,7 @@ class OrderApi {
   }
 
   async getOrderPrice(order) {
-    const res = await request(`${this.baseUrl}/order/total_price/`, {
+    const res = await request(`${this.baseUrl}/api/order/total_price/`, {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify(mapOrderDataPriceToBackend(order)),
@@ -53,7 +53,7 @@ class OrderApi {
 }
 
 const orderApi = new OrderApi({
-  baseUrl: REACT_APP_BASE_URL,
+  baseUrl: REACT_APP_BASE_URL || '',
   headers: {
     'Content-Type': 'application/json',
   },

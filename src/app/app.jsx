@@ -33,15 +33,7 @@ function App() {
           />
         }
       />
-      <Route
-        path="/register"
-        element={
-          <ProtectedRoute
-            loggedIn={checkUserLogged()}
-            element={<RegisterPage />}
-          />
-        }
-      />
+      <Route path="/register" element={<RegisterPage />} />
       <Route
         path="/my-orders"
         element={
