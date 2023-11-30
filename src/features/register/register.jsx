@@ -17,17 +17,14 @@ import registerApi from '../../shared/api/register-api';
 
 function Register() {
   const registerData = getLocalStorageRegister();
+
   const onSubmit = (inputData) => {
-    console.log('делаем запрос с:', inputData);
     registerApi
       .postRegister(inputData)
-      .then((data) => {
-        console.log('Успешная регистрация');
-        console.log(data);
+      .then(() => {
         removeLocalStorageRegister();
       })
       .catch((error) => console.log(error));
-    // метод стирающий поля паролей в локалсторидже
   };
 
   const {
@@ -37,12 +34,7 @@ function Register() {
     formState: { errors },
   } = useForm({
     defaultValues: registerData
-      ? {
-          firstName: registerData,
-          lastName: registerData,
-          email: registerData,
-          phoneNumber: registerData,
-        }
+      ? JSON.parse(registerData)
       : {
           firstName: '',
           lastName: '',
@@ -155,7 +147,8 @@ function Register() {
             )}
           />
           <p className="register__input-caption">
-            Пароль должен содержать латинские символы, цифры и символы /!-?:
+            Пароль должен содержать хотя бы одну заглавную букву, одну строчную
+            букву, одну цифру и один специальный символ @,#,$,%
           </p>
         </div>
         <div className="register__input">
