@@ -65,8 +65,8 @@ function OrderConfirmation() {
           </p>
           <p className="order-confirmation__description">
             {' '}
-            {getHours(new Date(newOrder.orderDate))}:
-            {getMinutes(new Date(newOrder.orderDate))}
+            {String(getHours(new Date(newOrder.orderDate))).padStart(2, '0')}:
+            {String(getMinutes(new Date(newOrder.orderDate)).padEnd(2, '0'))}
           </p>
         </div>
         <div className="order-confirmation__payment">
