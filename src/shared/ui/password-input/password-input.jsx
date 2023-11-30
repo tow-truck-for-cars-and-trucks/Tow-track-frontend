@@ -40,9 +40,6 @@ function PasswordInput({ value, placeholder, onChange, invalid, id }) {
           onMouseDown={() => {
             onChange('');
           }}
-          onTouchStart={() => {
-            onChange('');
-          }}
         >
           <CloseIcon width="16px" height="16px" />
         </div>
@@ -52,9 +49,6 @@ function PasswordInput({ value, placeholder, onChange, invalid, id }) {
           aria-label="Показать пароль"
           className="password-input__eye-icons"
           onMouseDown={() => {
-            setShowInput(!showInput);
-          }}
-          onTouchStart={() => {
             setShowInput(!showInput);
           }}
         >

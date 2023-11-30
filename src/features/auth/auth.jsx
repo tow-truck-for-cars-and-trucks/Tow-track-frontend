@@ -16,6 +16,7 @@ import authApi from '../../shared/api/auth-api';
 
 function Auth() {
   const authData = getLocalStorageAuth();
+
   const onSubmit = (inputData) => {
     authApi
       .postLogin(inputData)
