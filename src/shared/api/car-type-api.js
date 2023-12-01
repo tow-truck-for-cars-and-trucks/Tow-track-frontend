@@ -8,7 +8,7 @@ class CarTypeApi {
   }
 
   getCarType() {
-    return request(`${this.baseUrl}/cartype/`);
+    return request(`${this.baseUrl}/api/cartype/`);
   }
 }
 

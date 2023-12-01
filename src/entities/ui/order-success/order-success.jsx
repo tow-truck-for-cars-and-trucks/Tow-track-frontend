@@ -47,7 +47,6 @@ function OrderSuccess({ orderNumber }) {
     console.log('Выполняется вызов водителя:', driverPhoneNumber);
     window.location.href = `tel:${driverPhoneNumber}`;
   };
-  useEffect(() => {}, []);
   return (
     <section className="order-success">
       <div className="order-success__time">

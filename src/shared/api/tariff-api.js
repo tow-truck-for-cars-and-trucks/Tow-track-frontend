@@ -8,7 +8,7 @@ class TariffApi {
   }
 
   getTariffType() {
-    return request(`${this.baseUrl}/tariff/`);
+    return request(`${this.baseUrl}/api/tariff/`);
   }
 }
 

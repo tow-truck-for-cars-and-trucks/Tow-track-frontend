@@ -22,9 +22,9 @@ class OrderApi {
     };
   }
 
-  async createOrder(order, method = 'POST') {
-    const res = await request(`${this.baseUrl}/order/`, {
-      method,
+  async createOrder(order) {
+    const res = await request(`${this.baseUrl}/api/order/`, {
+      method: 'POST',
       headers: this.getHeaders(),
       body: JSON.stringify(mapOrderDataToBackend(order)),
     });
@@ -32,18 +32,8 @@ class OrderApi {
     return mapOrderDataFromBackend(res);
   }
 
-  /* async putOrder(order) {
-    const res = await request(`${this.baseUrl}/order/`, {
-      method: 'PUT',
-      headers: this.getHeaders(),
-      body: JSON.stringify(mapOrderDataToBackend(order)),
-    });
-
-    return mapOrderDataFromBackend(res);
-  } */
-
   async getOrder(id) {
-    const res = await request(`${this.baseUrl}/order/${id}/`, {
+    const res = await request(`${this.baseUrl}/api/order/${id}/`, {
       method: 'GET',
       headers: this.getHeaders(),
     });
@@ -52,7 +42,7 @@ class OrderApi {
   }
 
   async getOrderPrice(order) {
-    const res = await request(`${this.baseUrl}/order/total_price/`, {
+    const res = await request(`${this.baseUrl}/api/order/total_price/`, {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify(mapOrderDataPriceToBackend(order)),

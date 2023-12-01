@@ -12,7 +12,7 @@ class RegisterApi {
   postRegister(inputs) {
     const mapped = mapUserDataToBackend(inputs);
 
-    return request(`${this.baseUrl}/auth/users/`, {
+    return request(`${this.baseUrl}/api/auth/users/`, {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify(mapped),
