@@ -1,5 +1,7 @@
+/* eslint-disable arrow-body-style */
 import './auth.scss';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {
@@ -7,22 +9,34 @@ import {
   getLocalStorageAuth,
   removeLocalStorageAuth,
   setLocalStorageToken,
+  getOrderCreationStorage,
 } from '../../shared/api/storage-api';
 import { authFormSchema } from '../../shared/schema/schema';
 import Input from '../../shared/ui/input/input';
+import orderApi from '../../shared/api/order-api';
 import PasswordInput from '../../shared/ui/password-input/password-input';
 import Button from '../../shared/ui/button/button';
 import authApi from '../../shared/api/auth-api';
 
 function Auth() {
   const authData = getLocalStorageAuth();
+  const navigate = useNavigate();
+
+  function createOrder(order) {
+    orderApi.createOrder(order).then((data) => {
+      navigate(`/order/${data.id}`, { replace: true });
+    });
+  }
 
   const onSubmit = (inputData) => {
-    authApi
+    return authApi
       .postLogin(inputData)
       .then((data) => {
         setLocalStorageToken(data);
         removeLocalStorageAuth();
+      })
+      .then(() => {
+        return createOrder(getOrderCreationStorage());
       })
       .catch((error) => console.log(error));
   };
