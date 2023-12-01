@@ -18,7 +18,7 @@ function MyOrder() {
   } else if (activeTab === 'cancelled') {
     selectedWidget = <OrderCancelWidget />;
   } else {
-    selectedWidget = null; // Обработка других случаев, если необходимо
+    selectedWidget = null;
   }
 
   return (
@@ -38,7 +38,6 @@ function MyOrder() {
         />
       </div>
 
-      {/* {activeTab === 'active' ? <OrderActiveWidget /> : <OrderCompletWidget />} */}
       {selectedWidget}
     </main>
   );

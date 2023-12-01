@@ -1,7 +1,6 @@
 import './order-cancel.scss';
 import React, { useState } from 'react';
 import Adress from '../../../shared/ui/adress/adress';
-import Button from '../../../shared/ui/button/button';
 import Accordion from '../../../shared/ui/accordion/accordion';
 import OrderDetails from '../../../shared/ui/order-details/order-details';
 import AboutTrack from '../../../shared/ui/about-truck/about-truck';
@@ -22,13 +21,13 @@ function OrderCancel() {
         <p className="order-cancel__price-title">Стоимость заказа</p>
         <p className="order-cancel__price-total">1820 ₽</p>
       </div>
-      <div className="order-cancel__button">
+      {/* <div className="order-cancel__button">
         <Button
           primary="true"
           label="Оставить отзыв"
           onClick={() => setIsPopupReviews(true)}
         />
-      </div>
+      </div> */}
       <PopupReviews
         isOpen={isPopupReviews}
         onClose={() => setIsPopupReviews(false)}
