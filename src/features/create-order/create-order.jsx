@@ -8,6 +8,7 @@ import {
   getLocalStorageToken,
   setTariffStorage,
   setCarTypeStorage,
+  setOrderCreationStorage,
 } from '../../shared/api/storage-api';
 import carTypeApi from '../../shared/api/car-type-api';
 import tariffApi from '../../shared/api/tariff-api';
@@ -82,7 +83,7 @@ function CreateOrder() {
         navigate(`/order/${data.id}`, { replace: true });
       });
     } else {
-      localStorage.setItem('ORDER_FOR_CREATION', JSON.stringify(order));
+      setOrderCreationStorage(order);
       navigate('/register', { replace: true });
     }
   }
