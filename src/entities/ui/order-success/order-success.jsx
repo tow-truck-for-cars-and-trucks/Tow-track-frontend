@@ -1,4 +1,8 @@
 import './order-success.scss';
+import {
+  getTariffStorage,
+  getCarTypeStorage,
+} from '../../../shared/api/storage-api';
 import DeliveryTime from '../../../shared/ui/delivery-time/delivery-time';
 import ProgressBar from '../../../shared/ui/progress-bar/progress-bar';
 import Adress from '../../../shared/ui/adress/adress';
@@ -11,7 +15,7 @@ import StepTwoFillIcon from '../../../shared/ui/icons/step-two-fill-icon';
 import StepThreeDisableIcon from '../../../shared/ui/icons/step-three-disable-icon';
 import StepFourDisableIcon from '../../../shared/ui/icons/step-four-disable-icon';
 
-function OrderSuccess() {
+function OrderSuccess({ activeOrder }) {
   const driverPhoneNumber = '88801112222';
 
   const handleCallDriver = () => {
@@ -36,22 +40,27 @@ function OrderSuccess() {
       />
       <div className="order-success__adress">
         <Adress
-          adressFrom="Москва, ул. Ленинградская, 28"
-          adressTo="​Московская область, г. Сергиев Посад, Сергиевская улица, 10"
+          adressFrom={activeOrder.addressFrom}
+          adressTo={activeOrder.addressTo}
         />
       </div>
       <div className="order-success__price">
         <p className="order-success__price-title">Стоимость заказа</p>
-        <p className="order-success__price-total">1820 ₽</p>
+        <p className="order-success__price-total">{activeOrder.total}</p>
       </div>
       <Accordion title="Информация о машине и водителе" withBorder={false}>
         <OrderDetails
-          tariff="Эконом"
-          carType="Легковой автомобиль"
-          wheelLock="0"
-          towin="Нет"
-          delay="Нет"
-          comment="Еще один очень важный комментарий"
+          tariff={
+            getTariffStorage().find((x) => x.id === activeOrder?.tariff)?.name
+          }
+          carType={
+            getCarTypeStorage().find((x) => x.id === activeOrder?.carType)
+              ?.car_type
+          }
+          wheelLock={activeOrder.wheelLock}
+          towin={activeOrder.towin ? 'Да' : 'Нет'}
+          delay={activeOrder.orderDate ? 'Да' : 'Нет'}
+          comment={activeOrder.comment}
         />
       </Accordion>
       <div className="order-success__alert">
