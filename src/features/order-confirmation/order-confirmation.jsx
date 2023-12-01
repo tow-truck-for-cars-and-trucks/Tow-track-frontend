@@ -36,7 +36,7 @@ function OrderConfirmation() {
       .catch((error) => {
         console.log(error);
       });
-  }, [id]);
+  }, []);
 
   function createActiveOrder() {
     orderApi
