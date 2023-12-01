@@ -13,7 +13,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Main />} />
       <Route path="/contacts" element={<ContactsPage />} />
-      {/* <Route
+      <Route
         path="/order/:id"
         element={
           <ProtectedRoute
@@ -22,10 +22,10 @@ function App() {
             element={<Order />}
           />
         }
-      /> */}
-      <Route path="/order/:id" element={<Order />} />
+      />
+      {/* <Route path="/order/:id" element={<Order />} /> */}
       <Route
-        path="/success-order"
+        path="/success-order/:id"
         element={
           <ProtectedRoute
             forLoggedUser
