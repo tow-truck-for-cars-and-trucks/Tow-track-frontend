@@ -6,7 +6,8 @@
 
 .order-success {
   width: fit-content;
-  max-width: 320px;
+  min-width: 320px;
+  max-width: calc(100% - 40px);
   padding: 28px 20px;
   background-color: var(--white);
   border-radius: 12px;
