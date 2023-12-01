@@ -21,13 +21,6 @@ function OrderCancel() {
         <p className="order-cancel__price-title">Стоимость заказа</p>
         <p className="order-cancel__price-total">1820 ₽</p>
       </div>
-      {/* <div className="order-cancel__button">
-        <Button
-          primary="true"
-          label="Оставить отзыв"
-          onClick={() => setIsPopupReviews(true)}
-        />
-      </div> */}
       <PopupReviews
         isOpen={isPopupReviews}
         onClose={() => setIsPopupReviews(false)}
