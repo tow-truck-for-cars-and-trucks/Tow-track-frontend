@@ -59,11 +59,11 @@ function OrderActive() {
       <div className="order-active__info">
         <Accordion title="Детали заказа" withBorder>
           <OrderDetails
-            pricing="Эконом"
+            tariff="Эконом"
             carType="Легковой автомобиль"
             wheelLock="0"
-            cuvetteWork="Нет"
-            deferredOrder="Нет"
+            towin="Нет"
+            delay="Нет"
             comment="Еще один очень важный комментарий"
           />
         </Accordion>

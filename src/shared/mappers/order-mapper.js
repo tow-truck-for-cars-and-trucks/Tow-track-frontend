@@ -3,33 +3,16 @@ export function mapOrderDataToBackend(data) {
     address_from: data.addressFrom,
     address_to: data.addressTo,
     delay: data.delay,
-    order_date: data.orderDate,
+    car_type: data.carType,
+    order_date: data.orderDate || null,
+    addition: data.comment,
+    tariff: data.tariff,
     price: {
-      car_type: [data.carType],
-      tariff: [data.tariff],
+      id: data.id,
+      towin: data.towin,
       wheel_lock: data.wheelLock,
     },
   };
-}
-
-export function mapOrderDataPriceToBackend(data) {
-  return {
-    address_from: data.addressFrom,
-    address_to: data.addressTo,
-    car_type: [1],
-    addition: data.addition,
-    tariff: [data.tariff],
-    delay: data.delay,
-    order_date: data.orderDate,
-    price: {
-      wheel_lock: data.wheelLock,
-      towin: false,
-    },
-  };
-}
-
-export function mapOrderPriceFromBackend(data) {
-  return data.price;
 }
 
 export function mapOrderDataFromBackend(data) {
@@ -38,8 +21,32 @@ export function mapOrderDataFromBackend(data) {
     addressTo: data.address_to,
     delay: data.delay,
     orderDate: data.order_date,
-    carType: data.price.car_type?.[0],
-    tariff: data.tariff?.[0],
-    wheelLock: data.wheelLock,
+    carType: data.car_type,
+    tariff: data.tariff,
+    wheelLock: data.wheel_lock,
+    towin: data.towin,
+    comment: data.addition,
+    id: data.id,
+    total: data.price,
   };
+}
+
+export function mapOrderDataPriceToBackend(data) {
+  return {
+    address_from: data.addressFrom,
+    address_to: data.addressTo,
+    car_type: data.carType,
+    addition: data.comment,
+    tariff: data.tariff,
+    delay: data.delay,
+    order_date: data.orderDate,
+    price: {
+      wheel_lock: data.wheelLock,
+      towin: data.towin,
+    },
+  };
+}
+
+export function mapOrderPriceFromBackend(data) {
+  return data.price;
 }

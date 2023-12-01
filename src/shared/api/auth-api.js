@@ -9,7 +9,7 @@ class AuthApi {
   }
 
   postLogin(inputs) {
-    return request(`${this.baseUrl}/auth/token/login/`, {
+    return request(`${this.baseUrl}/api/auth/token/login/`, {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify(inputs),
@@ -17,7 +17,7 @@ class AuthApi {
   }
 
   postLogout(inputs) {
-    return request(`${this.baseUrl}/auth/token/logout/`, {
+    return request(`${this.baseUrl}/api/auth/token/logout/`, {
       method: 'POST',
       headers: this.headers,
       body: inputs,
@@ -26,7 +26,7 @@ class AuthApi {
 }
 
 const authApi = new AuthApi({
-  baseUrl: REACT_APP_BASE_URL,
+  baseUrl: REACT_APP_BASE_URL || '',
   headers: {
     'Content-Type': 'application/json',
   },
