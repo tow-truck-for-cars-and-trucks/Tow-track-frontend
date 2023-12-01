@@ -1,7 +1,7 @@
 .header {
   position: relative;
   z-index: 100;
-  width: 390px;
+  max-width: 768px;
   height: 64px;
   color: var(--text-black-80);
   background-color: white;
@@ -12,6 +12,11 @@
     align-items: center;
     justify-content: space-between;
     padding: 6px 24px 8px;
+  }
+
+  &__call {
+    background-color: white;
+    border: none;
   }
 
   &__phone-number {
