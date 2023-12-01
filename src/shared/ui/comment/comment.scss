@@ -7,7 +7,7 @@
 .comment {
   &__container {
     position: relative;
-    max-width: 358px;
+    max-width: 768px;
     min-height: 98px;
   }
 
@@ -18,9 +18,9 @@
   }
 
   &__textarea {
-    width: 294px;
+    width: calc(100% - 32px);
     min-height: 66px;
-    padding: 16px 48px 16px 16px;
+    padding: 16px 16px 16px 16px;
     font-size: 16px;
     border: none;
     border-radius: 12px;

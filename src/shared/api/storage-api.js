@@ -52,3 +52,11 @@ export function getCarTypeStorage() {
 export function setCarTypeStorage(value) {
   return setToLocalStorage('CAR_TYPE', value);
 }
+
+export function setOrderCreationStorage(value) {
+  return setToLocalStorage('ORDER_FOR_CREATION', value);
+}
+
+export function getOrderCreationStorage() {
+  return JSON.parse(localStorage.getItem('ORDER_FOR_CREATION'));
+}

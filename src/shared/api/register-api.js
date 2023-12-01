@@ -21,7 +21,7 @@ class RegisterApi {
 }
 
 const registerApi = new RegisterApi({
-  baseUrl: REACT_APP_BASE_URL,
+  baseUrl: REACT_APP_BASE_URL || '',
   headers: {
     'Content-Type': 'application/json',
   },

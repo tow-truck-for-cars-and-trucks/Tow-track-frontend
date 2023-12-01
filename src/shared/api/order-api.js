@@ -32,11 +32,35 @@ class OrderApi {
     return mapOrderDataFromBackend(res);
   }
 
+  async updateOrderStatus(id) {
+    const status = 'Активный';
+
+    const res = await request(`${this.baseUrl}/api/order/${id}/`, {
+      method: 'PATCH',
+      headers: this.getHeaders(),
+      body: JSON.stringify({ status }),
+    });
+
+    return mapOrderDataFromBackend(res);
+  }
+
   async getOrder(id) {
     const res = await request(`${this.baseUrl}/api/order/${id}/`, {
       method: 'GET',
       headers: this.getHeaders(),
     });
+
+    return mapOrderDataFromBackend(res);
+  }
+
+  async getActiveOrder(id) {
+    const res = await request(
+      `${this.baseUrl}/api/order/${id}/?status=Активный`,
+      {
+        method: 'GET',
+        headers: this.getHeaders(),
+      }
+    );
 
     return mapOrderDataFromBackend(res);
   }
@@ -53,7 +77,7 @@ class OrderApi {
 }
 
 const orderApi = new OrderApi({
-  baseUrl: REACT_APP_BASE_URL,
+  baseUrl: REACT_APP_BASE_URL || '',
   headers: {
     'Content-Type': 'application/json',
   },

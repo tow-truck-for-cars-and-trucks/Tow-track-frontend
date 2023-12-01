@@ -29,11 +29,6 @@ function OrderConfirmation() {
   });
   const { id } = useParams();
   const navigate = useNavigate();
-  const confirmOrder = (order) => {
-    orderApi.createOrder(order).then((data) => {
-      navigate('/success-order', { state: { id: data.id } });
-    });
-  };
   useEffect(() => {
     orderApi
       .getOrder(id)
@@ -42,6 +37,17 @@ function OrderConfirmation() {
         console.log(error);
       });
   }, [id]);
+
+  function createActiveOrder() {
+    orderApi
+      .updateOrderStatus(id)
+      .then((data) => {
+        navigate(`/success-order/${data.id}`, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   return (
     <main className="order-confirmation">
@@ -70,11 +76,8 @@ function OrderConfirmation() {
           </p>
           <p className="order-confirmation__description">
             {' '}
-            {/* стили подкрутить
             {String(getHours(new Date(newOrder.orderDate))).padStart(2, '0')}:
-            {String(getMinutes(new Date(newOrder.orderDate))).padStart(2, '0')} */}
-            {getHours(new Date(newOrder.orderDate))}:
-            {getMinutes(new Date(newOrder.orderDate))}
+            {String(getMinutes(new Date(newOrder.orderDate))).padEnd(2, '0')}
           </p>
         </div>
         <div className="order-confirmation__payment">
@@ -105,9 +108,9 @@ function OrderConfirmation() {
         />
         <div className="order-confirmation__price">
           <TotalPrice
-            onClick={() => confirmOrder(newOrder)}
             total={newOrder.total}
             isButtonActive
+            onClick={() => createActiveOrder()}
           />
         </div>
       </form>

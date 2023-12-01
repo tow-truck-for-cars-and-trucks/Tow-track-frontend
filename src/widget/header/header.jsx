@@ -11,11 +11,26 @@ function Header({ onCreateOrderClick }) {
   const handleClick = () => {
     setIsShowMenu(!showMenu);
   };
+
+  const driverPhoneNumber = '88801112222';
+
+  const handleOurDriver = () => {
+    console.log('Выполняется вызов в компанию:', driverPhoneNumber);
+    window.location.href = `tel:${driverPhoneNumber}`;
+  };
+
   return (
     <>
       <header className="header" id="header">
         <div className="header__container">
-          <PhoneIcon width="24px" height="24px" />
+          <button
+            className="header__call"
+            type="button"
+            label="Связаться с компанией"
+            onClick={handleOurDriver}
+          >
+            <PhoneIcon width="24px" height="24px" />
+          </button>
           <div className="header__phone-block">
             <LogoCombined width="88.8px" height="48px" />
           </div>

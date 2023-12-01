@@ -13,7 +13,7 @@ class CarTypeApi {
 }
 
 const carTypeApi = new CarTypeApi({
-  baseUrl: REACT_APP_BASE_URL,
+  baseUrl: REACT_APP_BASE_URL || '',
 });
 
 export default carTypeApi;

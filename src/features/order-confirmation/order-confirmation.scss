@@ -43,6 +43,7 @@
   &__description {
     @extend %text-style;
 
+    max-width: 243px;
     font-size: 18px;
   }
 

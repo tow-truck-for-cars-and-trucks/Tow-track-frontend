@@ -13,7 +13,7 @@ class TariffApi {
 }
 
 const tariffApi = new TariffApi({
-  baseUrl: REACT_APP_BASE_URL,
+  baseUrl: REACT_APP_BASE_URL || '',
 });
 
 export default tariffApi;
