@@ -5,18 +5,14 @@
   line-height: 1.25;
 }
 
-.order-active {
+.order-cancel {
   min-width: 318px;
   max-width: 696px;
   padding: 0 20px 28px;
   background-color: var(--white);
   border-radius: 12px;
 
-  &__submission-time {
-    padding: 28px 0;
-  }
-
-  &__adress {
+  &__address {
     padding-top: 28px;
   }
 
@@ -36,10 +32,10 @@
 
   &__price-total {
     margin: 0;
-  }
+    font-weight: 500;
+    font-size: 18px;
 
-  &__alert {
-    padding-top: 28px;
+    @extend %text-style;
   }
 
   &__button {
@@ -48,5 +44,22 @@
 
   &__info {
     padding-top: 28px;
+  }
+
+  &__delete {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    max-width: 318px;
+    margin: 24px;
+    padding: 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.2;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    @extend %text-style;
   }
 }
