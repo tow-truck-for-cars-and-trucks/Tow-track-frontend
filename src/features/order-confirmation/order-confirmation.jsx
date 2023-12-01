@@ -1,6 +1,6 @@
 import './order-confirmation.scss';
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getMinutes, getHours } from 'date-fns';
 import orderApi from '../../shared/api/order-api';
 import {
@@ -16,7 +16,6 @@ import TotalPrice from '../../shared/ui/total-price/total-price';
 
 function OrderConfirmation() {
   const [activeTab, setActiveTab] = useState('cash');
-  const navigate = useNavigate();
   const [newOrder, setNewOrder] = useState({
     addressFrom: null,
     addressTo: null,
@@ -38,17 +37,6 @@ function OrderConfirmation() {
         console.log(error);
       });
   }, []);
-
-  function createActiveOrder() {
-    orderApi
-      .updateOrderStatus(id)
-      .then((data) => {
-        navigate(`/success-order/${data.id}`, { replace: true });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
 
   return (
     <main className="order-confirmation">
@@ -77,8 +65,8 @@ function OrderConfirmation() {
           </p>
           <p className="order-confirmation__description">
             {' '}
-            {String(getHours(new Date(newOrder.orderDate))).padStart(2, '0')}:
-            {String(getMinutes(new Date(newOrder.orderDate))).padEnd(2, '0')}
+            {getHours(new Date(newOrder.orderDate))}:
+            {getMinutes(new Date(newOrder.orderDate))}
           </p>
         </div>
         <div className="order-confirmation__payment">
@@ -104,15 +92,11 @@ function OrderConfirmation() {
           }
           wheelLock={newOrder.wheelLock}
           towin={newOrder.towin ? 'Да' : 'Нет'}
-          delay={newOrder.orderDate ? 'Да' : 'Нет'}
+          delay={newOrder.delay ? newOrder.orderDate : 'Нет'}
           comment={newOrder.comment}
         />
         <div className="order-confirmation__price">
-          <TotalPrice
-            total={newOrder.total}
-            isButtonActive
-            onClick={() => createActiveOrder()}
-          />
+          <TotalPrice total={newOrder.total} isButtonActive />
         </div>
       </div>
     </main>

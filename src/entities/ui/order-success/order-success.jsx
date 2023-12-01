@@ -1,8 +1,4 @@
 import './order-success.scss';
-import {
-  getTariffStorage,
-  getCarTypeStorage,
-} from '../../../shared/api/storage-api';
 import DeliveryTime from '../../../shared/ui/delivery-time/delivery-time';
 import ProgressBar from '../../../shared/ui/progress-bar/progress-bar';
 import Adress from '../../../shared/ui/adress/adress';
@@ -15,7 +11,7 @@ import StepTwoFillIcon from '../../../shared/ui/icons/step-two-fill-icon';
 import StepThreeDisableIcon from '../../../shared/ui/icons/step-three-disable-icon';
 import StepFourDisableIcon from '../../../shared/ui/icons/step-four-disable-icon';
 
-function OrderSuccess({ activeOrder }) {
+function OrderSuccess() {
   const driverPhoneNumber = '88801112222';
 
   const handleCallDriver = () => {
@@ -40,27 +36,22 @@ function OrderSuccess({ activeOrder }) {
       />
       <div className="order-success__adress">
         <Adress
-          adressFrom={activeOrder.addressFrom}
-          adressTo={activeOrder.addressTo}
+          adressFrom="Москва, ул. Ленинградская, 28"
+          adressTo="​Московская область, г. Сергиев Посад, Сергиевская улица, 10"
         />
       </div>
       <div className="order-success__price">
         <p className="order-success__price-title">Стоимость заказа</p>
-        <p className="order-success__price-total">{activeOrder.total}</p>
+        <p className="order-success__price-total">1820 ₽</p>
       </div>
       <Accordion title="Информация о машине и водителе" withBorder={false}>
         <OrderDetails
-          tariff={
-            getTariffStorage().find((x) => x.id === activeOrder?.tariff)?.name
-          }
-          carType={
-            getCarTypeStorage().find((x) => x.id === activeOrder?.carType)
-              ?.car_type
-          }
-          wheelLock={activeOrder.wheelLock}
-          towin={activeOrder.towin ? 'Да' : 'Нет'}
-          delay={activeOrder.orderDate ? 'Да' : 'Нет'}
-          comment={activeOrder.comment}
+          tariff="Эконом"
+          carType="Легковой автомобиль"
+          wheelLock="0"
+          towin="Нет"
+          delay="Нет"
+          comment="Еще один очень важный комментарий"
         />
       </Accordion>
       <div className="order-success__alert">

@@ -32,18 +32,6 @@ class OrderApi {
     return mapOrderDataFromBackend(res);
   }
 
-  async updateOrderStatus(id) {
-    const status = 'Активный';
-
-    const res = await request(`${this.baseUrl}/api/order/${id}/`, {
-      method: 'PATCH',
-      headers: this.getHeaders(),
-      body: JSON.stringify({ status }),
-    });
-
-    return mapOrderDataFromBackend(res);
-  }
-
   async getOrder(id) {
     const res = await request(`${this.baseUrl}/api/order/${id}/`, {
       method: 'GET',
