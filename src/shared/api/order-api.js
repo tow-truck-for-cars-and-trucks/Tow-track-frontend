@@ -53,9 +53,10 @@ class OrderApi {
     return mapOrderDataFromBackend(res);
   }
 
-  async getActiveOrder(id) {
+  async getOrderWithParams(id, params = {}) {
+    const paramsString = new URLSearchParams(params).toString();
     const res = await request(
-      `${this.baseUrl}/api/order/${id}/?status=Активный`,
+      `${this.baseUrl}/api/order/${id}/?${paramsString}`,
       {
         method: 'GET',
         headers: this.getHeaders(),

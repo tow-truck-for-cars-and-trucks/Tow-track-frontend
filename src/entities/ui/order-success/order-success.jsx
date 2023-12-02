@@ -1,5 +1,4 @@
 import './order-success.scss';
-// import { useEffect, useState } from 'react';
 import DeliveryTime from '../../../shared/ui/delivery-time/delivery-time';
 import ProgressBar from '../../../shared/ui/progress-bar/progress-bar';
 import Adress from '../../../shared/ui/adress/adress';
@@ -11,36 +10,15 @@ import StepOneDefaultIcon from '../../../shared/ui/icons/step-one-default-icon';
 import StepTwoFillIcon from '../../../shared/ui/icons/step-two-fill-icon';
 import StepThreeDisableIcon from '../../../shared/ui/icons/step-three-disable-icon';
 import StepFourDisableIcon from '../../../shared/ui/icons/step-four-disable-icon';
-// import orderApi from '../../../shared/api/order-api';
 import {
   getCarTypeStorage,
   getTariffStorage,
 } from '../../../shared/api/storage-api';
 
 /**
- * @param {string} orderNumber - number of the order
+ * @param {object} activeOrder - object of success order
  */
 function OrderSuccess({ activeOrder }) {
-  /* const [successOrder, setSuccessOrder] = useState({
-    id: null,
-    addressFrom: null,
-    addressTo: null,
-    carType: null,
-    orderDate: null,
-    tariff: null,
-    wheelLock: null,
-    delay: null,
-    towin: null,
-    comment: null,
-  }); */
-  // console.log(successOrder);
-
-  /* useEffect(() => {
-    orderApi.getOrder(activeOrder.id).then((data) => {
-      setSuccessOrder(data);
-    });
-  }, [activeOrder]); */
-
   const driverPhoneNumber = '88801112222';
 
   const handleCallDriver = () => {
