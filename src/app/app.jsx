@@ -23,7 +23,6 @@ function App() {
           />
         }
       />
-      {/* <Route path="/order/:id" element={<Order />} /> */}
       <Route
         path="/success-order/:id"
         element={
