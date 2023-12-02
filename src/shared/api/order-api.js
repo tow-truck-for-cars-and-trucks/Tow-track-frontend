@@ -53,6 +53,19 @@ class OrderApi {
     return mapOrderDataFromBackend(res);
   }
 
+  async getOrderWithParams(id, params = {}) {
+    const paramsString = new URLSearchParams(params).toString();
+    const res = await request(
+      `${this.baseUrl}/api/order/${id}/?${paramsString}`,
+      {
+        method: 'GET',
+        headers: this.getHeaders(),
+      }
+    );
+
+    return mapOrderDataFromBackend(res);
+  }
+
   async getOrderPrice(order) {
     const res = await request(`${this.baseUrl}/api/order/total_price/`, {
       method: 'POST',

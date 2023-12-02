@@ -16,7 +16,6 @@ import TotalPrice from '../../shared/ui/total-price/total-price';
 
 function OrderConfirmation() {
   const [activeTab, setActiveTab] = useState('cash');
-  const navigate = useNavigate();
   const [newOrder, setNewOrder] = useState({
     addressFrom: null,
     addressTo: null,
@@ -29,7 +28,7 @@ function OrderConfirmation() {
     comment: null,
   });
   const { id } = useParams();
-
+  const navigate = useNavigate();
   useEffect(() => {
     orderApi
       .getOrder(id)
@@ -56,7 +55,7 @@ function OrderConfirmation() {
         <BackButton />
       </div>
       <PagesTitle title="Подтверждение заказа" />
-      <div className="order-confirmation__form">
+      <form className="order-confirmation__form">
         <div className="order-confirmation__adress">
           <Input
             placeholder="Откуда забрать"
@@ -114,7 +113,7 @@ function OrderConfirmation() {
             onClick={() => createActiveOrder()}
           />
         </div>
-      </div>
+      </form>
     </main>
   );
 }
