@@ -1,15 +1,15 @@
 import './order-cancel.scss';
-import Address from '../../shared/ui/adress/adress';
-import Accordion from '../../shared/ui/accordion/accordion';
-import OrderDetails from '../../shared/ui/order-details/order-details';
-import AboutTrack from '../../shared/ui/about-truck/about-truck';
-import CloseIcon from '../../shared/ui/icons/close-icon';
+import Address from '../../../shared/ui/adress/adress';
+import Accordion from '../../../shared/ui/accordion/accordion';
+import OrderDetails from '../../../shared/ui/order-details/order-details';
+import AboutTrack from '../../../shared/ui/about-truck/about-truck';
+import CloseIcon from '../../../shared/ui/icons/close-icon';
 import {
   getCarTypeStorage,
   getTariffStorage,
-} from '../../shared/api/storage-api';
+} from '../../../shared/api/storage-api';
 
-function OrderCancel({ cancelledOrder }) {
+function OrderCancel({ cancelledOrder, deleteOrder }) {
   return (
     <main className="order-cancel">
       <div className="order-cancel__address">
@@ -48,7 +48,11 @@ function OrderCancel({ cancelledOrder }) {
           />
         </Accordion>
       </div>
-      <button className="order-cancel__delete" type="button">
+      <button
+        className="order-cancel__delete"
+        type="button"
+        onClick={() => deleteOrder(cancelledOrder)}
+      >
         <CloseIcon width="16px" height="16px" />
         Удалить запись
       </button>

@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
 import orderApi from '../../shared/api/order-api';
 import OrderActive from '../../features/order-active/order-active';
 import './order-active-widget.scss';
@@ -7,7 +6,6 @@ import OrderNumber from '../../shared/ui/order-number/order-number';
 
 function OrderActiveWidget() {
   const [orders, setOrders] = useState([]);
-  const { id } = useParams();
 
   useEffect(() => {
     orderApi
@@ -18,25 +16,29 @@ function OrderActiveWidget() {
       });
   }, []);
 
-  function cancelOrder() {
-    orderApi.updateOrderStatus(id, 'Активный', 'Отмененный').catch((error) => {
-      console.log(error);
-    });
-  }
+  const cancelOrder = useCallback(
+    (activeOrder) => {
+      orderApi
+        .updateOrderStatus(activeOrder.id, 'Активный', 'Отмененный')
+        .then(() => {
+          setOrders(orders.filter((o) => o.id !== activeOrder.id));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    [orders]
+  );
 
   return (
     <section className="order-activated">
       <div className="order-activated__container">
         {orders.map((activeOrder) => (
-          <OrderNumber
-            number={activeOrder.id}
-            date="01.11.2023"
-            time={activeOrder.orderDate}
-          >
+          <OrderNumber number={activeOrder.id} date={activeOrder.orderDate}>
             <OrderActive
               activeOrder={activeOrder}
               key={activeOrder.id}
-              cancelOrder={() => cancelOrder}
+              cancelOrder={() => cancelOrder(activeOrder)}
             />
           </OrderNumber>
         ))}

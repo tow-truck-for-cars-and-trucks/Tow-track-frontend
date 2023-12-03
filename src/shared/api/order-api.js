@@ -60,7 +60,7 @@ class OrderApi {
     const statusString = new URLSearchParams({ status }).toString();
     const res = await request(`${this.baseUrl}/api/order/?${statusString}`, {
       method: 'GET',
-      headers: this.getHeaders({ statusString }),
+      headers: this.getHeaders(),
     });
 
     return res.map((r) => mapOrderDataFromBackend(r));
@@ -87,6 +87,15 @@ class OrderApi {
     });
 
     return mapOrderPriceFromBackend(res);
+  }
+
+  async deleteOrder(id, status) {
+    const statusString = new URLSearchParams({ status }).toString();
+
+    await request(`${this.baseUrl}/api/order/${id}/?${statusString}`, {
+      method: 'DELETE',
+      headers: this.getHeaders(),
+    });
   }
 }
 

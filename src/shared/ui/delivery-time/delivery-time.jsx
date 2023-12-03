@@ -1,17 +1,19 @@
-import { format } from 'date-fns';
 import './delivery-time.scss';
+import { format } from 'date-fns';
 
 /**
  * @param {string} time - time of the delivery
  */
-function DeliveryTime({ time }) {
-  const arrival = format(new Date(time), 'HH:mm');
+function DeliveryTime({ date }) {
   return (
     <div className="delivery-time">
       <p className="delivery-time__description">
         Примерное время подачи эвакуатора
       </p>
-      <p className="delivery-time__description">{`${arrival}`}</p>
+      <p className="delivery-time__description">
+        {' '}
+        {format(new Date(date), 'HH:mm')}
+      </p>
     </div>
   );
 }

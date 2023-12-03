@@ -20,10 +20,11 @@ import {
 
 function OrderActive({ activeOrder, cancelOrder }) {
   const [isPopupCancel, setIsPopupCancel] = useState(false);
+
   return (
     <main className="order-active">
       <div className="order-active__submission-time">
-        <DeliveryTime time={activeOrder.orderDate} />
+        <DeliveryTime date={activeOrder.orderDate} />
       </div>
       <ProgressBar
         icons={[

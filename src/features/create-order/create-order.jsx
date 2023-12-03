@@ -1,14 +1,15 @@
 import './create-order.scss';
 import { Controller, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { addressFormSchema } from '../../shared/schema/schema';
 import {
   getLocalStorageToken,
   setTariffStorage,
   setCarTypeStorage,
   setOrderCreationStorage,
+  getOrderCreationStorage,
 } from '../../shared/api/storage-api';
 import carTypeApi from '../../shared/api/car-type-api';
 import tariffApi from '../../shared/api/tariff-api';
@@ -31,6 +32,7 @@ function CreateOrder() {
   const [total, setTotal] = useState(null);
   const navigate = useNavigate();
 
+  const location = useLocation();
   const timerRef = useRef(null);
 
   function calculatePrice(order) {
@@ -38,6 +40,32 @@ function CreateOrder() {
       setTotal(orderPrice);
     });
   }
+
+  const createOrder = useCallback(
+    (order) => {
+      if (getLocalStorageToken()) {
+        orderApi.createOrder(order).then((data) => {
+          navigate(`/order/${data.id}`, { replace: true });
+          setOrderCreationStorage(undefined);
+        });
+      } else {
+        setOrderCreationStorage(order);
+        navigate('/register?mode=login', {
+          replace: true,
+          state: { from: location },
+        });
+      }
+    },
+    [location, navigate]
+  );
+
+  useEffect(() => {
+    const postponedOrder = getOrderCreationStorage();
+
+    if (postponedOrder) {
+      createOrder(postponedOrder);
+    }
+  }, [createOrder]);
 
   useEffect(() => {
     Promise.all([carTypeApi.getCarType(), tariffApi.getTariffType()])
@@ -76,17 +104,6 @@ function CreateOrder() {
     reValidateMode: 'onChange',
     resolver: yupResolver(addressFormSchema),
   });
-
-  function createOrder(order) {
-    if (getLocalStorageToken()) {
-      orderApi.createOrder(order).then((data) => {
-        navigate(`/order/${data.id}`, { replace: true });
-      });
-    } else {
-      setOrderCreationStorage(order);
-      navigate('/register', { replace: true });
-    }
-  }
 
   const isButtonActive = !(errors.addressFrom || errors.addressTo);
 

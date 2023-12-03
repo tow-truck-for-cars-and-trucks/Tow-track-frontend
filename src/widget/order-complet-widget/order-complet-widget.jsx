@@ -22,8 +22,7 @@ function OrderCompletWidget() {
         {orders.map((completedOrder) => (
           <OrderNumber
             number={completedOrder.id}
-            date="01.11.2023"
-            time={completedOrder.orderDate}
+            date={completedOrder.orderDate}
           >
             <OrderComplete
               completedOrder={completedOrder}

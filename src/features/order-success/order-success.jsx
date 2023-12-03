@@ -32,7 +32,7 @@ function OrderSuccess({ activeOrder, cancelOrder }) {
   return (
     <section className="order-success">
       <div className="order-success__time">
-        <DeliveryTime time={activeOrder.orderDate} />
+        <DeliveryTime date={activeOrder.orderDate} />
       </div>
       <ProgressBar
         icons={[
