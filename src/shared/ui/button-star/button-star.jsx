@@ -1,38 +1,37 @@
 import './button-start.scss';
-import { useState } from 'react';
-import StarIconDisabled from '../icons/star-icon-disabled';
-import StarFillIcon from '../icons/star-fill-icon';
+// import { useState } from 'react';
+import React, { useState } from 'react';
+// import StarIconDisabled from '../icons/star-icon-disabled';
+// import StarFillIcon from '../icons/star-fill-icon';
+import { FaStar } from 'react-icons/fa';
 
-export default function ButtonStar({ width, height, color }) {
-  // const [isButton, setIsButton] = useState(false);
-  const [startStates, setStartStates] = useState([
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
+export default function ButtonStar({ title }) {
+  const [rating, setRating] = useState(null);
 
-  const handleStartClick = (index) => {
-    const newStartStates = startStates.map((state, i) => i <= index);
-    setStartStates(newStartStates);
-  };
   return (
     <div className="button-start">
-      {startStates.map((isFilled, index) => (
-        <button
-          // key={index}
-          className="button-start__btn"
-          type="button"
-          onClick={() => handleStartClick(index)}
-        >
-          {isFilled ? (
-            <StarFillIcon width={width} height={height} color={color} />
-          ) : (
-            <StarIconDisabled width={width} height={height} />
-          )}
-        </button>
-      ))}
+      {[...Array(5)].map((star, i) => {
+        const ratingValue = i + 1;
+
+        return (
+          <label htmlFor="rating">
+            <input
+              className="button-start__input"
+              type="radio"
+              name="rating"
+              id="rating"
+              value={ratingValue}
+              onClick={() => setRating(ratingValue)}
+            />
+            <FaStar
+              className="button-start__star"
+              color={ratingValue <= rating ? '#FFCC00' : '#BEBEBF'}
+              size={36}
+            />
+            <span>{title}</span>
+          </label>
+        );
+      })}
     </div>
   );
 }

@@ -36,7 +36,7 @@ function PopupDeferredOrder({ isOpen, onClose, onSubmit }) {
               <input className="popup-deferred__time" />
             </div>
           </div>
-          <Button label="Сохранить" primary="true" />
+          <Button label="Сохранить" primary />
         </form>
       </div>
     </div>

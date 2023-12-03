@@ -12,37 +12,40 @@ function PopupReviews({ isOpen, onClose, name, onSubmit }) {
   return (
     <section className="popup-reviews">
       <Popup active={isOpen} setActive={onClose}>
-        <h2 className="popup-reviews__title">Как все прошло?</h2>
-        <div className="popup-reviews__stars">
-          <ButtonStar width="36px" height="36px" color="#FFCC00" />
-        </div>
-
-        <Checkbox
-          width="24px"
-          height="24px"
-          value={value}
-          onChange={setValue}
-          isRight={true / false}
-        >
-          <span className="popup-reviews__text">
-            {' '}
-            Водитель приехал вовремя?
-          </span>
-        </Checkbox>
-        <Checkbox
-          width="24px"
-          height="24px"
-          value={isButtonValue}
-          onChange={setIsButtonValue}
-          isRight={true / false}
-        >
-          <span className="popup-reviews__text"> Что еще можно спросить?</span>
-        </Checkbox>
-
         <form className="popup-reviews__form" name={name} onSubmit={onSubmit}>
+          <h2 className="popup-reviews__title">Как все прошло?</h2>
+          <div className="popup-reviews__stars">
+            <ButtonStar width="36px" height="36px" color="#FFCC00" />
+          </div>
+
+          <Checkbox
+            width="24px"
+            height="24px"
+            value={value}
+            onChange={setValue}
+            isRight={true / false}
+          >
+            <span className="popup-reviews__text">
+              {' '}
+              Водитель приехал вовремя?
+            </span>
+          </Checkbox>
+          <Checkbox
+            width="24px"
+            height="24px"
+            value={isButtonValue}
+            onChange={setIsButtonValue}
+            isRight={true / false}
+          >
+            <span className="popup-reviews__text">
+              {' '}
+              Что еще можно спросить?
+            </span>
+          </Checkbox>
+
           <h3 className="popup-reviews__subtitle"> Комментарий</h3>
           <Comment placeholder="Вы можете оставить отзыв" />
-          <Button label="Оставить отзыв" primary="true" onClick={onClose} />
+          <Button label="Оставить отзыв" primary onClick={onClose} />
         </form>
       </Popup>
     </section>
