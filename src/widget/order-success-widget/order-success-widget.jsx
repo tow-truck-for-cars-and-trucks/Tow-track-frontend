@@ -24,7 +24,7 @@ function OrderSuccessWidget() {
 
   useEffect(() => {
     orderApi
-      .getOrder(id)
+      .getOrderWithParams(id, { status: 'Активный' })
       .then((order) => setActiveOrder(order))
       .catch((error) => {
         console.log(error);
