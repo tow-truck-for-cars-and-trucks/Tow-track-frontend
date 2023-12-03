@@ -1,11 +1,10 @@
 .register-widget {
-  min-width: 390px;
-  max-width: 768px;
-  background-color: var(--background-grey-light-blue-40);
   display: flex;
   flex-direction: column;
   align-content: center;
-  flex-wrap: wrap;
+  min-width: 390px;
+  max-width: 768px;
+  background-color: var(--background-grey-light-blue-40);
 
   &__back-button {
     padding-top: 20px;
