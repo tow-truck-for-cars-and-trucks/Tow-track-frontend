@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 /**
  *
@@ -8,10 +8,18 @@ import { Navigate } from 'react-router-dom';
  * @returns protected component
  */
 function ProtectedRoute({ forLoggedUser, loggedIn, element }) {
-  if (forLoggedUser) {
-    return loggedIn ? element : <Navigate to="/register" />;
+  const location = useLocation();
+
+  if (forLoggedUser && !loggedIn) {
+    return <Navigate to="/register" state={{ from: location }} />;
   }
-  return loggedIn ? <Navigate to="/" /> : element;
+
+  if (!forLoggedUser && loggedIn) {
+    const { from } = location.state || { from: '/' };
+    return <Navigate to={from} />;
+  }
+
+  return element;
 }
 
 export default ProtectedRoute;

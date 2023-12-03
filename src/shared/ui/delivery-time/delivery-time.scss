@@ -9,13 +9,14 @@
 .delivery-time {
   display: flex;
   flex-direction: row;
-  align-items: end;
+  align-items: center;
   justify-content: space-between;
+  column-gap: 12px;
 
   &__description {
     @extend %text-style;
 
-    padding-right: 30px;
+    // padding-right: 30px;
     font-size: 20px;
   }
 }

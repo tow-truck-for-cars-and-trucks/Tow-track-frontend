@@ -1,8 +1,4 @@
 import './order-success.scss';
-import {
-  getTariffStorage,
-  getCarTypeStorage,
-} from '../../../shared/api/storage-api';
 import DeliveryTime from '../../../shared/ui/delivery-time/delivery-time';
 import ProgressBar from '../../../shared/ui/progress-bar/progress-bar';
 import Adress from '../../../shared/ui/adress/adress';
@@ -14,7 +10,14 @@ import StepOneDefaultIcon from '../../../shared/ui/icons/step-one-default-icon';
 import StepTwoFillIcon from '../../../shared/ui/icons/step-two-fill-icon';
 import StepThreeDisableIcon from '../../../shared/ui/icons/step-three-disable-icon';
 import StepFourDisableIcon from '../../../shared/ui/icons/step-four-disable-icon';
+import {
+  getCarTypeStorage,
+  getTariffStorage,
+} from '../../../shared/api/storage-api';
 
+/**
+ * @param {object} activeOrder - object of success order
+ */
 function OrderSuccess({ activeOrder }) {
   const driverPhoneNumber = '88801112222';
 
@@ -22,11 +25,10 @@ function OrderSuccess({ activeOrder }) {
     console.log('Выполняется вызов водителя:', driverPhoneNumber);
     window.location.href = `tel:${driverPhoneNumber}`;
   };
-
   return (
     <section className="order-success">
       <div className="order-success__time">
-        <DeliveryTime time="16:45" />
+        <DeliveryTime time={activeOrder.orderDate} />
       </div>
       <ProgressBar
         icons={[
