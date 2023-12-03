@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Button from '../../../shared/ui/button/button';
 import PopupCancellations from '../popup-cancellations/popup-cancellations';
 
-function PopupCancel({ isOpen, onClose }) {
+function PopupCancel({ isOpen, onClose, cancelOrder }) {
   const [isPopupCancellation, setIsPopupCancellation] = useState(false);
   const handleClose = () => {
     setIsPopupCancellation(false);
@@ -21,10 +21,13 @@ function PopupCancel({ isOpen, onClose }) {
             <Button label="Вернуться" primary onClick={onClose} />
             <Button
               label="Да, отменить"
-              onClick={() => setIsPopupCancellation(true)}
+              onClick={() => {
+                setIsPopupCancellation(true);
+              }}
             />
           </div>
           <PopupCancellations
+            cancelOrder={cancelOrder}
             isOpen={isPopupCancellation}
             onClose={handleClose}
           />

@@ -20,8 +20,7 @@ function Checkbox({ children, onChange, value, width, height, isRight }) {
         className="checkbox__input"
         type="checkbox"
         name="checkbox"
-        value={value}
-        // checked={value}
+        checked={value}
       />
       <button
         type="button"

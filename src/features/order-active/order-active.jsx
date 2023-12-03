@@ -1,18 +1,18 @@
 import './order-active.scss';
 import React, { useState } from 'react';
-import DeliveryTime from '../../../shared/ui/delivery-time/delivery-time';
-import ProgressBar from '../../../shared/ui/progress-bar/progress-bar';
-import StepOneDefaultIcon from '../../../shared/ui/icons/step-one-default-icon';
-import StepTwoFillIcon from '../../../shared/ui/icons/step-two-fill-icon';
-import StepThreeDisableIcon from '../../../shared/ui/icons/step-three-disable-icon';
-import StepFourDisableIcon from '../../../shared/ui/icons/step-four-disable-icon';
-import Adress from '../../../shared/ui/adress/adress';
-import Alert from '../../../shared/ui/alert/alert';
-import Button from '../../../shared/ui/button/button';
-import Accordion from '../../../shared/ui/accordion/accordion';
-import OrderDetails from '../../../shared/ui/order-details/order-details';
-import AboutTrack from '../../../shared/ui/about-truck/about-truck';
-import PopupCancel from '../popup-cancel/popup-cancel';
+import DeliveryTime from '../../shared/ui/delivery-time/delivery-time';
+import ProgressBar from '../../shared/ui/progress-bar/progress-bar';
+import StepOneDefaultIcon from '../../shared/ui/icons/step-one-default-icon';
+import StepTwoFillIcon from '../../shared/ui/icons/step-two-fill-icon';
+import StepThreeDisableIcon from '../../shared/ui/icons/step-three-disable-icon';
+import StepFourDisableIcon from '../../shared/ui/icons/step-four-disable-icon';
+import Adress from '../../shared/ui/adress/adress';
+import Alert from '../../shared/ui/alert/alert';
+import Button from '../../shared/ui/button/button';
+import Accordion from '../../shared/ui/accordion/accordion';
+import OrderDetails from '../../shared/ui/order-details/order-details';
+import AboutTrack from '../../shared/ui/about-truck/about-truck';
+import PopupCancel from '../../entities/ui/popup-cancel/popup-cancel';
 
 function OrderActive() {
   const [isPopupCancel, setIsPopupCancel] = useState(false);

@@ -1,16 +1,30 @@
-function getResponseData(response) {
+class ResponseError extends Error {
+  constructor(message, response, error) {
+    super(message);
+    this.response = response;
+    this.error = error;
+  }
+}
+
+function getResponseData(response, mapper) {
   if (!response.ok) {
     return response
       .json()
-      .then((err) =>
+      .then((error) =>
         Promise.reject(
-          new Error(JSON.stringify({ 'Код ошибки': response.status, ...err }))
+          new ResponseError(
+            'Response Error',
+            response,
+            response.status === 400 && mapper ? mapper(error) : error
+          )
         )
       );
   }
   return response.json();
 }
 
-export default function request(url, options) {
-  return fetch(url, options).then(getResponseData);
+export default function request(url, options, mapper) {
+  return fetch(url, options).then((response) =>
+    getResponseData(response, mapper)
+  );
 }

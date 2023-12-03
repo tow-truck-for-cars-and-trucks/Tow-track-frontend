@@ -1,7 +1,5 @@
-/* eslint-disable arrow-body-style */
 import './auth.scss';
 import { useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -30,24 +28,11 @@ function Auth() {
     });
   }
 
-  const onSubmit = (inputData) => {
-    return authApi
-      .postLogin(inputData)
-      .then((data) => {
-        setLocalStorageToken(data);
-        removeLocalStorageAuth();
-        navigate(location.state.from);
-      })
-      .then(() => {
-        return createOrder(getOrderCreationStorage());
-      })
-      .catch((error) => console.log(error));
-  };
-
   const {
     control,
     handleSubmit,
     watch,
+    setError,
     formState: { errors },
   } = useForm({
     defaultValues: authData
@@ -69,6 +54,24 @@ function Auth() {
     });
     return () => subscription.unsubscribe();
   }, [watch]);
+
+  const onSubmit = (inputData) =>
+    authApi
+      .postLogin(inputData)
+      .then((data) => {
+        setLocalStorageToken(data);
+        removeLocalStorageAuth();
+        navigate(location.state.from);
+      })
+      .then(() => createOrder(getOrderCreationStorage()))
+      .catch(({ error }) => {
+        Object.entries(error).forEach(([key, value]) => {
+          if (value) {
+            setError(key, { message: value.join(', ') });
+          }
+        });
+        console.log(error);
+      });
 
   return (
     <main className="auth">

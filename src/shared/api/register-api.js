@@ -1,5 +1,8 @@
 import request from '../utils/utils';
-import mapUserDataToBackend from '../mappers/user-mapper';
+import {
+  mapUserDataToBackend,
+  mapUserDataFromBackend,
+} from '../mappers/user-mapper';
 
 const { REACT_APP_BASE_URL } = process.env;
 
@@ -12,11 +15,15 @@ class RegisterApi {
   postRegister(inputs) {
     const mapped = mapUserDataToBackend(inputs);
 
-    return request(`${this.baseUrl}/api/auth/users/`, {
-      method: 'POST',
-      headers: this.headers,
-      body: JSON.stringify(mapped),
-    }).then((res) => res);
+    return request(
+      `${this.baseUrl}/api/auth/users/`,
+      {
+        method: 'POST',
+        headers: this.headers,
+        body: JSON.stringify(mapped),
+      },
+      mapUserDataFromBackend
+    ).then((res) => res);
   }
 }
 

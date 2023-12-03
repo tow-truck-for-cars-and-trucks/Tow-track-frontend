@@ -1,4 +1,4 @@
-import OrderActive from '../../entities/ui/order-active/order-active';
+import OrderActive from '../../features/order-active/order-active';
 import './order-active-widget.scss';
 import OrderNumber from '../../shared/ui/order-number/order-number';
 

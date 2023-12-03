@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import orderApi from '../../shared/api/order-api';
-import OrderSuccess from '../../entities/ui/order-success/order-success';
+import OrderSuccess from '../../features/order-success/order-success';
 import './order-success-widget.scss';
 
 /**
@@ -9,6 +9,7 @@ import './order-success-widget.scss';
  */
 function OrderSuccessWidget() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [activeOrder, setActiveOrder] = useState({
     addressFrom: null,
     addressTo: null,
@@ -23,12 +24,23 @@ function OrderSuccessWidget() {
 
   useEffect(() => {
     orderApi
-      .getOrderWithParams(id, { status: 'Активный' })
+      .getOrder(id)
       .then((order) => setActiveOrder(order))
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
+  function cancelOrder() {
+    orderApi
+      .updateOrderStatus(id, 'Активный', 'Отмененный')
+      .then(() => {
+        navigate('/my-orders', { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   return (
     <section className="order-successfully">
@@ -41,7 +53,10 @@ function OrderSuccessWidget() {
         </div>
         <h1 className="order-successfully__title">оформлен!</h1>
       </div>
-      <OrderSuccess activeOrder={activeOrder} />
+      <OrderSuccess
+        activeOrder={activeOrder}
+        cancelOrder={() => cancelOrder()}
+      />
     </section>
   );
 }

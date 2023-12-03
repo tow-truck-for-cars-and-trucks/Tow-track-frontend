@@ -40,7 +40,7 @@ function OrderConfirmation() {
 
   function createActiveOrder() {
     orderApi
-      .updateOrderStatus(id)
+      .updateOrderStatus(id, 'Созданный', 'Активный')
       .then((data) => {
         navigate(`/success-order/${data.id}`, { replace: true });
       })

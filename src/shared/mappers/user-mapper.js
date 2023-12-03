@@ -1,4 +1,4 @@
-export default function mapUserDataToBackend(data) {
+export function mapUserDataToBackend(data) {
   return {
     email: data.email,
     phone: data.phoneNumber,
@@ -6,5 +6,16 @@ export default function mapUserDataToBackend(data) {
     password: data.password,
     re_password: data.confirmPassword,
     last_name: data?.lastName,
+  };
+}
+
+export function mapUserDataFromBackend(data) {
+  return {
+    email: data.email,
+    phoneNumber: data.phone,
+    firstName: data.first_name,
+    password: data.password,
+    confirmPassword: data.re_password,
+    lastName: data?.last_name,
   };
 }

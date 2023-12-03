@@ -1,14 +1,11 @@
 import './order-cancel.scss';
-import React, { useState } from 'react';
-import Adress from '../../../shared/ui/adress/adress';
-import Accordion from '../../../shared/ui/accordion/accordion';
-import OrderDetails from '../../../shared/ui/order-details/order-details';
-import AboutTrack from '../../../shared/ui/about-truck/about-truck';
-import CloseIcon from '../../../shared/ui/icons/close-icon';
-import PopupReviews from '../popup-reviews/popup-reviews';
+import Adress from '../../shared/ui/adress/adress';
+import Accordion from '../../shared/ui/accordion/accordion';
+import OrderDetails from '../../shared/ui/order-details/order-details';
+import AboutTrack from '../../shared/ui/about-truck/about-truck';
+import CloseIcon from '../../shared/ui/icons/close-icon';
 
 function OrderCancel() {
-  const [isPopupReviews, setIsPopupReviews] = useState(false);
   return (
     <main className="order-cancel">
       <div className="order-cancel__address">
@@ -21,10 +18,6 @@ function OrderCancel() {
         <p className="order-cancel__price-title">Стоимость заказа</p>
         <p className="order-cancel__price-total">1820 ₽</p>
       </div>
-      <PopupReviews
-        isOpen={isPopupReviews}
-        onClose={() => setIsPopupReviews(false)}
-      />
       <div className="order-cancel__info">
         <Accordion title="Детали заказа" withBorder>
           <OrderDetails

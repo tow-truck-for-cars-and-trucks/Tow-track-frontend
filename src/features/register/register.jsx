@@ -1,5 +1,6 @@
 import './register.scss';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Input from '../../shared/ui/input/input';
@@ -18,20 +19,12 @@ import registerApi from '../../shared/api/register-api';
 function Register() {
   const registerData = getLocalStorageRegister();
 
-  const onSubmit = (inputData) => {
-    registerApi
-      .postRegister(inputData)
-      .then(() => {
-        removeLocalStorageRegister();
-      })
-      .catch((error) => console.log(error));
-  };
-
   const {
     control,
     watch,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm({
     defaultValues: registerData
       ? JSON.parse(registerData)
@@ -48,6 +41,25 @@ function Register() {
     reValidateMode: 'onChange',
     resolver: yupResolver(registerFormSchema),
   });
+
+  const navigate = useNavigate();
+
+  const onSubmit = (inputData) => {
+    registerApi
+      .postRegister(inputData)
+      .then(() => {
+        removeLocalStorageRegister();
+        navigate('/register?mode=login');
+      })
+      .catch(({ error }) => {
+        Object.entries(error).forEach(([key, value]) => {
+          if (value) {
+            setError(key, { message: value.join(', ') });
+          }
+        });
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     const subscription = watch(
