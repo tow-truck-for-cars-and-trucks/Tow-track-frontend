@@ -6,6 +6,7 @@ export function mapUserDataToBackend(data) {
     password: data.password,
     re_password: data.confirmPassword,
     last_name: data?.lastName,
+    non_field_errors: data?.fieldErrors,
   };
 }
 
@@ -17,5 +18,6 @@ export function mapUserDataFromBackend(data) {
     password: data.password,
     confirmPassword: data.re_password,
     lastName: data?.last_name,
+    fieldErrors: data?.non_field_errors,
   };
 }

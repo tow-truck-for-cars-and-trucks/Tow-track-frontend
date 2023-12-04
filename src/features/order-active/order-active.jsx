@@ -20,6 +20,12 @@ import {
 
 function OrderActive({ activeOrder, cancelOrder }) {
   const [isPopupCancel, setIsPopupCancel] = useState(false);
+  const driverPhoneNumber = '88801112222';
+
+  const handleCallDriver = () => {
+    console.log('Выполняется вызов водителя:', driverPhoneNumber);
+    window.location.href = `tel:${driverPhoneNumber}`;
+  };
 
   return (
     <main className="order-active">
@@ -50,7 +56,11 @@ function OrderActive({ activeOrder, cancelOrder }) {
         <Alert />
       </div>
       <div className="order-active__button">
-        <Button primary label="Связаться с водителем" />
+        <Button
+          primary
+          label="Связаться с водителем"
+          onClick={handleCallDriver}
+        />
       </div>
       <Button
         secondary

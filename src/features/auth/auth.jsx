@@ -100,6 +100,7 @@ function Auth() {
             )}
           />
         </div>
+        <p className="auth__field-error">{errors.fieldErrors?.message}</p>
         <div className="auth__button">
           <Button
             label="Войти"

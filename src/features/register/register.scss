@@ -26,4 +26,9 @@
     padding-top: 28px;
     padding-bottom: 56px;
   }
+
+  &__field-error {
+    color: var(--system-error);
+    text-align: center;
+  }
 }
