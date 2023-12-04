@@ -1,7 +1,5 @@
-/* eslint-disable arrow-body-style */
 import './auth.scss';
 import { useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -10,11 +8,9 @@ import {
   getLocalStorageAuth,
   removeLocalStorageAuth,
   setLocalStorageToken,
-  getOrderCreationStorage,
 } from '../../shared/api/storage-api';
 import { authFormSchema } from '../../shared/schema/schema';
 import Input from '../../shared/ui/input/input';
-import orderApi from '../../shared/api/order-api';
 import PasswordInput from '../../shared/ui/password-input/password-input';
 import Button from '../../shared/ui/button/button';
 import authApi from '../../shared/api/auth-api';
@@ -24,30 +20,11 @@ function Auth() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  function createOrder(order) {
-    orderApi.createOrder(order).then((data) => {
-      navigate(`/order/${data.id}`, { replace: true });
-    });
-  }
-
-  const onSubmit = (inputData) => {
-    return authApi
-      .postLogin(inputData)
-      .then((data) => {
-        setLocalStorageToken(data);
-        removeLocalStorageAuth();
-        navigate(location.state.from);
-      })
-      .then(() => {
-        return createOrder(getOrderCreationStorage());
-      })
-      .catch((error) => console.log(error));
-  };
-
   const {
     control,
     handleSubmit,
     watch,
+    setError,
     formState: { errors },
   } = useForm({
     defaultValues: authData
@@ -69,6 +46,23 @@ function Auth() {
     });
     return () => subscription.unsubscribe();
   }, [watch]);
+
+  const onSubmit = (inputData) =>
+    authApi
+      .postLogin(inputData)
+      .then((data) => {
+        setLocalStorageToken(data);
+        removeLocalStorageAuth();
+        navigate(location.state.from);
+      })
+      .catch(({ error }) => {
+        Object.entries(error).forEach(([key, value]) => {
+          if (value) {
+            setError(key, { message: value.join(', ') });
+          }
+        });
+        console.log(error);
+      });
 
   return (
     <main className="auth">
@@ -106,6 +100,7 @@ function Auth() {
             )}
           />
         </div>
+        <p className="auth__field-error">{errors.fieldErrors?.message}</p>
         <div className="auth__button">
           <Button
             label="Войти"

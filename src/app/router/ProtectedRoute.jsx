@@ -1,17 +1,18 @@
 import { Navigate, useLocation } from 'react-router-dom';
+import checkUserLogged from '../model/validation';
 
 /**
  *
  * @param {boolean} forLoggedUser - field describing whether the route should be available to logged user
- * @param {boolean} loggedIn - flag describing whether the user is logged in
  * @param {ReactDOM} element - react component which should returned if the user is logged in
  * @returns protected component
  */
-function ProtectedRoute({ forLoggedUser, loggedIn, element }) {
+function ProtectedRoute({ forLoggedUser, element }) {
   const location = useLocation();
+  const loggedIn = checkUserLogged();
 
   if (forLoggedUser && !loggedIn) {
-    return <Navigate to="/register" state={{ from: location }} />;
+    return <Navigate to="/register?mode=login" state={{ from: location }} />;
   }
 
   if (!forLoggedUser && loggedIn) {

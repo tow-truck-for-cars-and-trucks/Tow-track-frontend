@@ -5,7 +5,7 @@ import CheckboxRadio from '../../../shared/ui/checkbox-radio/checkbox-radio';
 import Comment from '../../../shared/ui/comment/comment';
 import Button from '../../../shared/ui/button/button';
 
-function PopupCancellations({ isOpen, onClose }) {
+function PopupCancellations({ isOpen, onClose, cancelOrder }) {
   const [isValueError, setIsValueError] = useState('');
   const [isValueNotSuit, setIsValueSuit] = useState('');
   const [isValueLong, setIsValueLong] = useState('');
@@ -93,10 +93,8 @@ function PopupCancellations({ isOpen, onClose }) {
           >
             <p className="popup-cancellations__text"> Другое</p>
           </CheckboxRadio>
-
           {isValueOther && <Comment placeholder="Опишите, что случилось" />}
-
-          <Button label="Применить" primary />
+          <Button label="Применить" primary onClick={cancelOrder} />
         </div>
       </Popup>
     </div>

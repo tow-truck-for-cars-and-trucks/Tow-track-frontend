@@ -1,23 +1,42 @@
+import { useState, useEffect, useCallback } from 'react';
+import orderApi from '../../shared/api/order-api';
 import OrderCancel from '../../entities/ui/order-cancel/order-cancel';
 import './order-cancel-widget.scss';
 import OrderNumber from '../../shared/ui/order-number/order-number';
 
 function OrderCancelWidget() {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    orderApi
+      .getAllOrders('Отмененный')
+      .then((order) => setOrders(order))
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const deleteOrder = useCallback((cancelledOrder) => {
+    orderApi.deleteOrder(cancelledOrder.id, 'Отмененный').then(() => {
+      setOrders(orders.filter((o) => o.id !== cancelledOrder.id));
+    });
+  }, []);
+
   return (
     <section className="order-cancelled">
       <div className="order-cancelled__container">
-        <OrderNumber number="1234" date="01.11.2023" time="19:09">
-          <OrderCancel />
-        </OrderNumber>
-        <OrderNumber number="1235" date="02.10.2023" time="15:20">
-          <OrderCancel />
-        </OrderNumber>
-        <OrderNumber number="1234" date="03.09.2023" time="18:05">
-          <OrderCancel />
-        </OrderNumber>
-        <OrderNumber number="1239" date="04.08.2022" time="13:29">
-          <OrderCancel />
-        </OrderNumber>
+        {orders.map((cancelledOrder) => (
+          <OrderNumber
+            number={cancelledOrder.id}
+            date={cancelledOrder.orderDate}
+          >
+            <OrderCancel
+              deleteOrder={deleteOrder}
+              cancelledOrder={cancelledOrder}
+              key={cancelledOrder.id}
+            />
+          </OrderNumber>
+        ))}
       </div>
     </section>
   );

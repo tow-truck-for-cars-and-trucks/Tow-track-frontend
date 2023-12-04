@@ -17,10 +17,20 @@
     display: none;
   }
 
+  &__counter {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    color: var(--text-black-40);
+    font-weight: 500;
+    font-size: 12px;
+    font-style: normal;
+  }
+
   &__textarea {
     width: calc(100% - 32px);
     min-height: 66px;
-    padding: 16px 16px 16px 16px;
+    padding: 16px;
     font-size: 16px;
     border: none;
     border-radius: 12px;
@@ -30,6 +40,7 @@
     caret-color: var(--accent-yellow-light);
 
     &:focus {
+      padding: 15px;
       border: 1px solid var(--accent-yellow-light);
       caret-color: var(--accent-yellow-light);
     }
@@ -50,23 +61,15 @@
       border: 2px solid var(--accent-yellow-light);
       caret-color: var(--accent-yellow-light);
     }
+
     .popup-reviews__form & {
       width: 240px;
       margin-bottom: 32px;
     }
+
     .popup-cancellations__container & {
       width: 245px;
       margin-bottom: 28px;
     }
-  }
-
-  &__counter {
-    position: absolute;
-    right: 16px;
-    bottom: 16px;
-    color: var(--text-black-40);
-    font-weight: 500;
-    font-size: 12px;
-    font-style: normal;
   }
 }

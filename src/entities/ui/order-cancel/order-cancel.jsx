@@ -1,39 +1,42 @@
 import './order-cancel.scss';
-import React, { useState } from 'react';
-import Adress from '../../../shared/ui/adress/adress';
+import Address from '../../../shared/ui/adress/adress';
 import Accordion from '../../../shared/ui/accordion/accordion';
 import OrderDetails from '../../../shared/ui/order-details/order-details';
 import AboutTrack from '../../../shared/ui/about-truck/about-truck';
 import CloseIcon from '../../../shared/ui/icons/close-icon';
-import PopupReviews from '../popup-reviews/popup-reviews';
+import {
+  getCarTypeStorage,
+  getTariffStorage,
+} from '../../../shared/api/storage-api';
 
-function OrderCancel() {
-  const [isPopupReviews, setIsPopupReviews] = useState(false);
+function OrderCancel({ cancelledOrder, deleteOrder }) {
   return (
     <main className="order-cancel">
       <div className="order-cancel__address">
-        <Adress
-          adressFrom="Москва, ул. Ленинградская, 28"
-          adressTo="​Московская область, г. Сергиев Посад, Сергиевская улица, 10"
+        <Address
+          addressFrom={cancelledOrder.addressFrom}
+          addressTo={cancelledOrder.addressTo}
         />
       </div>
       <div className="order-cancel__price">
         <p className="order-cancel__price-title">Стоимость заказа</p>
-        <p className="order-cancel__price-total">1820 ₽</p>
+        <p className="order-cancel__price-total">{cancelledOrder.total} ₽</p>
       </div>
-      <PopupReviews
-        isOpen={isPopupReviews}
-        onClose={() => setIsPopupReviews(false)}
-      />
       <div className="order-cancel__info">
         <Accordion title="Детали заказа" withBorder>
           <OrderDetails
-            tariff="Эконом"
-            carType="Легковой автомобиль"
-            wheelLock="0"
-            towin="Нет"
-            delay="Нет"
-            comment="Еще один очень важный комментарий"
+            tariff={
+              getTariffStorage().find((x) => x.id === cancelledOrder?.tariff)
+                ?.name
+            }
+            carType={
+              getCarTypeStorage().find((x) => x.id === cancelledOrder?.carType)
+                ?.car_type
+            }
+            wheelLock={cancelledOrder.wheelLock}
+            towin={cancelledOrder.towin ? 'Да' : 'Нет'}
+            delay={cancelledOrder.orderDate ? 'Да' : 'Нет'}
+            comment={cancelledOrder.comment}
           />
         </Accordion>
         <Accordion title="Информация о машине и водителе" withBorder>
@@ -45,7 +48,11 @@ function OrderCancel() {
           />
         </Accordion>
       </div>
-      <button className="order-cancel__delete" type="button">
+      <button
+        className="order-cancel__delete"
+        type="button"
+        onClick={() => deleteOrder(cancelledOrder)}
+      >
         <CloseIcon width="16px" height="16px" />
         Удалить запись
       </button>

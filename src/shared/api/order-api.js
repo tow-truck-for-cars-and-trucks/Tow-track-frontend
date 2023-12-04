@@ -32,14 +32,17 @@ class OrderApi {
     return mapOrderDataFromBackend(res);
   }
 
-  async updateOrderStatus(id) {
-    const status = 'Активный';
-
-    const res = await request(`${this.baseUrl}/api/order/${id}/`, {
-      method: 'PATCH',
-      headers: this.getHeaders(),
-      body: JSON.stringify({ status }),
-    });
+  async updateOrderStatus(id, status, newStatus) {
+    const statusString = new URLSearchParams({ status }).toString();
+    const queryStatusString = status ? `?${statusString}` : '';
+    const res = await request(
+      `${this.baseUrl}/api/order/${id}/${queryStatusString}`,
+      {
+        method: 'PATCH',
+        headers: this.getHeaders(),
+        body: JSON.stringify({ status: newStatus }),
+      }
+    );
 
     return mapOrderDataFromBackend(res);
   }
@@ -51,6 +54,16 @@ class OrderApi {
     });
 
     return mapOrderDataFromBackend(res);
+  }
+
+  async getAllOrders(status) {
+    const statusString = new URLSearchParams({ status }).toString();
+    const res = await request(`${this.baseUrl}/api/order/?${statusString}`, {
+      method: 'GET',
+      headers: this.getHeaders(),
+    });
+
+    return res.map((r) => mapOrderDataFromBackend(r));
   }
 
   async getOrderWithParams(id, params = {}) {
@@ -74,6 +87,15 @@ class OrderApi {
     });
 
     return mapOrderPriceFromBackend(res);
+  }
+
+  async deleteOrder(id, status) {
+    const statusString = new URLSearchParams({ status }).toString();
+
+    await request(`${this.baseUrl}/api/order/${id}/?${statusString}`, {
+      method: 'DELETE',
+      headers: this.getHeaders(),
+    });
   }
 }
 
