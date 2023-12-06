@@ -30,7 +30,7 @@ function PopupReviews({ isOpen, onClose, name, onSubmit }) {
             height="24px"
             value={value}
             onChange={setValue}
-            isRight={true / false}
+            isRight
           >
             <span className="popup-reviews__text">
               {' '}
@@ -42,7 +42,7 @@ function PopupReviews({ isOpen, onClose, name, onSubmit }) {
             height="24px"
             value={isButtonValue}
             onChange={setIsButtonValue}
-            isRight={true / false}
+            isRight
           >
             <span className="popup-reviews__text">
               {' '}
