@@ -2,8 +2,8 @@
   &__title {
     margin: 0;
     color: var(--accent-black-80, #3b3e49);
-    font-size: 24px;
     font-weight: 700;
+    font-size: 24px;
     line-height: 125%;
   }
 
@@ -13,25 +13,29 @@
     justify-content: center;
     margin: 24px 0 32px;
   }
+
   &__checkbox {
     display: flex;
     align-items: center;
   }
+
   &__text {
-    color: var(--accent-black-80, #3b3e49);
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 120%;
     margin: 0;
     margin-right: auto;
+    color: var(--accent-black-80, #3b3e49);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 120%;
   }
+
   &__subtitle {
-    color: var(--text-black-80, #3b3e49);
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 125%;
     margin: 0 0 20px;
+    color: var(--text-black-80, #3b3e49);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 125%;
   }
+
   &__form {
     margin-top: 32px;
   }
