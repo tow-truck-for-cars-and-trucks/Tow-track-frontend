@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getMinutes, getHours } from 'date-fns';
+import { getCarTypeTitle } from '../create-order/model/car-type-slice';
+import { getTariffTitle } from '../create-order/model/tariff-slice';
 import orderApi from '../../shared/api/order-api';
 import PagesTitle from '../../shared/ui/pages-title/pages-title';
 import Input from '../../shared/ui/input/input';
@@ -13,8 +15,6 @@ import TotalPrice from '../../shared/ui/total-price/total-price';
 
 function OrderConfirmation() {
   const [activeTab, setActiveTab] = useState('cash');
-  const allPricing = useSelector((store) => store.allPricing.tariff);
-  const allCars = useSelector((store) => store.allCars.carType);
   const [newOrder, setNewOrder] = useState({
     addressFrom: null,
     addressTo: null,
@@ -26,6 +26,9 @@ function OrderConfirmation() {
     towin: null,
     comment: null,
   });
+  const carType = useSelector((state) => getCarTypeTitle(state, newOrder));
+  const tariff = useSelector((state) => getTariffTitle(state, newOrder));
+
   const { id } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
@@ -93,8 +96,8 @@ function OrderConfirmation() {
           </div>
         </div>
         <OrderDetails
-          tariff={allPricing.find((x) => x.id === newOrder?.tariff)?.name}
-          carType={allCars.find((x) => x.id === newOrder?.carType)?.car_type}
+          tariff={tariff}
+          carType={carType}
           wheelLock={newOrder.wheelLock}
           towin={newOrder.towin ? 'Да' : 'Нет'}
           delay={newOrder.orderDate ? 'Да' : 'Нет'}

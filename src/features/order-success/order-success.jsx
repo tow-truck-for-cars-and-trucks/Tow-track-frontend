@@ -1,6 +1,8 @@
 import './order-success.scss';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { getCarTypeTitle } from '../create-order/model/car-type-slice';
+import { getTariffTitle } from '../create-order/model/tariff-slice';
 import DeliveryTime from '../../shared/ui/delivery-time/delivery-time';
 import ProgressBar from '../../shared/ui/progress-bar/progress-bar';
 import Adress from '../../shared/ui/adress/adress';
@@ -18,8 +20,8 @@ import PopupCancel from '../../entities/ui/popup-cancel/popup-cancel';
  * @param {object} activeOrder - object of success order
  */
 function OrderSuccess({ activeOrder, cancelOrder }) {
-  const allPricing = useSelector((store) => store.allPricing.tariff);
-  const allCars = useSelector((store) => store.allCars.carType);
+  const carType = useSelector((state) => getCarTypeTitle(state, activeOrder));
+  const tariff = useSelector((state) => getTariffTitle(state, activeOrder));
   const driverPhoneNumber = '88801112222';
   const [isPopupCancel, setIsPopupCancel] = useState(false);
 
@@ -45,8 +47,8 @@ function OrderSuccess({ activeOrder, cancelOrder }) {
       />
       <div className="order-success__adress">
         <Adress
-          adressFrom={activeOrder.addressFrom}
-          adressTo={activeOrder.addressTo}
+          addressFrom={activeOrder.addressFrom}
+          addressTo={activeOrder.addressTo}
         />
       </div>
       <div className="order-success__price">
@@ -55,8 +57,8 @@ function OrderSuccess({ activeOrder, cancelOrder }) {
       </div>
       <Accordion title="Информация о машине и водителе" withBorder={false}>
         <OrderDetails
-          tariff={allPricing.find((x) => x.id === activeOrder?.tariff)?.name}
-          carType={allCars.find((x) => x.id === activeOrder?.carType)?.car_type}
+          tariff={tariff}
+          carType={carType}
           wheelLock={activeOrder.wheelLock}
           towin={activeOrder.towin ? 'Да' : 'Нет'}
           delay={activeOrder.orderDate ? 'Да' : 'Нет'}

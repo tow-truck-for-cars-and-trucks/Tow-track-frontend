@@ -1,4 +1,8 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {
+  createAsyncThunk,
+  createSlice,
+  createSelector,
+} from '@reduxjs/toolkit';
 import tariffApi from '../../../shared/api/tariff-api';
 
 const initialState = {
@@ -18,8 +22,8 @@ export const getTariff = createAsyncThunk(
   }
 );
 
-const getTariffSlice = createSlice({
-  name: 'get-tariff',
+const tariffSlice = createSlice({
+  name: 'tariff',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -30,4 +34,10 @@ const getTariffSlice = createSlice({
   },
 });
 
-export default getTariffSlice.reducer;
+export const getTariffTitle = createSelector(
+  [(state) => state.allPricing, (_, newOrder) => newOrder],
+  (allPricing, newOrder) =>
+    allPricing.tariff.find((x) => x.id === newOrder?.tariff)?.name
+);
+
+export default tariffSlice.reducer;

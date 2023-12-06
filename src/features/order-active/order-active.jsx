@@ -1,6 +1,8 @@
 import './order-active.scss';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { getCarTypeTitle } from '../create-order/model/car-type-slice';
+import { getTariffTitle } from '../create-order/model/tariff-slice';
 import DeliveryTime from '../../shared/ui/delivery-time/delivery-time';
 import ProgressBar from '../../shared/ui/progress-bar/progress-bar';
 import StepOneDefaultIcon from '../../shared/ui/icons/step-one-default-icon';
@@ -17,8 +19,8 @@ import PopupCancel from '../../entities/ui/popup-cancel/popup-cancel';
 
 function OrderActive({ activeOrder, cancelOrder }) {
   const [isPopupCancel, setIsPopupCancel] = useState(false);
-  const allPricing = useSelector((store) => store.allPricing.tariff);
-  const allCars = useSelector((store) => store.allCars.carType);
+  const carType = useSelector((state) => getCarTypeTitle(state, activeOrder));
+  const tariff = useSelector((state) => getTariffTitle(state, activeOrder));
   const driverPhoneNumber = '88801112222';
 
   const handleCallDriver = () => {
@@ -74,10 +76,8 @@ function OrderActive({ activeOrder, cancelOrder }) {
       <div className="order-active__info">
         <Accordion title="Детали заказа" withBorder>
           <OrderDetails
-            tariff={allPricing.find((x) => x.id === activeOrder?.tariff)?.name}
-            carType={
-              allCars.find((x) => x.id === activeOrder?.carType)?.car_type
-            }
+            tariff={tariff}
+            carType={carType}
             wheelLock={activeOrder.wheelLock}
             towin={activeOrder.towin ? 'Да' : 'Нет'}
             delay={activeOrder.orderDate ? 'Да' : 'Нет'}

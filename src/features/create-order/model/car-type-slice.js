@@ -1,4 +1,8 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {
+  createAsyncThunk,
+  createSlice,
+  createSelector,
+} from '@reduxjs/toolkit';
 import carTypeApi from '../../../shared/api/car-type-api';
 
 const initialState = {
@@ -18,8 +22,8 @@ export const getCarType = createAsyncThunk(
   }
 );
 
-const getCarTypeSlice = createSlice({
-  name: 'get-carType',
+const carTypeSlice = createSlice({
+  name: 'carType',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -30,4 +34,10 @@ const getCarTypeSlice = createSlice({
   },
 });
 
-export default getCarTypeSlice.reducer;
+export const getCarTypeTitle = createSelector(
+  [(state) => state.allCars, (_, newOrder) => newOrder],
+  (allCars, newOrder) =>
+    allCars.carType.find((x) => x.id === newOrder?.carType)?.car_type
+);
+
+export default carTypeSlice.reducer;
