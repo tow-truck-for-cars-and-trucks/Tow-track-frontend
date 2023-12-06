@@ -8,12 +8,16 @@ import {
   getLocalStorageAuth,
   removeLocalStorageAuth,
   setLocalStorageToken,
+  getOrderCreationStorage,
+  getLocalStorageToken,
+  setOrderCreationStorage,
 } from '../../shared/api/storage-api';
 import { authFormSchema } from '../../shared/schema/schema';
 import Input from '../../shared/ui/input/input';
 import PasswordInput from '../../shared/ui/password-input/password-input';
 import Button from '../../shared/ui/button/button';
 import authApi from '../../shared/api/auth-api';
+import orderApi from '../../shared/api/order-api';
 
 function Auth() {
   const authData = getLocalStorageAuth();
@@ -47,13 +51,24 @@ function Auth() {
     return () => subscription.unsubscribe();
   }, [watch]);
 
+  const continueOrder = () => {
+    const order = getOrderCreationStorage();
+    if (order || getLocalStorageToken()) {
+      orderApi.createOrder(order).then((data) => {
+        navigate(`${location.state.from}/${data.id}`, { state: { from: '/' } });
+        setOrderCreationStorage(undefined);
+      });
+    }
+  };
+
   const onSubmit = (inputData) =>
     authApi
       .postLogin(inputData)
       .then((data) => {
         setLocalStorageToken(data);
         removeLocalStorageAuth();
-        navigate(location.state.from);
+        if (getOrderCreationStorage()) continueOrder();
+        else navigate(location.state.from);
       })
       .catch(({ error }) => {
         Object.entries(error).forEach(([key, value]) => {
@@ -61,7 +76,7 @@ function Auth() {
             setError(key, { message: value.join(', ') });
           }
         });
-        console.log(error);
+        // console.log(error);
       });
 
   return (

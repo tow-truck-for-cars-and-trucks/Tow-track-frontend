@@ -22,7 +22,10 @@ function App() {
           <ProtectedRoute forLoggedUser element={<SuccessOrderPage />} />
         }
       />
-      <Route path="/register" element={<RegisterPage />} />
+      <Route
+        path="/register"
+        element={<ProtectedRoute element={<RegisterPage />} />}
+      />
       <Route
         path="/my-orders"
         element={<ProtectedRoute forLoggedUser element={<MyOrderPage />} />}

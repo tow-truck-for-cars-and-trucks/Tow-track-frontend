@@ -9,7 +9,6 @@ import {
   setTariffStorage,
   setCarTypeStorage,
   setOrderCreationStorage,
-  getOrderCreationStorage,
 } from '../../shared/api/storage-api';
 import carTypeApi from '../../shared/api/car-type-api';
 import tariffApi from '../../shared/api/tariff-api';
@@ -52,20 +51,12 @@ function CreateOrder() {
         setOrderCreationStorage(order);
         navigate('/register?mode=login', {
           replace: true,
-          state: { from: location },
+          state: { from: '/order' },
         });
       }
     },
     [location, navigate]
   );
-
-  useEffect(() => {
-    const postponedOrder = getOrderCreationStorage();
-
-    if (postponedOrder) {
-      createOrder(postponedOrder);
-    }
-  }, [createOrder]);
 
   useEffect(() => {
     Promise.all([carTypeApi.getCarType(), tariffApi.getTariffType()])
