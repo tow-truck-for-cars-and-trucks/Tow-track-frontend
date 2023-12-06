@@ -3,15 +3,13 @@ import { Controller, useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { addressFormSchema } from '../../../shared/schema/schema';
 import {
   getLocalStorageToken,
   setOrderCreationStorage,
   getOrderCreationStorage,
 } from '../../../shared/api/storage-api';
-import { getTariff } from '../model/tariff-slice';
-import { getCarType } from '../model/car-type-slice';
 import orderApi from '../../../shared/api/order-api';
 import Input from '../../../shared/ui/input/input';
 import NavigationArrowIcon from '../../../shared/ui/icons/navigation-arrow-icon';
@@ -30,7 +28,6 @@ function CreateOrder() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [total, setTotal] = useState(null);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const location = useLocation();
   const timerRef = useRef(null);
@@ -66,11 +63,6 @@ function CreateOrder() {
       createOrder(postponedOrder);
     }
   }, [createOrder]);
-
-  useEffect(() => {
-    dispatch(getTariff());
-    dispatch(getCarType());
-  }, []);
 
   const defaultValues = {
     addressFrom: '',
