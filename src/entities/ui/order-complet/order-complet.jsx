@@ -1,5 +1,6 @@
 import './order-complet.scss';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Address from '../../../shared/ui/adress/adress';
 import Button from '../../../shared/ui/button/button';
 import Accordion from '../../../shared/ui/accordion/accordion';
@@ -7,13 +8,12 @@ import OrderDetails from '../../../shared/ui/order-details/order-details';
 import AboutTrack from '../../../shared/ui/about-truck/about-truck';
 import CloseIcon from '../../../shared/ui/icons/close-icon';
 import PopupReviews from '../popup-reviews/popup-reviews';
-import {
-  getCarTypeStorage,
-  getTariffStorage,
-} from '../../../shared/api/storage-api';
 
 function OrderComplete({ completedOrder }) {
   const [isPopupReviews, setIsPopupReviews] = useState(false);
+  const allPricing = useSelector((store) => store.allPricing.tariff);
+  const allCars = useSelector((store) => store.allCars.carType);
+
   return (
     <main className="order-complet">
       <div className="order-complet__address">
@@ -41,12 +41,10 @@ function OrderComplete({ completedOrder }) {
         <Accordion title="Детали заказа" withBorder>
           <OrderDetails
             tariff={
-              getTariffStorage().find((x) => x.id === completedOrder?.tariff)
-                ?.name
+              allPricing.find((x) => x.id === completedOrder?.tariff)?.name
             }
             carType={
-              getCarTypeStorage().find((x) => x.id === completedOrder?.carType)
-                ?.car_type
+              allCars.find((x) => x.id === completedOrder?.carType)?.car_type
             }
             wheelLock={completedOrder.wheelLock}
             towin={completedOrder.towin ? 'Да' : 'Нет'}

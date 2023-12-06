@@ -1,15 +1,15 @@
 import './order-cancel.scss';
+import { useSelector } from 'react-redux';
 import Address from '../../../shared/ui/adress/adress';
 import Accordion from '../../../shared/ui/accordion/accordion';
 import OrderDetails from '../../../shared/ui/order-details/order-details';
 import AboutTrack from '../../../shared/ui/about-truck/about-truck';
 import CloseIcon from '../../../shared/ui/icons/close-icon';
-import {
-  getCarTypeStorage,
-  getTariffStorage,
-} from '../../../shared/api/storage-api';
 
 function OrderCancel({ cancelledOrder, deleteOrder }) {
+  const allPricing = useSelector((store) => store.allPricing.tariff);
+  const allCars = useSelector((store) => store.allCars.carType);
+
   return (
     <main className="order-cancel">
       <div className="order-cancel__address">
@@ -26,12 +26,10 @@ function OrderCancel({ cancelledOrder, deleteOrder }) {
         <Accordion title="Детали заказа" withBorder>
           <OrderDetails
             tariff={
-              getTariffStorage().find((x) => x.id === cancelledOrder?.tariff)
-                ?.name
+              allPricing.find((x) => x.id === cancelledOrder?.tariff)?.name
             }
             carType={
-              getCarTypeStorage().find((x) => x.id === cancelledOrder?.carType)
-                ?.car_type
+              allCars.find((x) => x.id === cancelledOrder?.carType)?.car_type
             }
             wheelLock={cancelledOrder.wheelLock}
             towin={cancelledOrder.towin ? 'Да' : 'Нет'}

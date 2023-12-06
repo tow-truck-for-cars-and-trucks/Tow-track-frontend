@@ -1,5 +1,6 @@
 import './order-success.scss';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import DeliveryTime from '../../shared/ui/delivery-time/delivery-time';
 import ProgressBar from '../../shared/ui/progress-bar/progress-bar';
 import Adress from '../../shared/ui/adress/adress';
@@ -12,15 +13,13 @@ import StepTwoFillIcon from '../../shared/ui/icons/step-two-fill-icon';
 import StepThreeDisableIcon from '../../shared/ui/icons/step-three-disable-icon';
 import StepFourDisableIcon from '../../shared/ui/icons/step-four-disable-icon';
 import PopupCancel from '../../entities/ui/popup-cancel/popup-cancel';
-import {
-  getCarTypeStorage,
-  getTariffStorage,
-} from '../../shared/api/storage-api';
 
 /**
  * @param {object} activeOrder - object of success order
  */
 function OrderSuccess({ activeOrder, cancelOrder }) {
+  const allPricing = useSelector((store) => store.allPricing.tariff);
+  const allCars = useSelector((store) => store.allCars.carType);
   const driverPhoneNumber = '88801112222';
   const [isPopupCancel, setIsPopupCancel] = useState(false);
 
@@ -56,13 +55,8 @@ function OrderSuccess({ activeOrder, cancelOrder }) {
       </div>
       <Accordion title="Информация о машине и водителе" withBorder={false}>
         <OrderDetails
-          tariff={
-            getTariffStorage().find((x) => x.id === activeOrder?.tariff)?.name
-          }
-          carType={
-            getCarTypeStorage().find((x) => x.id === activeOrder?.carType)
-              ?.car_type
-          }
+          tariff={allPricing.find((x) => x.id === activeOrder?.tariff)?.name}
+          carType={allCars.find((x) => x.id === activeOrder?.carType)?.car_type}
           wheelLock={activeOrder.wheelLock}
           towin={activeOrder.towin ? 'Да' : 'Нет'}
           delay={activeOrder.orderDate ? 'Да' : 'Нет'}
