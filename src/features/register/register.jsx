@@ -24,7 +24,7 @@ function Register() {
     control,
     watch,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     setError,
   } = useForm({
     defaultValues: registerData
@@ -203,7 +203,7 @@ function Register() {
           label="Зарегистрироваться"
           onClick={handleSubmit(onSubmit)}
           primary
-          disabled={!!Object.keys(errors).length}
+          disabled={!isValid}
         />
       </div>
     </main>

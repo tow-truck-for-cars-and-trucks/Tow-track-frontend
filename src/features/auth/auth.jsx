@@ -29,7 +29,7 @@ function Auth() {
     handleSubmit,
     watch,
     setError,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     defaultValues: authData
       ? {
@@ -77,7 +77,6 @@ function Auth() {
               setError(key, { message: value.join(', ') });
             }
           });
-        // console.log(error);
       });
   };
 
@@ -117,13 +116,15 @@ function Auth() {
             )}
           />
         </div>
-        <p className="auth__field-error">{errors.fieldErrors?.message}</p>
+        <p className="auth__field-error">
+          {!isValid ? errors.fieldErrors?.message : ''}
+        </p>
         <div className="auth__button">
           <Button
             label="Войти"
             onClick={handleSubmit(onSubmit)}
             primary
-            disabled={!!Object.keys(errors).length}
+            disabled={!isValid}
           />
         </div>
       </form>
