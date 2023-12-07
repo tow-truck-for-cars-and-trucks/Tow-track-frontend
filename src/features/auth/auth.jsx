@@ -23,7 +23,9 @@ function Auth() {
   const authData = getLocalStorageAuth();
   const location = useLocation();
   const navigate = useNavigate();
-
+  const fromPage = location.state?.from?.pathname || '/';
+  console.log(location);
+  console.log(fromPage);
   const {
     control,
     handleSubmit,
@@ -53,31 +55,33 @@ function Auth() {
 
   const continueOrder = () => {
     const order = getOrderCreationStorage();
-    if (order || getLocalStorageToken()) {
+    if (getLocalStorageToken()) {
       orderApi.createOrder(order).then((data) => {
-        navigate(`${location.state.from}/${data.id}`, { state: { from: '/' } });
+        navigate(`/order/${data.id}`);
         setOrderCreationStorage(undefined);
       });
     }
   };
 
-  const onSubmit = (inputData) =>
+  const onSubmit = (inputData) => {
     authApi
       .postLogin(inputData)
       .then((data) => {
         setLocalStorageToken(data);
         removeLocalStorageAuth();
         if (getOrderCreationStorage()) continueOrder();
-        else navigate(location.state.from);
+        else navigate(fromPage, { replace: true });
       })
       .catch(({ error }) => {
-        Object.entries(error).forEach(([key, value]) => {
-          if (value) {
-            setError(key, { message: value.join(', ') });
-          }
-        });
+        if (error)
+          Object.entries(error).forEach(([key, value]) => {
+            if (value) {
+              setError(key, { message: value.join(', ') });
+            }
+          });
         // console.log(error);
       });
+  };
 
   return (
     <main className="auth">

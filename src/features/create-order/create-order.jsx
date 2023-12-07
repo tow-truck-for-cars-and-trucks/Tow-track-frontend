@@ -44,15 +44,12 @@ function CreateOrder() {
     (order) => {
       if (getLocalStorageToken()) {
         orderApi.createOrder(order).then((data) => {
-          navigate(`/order/${data.id}`, { replace: true });
+          navigate(`/order/${data.id}`);
           setOrderCreationStorage(undefined);
         });
       } else {
         setOrderCreationStorage(order);
-        navigate('/register?mode=login', {
-          replace: true,
-          state: { from: '/order' },
-        });
+        navigate('/register?mode=login');
       }
     },
     [location, navigate]
