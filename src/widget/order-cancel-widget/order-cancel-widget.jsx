@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import orderApi from '../../shared/api/order-api';
-import OrderCancel from '../../entities/ui/order-cancel/order-cancel';
+import OrderCancel from '../../features/order-cancel/order-cancel';
 import './order-cancel-widget.scss';
 import OrderNumber from '../../shared/ui/order-number/order-number';
 

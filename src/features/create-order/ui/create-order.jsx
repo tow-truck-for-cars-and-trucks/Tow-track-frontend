@@ -3,30 +3,27 @@ import { Controller, useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { addressFormSchema } from '../../shared/schema/schema';
+import { useSelector } from 'react-redux';
+import { addressFormSchema } from '../../../shared/schema/schema';
 import {
   getLocalStorageToken,
-  setTariffStorage,
-  setCarTypeStorage,
   setOrderCreationStorage,
-} from '../../shared/api/storage-api';
-import carTypeApi from '../../shared/api/car-type-api';
-import tariffApi from '../../shared/api/tariff-api';
-import orderApi from '../../shared/api/order-api';
-import Input from '../../shared/ui/input/input';
-import NavigationArrowIcon from '../../shared/ui/icons/navigation-arrow-icon';
-import Description from '../../shared/ui/description/description';
-import ButtonToggle from '../../shared/ui/button-toggle/buttonToggle';
-import PricingList from '../../entities/ui/pricing-list/pricing-list';
-import ChipsList from '../../entities/ui/chips-list/chips-list';
-import Comment from '../../shared/ui/comment/comment';
-import PopupDeferredOrder from '../popup-deferred-order/popup-deferred-order';
-import TotalPrice from '../../shared/ui/total-price/total-price';
-import ButtonCounterController from '../../entities/ui/button-counter-controller/button-counter-controller';
+} from '../../../shared/api/storage-api';
+import orderApi from '../../../shared/api/order-api';
+import Input from '../../../shared/ui/input/input';
+import NavigationArrowIcon from '../../../shared/ui/icons/navigation-arrow-icon';
+import Description from '../../../shared/ui/description/description';
+import ButtonToggle from '../../../shared/ui/button-toggle/buttonToggle';
+import PricingList from '../../../entities/ui/pricing-list/pricing-list';
+import ChipsList from '../../../entities/ui/chips-list/chips-list';
+import Comment from '../../../shared/ui/comment/comment';
+import PopupDeferredOrder from '../../popup-deferred-order/popup-deferred-order';
+import TotalPrice from '../../../shared/ui/total-price/total-price';
+import ButtonCounterController from '../../../entities/ui/button-counter-controller/button-counter-controller';
 
 function CreateOrder() {
-  const [allCars, setAllCars] = useState([]);
-  const [allPricing, setAllPricing] = useState([]);
+  const allPricing = useSelector((store) => store.allPricing.tariff);
+  const allCars = useSelector((store) => store.allCars.carType);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [total, setTotal] = useState(null);
   const navigate = useNavigate();
@@ -55,18 +52,13 @@ function CreateOrder() {
     [location, navigate]
   );
 
-  useEffect(() => {
-    Promise.all([carTypeApi.getCarType(), tariffApi.getTariffType()])
-      .then(([carType, tariff]) => {
-        setAllCars(carType);
-        setAllPricing(tariff);
-        setTariffStorage(tariff);
-        setCarTypeStorage(carType);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  /*  useEffect(() => {
+    const postponedOrder = getOrderCreationStorage();
+
+    if (postponedOrder) {
+      createOrder(postponedOrder);
+    }
+  }, [createOrder]); */
 
   const defaultValues = {
     addressFrom: '',

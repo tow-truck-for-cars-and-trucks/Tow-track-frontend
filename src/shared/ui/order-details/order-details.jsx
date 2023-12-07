@@ -13,6 +13,16 @@ import { useState } from 'react';
 function OrderDetails({ tariff, carType, wheelLock, towin, delay, comment }) {
   const [isShow, setIsShow] = useState(false);
 
+  function wheelsCount(count) {
+    if (count === 0) {
+      return 'Колёс';
+    }
+    if (count === 1) {
+      return 'Колесо';
+    }
+    return 'Колеса';
+  }
+
   return (
     <div className="order-details">
       <ul className="order-details__content">
@@ -25,7 +35,10 @@ function OrderDetails({ tariff, carType, wheelLock, towin, delay, comment }) {
       </ul>
       <ul className="order-details__content">
         <li className="order-details__title">Блокировка колес</li>
-        <li className="order-details__selected">{wheelLock} колес</li>
+        <li className="order-details__selected">
+          {`${wheelLock} ${wheelsCount(wheelLock)}
+          `}
+        </li>
       </ul>
       <ul className="order-details__content">
         <li className="order-details__title">Кюветные работы</li>

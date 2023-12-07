@@ -1,5 +1,5 @@
 import './application.scss';
-import CreateOrder from '../../features/create-order/create-order';
+import CreateOrder from '../../features/create-order/ui/create-order';
 
 function Application({ innerRef }) {
   return (
