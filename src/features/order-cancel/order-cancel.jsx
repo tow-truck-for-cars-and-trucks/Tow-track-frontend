@@ -1,14 +1,18 @@
 import './order-cancel.scss';
 import { useSelector } from 'react-redux';
-import Address from '../../../shared/ui/adress/adress';
-import Accordion from '../../../shared/ui/accordion/accordion';
-import OrderDetails from '../../../shared/ui/order-details/order-details';
-import AboutTrack from '../../../shared/ui/about-truck/about-truck';
-import CloseIcon from '../../../shared/ui/icons/close-icon';
+import { getCarTypeTitle } from '../../app/model/car-type-slice';
+import { getTariffTitle } from '../../app/model/tariff-slice';
+import Address from '../../shared/ui/adress/adress';
+import Accordion from '../../shared/ui/accordion/accordion';
+import OrderDetails from '../../shared/ui/order-details/order-details';
+import AboutTrack from '../../shared/ui/about-truck/about-truck';
+import CloseIcon from '../../shared/ui/icons/close-icon';
 
 function OrderCancel({ cancelledOrder, deleteOrder }) {
-  const allPricing = useSelector((store) => store.allPricing.tariff);
-  const allCars = useSelector((store) => store.allCars.carType);
+  const carType = useSelector((state) =>
+    getCarTypeTitle(state, cancelledOrder)
+  );
+  const tariff = useSelector((state) => getTariffTitle(state, cancelledOrder));
 
   return (
     <main className="order-cancel">
@@ -25,12 +29,8 @@ function OrderCancel({ cancelledOrder, deleteOrder }) {
       <div className="order-cancel__info">
         <Accordion title="Детали заказа" withBorder>
           <OrderDetails
-            tariff={
-              allPricing.find((x) => x.id === cancelledOrder?.tariff)?.name
-            }
-            carType={
-              allCars.find((x) => x.id === cancelledOrder?.carType)?.car_type
-            }
+            tariff={tariff}
+            carType={carType}
             wheelLock={cancelledOrder.wheelLock}
             towin={cancelledOrder.towin ? 'Да' : 'Нет'}
             delay={cancelledOrder.orderDate ? 'Да' : 'Нет'}

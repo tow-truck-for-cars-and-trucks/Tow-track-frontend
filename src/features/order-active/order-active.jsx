@@ -1,8 +1,8 @@
 import './order-active.scss';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getCarTypeTitle } from '../create-order/model/car-type-slice';
-import { getTariffTitle } from '../create-order/model/tariff-slice';
+import { getCarTypeTitle } from '../../app/model/car-type-slice';
+import { getTariffTitle } from '../../app/model/tariff-slice';
 import DeliveryTime from '../../shared/ui/delivery-time/delivery-time';
 import ProgressBar from '../../shared/ui/progress-bar/progress-bar';
 import StepOneDefaultIcon from '../../shared/ui/icons/step-one-default-icon';
