@@ -3,7 +3,7 @@ import { useState } from 'react';
 import PagesTitle from '../../shared/ui/pages-title/pages-title';
 import ChipsList from '../../entities/ui/chips-list/chips-list';
 import OrderActiveWidget from '../order-active-widget/order-active-widget';
-import OrderCompletWidget from '../order-complet-widget/order-complet-widget';
+import OrderCompletedWidget from '../order-completed-widget/order-completed-widget';
 import OrderCancelWidget from '../order-cancel-widget/order-cancel-widget';
 
 function MyOrder() {
@@ -14,7 +14,7 @@ function MyOrder() {
   if (activeTab === 'active') {
     selectedWidget = <OrderActiveWidget />;
   } else if (activeTab === 'completed') {
-    selectedWidget = <OrderCompletWidget />;
+    selectedWidget = <OrderCompletedWidget />;
   } else if (activeTab === 'cancelled') {
     selectedWidget = <OrderCancelWidget />;
   } else {

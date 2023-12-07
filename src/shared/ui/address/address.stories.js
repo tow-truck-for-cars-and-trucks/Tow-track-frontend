@@ -1,8 +1,8 @@
-import Adress from './adress';
+import Address from './address';
 
 export default {
-  title: 'Shared/Adress',
-  component: Adress,
+  title: 'Shared/Address',
+  component: Address,
   parameters: {
     layout: 'centered',
   },

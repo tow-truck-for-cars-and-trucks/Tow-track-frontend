@@ -1,4 +1,4 @@
-import './adress.scss';
+import './address.scss';
 
 /**
  * @param {string} adressFrom - address to pick up from

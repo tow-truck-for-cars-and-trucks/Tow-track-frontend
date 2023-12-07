@@ -3,7 +3,7 @@ import {
   createSlice,
   createSelector,
 } from '@reduxjs/toolkit';
-import tariffApi from '../../shared/api/tariff-api';
+import tariffApi from '../../../shared/api/tariff-api';
 
 const initialState = {
   tariff: [],

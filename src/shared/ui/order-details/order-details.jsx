@@ -15,12 +15,12 @@ function OrderDetails({ tariff, carType, wheelLock, towin, delay, comment }) {
 
   function wheelsCount(count) {
     if (count === 0) {
-      return 'Колёс';
+      return 'колёс';
     }
     if (count === 1) {
-      return 'Колесо';
+      return 'колесо';
     }
-    return 'Колеса';
+    return 'колеса';
   }
 
   return (

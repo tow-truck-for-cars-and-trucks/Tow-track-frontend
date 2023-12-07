@@ -1,4 +1,4 @@
-import OrderComplete from './order-complet';
+import OrderComplete from './order-complete';
 
 export default {
   title: 'entities/OrderComplete',

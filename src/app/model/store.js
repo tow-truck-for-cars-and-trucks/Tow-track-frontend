@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import tariffSlice from './tariff-slice';
-import carTypeSlice from './car-type-slice';
+import tariffSlice from '../../features/create-order/model/tariff-slice';
+import carTypeSlice from '../../features/create-order/model/car-type-slice';
 
 const store = configureStore({
   reducer: {
