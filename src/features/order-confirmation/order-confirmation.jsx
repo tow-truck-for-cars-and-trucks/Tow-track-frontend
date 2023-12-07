@@ -1,12 +1,11 @@
 import './order-confirmation.scss';
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getMinutes, getHours } from 'date-fns';
+import { getCarTypeTitle } from '../../app/model/car-type-slice';
+import { getTariffTitle } from '../../app/model/tariff-slice';
 import orderApi from '../../shared/api/order-api';
-import {
-  getTariffStorage,
-  getCarTypeStorage,
-} from '../../shared/api/storage-api';
 import PagesTitle from '../../shared/ui/pages-title/pages-title';
 import Input from '../../shared/ui/input/input';
 import ChipsList from '../../entities/ui/chips-list/chips-list';
@@ -27,6 +26,9 @@ function OrderConfirmation() {
     towin: null,
     comment: null,
   });
+  const carType = useSelector((state) => getCarTypeTitle(state, newOrder));
+  const tariff = useSelector((state) => getTariffTitle(state, newOrder));
+
   const { id } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
@@ -94,13 +96,8 @@ function OrderConfirmation() {
           </div>
         </div>
         <OrderDetails
-          tariff={
-            getTariffStorage().find((x) => x.id === newOrder?.tariff)?.name
-          }
-          carType={
-            getCarTypeStorage().find((x) => x.id === newOrder?.carType)
-              ?.car_type
-          }
+          tariff={tariff}
+          carType={carType}
           wheelLock={newOrder.wheelLock}
           towin={newOrder.towin ? 'Да' : 'Нет'}
           delay={newOrder.orderDate ? 'Да' : 'Нет'}
