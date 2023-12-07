@@ -8,7 +8,6 @@ import { addressFormSchema } from '../../../shared/schema/schema';
 import {
   getLocalStorageToken,
   setOrderCreationStorage,
-  getOrderCreationStorage,
 } from '../../../shared/api/storage-api';
 import orderApi from '../../../shared/api/order-api';
 import { getOrderPrice } from '../model/total-price';
@@ -42,27 +41,24 @@ function CreateOrder() {
     (order) => {
       if (getLocalStorageToken()) {
         orderApi.createOrder(order).then((data) => {
-          navigate(`/order/${data.id}`, { replace: true });
+          navigate(`/order/${data.id}`);
           setOrderCreationStorage(undefined);
         });
       } else {
         setOrderCreationStorage(order);
-        navigate('/register?mode=login', {
-          replace: true,
-          state: { from: location },
-        });
+        navigate('/register?mode=login');
       }
     },
     [location, navigate]
   );
 
-  useEffect(() => {
+  /*  useEffect(() => {
     const postponedOrder = getOrderCreationStorage();
 
     if (postponedOrder) {
       createOrder(postponedOrder);
     }
-  }, [createOrder]);
+  }, [createOrder]); */
 
   const defaultValues = {
     addressFrom: '',

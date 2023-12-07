@@ -8,18 +8,22 @@ import {
   getLocalStorageAuth,
   removeLocalStorageAuth,
   setLocalStorageToken,
+  getOrderCreationStorage,
+  getLocalStorageToken,
+  setOrderCreationStorage,
 } from '../../shared/api/storage-api';
 import { authFormSchema } from '../../shared/schema/schema';
 import Input from '../../shared/ui/input/input';
 import PasswordInput from '../../shared/ui/password-input/password-input';
 import Button from '../../shared/ui/button/button';
 import authApi from '../../shared/api/auth-api';
+import orderApi from '../../shared/api/order-api';
 
 function Auth() {
   const authData = getLocalStorageAuth();
   const location = useLocation();
   const navigate = useNavigate();
-
+  const fromPage = location.state?.from?.pathname || '/';
   const {
     control,
     handleSubmit,
@@ -47,22 +51,35 @@ function Auth() {
     return () => subscription.unsubscribe();
   }, [watch]);
 
-  const onSubmit = (inputData) =>
+  const continueOrder = () => {
+    const order = getOrderCreationStorage();
+    if (getLocalStorageToken()) {
+      orderApi.createOrder(order).then((data) => {
+        navigate(`/order/${data.id}`);
+        setOrderCreationStorage(undefined);
+      });
+    }
+  };
+
+  const onSubmit = (inputData) => {
     authApi
       .postLogin(inputData)
       .then((data) => {
         setLocalStorageToken(data);
         removeLocalStorageAuth();
-        navigate(location.state.from);
+        if (getOrderCreationStorage()) continueOrder();
+        else navigate(fromPage, { replace: true });
       })
       .catch(({ error }) => {
-        Object.entries(error).forEach(([key, value]) => {
-          if (value) {
-            setError(key, { message: value.join(', ') });
-          }
-        });
-        console.log(error);
+        if (error)
+          Object.entries(error).forEach(([key, value]) => {
+            if (value) {
+              setError(key, { message: value.join(', ') });
+            }
+          });
+        // console.log(error);
       });
+  };
 
   return (
     <main className="auth">
