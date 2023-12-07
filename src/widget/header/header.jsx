@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import './header.scss';
 import React from 'react';
 import BurgerIcon from '../../shared/ui/icons/burger-icon';
@@ -11,6 +12,8 @@ function Header({ onCreateOrderClick }) {
   const handleClick = () => {
     setIsShowMenu(!showMenu);
   };
+
+  const navigate = useNavigate();
 
   const driverPhoneNumber = '88801112222';
 
@@ -31,9 +34,14 @@ function Header({ onCreateOrderClick }) {
           >
             <PhoneIcon width="24px" height="24px" />
           </button>
-          <div className="header__phone-block">
+          <button
+            className="header__button"
+            type="button"
+            label="Перейти на главную"
+            onClick={() => navigate('/?open=main', { replace: true })}
+          >
             <LogoCombined width="88.8px" height="48px" />
-          </div>
+          </button>
           <button
             className="header__button"
             type="button"
