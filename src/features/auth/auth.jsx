@@ -24,8 +24,6 @@ function Auth() {
   const location = useLocation();
   const navigate = useNavigate();
   const fromPage = location.state?.from?.pathname || '/';
-  console.log(location);
-  console.log(fromPage);
   const {
     control,
     handleSubmit,
