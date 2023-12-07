@@ -3,7 +3,7 @@ import {
   createSlice,
   createSelector,
 } from '@reduxjs/toolkit';
-import carTypeApi from '../../shared/api/car-type-api';
+import carTypeApi from '../../../shared/api/car-type-api';
 
 const initialState = {
   carType: [],

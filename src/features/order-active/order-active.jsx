@@ -1,15 +1,15 @@
 import './order-active.scss';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getCarTypeTitle } from '../../app/model/car-type-slice';
-import { getTariffTitle } from '../../app/model/tariff-slice';
+import { getCarTypeTitle } from '../create-order/model/car-type-slice';
+import { getTariffTitle } from '../create-order/model/tariff-slice';
 import DeliveryTime from '../../shared/ui/delivery-time/delivery-time';
 import ProgressBar from '../../shared/ui/progress-bar/progress-bar';
 import StepOneDefaultIcon from '../../shared/ui/icons/step-one-default-icon';
 import StepTwoFillIcon from '../../shared/ui/icons/step-two-fill-icon';
 import StepThreeDisableIcon from '../../shared/ui/icons/step-three-disable-icon';
 import StepFourDisableIcon from '../../shared/ui/icons/step-four-disable-icon';
-import Address from '../../shared/ui/adress/adress';
+import Address from '../../shared/ui/address/address';
 import Alert from '../../shared/ui/alert/alert';
 import Button from '../../shared/ui/button/button';
 import Accordion from '../../shared/ui/accordion/accordion';

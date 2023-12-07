@@ -3,7 +3,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addressFormSchema } from '../../../shared/schema/schema';
 import {
   getLocalStorageToken,
@@ -11,6 +11,7 @@ import {
   getOrderCreationStorage,
 } from '../../../shared/api/storage-api';
 import orderApi from '../../../shared/api/order-api';
+import { getOrderPrice } from '../model/total-price';
 import Input from '../../../shared/ui/input/input';
 import NavigationArrowIcon from '../../../shared/ui/icons/navigation-arrow-icon';
 import Description from '../../../shared/ui/description/description';
@@ -25,17 +26,16 @@ import ButtonCounterController from '../../../entities/ui/button-counter-control
 function CreateOrder() {
   const allPricing = useSelector((store) => store.allPricing.tariff);
   const allCars = useSelector((store) => store.allCars.carType);
+  const totalPrice = useSelector((store) => store.totalPrice.price);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [total, setTotal] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const location = useLocation();
   const timerRef = useRef(null);
 
   function calculatePrice(order) {
-    return orderApi.getOrderPrice(order).then((orderPrice) => {
-      setTotal(orderPrice);
-    });
+    dispatch(getOrderPrice(order));
   }
 
   const createOrder = useCallback(
@@ -243,7 +243,7 @@ function CreateOrder() {
         <div className="create-order__price">
           <TotalPrice
             onClick={handleSubmit((order) => createOrder(order))}
-            total={total}
+            total={totalPrice}
             isButtonActive={isButtonActive}
             scrollOffset={1070}
           />

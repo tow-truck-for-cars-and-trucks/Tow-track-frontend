@@ -1,8 +1,8 @@
 import './order-cancel.scss';
 import { useSelector } from 'react-redux';
-import { getCarTypeTitle } from '../../app/model/car-type-slice';
-import { getTariffTitle } from '../../app/model/tariff-slice';
-import Address from '../../shared/ui/adress/adress';
+import { getCarTypeTitle } from '../create-order/model/car-type-slice';
+import { getTariffTitle } from '../create-order/model/tariff-slice';
+import Address from '../../shared/ui/address/address';
 import Accordion from '../../shared/ui/accordion/accordion';
 import OrderDetails from '../../shared/ui/order-details/order-details';
 import AboutTrack from '../../shared/ui/about-truck/about-truck';

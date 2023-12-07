@@ -1,11 +1,11 @@
 import './order-success.scss';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getCarTypeTitle } from '../../app/model/car-type-slice';
-import { getTariffTitle } from '../../app/model/tariff-slice';
+import { getCarTypeTitle } from '../create-order/model/car-type-slice';
+import { getTariffTitle } from '../create-order/model/tariff-slice';
 import DeliveryTime from '../../shared/ui/delivery-time/delivery-time';
 import ProgressBar from '../../shared/ui/progress-bar/progress-bar';
-import Adress from '../../shared/ui/adress/adress';
+import Address from '../../shared/ui/address/address';
 import Accordion from '../../shared/ui/accordion/accordion';
 import OrderDetails from '../../shared/ui/order-details/order-details';
 import Alert from '../../shared/ui/alert/alert';
@@ -46,7 +46,7 @@ function OrderSuccess({ activeOrder, cancelOrder }) {
         activeText="В пути"
       />
       <div className="order-success__adress">
-        <Adress
+        <Address
           addressFrom={activeOrder.addressFrom}
           addressTo={activeOrder.addressTo}
         />

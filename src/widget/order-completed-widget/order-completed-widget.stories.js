@@ -1,4 +1,4 @@
-import OrderCompletWidget from './order-complet-widget';
+import OrderCompletWidget from './order-completed-widget';
 
 export default {
   title: 'Widget/OrderCompletWidget',

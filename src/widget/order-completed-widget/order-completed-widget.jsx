@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import orderApi from '../../shared/api/order-api';
-import OrderComplete from '../../entities/ui/order-complet/order-complet';
-import './order-complet-widget.scss';
+import OrderComplete from '../../features/order-complete/order-complete';
+import './order-completed-widget.scss';
 import OrderNumber from '../../shared/ui/order-number/order-number';
 
-function OrderCompletWidget() {
+function OrderCompletedWidget() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -35,4 +35,4 @@ function OrderCompletWidget() {
   );
 }
 
-export default OrderCompletWidget;
+export default OrderCompletedWidget;
