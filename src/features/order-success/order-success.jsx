@@ -82,7 +82,9 @@ function OrderSuccess({ activeOrder, cancelOrder }) {
       <Button
         secondary
         label="Отменить заказ"
-        onClick={() => setIsPopupCancel(true)}
+        onClick={() => {
+          setIsPopupCancel(true);
+        }}
       />
       <PopupCancel
         isOpen={isPopupCancel}
