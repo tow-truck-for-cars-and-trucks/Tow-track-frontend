@@ -35,7 +35,7 @@ function OrderSuccessWidget() {
     orderApi
       .updateOrderStatus(id, 'Активный', 'Отмененный')
       .then(() => {
-        navigate('/my-orders', { replace: true });
+        navigate('/?open=main', { replace: true });
       })
       .catch((error) => {
         console.log(error);
