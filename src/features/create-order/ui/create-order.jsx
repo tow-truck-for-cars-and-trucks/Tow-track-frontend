@@ -216,14 +216,14 @@ function CreateOrder() {
         </div>
         <PopupDeferredOrder
           isOpen={isPopupOpen}
+          onClose={() => {
+            setIsPopupOpen(false);
+            setValue('delay', false);
+          }}
           onSave={(date) => {
             setValue('orderDate', date);
             setValue('delay', true);
             setIsPopupOpen(false);
-          }}
-          onClose={() => {
-            setIsPopupOpen(false);
-            setValue('delay', false);
           }}
         />
         <div className="create-order__comment">

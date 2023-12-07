@@ -1,7 +1,19 @@
+import { useEffect } from 'react';
 import './popup.scss';
 import CloseIcon from '../icons/close-icon';
 
 function Popup({ children, active, setActive }) {
+  useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === 'Escape') {
+        setActive(false);
+      }
+    };
+
+    document.addEventListener('keydown', closeByEscape);
+    return () => document.removeEventListener('keydown', closeByEscape);
+  }, [active, setActive]);
+
   return (
     <div>
       <div className={active ? 'popup popup_active' : 'popup'}>

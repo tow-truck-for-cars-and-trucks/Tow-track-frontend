@@ -1,5 +1,5 @@
 import './popup-deferred-order.scss';
-import { useCallback, useState } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import {
   startOfDay,
   getMinutes,
@@ -43,6 +43,18 @@ function PopupDeferredOrder({ isOpen, onClose, onSave }) {
       isCurrentDate(date) && date.getHours() === minPossibleDate.getHours(),
     []
   );
+
+  useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', closeByEscape);
+    return () => document.removeEventListener('keydown', closeByEscape);
+  }, [isOpen, onClose]);
+
   return (
     <div className={`popup-deferred ${isOpen ? 'popup-deferred_active' : ''}`}>
       <div className="popup-deferred__content">
