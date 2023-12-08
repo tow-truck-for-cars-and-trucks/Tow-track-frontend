@@ -5,12 +5,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addressFormSchema } from '../../../shared/schema/schema';
-import {
-  getLocalStorageToken,
-  setOrderCreationStorage,
-} from '../../../shared/api/storage-api';
-import orderApi from '../../../shared/api/order-api';
-import { getOrderPrice } from '../model/total-price';
+import { getLocalStorageToken } from '../../../shared/api/storage-api';
+import { getOrderPrice } from '../model/total-price-slice';
+import { placeAnOrder, saveTemporaryOrder } from '../model/create-order-slice';
 import Input from '../../../shared/ui/input/input';
 import NavigationArrowIcon from '../../../shared/ui/icons/navigation-arrow-icon';
 import Description from '../../../shared/ui/description/description';
@@ -38,27 +35,17 @@ function CreateOrder() {
   }
 
   const createOrder = useCallback(
-    (order) => {
+    async (order) => {
       if (getLocalStorageToken()) {
-        orderApi.createOrder(order).then((data) => {
-          navigate(`/order/${data.id}`);
-          setOrderCreationStorage(undefined);
-        });
+        const data = await dispatch(placeAnOrder(order)).unwrap();
+        navigate(`/order/${data.id}`);
       } else {
-        setOrderCreationStorage(order);
+        dispatch(saveTemporaryOrder(order));
         navigate('/register?mode=login');
       }
     },
     [location, navigate]
   );
-
-  /*  useEffect(() => {
-    const postponedOrder = getOrderCreationStorage();
-
-    if (postponedOrder) {
-      createOrder(postponedOrder);
-    }
-  }, [createOrder]); */
 
   const defaultValues = {
     addressFrom: '',
