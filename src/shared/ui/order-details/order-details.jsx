@@ -50,25 +50,17 @@ function OrderDetails({ tariff, carType, wheelLock, towin, delay, comment }) {
       </ul>
       <ul className="order-details__content">
         <li className="order-details__title">Комментарий</li>
-        {!isShow && (
+        {comment ? (
           <button
             type="button"
-            aria-label="Читать"
+            aria-label={isShow ? 'Свернуть' : 'Читaть'}
             className="order-details__button"
-            onClick={() => setIsShow(true)}
+            onClick={() => setIsShow(!isShow)}
           >
-            Читать
+            {isShow ? 'Свернуть' : 'Читaть'}
           </button>
-        )}
-        {isShow && (
-          <button
-            type="button"
-            aria-label="Свернуть"
-            className="order-details__button"
-            onClick={() => setIsShow(false)}
-          >
-            Свернуть
-          </button>
+        ) : (
+          'Нет'
         )}
       </ul>
       {isShow && (
