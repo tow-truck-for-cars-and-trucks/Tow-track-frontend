@@ -241,7 +241,6 @@ function CreateOrder() {
             onClick={handleSubmit((order) => createOrder(order))}
             total={totalPrice}
             isButtonActive={isButtonActive}
-            scrollOffset={1070}
           />
         </div>
       </form>

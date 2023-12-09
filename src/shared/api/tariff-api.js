@@ -7,7 +7,7 @@ class TariffApi {
     this.baseUrl = baseUrl;
   }
 
-  getTariffType() {
+  getPlanType() {
     return request(`${this.baseUrl}/api/tariff/`);
   }
 }
