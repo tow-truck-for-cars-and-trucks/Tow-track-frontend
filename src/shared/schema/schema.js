@@ -20,12 +20,12 @@ export const registerFormSchema = yup.object().shape({
   firstName: yup
     .string()
     .max(50, 'Введенное имя слишком длинное')
-    .matches(/([А-ЯЁ][а-яё]+[-\s]?)/, 'Используйте буквы и символы')
+    .matches(/([A-Za-zА-ЯЁа-яё]+[-\s]?)/, 'Используйте буквы и символы')
     .required('Введите имя'),
   lastName: yup
     .string()
     .max(50, 'Введенная фамилия слишком длинная')
-    .matches(/([А-ЯЁ][а-яё]+[-\s]?)/, 'Используйте буквы и символы')
+    .matches(/([A-Za-zА-ЯЁа-яё]+[-\s]?)/, 'Используйте буквы и символы')
     .required('Введите фамилию'),
   email: yup
     .string()
