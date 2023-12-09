@@ -52,14 +52,6 @@ function CreateOrder() {
     [location, navigate]
   );
 
-  /*  useEffect(() => {
-    const postponedOrder = getOrderCreationStorage();
-
-    if (postponedOrder) {
-      createOrder(postponedOrder);
-    }
-  }, [createOrder]); */
-
   const defaultValues = {
     addressFrom: '',
     addressTo: '',
