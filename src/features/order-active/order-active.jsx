@@ -24,11 +24,6 @@ function OrderActive({ activeOrder, cancelOrder }) {
   const tariff = useSelector((state) => getTariffTitle(state, activeOrder));
   const driverPhoneNumber = '88801112222';
 
-  // const handleCallDriver = () => {
-  //   console.log('Выполняется вызов водителя:', driverPhoneNumber);
-  //   window.location.href = `tel:${driverPhoneNumber}`;
-  // };
-
   return (
     <main className="order-active">
       <div className="order-active__submission-time">
