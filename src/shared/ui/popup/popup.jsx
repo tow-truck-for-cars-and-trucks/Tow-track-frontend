@@ -14,9 +14,20 @@ function Popup({ children, active, setActive, contentBottom }) {
     return () => document.removeEventListener('keydown', closeByEscape);
   }, [active, setActive]);
 
+  const handleOverlay = (e) => {
+    if (e.target === e.currentTarget) {
+      setActive(false);
+    }
+  };
+
   return (
     <div>
-      <div className={active ? 'popup popup_active' : 'popup'}>
+      <div
+        className={active ? 'popup popup_active' : 'popup'}
+        role="button"
+        tabIndex={0}
+        onMouseDown={handleOverlay}
+      >
         <div
           className={`popup__content${
             contentBottom ? ' popup__content_bottom' : ''
