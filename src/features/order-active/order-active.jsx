@@ -16,6 +16,7 @@ import Accordion from '../../shared/ui/accordion/accordion';
 import OrderDetails from '../../shared/ui/order-details/order-details';
 import AboutTrack from '../../shared/ui/about-truck/about-truck';
 import PopupCancel from '../../entities/ui/popup-cancel/popup-cancel';
+import handlePhoneCall from '../../shared/utils/helpers';
 
 function OrderActive({ activeOrder, cancelOrder }) {
   const [isPopupCancel, setIsPopupCancel] = useState(false);
@@ -23,10 +24,10 @@ function OrderActive({ activeOrder, cancelOrder }) {
   const tariff = useSelector((state) => getTariffTitle(state, activeOrder));
   const driverPhoneNumber = '88801112222';
 
-  const handleCallDriver = () => {
-    console.log('Выполняется вызов водителя:', driverPhoneNumber);
-    window.location.href = `tel:${driverPhoneNumber}`;
-  };
+  // const handleCallDriver = () => {
+  //   console.log('Выполняется вызов водителя:', driverPhoneNumber);
+  //   window.location.href = `tel:${driverPhoneNumber}`;
+  // };
 
   return (
     <main className="order-active">
@@ -60,7 +61,7 @@ function OrderActive({ activeOrder, cancelOrder }) {
         <Button
           primary
           label="Связаться с водителем"
-          onClick={handleCallDriver}
+          onClick={() => handlePhoneCall(driverPhoneNumber, 'к водителю')}
         />
       </div>
       <Button

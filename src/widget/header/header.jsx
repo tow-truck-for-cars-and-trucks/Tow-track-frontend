@@ -6,6 +6,7 @@ import PhoneIcon from '../../shared/ui/icons/phone-icon';
 import LogoCombined from '../../shared/ui/icons/logo-combined';
 import CloseIcon from '../../shared/ui/icons/close-icon';
 import Menu from './menu/menu';
+import handlePhoneCall from '../../shared/utils/helpers';
 
 function Header({ onCreateOrderClick }) {
   const [showMenu, setIsShowMenu] = React.useState(false);
@@ -15,12 +16,7 @@ function Header({ onCreateOrderClick }) {
 
   const navigate = useNavigate();
 
-  const driverPhoneNumber = '88801112222';
-
-  const handleOurDriver = () => {
-    console.log('Выполняется вызов в компанию:', driverPhoneNumber);
-    window.location.href = `tel:${driverPhoneNumber}`;
-  };
+  const companyPhoneNumber = '88801112222';
 
   return (
     <>
@@ -30,7 +26,7 @@ function Header({ onCreateOrderClick }) {
             className="header__call"
             type="button"
             label="Связаться с компанией"
-            onClick={handleOurDriver}
+            onClick={() => handlePhoneCall(companyPhoneNumber, 'в компанию')}
           >
             <PhoneIcon width="24px" height="24px" />
           </button>
