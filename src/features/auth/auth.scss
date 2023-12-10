@@ -1,5 +1,6 @@
 .auth {
-  max-width: 358px;
+  min-width: 358px;
+  height: 100vh;
   padding: 4px 16px 0;
   background-color: var(--background-grey-light-blue-40);
 
@@ -14,5 +15,10 @@
   &__button {
     padding-top: 28px;
     padding-bottom: 56px;
+  }
+
+  &__field-error {
+    color: var(--system-error);
+    text-align: center;
   }
 }

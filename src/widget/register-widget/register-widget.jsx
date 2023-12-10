@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import './register-widget.scss';
 import ChipsList from '../../entities/ui/chips-list/chips-list';
 import Auth from '../../features/auth/auth';
@@ -6,7 +6,9 @@ import Register from '../../features/register/register';
 import BackButton from '../../shared/ui/back-button/back-button';
 
 function RegisterWidget() {
-  const [activeTab, setActiveTab] = useState('login');
+  const [params] = useSearchParams();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <main className="register-widget">
@@ -19,12 +21,14 @@ function RegisterWidget() {
             { label: 'Вход', id: 'login' },
             { label: 'Регистрация', id: 'register' },
           ]}
-          value={activeTab}
-          onChange={(chips) => setActiveTab(chips)}
+          value={params.get('mode')}
+          onChange={(chips) =>
+            navigate(`/register?mode=${chips}`, { state: location.state })
+          }
         />
       </div>
 
-      {activeTab === 'login' ? <Auth /> : <Register />}
+      {params.get('mode') === 'login' ? <Auth /> : <Register />}
     </main>
   );
 }

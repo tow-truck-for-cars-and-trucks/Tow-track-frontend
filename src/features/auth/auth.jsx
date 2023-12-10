@@ -2,33 +2,38 @@ import './auth.scss';
 import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   setLocalStorageAuth,
   getLocalStorageAuth,
   removeLocalStorageAuth,
+  setLocalStorageToken,
+  getOrderCreationStorage,
+  getLocalStorageToken,
+  setOrderCreationStorage,
 } from '../../shared/api/storage-api';
 import { authFormSchema } from '../../shared/schema/schema';
 import Input from '../../shared/ui/input/input';
 import PasswordInput from '../../shared/ui/password-input/password-input';
 import Button from '../../shared/ui/button/button';
+import authApi from '../../shared/api/auth-api';
+import orderApi from '../../shared/api/order-api';
 
 function Auth() {
   const authData = getLocalStorageAuth();
-
-  const submit = () => {
-    console.log(authData);
-    removeLocalStorageAuth();
-  };
-
+  const location = useLocation();
+  const navigate = useNavigate();
+  const fromPage = location.state?.from?.pathname || '/';
   const {
     control,
     handleSubmit,
     watch,
-    formState: { errors },
+    setError,
+    formState: { errors, isValid },
   } = useForm({
     defaultValues: authData
       ? {
-          email: authData,
+          email: JSON.parse(authData),
         }
       : {
           email: '',
@@ -45,6 +50,35 @@ function Auth() {
     });
     return () => subscription.unsubscribe();
   }, [watch]);
+
+  const continueOrder = () => {
+    const order = getOrderCreationStorage();
+    if (getLocalStorageToken()) {
+      orderApi.createOrder(order).then((data) => {
+        navigate(`/order/${data.id}`);
+        setOrderCreationStorage(undefined);
+      });
+    }
+  };
+
+  const onSubmit = (inputData) => {
+    authApi
+      .postLogin(inputData)
+      .then((data) => {
+        setLocalStorageToken(data);
+        removeLocalStorageAuth();
+        if (getOrderCreationStorage()) continueOrder();
+        else navigate(fromPage, { replace: true });
+      })
+      .catch(({ error }) => {
+        if (error)
+          Object.entries(error).forEach(([key, value]) => {
+            if (value) {
+              setError(key, { message: value.join(', ') });
+            }
+          });
+      });
+  };
 
   return (
     <main className="auth">
@@ -82,12 +116,15 @@ function Auth() {
             )}
           />
         </div>
+        <p className="auth__field-error">
+          {isValid ? '' : errors.fieldErrors?.message}
+        </p>
         <div className="auth__button">
           <Button
             label="Войти"
+            onClick={handleSubmit(onSubmit)}
             primary
-            onClick={handleSubmit(submit)}
-            disabled={!!Object.keys(errors).length}
+            disabled={!isValid}
           />
         </div>
       </form>

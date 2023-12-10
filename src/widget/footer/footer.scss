@@ -1,6 +1,6 @@
 .footer {
   position: relative;
-  width: 390px;
+  max-width: 768px;
   height: 575px;
   color: #fff;
   background-color: #3b3e49;
@@ -15,6 +15,7 @@
   &__main {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     column-gap: 26px;
   }
 
@@ -38,7 +39,9 @@
 
   &__copyright {
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
+    align-content: center;
+    align-items: stretch;
     font-weight: 500;
     font-size: 12px;
     line-height: 135%;

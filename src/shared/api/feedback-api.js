@@ -11,16 +11,16 @@ class FeedbackApi {
   getHeaders() {
     return {
       ...this.headers,
-      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      authorization: `Token ${localStorage.getItem('token')}`,
     };
   }
 
   getFeedbacks() {
-    return request(`${this.baseUrl}/feedback/`);
+    return request(`${this.baseUrl}/api/feedback/`);
   }
 
   async postFeedback(feedback) {
-    const res = await request(`${this.baseUrl}/feedback/`, {
+    const res = await request(`${this.baseUrl}/api/feedback/`, {
       method: 'POST',
       headers: this.getHeaders(),
       body: JSON.stringify(feedback),
@@ -29,7 +29,7 @@ class FeedbackApi {
   }
 
   async getFeedback(id) {
-    const res = await request(`${this.baseUrl}/feedback/${id}/`, {
+    const res = await request(`${this.baseUrl}/api/feedback/${id}/`, {
       method: 'GET',
       headers: this.getHeaders(),
     });
@@ -37,7 +37,7 @@ class FeedbackApi {
   }
 
   async putFeedback(id) {
-    const res = await request(`${this.baseUrl}/feedback/${id}/`, {
+    const res = await request(`${this.baseUrl}/api/feedback/${id}/`, {
       method: 'PUT',
       headers: this.getHeaders(),
     });
@@ -45,7 +45,7 @@ class FeedbackApi {
   }
 
   async editFeedback(id, feedback) {
-    await request(`${this.baseUrl}/feedback/${id}/`, {
+    await request(`${this.baseUrl}/api/feedback/${id}/`, {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify(feedback),
@@ -53,7 +53,7 @@ class FeedbackApi {
   }
 
   async deleteFeedback(id) {
-    await request(`${this.baseUrl}/feedback/${id}/`, {
+    await request(`${this.baseUrl}/api/feedback/${id}/`, {
       method: 'DELETE',
       headers: this.headers,
     });
@@ -61,7 +61,7 @@ class FeedbackApi {
 }
 
 const feedbackApi = new FeedbackApi({
-  baseUrl: REACT_APP_BASE_URL,
+  baseUrl: REACT_APP_BASE_URL || '',
   headers: {
     'Content-Type': 'application/json',
   },

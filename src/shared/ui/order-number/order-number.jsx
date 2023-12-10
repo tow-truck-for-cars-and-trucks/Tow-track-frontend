@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { format } from 'date-fns';
 import './order-number.scss';
 import ArrowDownIcon from '../icons/arrow-down-icon';
 import ArrowUpIcon from '../icons/arrow-up-icon';
@@ -8,7 +9,7 @@ import ArrowUpIcon from '../icons/arrow-up-icon';
  * @param {string} date - title of the accordion
  * @param {string} time - title of the accordion
  */
-function OrderNumber({ number, date, time, children }) {
+function OrderNumber({ number, date, children }) {
   const [isShow, setIsShow] = useState(false);
 
   return (
@@ -20,7 +21,7 @@ function OrderNumber({ number, date, time, children }) {
       >
         <div className="order-number__header">
           <h2 className="order-number__title">
-            №{number} от {date} {time}{' '}
+            №{number} от {format(new Date(date), 'dd.MM.yyyy HH:mm')}
           </h2>
           {!isShow && (
             <button

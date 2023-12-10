@@ -11,11 +11,11 @@ export default {
 
 export const Default = {
   args: {
-    pricing: 'Эконом',
+    tariff: 'Эконом',
     carType: 'Легковой автомобиль',
     wheelLock: 0,
-    cuvetteWork: 'Нет',
-    deferredOrder: 'Нет',
+    towin: 'Нет',
+    delay: 'Нет',
     comment: 'Какой-то очень важный комментарий',
   },
 };

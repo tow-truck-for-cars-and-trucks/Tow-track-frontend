@@ -8,7 +8,7 @@ function Banner() {
   return (
     <section className="banner">
       <div className="banner__header">
-        <p className="banner__title">TT Express — </p>
+        <p className="banner__title">TT Express - </p>
         <p className="banner__title">удобный сервис для вызова</p>
         <p className="banner__title">эвакуатора 24/7</p>
       </div>
@@ -17,14 +17,14 @@ function Banner() {
           <AdvantageCard
             icon={<CashIcon width="64px" height="64px" />}
             title="Цена известна заранее"
-            subtitle="Оплата наличными или картой через СПБ"
+            subtitle="Оплата наличными или картой через СПБ"
           />
         </div>
         <div className="banner__card">
           <AdvantageCard
             icon={<TrackIcon width="64px" height="64px" />}
             title="Быстрая подача"
-            subtitle="Приедем оперативно, за 20-30 мин. в пределах города"
+            subtitle="Приедем оперативно, за 20-30 мин. в пределах города"
           />
         </div>
         <div className="banner__card">

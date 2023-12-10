@@ -4,7 +4,7 @@ import RegisterWidget from '../../widget/register-widget/register-widget';
 function RegisterPage() {
   return (
     <>
-      <Header />
+      <Header onCreateOrderClick={() => {}} />
       <RegisterWidget />
     </>
   );

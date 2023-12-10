@@ -45,11 +45,11 @@ export const OrderDetailsStory = {
     title: 'Детали заказа',
     children: [
       <OrderDetails
-        pricing="Эконом"
+        tariff="Эконом"
         carType="Легковой автомобиль"
         wheelLock="0"
-        cuvetteWork="Нет"
-        deferredOrder="Нет"
+        towin="Нет"
+        delay="Нет"
         comment="Пробито колесо"
       />,
     ],

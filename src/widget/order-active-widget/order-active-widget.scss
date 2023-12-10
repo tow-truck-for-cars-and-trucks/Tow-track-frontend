@@ -1,6 +1,7 @@
 .order-activated {
-  width: fit-content;
-  max-width: 390px;
+  width: 100%;
+  min-width: 390px;
+  max-width: 768px;
   padding: 56px 0;
   background-color: var(--background-grey-light-blue-40);
 

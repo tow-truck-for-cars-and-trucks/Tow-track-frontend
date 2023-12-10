@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import './header.scss';
 import React from 'react';
 import BurgerIcon from '../../shared/ui/icons/burger-icon';
@@ -6,19 +7,40 @@ import LogoCombined from '../../shared/ui/icons/logo-combined';
 import CloseIcon from '../../shared/ui/icons/close-icon';
 import Menu from './menu/menu';
 
-function Header() {
+function Header({ onCreateOrderClick }) {
   const [showMenu, setIsShowMenu] = React.useState(false);
   const handleClick = () => {
     setIsShowMenu(!showMenu);
   };
+
+  const navigate = useNavigate();
+
+  const driverPhoneNumber = '88801112222';
+
+  const handleOurDriver = () => {
+    window.location.href = `tel:${driverPhoneNumber}`;
+  };
+
   return (
     <>
       <header className="header" id="header">
         <div className="header__container">
-          <PhoneIcon width="24px" height="24px" />
-          <div className="header__phone-block">
+          <button
+            className="header__call"
+            type="button"
+            label="Связаться с компанией"
+            onClick={handleOurDriver}
+          >
+            <PhoneIcon width="24px" height="24px" />
+          </button>
+          <button
+            className="header__button"
+            type="button"
+            label="Перейти на главную"
+            onClick={() => navigate('/?open=main', { replace: true })}
+          >
             <LogoCombined width="88.8px" height="48px" />
-          </div>
+          </button>
           <button
             className="header__button"
             type="button"
@@ -32,7 +54,7 @@ function Header() {
           </button>
         </div>
       </header>
-      <Menu visible={showMenu} />
+      <Menu visible={showMenu} onCreateOrderClick={onCreateOrderClick} />
     </>
   );
 }

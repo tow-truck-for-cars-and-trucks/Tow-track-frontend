@@ -1,5 +1,6 @@
 import './register.scss';
 import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Input from '../../shared/ui/input/input';
@@ -13,28 +14,21 @@ import PasswordInput from '../../shared/ui/password-input/password-input';
 import Button from '../../shared/ui/button/button';
 import Checkbox from '../../shared/ui/checkbox/checkbox';
 import CheckboxAuthDescription from '../../shared/ui/checkbox-auth-description/checkbox-auth-description';
+import registerApi from '../../shared/api/register-api';
 
 function Register() {
   const registerData = getLocalStorageRegister();
-
-  const submit = () => {
-    console.log(registerData);
-    removeLocalStorageRegister();
-  };
+  const location = useLocation();
 
   const {
     control,
     watch,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
+    setError,
   } = useForm({
     defaultValues: registerData
-      ? {
-          firstName: registerData,
-          lastName: registerData,
-          email: registerData,
-          phoneNumber: registerData,
-        }
+      ? JSON.parse(registerData)
       : {
           firstName: '',
           lastName: '',
@@ -42,12 +36,31 @@ function Register() {
           email: '',
           password: '',
           confirmPassword: '',
-          checkbox: '',
+          checkbox: false,
         },
     mode: 'onChange',
     reValidateMode: 'onChange',
     resolver: yupResolver(registerFormSchema),
   });
+
+  const navigate = useNavigate();
+
+  const onSubmit = (inputData) => {
+    registerApi
+      .postRegister(inputData)
+      .then(() => {
+        removeLocalStorageRegister();
+        navigate('/register?mode=login', { state: location.state });
+      })
+      .catch(({ error }) => {
+        Object.entries(error).forEach(([key, value]) => {
+          if (value) {
+            setError(key, { message: value.join(', ') });
+          }
+        });
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     const subscription = watch(
@@ -147,7 +160,7 @@ function Register() {
             )}
           />
           <p className="register__input-caption">
-            Пароль должен содержать латинские символы, цифры и символы /!-?:
+            Пароль должен содержать минимум 8 символов, максимум 20
           </p>
         </div>
         <div className="register__input">
@@ -183,13 +196,14 @@ function Register() {
             )}
           />
         </div>
+        <p className="register__field-error">{errors.fieldErrors?.message}</p>
       </form>
       <div className="register__button">
         <Button
           label="Зарегистрироваться"
+          onClick={handleSubmit(onSubmit)}
           primary
-          onClick={handleSubmit(submit)}
-          disabled={!!Object.keys(errors).length}
+          disabled={!isValid}
         />
       </div>
     </main>
