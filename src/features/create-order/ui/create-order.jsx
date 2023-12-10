@@ -52,14 +52,6 @@ function CreateOrder() {
     [location, navigate]
   );
 
-  /*  useEffect(() => {
-    const postponedOrder = getOrderCreationStorage();
-
-    if (postponedOrder) {
-      createOrder(postponedOrder);
-    }
-  }, [createOrder]); */
-
   const defaultValues = {
     addressFrom: '',
     addressTo: '',
@@ -241,7 +233,6 @@ function CreateOrder() {
             onClick={handleSubmit((order) => createOrder(order))}
             total={totalPrice}
             isButtonActive={isButtonActive}
-            scrollOffset={1070}
           />
         </div>
       </form>

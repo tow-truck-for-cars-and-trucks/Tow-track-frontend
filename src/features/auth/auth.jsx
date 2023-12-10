@@ -1,12 +1,8 @@
 import './auth.scss';
-import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
-  setLocalStorageAuth,
-  getLocalStorageAuth,
-  removeLocalStorageAuth,
   setLocalStorageToken,
   getOrderCreationStorage,
   getLocalStorageToken,
@@ -20,36 +16,23 @@ import authApi from '../../shared/api/auth-api';
 import orderApi from '../../shared/api/order-api';
 
 function Auth() {
-  const authData = getLocalStorageAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const fromPage = location.state?.from?.pathname || '/';
   const {
     control,
     handleSubmit,
-    watch,
     setError,
     formState: { errors, isValid },
   } = useForm({
-    defaultValues: authData
-      ? {
-          email: JSON.parse(authData),
-        }
-      : {
-          email: '',
-          password: '',
-        },
+    defaultValues: {
+      email: '',
+      password: '',
+    },
     mode: 'onChange',
     reValidateMode: 'onChange',
     resolver: yupResolver(authFormSchema),
   });
-
-  useEffect(() => {
-    const subscription = watch((value) => {
-      setLocalStorageAuth(value.email);
-    });
-    return () => subscription.unsubscribe();
-  }, [watch]);
 
   const continueOrder = () => {
     const order = getOrderCreationStorage();
@@ -66,7 +49,6 @@ function Auth() {
       .postLogin(inputData)
       .then((data) => {
         setLocalStorageToken(data);
-        removeLocalStorageAuth();
         if (getOrderCreationStorage()) continueOrder();
         else navigate(fromPage, { replace: true });
       })
@@ -117,7 +99,7 @@ function Auth() {
           />
         </div>
         <p className="auth__field-error">
-          {!isValid ? errors.fieldErrors?.message : ''}
+          {isValid ? '' : errors.fieldErrors?.message}
         </p>
         <div className="auth__button">
           <Button

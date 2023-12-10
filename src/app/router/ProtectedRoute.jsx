@@ -4,7 +4,7 @@ import checkUserLogged from '../model/validation';
 /**
  *
  * @param {boolean} forLoggedUser - field describing whether the route should be available to logged user
- * @param {ReactDOM} element - react component which should returned if the user is logged in
+ * @param {ReactNode} element - react component which should returned if the user is logged in
  * @returns protected component
  */
 function ProtectedRoute({ forLoggedUser, element }) {

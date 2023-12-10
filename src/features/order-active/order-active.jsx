@@ -2,7 +2,7 @@ import './order-active.scss';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getCarTypeTitle } from '../create-order/model/car-type-slice';
-import { getTariffTitle } from '../create-order/model/tariff-slice';
+import { getPlanTitle } from '../create-order/model/plan-slice';
 import DeliveryTime from '../../shared/ui/delivery-time/delivery-time';
 import ProgressBar from '../../shared/ui/progress-bar/progress-bar';
 import StepOneDefaultIcon from '../../shared/ui/icons/step-one-default-icon';
@@ -20,11 +20,10 @@ import PopupCancel from '../../entities/ui/popup-cancel/popup-cancel';
 function OrderActive({ activeOrder, cancelOrder }) {
   const [isPopupCancel, setIsPopupCancel] = useState(false);
   const carType = useSelector((state) => getCarTypeTitle(state, activeOrder));
-  const tariff = useSelector((state) => getTariffTitle(state, activeOrder));
+  const tariff = useSelector((state) => getPlanTitle(state, activeOrder));
   const driverPhoneNumber = '88801112222';
 
   const handleCallDriver = () => {
-    console.log('Выполняется вызов водителя:', driverPhoneNumber);
     window.location.href = `tel:${driverPhoneNumber}`;
   };
 

@@ -1,7 +1,7 @@
 import './order-cancel.scss';
 import { useSelector } from 'react-redux';
 import { getCarTypeTitle } from '../create-order/model/car-type-slice';
-import { getTariffTitle } from '../create-order/model/tariff-slice';
+import { getPlanTitle } from '../create-order/model/plan-slice';
 import Address from '../../shared/ui/address/address';
 import Accordion from '../../shared/ui/accordion/accordion';
 import OrderDetails from '../../shared/ui/order-details/order-details';
@@ -12,7 +12,7 @@ function OrderCancel({ cancelledOrder, deleteOrder }) {
   const carType = useSelector((state) =>
     getCarTypeTitle(state, cancelledOrder)
   );
-  const tariff = useSelector((state) => getTariffTitle(state, cancelledOrder));
+  const tariff = useSelector((state) => getPlanTitle(state, cancelledOrder));
 
   return (
     <main className="order-cancel">
