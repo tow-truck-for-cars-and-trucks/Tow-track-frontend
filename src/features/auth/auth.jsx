@@ -117,7 +117,7 @@ function Auth() {
           />
         </div>
         <p className="auth__field-error">
-          {!isValid ? errors.fieldErrors?.message : ''}
+          {isValid ? '' : errors.fieldErrors?.message}
         </p>
         <div className="auth__button">
           <Button
