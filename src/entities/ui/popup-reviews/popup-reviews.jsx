@@ -9,12 +9,7 @@ import ButtonStar from '../../../shared/ui/button-star/button-star';
 function PopupReviews({ isOpen, onClose, name, onSubmit }) {
   const [value, setValue] = useState('');
   const [isButtonValue, setIsButtonValue] = useState('');
-  /*   const [isDriverOnTime, setIsDriverOnTime] = useState(false);
-  const [isAdditionalQuestion, setIsAdditionalQuestion] = useState(false);
-
-  const handleCommentChange = (val) => {
-    setValue(val);
-  }; */
+  const [ratingValue, setRatingValue] = useState(0);
 
   return (
     <section className="popup-reviews">
@@ -22,9 +17,11 @@ function PopupReviews({ isOpen, onClose, name, onSubmit }) {
         <form className="popup-reviews__form" name={name} onSubmit={onSubmit}>
           <h2 className="popup-reviews__title">Как все прошло?</h2>
           <div className="popup-reviews__stars">
-            <ButtonStar width="36px" height="36px" color="#FFCC00" />
+            <ButtonStar
+              value={ratingValue}
+              onChange={(v) => setRatingValue(v)}
+            />
           </div>
-
           <Checkbox
             width="24px"
             height="24px"
