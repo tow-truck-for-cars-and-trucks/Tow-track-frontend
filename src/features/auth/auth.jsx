@@ -2,23 +2,26 @@ import './auth.scss';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   setLocalStorageToken,
-  getOrderCreationStorage,
   getLocalStorageToken,
-  setOrderCreationStorage,
 } from '../../shared/api/storage-api';
 import { authFormSchema } from '../../shared/schema/schema';
 import Input from '../../shared/ui/input/input';
 import PasswordInput from '../../shared/ui/password-input/password-input';
 import Button from '../../shared/ui/button/button';
 import authApi from '../../shared/api/auth-api';
-import orderApi from '../../shared/api/order-api';
+import { placeAnOrder } from '../create-order/model/create-order-slice';
 
 function Auth() {
   const location = useLocation();
   const navigate = useNavigate();
   const fromPage = location.state?.from?.pathname || '/';
+  const temporaryOrder = useSelector(
+    (store) => store.createOrder.temporaryOrder
+  );
+  const dispatch = useDispatch();
   const {
     control,
     handleSubmit,
@@ -34,13 +37,10 @@ function Auth() {
     resolver: yupResolver(authFormSchema),
   });
 
-  const continueOrder = () => {
-    const order = getOrderCreationStorage();
+  const continueOrder = async () => {
     if (getLocalStorageToken()) {
-      orderApi.createOrder(order).then((data) => {
-        navigate(`/order/${data.id}`);
-        setOrderCreationStorage(undefined);
-      });
+      const order = await dispatch(placeAnOrder(temporaryOrder)).unwrap();
+      navigate(`/order/${order.id}`);
     }
   };
 
@@ -49,8 +49,11 @@ function Auth() {
       .postLogin(inputData)
       .then((data) => {
         setLocalStorageToken(data);
-        if (getOrderCreationStorage()) continueOrder();
-        else navigate(fromPage, { replace: true });
+        if (temporaryOrder) {
+          continueOrder();
+        } else {
+          navigate(fromPage, { replace: true });
+        }
       })
       .catch(({ error }) => {
         if (error)

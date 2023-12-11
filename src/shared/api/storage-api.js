@@ -5,13 +5,6 @@ function setToLocalStorage(key, value) {
   return localStorage.removeItem(key);
 }
 
-function setToSessionStorage(key, value) {
-  if (value) {
-    return sessionStorage.setItem(key, JSON.stringify(value));
-  }
-  return sessionStorage.removeItem(key);
-}
-
 export function getLocalStorageRegister() {
   return localStorage.getItem('CREATE_REGISTER_FORM');
 }
@@ -30,12 +23,4 @@ export function getLocalStorageToken() {
 
 export function setLocalStorageToken(value) {
   return setToLocalStorage('token', value);
-}
-
-export function setOrderCreationStorage(value) {
-  return setToSessionStorage('ORDER_FOR_CREATION', value);
-}
-
-export function getOrderCreationStorage() {
-  return JSON.parse(sessionStorage.getItem('ORDER_FOR_CREATION'));
 }
