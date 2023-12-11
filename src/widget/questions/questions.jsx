@@ -4,9 +4,7 @@ import QuestionInfo from '../../entities/ui/questions-info/questions-info';
 function Questions() {
   return (
     <section className="questions">
-      <div className="questions__header">
-        <h2 className="questions__title">Частые вопросы</h2>
-      </div>
+      <h2 className="questions__title">Частые вопросы</h2>
       <QuestionInfo
         label="Какие документы понадобятся для эвакуации?"
         primary="Владельцу транспортного средства для погрузки понадобится свидетельство о регистрации ТС, водительское удостоверение или документы, удостоверяющие личность. Если владельцем транспортного средства является третье лицо, дополнительно потребуется доверенность на управление автомобилем."

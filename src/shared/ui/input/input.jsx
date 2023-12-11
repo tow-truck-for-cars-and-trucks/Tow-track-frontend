@@ -58,8 +58,8 @@ function Input({
           {placeholder}
         </label>
         <div className="input__icon">{icon}</div>
-        <div
-          role="button"
+        <button
+          type="button"
           aria-label="Стереть текст"
           className="input__delete-icon"
           onMouseDown={() => {
@@ -70,11 +70,11 @@ function Input({
           }}
         >
           <CloseIcon width="16px" height="16px" />
-        </div>
+        </button>
         <div className="input__success-icon">
           <SuccessfullIcon width="16px" height="16px" />
         </div>
-        {invalid ? <div className="input__error-text">{invalid}</div> : null}
+        {invalid ? <p className="input__error-text">{invalid}</p> : null}
       </div>
     </div>
   );

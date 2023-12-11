@@ -30,10 +30,15 @@
     display: none;
   }
 
+  &__delete-icon {
+    border: none;
+    background-color: transparent;
+  }
+
   &__error-text {
     display: none;
-    padding-top: 4px;
-    padding-left: 16px;
+    padding: 4px 0 0 16px;
+    margin: 0;
     color: var(--system-error);
     font-size: 12px;
   }
