@@ -2,7 +2,7 @@ import './order-complete.scss';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getCarTypeTitle } from '../create-order/model/car-type-slice';
-import { getTariffTitle } from '../create-order/model/tariff-slice';
+import { getPlanTitle } from '../create-order/model/plan-slice';
 import Address from '../../shared/ui/address/address';
 import Button from '../../shared/ui/button/button';
 import Accordion from '../../shared/ui/accordion/accordion';
@@ -16,7 +16,7 @@ function OrderComplete({ completedOrder }) {
   const carType = useSelector((state) =>
     getCarTypeTitle(state, completedOrder)
   );
-  const tariff = useSelector((state) => getTariffTitle(state, completedOrder));
+  const tariff = useSelector((state) => getPlanTitle(state, completedOrder));
 
   return (
     <main className="order-complete">

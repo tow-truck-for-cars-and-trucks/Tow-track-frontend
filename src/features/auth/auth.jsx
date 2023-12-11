@@ -1,13 +1,9 @@
 import './auth.scss';
-import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  setLocalStorageAuth,
-  getLocalStorageAuth,
-  removeLocalStorageAuth,
   setLocalStorageToken,
   getLocalStorageToken,
 } from '../../shared/api/storage-api';
@@ -19,7 +15,6 @@ import authApi from '../../shared/api/auth-api';
 import { placeAnOrder } from '../create-order/model/create-order-slice';
 
 function Auth() {
-  const authData = getLocalStorageAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const fromPage = location.state?.from?.pathname || '/';
@@ -30,29 +25,17 @@ function Auth() {
   const {
     control,
     handleSubmit,
-    watch,
     setError,
     formState: { errors, isValid },
   } = useForm({
-    defaultValues: authData
-      ? {
-          email: JSON.parse(authData),
-        }
-      : {
-          email: '',
-          password: '',
-        },
+    defaultValues: {
+      email: '',
+      password: '',
+    },
     mode: 'onChange',
     reValidateMode: 'onChange',
     resolver: yupResolver(authFormSchema),
   });
-
-  useEffect(() => {
-    const subscription = watch((value) => {
-      setLocalStorageAuth(value.email);
-    });
-    return () => subscription.unsubscribe();
-  }, [watch]);
 
   const continueOrder = async () => {
     if (getLocalStorageToken()) {
@@ -66,7 +49,6 @@ function Auth() {
       .postLogin(inputData)
       .then((data) => {
         setLocalStorageToken(data);
-        removeLocalStorageAuth();
         if (temporaryOrder) {
           continueOrder();
         } else {
@@ -120,7 +102,7 @@ function Auth() {
           />
         </div>
         <p className="auth__field-error">
-          {!isValid ? errors.fieldErrors?.message : ''}
+          {isValid ? '' : errors.fieldErrors?.message}
         </p>
         <div className="auth__button">
           <Button

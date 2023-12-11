@@ -1,5 +1,5 @@
 import './popup-deferred-order.scss';
-import { useEffect, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   startOfDay,
   getMinutes,
@@ -10,11 +10,11 @@ import {
   getDate,
   add,
 } from 'date-fns';
-import CloseIcon from '../../shared/ui/icons/close-icon';
 import Button from '../../shared/ui/button/button';
 import MinuteDropdown from '../minute-dropdown/minute-dropdown';
 import HourDropdown from '../hour-dropdown/hour-dropdown';
 import MonthDropdown from '../month-dropdown/month-dropdown';
+import Popup from '../../shared/ui/popup/popup';
 
 function PopupDeferredOrder({ isOpen, onClose, onSave }) {
   const getNextTenMinutes = () =>
@@ -44,28 +44,15 @@ function PopupDeferredOrder({ isOpen, onClose, onSave }) {
     []
   );
 
-  useEffect(() => {
-    const closeByEscape = (e) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
-    };
-
-    document.addEventListener('keydown', closeByEscape);
-    return () => document.removeEventListener('keydown', closeByEscape);
-  }, [isOpen, onClose]);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
   return (
-    <div className={`popup-deferred ${isOpen ? 'popup-deferred_active' : ''}`}>
-      <div className="popup-deferred__content">
-        <button
-          className="popup-deferred__close"
-          type="button"
-          aria-label="кнопка закрытия модального окна"
-          onClick={onClose}
-        >
-          <CloseIcon width="16px" height="16px" />
-        </button>
+    <Popup active={isOpen} setActive={onClose} contentBottom>
+      <div
+        role="button"
+        tabIndex={0}
+        onMouseDown={() => setActiveDropdown(null)}
+      >
         <h1 className="popup-deferred__title">Отложенный заказ</h1>
         <p className="popup-deferred__text">
           Отложенный заказ можно сделать не ранее чем за 2 часа и не позднее 3
@@ -76,6 +63,10 @@ function PopupDeferredOrder({ isOpen, onClose, onSave }) {
             <h2 className="popup-deferred__subtitle">Дата</h2>
             <MonthDropdown
               value={startOfDay(selectedDate)}
+              isActive={activeDropdown === 'month'}
+              setIsActive={(isActive) =>
+                setActiveDropdown(isActive ? 'month' : null)
+              }
               onChange={({ id: newDate }) => {
                 setSelectedDate(
                   set(selectedDate, {
@@ -92,6 +83,10 @@ function PopupDeferredOrder({ isOpen, onClose, onSave }) {
             <div className="popup-deferred__box-time">
               <HourDropdown
                 value={getHours(selectedDate)}
+                isActive={activeDropdown === 'hour'}
+                setIsActive={(isActive) =>
+                  setActiveDropdown(isActive ? 'hour' : null)
+                }
                 startHour={
                   isCurrentDate(selectedDate) ? minPossibleDate.getHours() : 0
                 }
@@ -102,6 +97,10 @@ function PopupDeferredOrder({ isOpen, onClose, onSave }) {
               <p className="popup-deferred__colon">:</p>
               <MinuteDropdown
                 value={getMinutes(selectedDate)}
+                isActive={activeDropdown === 'minute'}
+                setIsActive={(isActive) =>
+                  setActiveDropdown(isActive ? 'minute' : null)
+                }
                 startMinute={isMinHour(selectedDate) ? getNextTenMinutes() : 0}
                 onChange={({ id: minutes }) =>
                   setSelectedDate(set(selectedDate, { minutes }))
@@ -115,8 +114,35 @@ function PopupDeferredOrder({ isOpen, onClose, onSave }) {
             onClick={() => onSave(selectedDate)}
           />
         </div>
+        <div className="popup-deferred__times">
+          <h2 className="popup-deferred__subtitle">Время</h2>
+          <div className="popup-deferred__box-time">
+            <HourDropdown
+              value={getHours(selectedDate)}
+              startHour={
+                isCurrentDate(selectedDate) ? minPossibleDate.getHours() : 0
+              }
+              onChange={({ id: hours }) =>
+                setSelectedDate(set(selectedDate, { hours }))
+              }
+            />
+            <p className="popup-deferred__colon">:</p>
+            <MinuteDropdown
+              value={getMinutes(selectedDate)}
+              startMinute={isMinHour(selectedDate) ? getNextTenMinutes() : 0}
+              onChange={({ id: minutes }) =>
+                setSelectedDate(set(selectedDate, { minutes }))
+              }
+            />
+          </div>
+        </div>
+        <Button
+          label="Сохранить"
+          primary
+          onClick={() => onSave(selectedDate)}
+        />
       </div>
-    </div>
+    </Popup>
   );
 }
 export default PopupDeferredOrder;

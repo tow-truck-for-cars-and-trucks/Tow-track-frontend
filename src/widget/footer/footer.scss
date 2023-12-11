@@ -15,8 +15,8 @@
   &__main {
     display: flex;
     flex-direction: row;
-    column-gap: 26px;
     justify-content: space-between;
+    column-gap: 26px;
   }
 
   &__logo {
@@ -39,14 +39,13 @@
 
   &__copyright {
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
+    align-content: center;
+    align-items: stretch;
     font-weight: 500;
     font-size: 12px;
     line-height: 135%;
     row-gap: 24px;
-    align-items: stretch;
-    align-content: center;
-    flex-wrap: wrap;
   }
 
   &__main-contacts {

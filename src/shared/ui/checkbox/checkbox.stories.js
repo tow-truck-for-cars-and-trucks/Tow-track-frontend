@@ -11,7 +11,6 @@ const defaultStory = {
 
       const onChange = (value) => {
         setArgs({ value });
-        console.log(value);
       };
 
       return <Story args={{ ...ctx.args, onChange }} />;
