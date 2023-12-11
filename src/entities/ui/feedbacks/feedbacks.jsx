@@ -1,20 +1,17 @@
 import './feedbacks.scss';
-import { useState, useEffect } from 'react';
-import feedbackApi from '../../../shared/api/feedback-api';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Feedback from '../../../shared/ui/feedback/feedback';
 import useHorizontalScroll from '../../hooks/useHorizontalScroll';
+import { getFeedbacks } from './model/feedback-slice';
 
 function Feedbacks() {
-  const [allFeedbacks, setAllFeedbacks] = useState([]);
+  const dispatch = useDispatch();
+  const allFeedbacks = useSelector((store) => store.allFeedbacks.feedbacks);
   const { elRef } = useHorizontalScroll();
 
   useEffect(() => {
-    feedbackApi
-      .getFeedbacks()
-      .then((feedbacks) => setAllFeedbacks(feedbacks))
-      .catch((error) => {
-        console.log(error);
-      });
+    dispatch(getFeedbacks());
   }, []);
 
   return (

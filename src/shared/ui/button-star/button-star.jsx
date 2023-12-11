@@ -1,37 +1,27 @@
-import './button-start.scss';
-// import { useState } from 'react';
-import React, { useState } from 'react';
-// import StarIconDisabled from '../icons/star-icon-disabled';
-// import StarFillIcon from '../icons/star-fill-icon';
-import { FaStar } from 'react-icons/fa';
+import './button-star.scss';
+import { useState } from 'react';
+import StarEmptyIcon from '../icons/star-empty-icon';
+import StarFillIcon from '../icons/star-fill-icon';
 
-export default function ButtonStar({ title }) {
-  const [rating, setRating] = useState(null);
+export default function ButtonStar({ value, onChange }) {
+  const [stars] = useState([1, 2, 3, 4, 5]);
 
   return (
-    <div className="button-start">
-      {[...Array(5)].map((star, i) => {
-        const ratingValue = i + 1;
-
-        return (
-          <label htmlFor="rating">
-            <input
-              className="button-start__input"
-              type="radio"
-              name="rating"
-              id="rating"
-              value={ratingValue}
-              onClick={() => setRating(ratingValue)}
-            />
-            <FaStar
-              className="button-start__star"
-              color={ratingValue <= rating ? '#FFCC00' : '#BEBEBF'}
-              size={36}
-            />
-            <span>{title}</span>
-          </label>
-        );
-      })}
+    <div className="button-star">
+      {stars.map((ratingValue) => (
+        <button
+          type="button"
+          className="button-star__icon"
+          onClick={() => onChange(ratingValue)}
+          aria-label="рейтинг"
+        >
+          {ratingValue <= value ? (
+            <StarFillIcon color="#FFCC00" width="36px" height="36px" />
+          ) : (
+            <StarEmptyIcon width="36px" height="36px" />
+          )}
+        </button>
+      ))}
     </div>
   );
 }

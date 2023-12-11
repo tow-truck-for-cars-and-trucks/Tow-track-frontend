@@ -1,63 +1,46 @@
 import './auth.scss';
-import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {
-  setLocalStorageAuth,
-  getLocalStorageAuth,
-  removeLocalStorageAuth,
   setLocalStorageToken,
-  getOrderCreationStorage,
   getLocalStorageToken,
-  setOrderCreationStorage,
 } from '../../shared/api/storage-api';
 import { authFormSchema } from '../../shared/schema/schema';
 import Input from '../../shared/ui/input/input';
 import PasswordInput from '../../shared/ui/password-input/password-input';
 import Button from '../../shared/ui/button/button';
 import authApi from '../../shared/api/auth-api';
-import orderApi from '../../shared/api/order-api';
+import { placeAnOrder } from '../create-order/model/create-order-slice';
 
 function Auth() {
-  const authData = getLocalStorageAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const fromPage = location.state?.from?.pathname || '/';
+  const temporaryOrder = useSelector(
+    (store) => store.createOrder.temporaryOrder
+  );
+  const dispatch = useDispatch();
   const {
     control,
     handleSubmit,
-    watch,
     setError,
     formState: { errors, isValid },
   } = useForm({
-    defaultValues: authData
-      ? {
-          email: JSON.parse(authData),
-        }
-      : {
-          email: '',
-          password: '',
-        },
+    defaultValues: {
+      email: '',
+      password: '',
+    },
     mode: 'onChange',
     reValidateMode: 'onChange',
     resolver: yupResolver(authFormSchema),
   });
 
-  useEffect(() => {
-    const subscription = watch((value) => {
-      setLocalStorageAuth(value.email);
-    });
-    return () => subscription.unsubscribe();
-  }, [watch]);
-
-  const continueOrder = () => {
-    const order = getOrderCreationStorage();
+  const continueOrder = async () => {
     if (getLocalStorageToken()) {
-      orderApi.createOrder(order).then((data) => {
-        navigate(`/order/${data.id}`);
-        setOrderCreationStorage(undefined);
-      });
+      const order = await dispatch(placeAnOrder(temporaryOrder)).unwrap();
+      navigate(`/order/${order.id}`);
     }
   };
 
@@ -66,9 +49,11 @@ function Auth() {
       .postLogin(inputData)
       .then((data) => {
         setLocalStorageToken(data);
-        removeLocalStorageAuth();
-        if (getOrderCreationStorage()) continueOrder();
-        else navigate(fromPage, { replace: true });
+        if (temporaryOrder) {
+          continueOrder();
+        } else {
+          navigate(fromPage, { replace: true });
+        }
       })
       .catch(({ error }) => {
         if (error)
@@ -117,7 +102,7 @@ function Auth() {
           />
         </div>
         <p className="auth__field-error">
-          {!isValid ? errors.fieldErrors?.message : ''}
+          {isValid ? '' : errors.fieldErrors?.message}
         </p>
         <div className="auth__button">
           <Button

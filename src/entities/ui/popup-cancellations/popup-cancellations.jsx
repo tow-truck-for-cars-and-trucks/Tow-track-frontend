@@ -5,7 +5,7 @@ import RadioButton from '../../../shared/ui/radio-button/radio-button';
 import Comment from '../../../shared/ui/comment/comment';
 import Button from '../../../shared/ui/button/button';
 
-function PopupCancellations({ isOpen, onClose /* , cancelOrder */ }) {
+function PopupCancellations({ isOpen, onClose }) {
   const [isValueError, setIsValueError] = useState('');
   const [isValueNotSuit, setIsValueSuit] = useState('');
   const [isValueLong, setIsValueLong] = useState('');

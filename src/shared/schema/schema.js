@@ -20,12 +20,18 @@ export const registerFormSchema = yup.object().shape({
   firstName: yup
     .string()
     .max(50, 'Введенное имя слишком длинное')
-    .matches(/([А-ЯЁ][а-яё]+[-\s]?)/, 'Используйте буквы и символы')
+    .matches(
+      /(^[a-zA-Zа-яёА-ЯЁ\- ]*[a-zA-Zа-яёА-ЯЁ]$)/,
+      'Используйте буквы и символы'
+    )
     .required('Введите имя'),
   lastName: yup
     .string()
     .max(50, 'Введенная фамилия слишком длинная')
-    .matches(/([А-ЯЁ][а-яё]+[-\s]?)/, 'Используйте буквы и символы')
+    .matches(
+      /(^[a-zA-Zа-яёА-ЯЁ\- ]*[a-zA-Zа-яёА-ЯЁ]$)/,
+      'Используйте буквы и символы'
+    )
     .required('Введите фамилию'),
   email: yup
     .string()
@@ -47,7 +53,7 @@ export const registerFormSchema = yup.object().shape({
     .max(20, 'Пароль слишком длинный. Максимум - 20 символов')
     .required('Введите пароль')
     .oneOf([yup.ref('password'), null], 'Пароли должны совпадать'),
-  checkbox: yup.boolean().required(),
+  checkbox: yup.boolean().oneOf([true]).required(),
 });
 
 export const addressFormSchema = yup.object().shape({

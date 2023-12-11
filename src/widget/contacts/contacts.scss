@@ -1,12 +1,10 @@
 .contacts {
-  // width: fit-content;
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
   max-width: 736px;
   padding: 48px 16px 56px;
   background-color: var(--background-grey-light-blue-40);
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  flex-wrap: wrap;
 
   &__header {
     display: flex;

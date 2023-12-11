@@ -1,10 +1,18 @@
 import Dropdown from '../../shared/ui/dropdown/dropdown';
 
-function MinuteDropdown({ value, onChange, startMinute }) {
+function MinuteDropdown({
+  value,
+  onChange,
+  isActive,
+  setIsActive,
+  startMinute,
+}) {
   return (
     <Dropdown
       value={value}
       onChange={onChange}
+      isActive={isActive}
+      setIsActive={setIsActive}
       options={Array(6 - Math.floor(startMinute / 10))
         .fill()
         .map((_value, index) => ({

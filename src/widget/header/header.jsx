@@ -15,7 +15,6 @@ function Header({ onCreateOrderClick }) {
   };
 
   const navigate = useNavigate();
-
   const companyPhoneNumber = '88801112222';
 
   return (
