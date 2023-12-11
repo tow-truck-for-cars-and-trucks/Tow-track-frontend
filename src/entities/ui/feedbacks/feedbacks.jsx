@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Feedback from '../../../shared/ui/feedback/feedback';
 import useHorizontalScroll from '../../hooks/useHorizontalScroll';
-import { getFeedbacks } from '../../../features/create-order/model/feedback-slice';
+import { getFeedbacks } from './model/feedback-slice';
 
 function Feedbacks() {
   const dispatch = useDispatch();
