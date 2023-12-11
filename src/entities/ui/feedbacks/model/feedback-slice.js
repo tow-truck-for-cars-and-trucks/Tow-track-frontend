@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import feedbackApi from '../../../shared/api/feedback-api';
+import feedbackApi from '../../../../shared/api/feedback-api';
 
 const initialState = {
   feedbacks: [],
