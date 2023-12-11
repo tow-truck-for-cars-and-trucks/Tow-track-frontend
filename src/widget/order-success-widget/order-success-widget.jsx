@@ -49,9 +49,9 @@ function OrderSuccessWidget() {
           <h1 className="order-successfully__title-border">
             Заказ №{activeOrder.id}{' '}
           </h1>
-          <h2 className="order-successfully__title">успешно</h2>
+          <p className="order-successfully__title">успешно</p>
         </div>
-        <h2 className="order-successfully__title">оформлен!</h2>
+        <p className="order-successfully__title">оформлен!</p>
       </div>
       <OrderSuccess
         activeOrder={activeOrder}
