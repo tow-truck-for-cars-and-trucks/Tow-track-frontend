@@ -114,33 +114,6 @@ function PopupDeferredOrder({ isOpen, onClose, onSave }) {
             onClick={() => onSave(selectedDate)}
           />
         </div>
-        <div className="popup-deferred__times">
-          <h2 className="popup-deferred__subtitle">Время</h2>
-          <div className="popup-deferred__box-time">
-            <HourDropdown
-              value={getHours(selectedDate)}
-              startHour={
-                isCurrentDate(selectedDate) ? minPossibleDate.getHours() : 0
-              }
-              onChange={({ id: hours }) =>
-                setSelectedDate(set(selectedDate, { hours }))
-              }
-            />
-            <p className="popup-deferred__colon">:</p>
-            <MinuteDropdown
-              value={getMinutes(selectedDate)}
-              startMinute={isMinHour(selectedDate) ? getNextTenMinutes() : 0}
-              onChange={({ id: minutes }) =>
-                setSelectedDate(set(selectedDate, { minutes }))
-              }
-            />
-          </div>
-        </div>
-        <Button
-          label="Сохранить"
-          primary
-          onClick={() => onSave(selectedDate)}
-        />
       </div>
     </Popup>
   );

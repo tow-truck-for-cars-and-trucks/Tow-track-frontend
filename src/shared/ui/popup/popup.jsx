@@ -18,7 +18,7 @@ function Popup({ children, active, setActive, contentBottom }) {
 
   useEffect(() => {
     const handleFocus = (e) => {
-      if (!popupRef.current.contains(e.relatedTarget)) {
+      if (popupRef.current && !popupRef.current.contains(e.relatedTarget)) {
         popupRef.current.focus();
       }
     };
