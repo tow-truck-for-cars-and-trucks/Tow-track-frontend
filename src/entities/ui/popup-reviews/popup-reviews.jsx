@@ -9,7 +9,7 @@ import ButtonStar from '../../../shared/ui/button-star/button-star';
 function PopupReviews({ isOpen, onClose, name, onSubmit }) {
   const [value, setValue] = useState('');
   const [isButtonValue, setIsButtonValue] = useState('');
-  const [ratingValue, setRatingValue] = useState(4);
+  const [ratingValue, setRatingValue] = useState(0);
 
   return (
     <section className="popup-reviews">
