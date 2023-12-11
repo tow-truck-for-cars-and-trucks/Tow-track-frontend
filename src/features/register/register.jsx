@@ -1,14 +1,8 @@
 import './register.scss';
-import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Input from '../../shared/ui/input/input';
-import {
-  setLocalStorageRegister,
-  getLocalStorageRegister,
-  removeLocalStorageRegister,
-} from '../../shared/api/storage-api';
 import { registerFormSchema } from '../../shared/schema/schema';
 import PasswordInput from '../../shared/ui/password-input/password-input';
 import Button from '../../shared/ui/button/button';
@@ -17,27 +11,23 @@ import CheckboxAuthDescription from '../../shared/ui/checkbox-auth-description/c
 import registerApi from '../../shared/api/register-api';
 
 function Register() {
-  const registerData = getLocalStorageRegister();
   const location = useLocation();
 
   const {
     control,
-    watch,
     handleSubmit,
     formState: { errors, isValid },
     setError,
   } = useForm({
-    defaultValues: registerData
-      ? JSON.parse(registerData)
-      : {
-          firstName: '',
-          lastName: '',
-          phoneNumber: '',
-          email: '',
-          password: '',
-          confirmPassword: '',
-          checkbox: false,
-        },
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      checkbox: false,
+    },
     mode: 'onChange',
     reValidateMode: 'onChange',
     resolver: yupResolver(registerFormSchema),
@@ -49,7 +39,6 @@ function Register() {
     registerApi
       .postRegister(inputData)
       .then(() => {
-        removeLocalStorageRegister();
         navigate('/register?mode=login', { state: location.state });
       })
       .catch(({ error }) => {
@@ -61,20 +50,6 @@ function Register() {
         console.log(error);
       });
   };
-
-  useEffect(() => {
-    const subscription = watch(
-      ({ firstName, lastName, email, phoneNumber }) => {
-        setLocalStorageRegister({
-          firstName,
-          lastName,
-          email,
-          phoneNumber,
-        });
-      }
-    );
-    return () => subscription.unsubscribe();
-  }, [watch]);
 
   return (
     <main className="register">

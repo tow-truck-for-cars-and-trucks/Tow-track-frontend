@@ -18,7 +18,6 @@ function Header({ onCreateOrderClick }) {
   const driverPhoneNumber = '88801112222';
 
   const handleOurDriver = () => {
-    console.log('Выполняется вызов в компанию:', driverPhoneNumber);
     window.location.href = `tel:${driverPhoneNumber}`;
   };
 

@@ -32,22 +32,22 @@ function PasswordInput({ value, placeholder, onChange, invalid, id }) {
         <label htmlFor={id} className="password-input__placeholder">
           {placeholder}
         </label>
-        <div
-          role="button"
+        <button
+          type="button"
           tabIndex={0}
           aria-label="Стереть текст"
-          className="password-input__delete-icon"
+          className="password-input__delete-icon password-input__button"
           onMouseDown={() => {
             onChange('');
           }}
         >
           <CloseIcon width="16px" height="16px" />
-        </div>
-        <div
-          role="button"
+        </button>
+        <button
+          type="button"
           tabIndex={0}
           aria-label="Показать пароль"
-          className="password-input__eye-icons"
+          className="password-input__eye-icons password-input__button"
           onMouseDown={() => {
             setShowInput(!showInput);
           }}
@@ -61,9 +61,9 @@ function PasswordInput({ value, placeholder, onChange, invalid, id }) {
               <EyeSlashIcon width="16px" height="16px" />
             </div>
           )}
-        </div>
+        </button>
         {invalid ? (
-          <div className="password-input__error-text">{invalid}</div>
+          <p className="password-input__error-text">{invalid}</p>
         ) : null}
       </div>
     </div>

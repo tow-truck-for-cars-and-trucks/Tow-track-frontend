@@ -1,42 +1,4 @@
 .popup-deferred {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgb(0 0 0 / 50%);
-  visibility: hidden;
-  opacity: 0;
-
-  &_active {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  &__content {
-    position: relative;
-    width: 358px;
-    min-height: 379px;
-    padding: 44px 16px;
-    background: var(--background-white, #fff);
-    border-radius: 28px 28px 0 0;
-  }
-
-  &__close {
-    position: absolute;
-    top: 30px;
-    right: 25px;
-    padding: 0;
-    background: none;
-    background-position: center;
-    border: none;
-    cursor: pointer;
-  }
-
   &__title {
     margin: 0 0 24px;
     color: var(--text-black-80, #3b3e49);

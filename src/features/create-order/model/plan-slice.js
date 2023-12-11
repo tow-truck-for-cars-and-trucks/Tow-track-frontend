@@ -9,11 +9,11 @@ const initialState = {
   tariff: [],
 };
 
-export const getTariff = createAsyncThunk(
+export const getPlan = createAsyncThunk(
   'tariff/get',
   async (_, { rejectWithValue }) => {
     try {
-      const result = await tariffApi.getTariffType();
+      const result = await tariffApi.getPlanType();
 
       return result;
     } catch (error) {
@@ -22,22 +22,22 @@ export const getTariff = createAsyncThunk(
   }
 );
 
-const tariffSlice = createSlice({
+const planSlice = createSlice({
   name: 'tariff',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getTariff.fulfilled, (state, { payload }) => ({
+    builder.addCase(getPlan.fulfilled, (state, { payload }) => ({
       ...state,
       tariff: payload,
     }));
   },
 });
 
-export const getTariffTitle = createSelector(
+export const getPlanTitle = createSelector(
   [(state) => state.allPricing, (_, newOrder) => newOrder],
   (allPricing, newOrder) =>
     allPricing.tariff.find((x) => x.id === newOrder?.tariff)?.name
 );
 
-export default tariffSlice.reducer;
+export default planSlice.reducer;

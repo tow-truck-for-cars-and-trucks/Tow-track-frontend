@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getTariff } from '../features/create-order/model/tariff-slice';
+import { getPlan } from '../features/create-order/model/plan-slice';
 import { getCarType } from '../features/create-order/model/car-type-slice';
 import Main from '../pages/main/main';
 import ContactsPage from '../pages/contacts-page/contacts-page';
@@ -15,7 +15,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getTariff());
+    dispatch(getPlan());
     dispatch(getCarType());
   }, []);
 

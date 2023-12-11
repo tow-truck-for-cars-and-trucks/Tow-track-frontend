@@ -1,10 +1,15 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import './dropdown.scss';
 import ArrowDownIcon from '../icons/arrow-down-icon';
 
-function Dropdown({ value, options, onChange, valueComparator }) {
-  const [isActive, setIsActive] = useState(false);
-
+function Dropdown({
+  value,
+  isActive,
+  setIsActive,
+  options,
+  onChange,
+  valueComparator,
+}) {
   const onValueSelect = useCallback(
     (option) => {
       onChange(option);
@@ -19,7 +24,10 @@ function Dropdown({ value, options, onChange, valueComparator }) {
         className={`dropdown__header ${
           isActive ? 'dropdown__header_active' : ''
         }`}
-        onMouseDown={() => setIsActive(!isActive)}
+        onMouseDown={(e) => {
+          e.stopPropagation();
+          setIsActive(!isActive);
+        }}
         role="button"
         tabIndex={0}
         aria-label="Дробдаун-меню"

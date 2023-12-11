@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getMinutes, getHours } from 'date-fns';
 import { getCarTypeTitle } from '../create-order/model/car-type-slice';
-import { getTariffTitle } from '../create-order/model/tariff-slice';
+import { getPlanTitle } from '../create-order/model/plan-slice';
 import orderApi from '../../shared/api/order-api';
 import PagesTitle from '../../shared/ui/pages-title/pages-title';
 import Input from '../../shared/ui/input/input';
@@ -27,7 +27,7 @@ function OrderConfirmation() {
     comment: null,
   });
   const carType = useSelector((state) => getCarTypeTitle(state, newOrder));
-  const tariff = useSelector((state) => getTariffTitle(state, newOrder));
+  const tariff = useSelector((state) => getPlanTitle(state, newOrder));
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -88,7 +88,7 @@ function OrderConfirmation() {
             <ChipsList
               chips={[
                 { label: 'Наличные', id: 'cash' },
-                { label: 'Оплата по СБП', disabled: 'true', id: 'byCard' },
+                { label: 'Оплата по СБП', disabled: true, id: 'byCard' },
               ]}
               value={activeTab}
               onChange={(chips) => setActiveTab(chips)}
