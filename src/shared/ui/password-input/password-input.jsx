@@ -43,8 +43,8 @@ function PasswordInput({ value, placeholder, onChange, invalid, id }) {
         >
           <CloseIcon width="16px" height="16px" />
         </button>
-        <button
-          type="button"
+        <div
+          role="button"
           tabIndex={0}
           aria-label="Показать пароль"
           className="password-input__eye-icons password-input__button"
@@ -61,7 +61,7 @@ function PasswordInput({ value, placeholder, onChange, invalid, id }) {
               <EyeSlashIcon width="16px" height="16px" />
             </div>
           )}
-        </button>
+        </div>
         {invalid ? (
           <p className="password-input__error-text">{invalid}</p>
         ) : null}
