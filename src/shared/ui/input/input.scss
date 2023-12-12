@@ -31,14 +31,14 @@
   }
 
   &__delete-icon {
-    border: none;
     background-color: transparent;
+    border: none;
   }
 
   &__error-text {
     display: none;
-    padding: 4px 0 0 16px;
     margin: 0;
+    padding: 4px 0 0 16px;
     color: var(--system-error);
     font-size: 12px;
   }
