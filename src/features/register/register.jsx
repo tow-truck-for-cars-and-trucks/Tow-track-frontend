@@ -171,7 +171,9 @@ function Register() {
             )}
           />
         </div>
-        <p className="register__field-error">{errors.fieldErrors?.message}</p>
+        <p className="register__field-error">
+          {!isValid ? errors.fieldErrors?.message : ''}
+        </p>
       </form>
       <div className="register__button">
         <Button
