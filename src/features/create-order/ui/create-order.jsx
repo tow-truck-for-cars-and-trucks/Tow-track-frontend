@@ -8,6 +8,7 @@ import { addressFormSchema } from '../../../shared/schema/schema';
 import { getLocalStorageToken } from '../../../shared/api/storage-api';
 import { getOrderPrice } from '../model/total-price-slice';
 import { placeAnOrder, saveTemporaryOrder } from '../model/create-order-slice';
+import { togglePreloader } from '../model/price-preloader-slice';
 import Input from '../../../shared/ui/input/input';
 import NavigationArrowIcon from '../../../shared/ui/icons/navigation-arrow-icon';
 import Description from '../../../shared/ui/description/description';
@@ -77,6 +78,7 @@ function CreateOrder() {
   useEffect(() => {
     const subscription = watch(() => {
       clearTimeout(timerRef.current);
+      dispatch(togglePreloader());
 
       timerRef.current = setTimeout(() => {
         handleSubmit(calculatePrice).apply(this);
