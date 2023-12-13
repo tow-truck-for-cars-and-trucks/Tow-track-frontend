@@ -41,7 +41,16 @@ export const registerFormSchema = yup.object().shape({
       'Почта должна соответствовать формату example@example.com. Попробуйте изменить раскладку'
     )
     .required('Введите почту'),
-  phoneNumber: yup.string().required('Введите номер телефона'),
+  phoneNumber: yup
+    .string()
+    .required('Введите номер телефона')
+    .test('testFullNember', 'Телефонный номер введен не полностью.', (val) => {
+      const valLengthWithoutDashes = val.replace(/-|_/g, '').length;
+      if (valLengthWithoutDashes === 18) {
+        return true;
+      }
+      return false;
+    }),
   password: yup
     .string()
     .min(8, 'Пароль слишком короткий.Нужно миминум 8 символов')
