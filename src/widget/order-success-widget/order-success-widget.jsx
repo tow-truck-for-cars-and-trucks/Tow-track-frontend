@@ -26,9 +26,7 @@ function OrderSuccessWidget() {
     orderApi
       .getOrderWithParams(id, { status: 'Активный' })
       .then((order) => setActiveOrder(order))
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(console.error);
   }, []);
 
   function cancelOrder() {
@@ -37,9 +35,7 @@ function OrderSuccessWidget() {
       .then(() => {
         navigate('/?open=main', { replace: true });
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(console.error);
   }
 
   return (

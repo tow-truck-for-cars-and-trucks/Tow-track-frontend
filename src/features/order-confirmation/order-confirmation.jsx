@@ -35,9 +35,7 @@ function OrderConfirmation() {
     orderApi
       .getOrder(id)
       .then((order) => setNewOrder(order))
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(console.error);
   }, []);
 
   function createActiveOrder() {
@@ -46,9 +44,7 @@ function OrderConfirmation() {
       .then((data) => {
         navigate(`/success-order/${data.id}`, { replace: true });
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(console.error);
   }
 
   return (

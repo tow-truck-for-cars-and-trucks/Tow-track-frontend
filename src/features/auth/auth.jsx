@@ -13,6 +13,7 @@ import PasswordInput from '../../shared/ui/password-input/password-input';
 import Button from '../../shared/ui/button/button';
 import authApi from '../../shared/api/auth-api';
 import { placeAnOrder } from '../create-order/model/create-order-slice';
+import errorHandler from '../../shared/utils/error-handler';
 
 function Auth() {
   const location = useLocation();
@@ -56,12 +57,7 @@ function Auth() {
         }
       })
       .catch(({ error }) => {
-        if (error)
-          Object.entries(error).forEach(([key, value]) => {
-            if (value) {
-              setError(key, { message: value.join(', ') });
-            }
-          });
+        errorHandler(error, setError);
       });
   };
 
