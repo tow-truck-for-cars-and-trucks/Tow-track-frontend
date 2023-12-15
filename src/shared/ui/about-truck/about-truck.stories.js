@@ -11,9 +11,9 @@ export default {
 
 export const Default = {
   args: {
-    carModel: 'Isuzu NPR-75LK',
-    carNumber: 'А 123 АА 77 RUS',
-    carDriver: 'Константинопольский Иван',
-    rating: '5,0',
+    modelCar: 'Isuzu NPR-75LK',
+    licensePlates: 'А 123 АА 77 RUS',
+    driver: 'Константинопольский Иван',
+    avarageScore: '5,0',
   },
 };

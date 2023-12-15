@@ -9,7 +9,7 @@ function OrderActiveWidget() {
 
   useEffect(() => {
     orderApi
-      .getAllOrders('Активный')
+      .getAllOrders('акт')
       .then((order) => setOrders(order))
       .catch((error) => {
         console.log(error);
@@ -19,7 +19,7 @@ function OrderActiveWidget() {
   const cancelOrder = useCallback(
     (activeOrder) => {
       orderApi
-        .updateOrderStatus(activeOrder.id, 'Активный', 'Отмененный')
+        .updateOrderStatus(activeOrder.id, 'Отмененный')
         .then(() => {
           setOrders(orders.filter((o) => o.id !== activeOrder.id));
         })

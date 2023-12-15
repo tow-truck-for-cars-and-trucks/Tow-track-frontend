@@ -9,7 +9,7 @@ function OrderCompletedWidget() {
 
   useEffect(() => {
     orderApi
-      .getAllOrders('Завершенный')
+      .getAllOrders('завершенный')
       .then((order) => setOrders(order))
       .catch((error) => {
         console.log(error);

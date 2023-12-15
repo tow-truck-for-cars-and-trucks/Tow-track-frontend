@@ -5,7 +5,7 @@ import RadioButton from '../../../shared/ui/radio-button/radio-button';
 import Comment from '../../../shared/ui/comment/comment';
 import Button from '../../../shared/ui/button/button';
 
-function PopupCancellations({ isOpen, onClose }) {
+function PopupCancellations({ isOpen, onClose, cancelOrder }) {
   const [isValueError, setIsValueError] = useState('');
   const [isValueNotSuit, setIsValueSuit] = useState('');
   const [isValueLong, setIsValueLong] = useState('');
@@ -76,7 +76,14 @@ function PopupCancellations({ isOpen, onClose }) {
 
           {isValue && <Comment placeholder="Опишите, что случилось" />}
         </div>
-        <Button label="Применить" primary onClick={onClose} />
+        <Button
+          label="Применить"
+          primary
+          onClick={() => {
+            onClose();
+            cancelOrder();
+          }}
+        />
       </Popup>
     </div>
   );
