@@ -33,15 +33,21 @@ function OrderActiveWidget() {
   return (
     <section className="order-activated">
       <div className="order-activated__container">
-        {orders.map((activeOrder) => (
-          <OrderNumber number={activeOrder.id} date={activeOrder.orderDate}>
-            <OrderActive
-              activeOrder={activeOrder}
-              key={activeOrder.id}
-              cancelOrder={() => cancelOrder(activeOrder)}
-            />
-          </OrderNumber>
-        ))}
+        {orders.length === 0 ? (
+          <p className="order-activated__caption">
+            У вас пока нет активных заказов
+          </p>
+        ) : (
+          orders.map((activeOrder) => (
+            <OrderNumber number={activeOrder.id} date={activeOrder.orderDate}>
+              <OrderActive
+                activeOrder={activeOrder}
+                key={activeOrder.id}
+                cancelOrder={() => cancelOrder(activeOrder)}
+              />
+            </OrderNumber>
+          ))
+        )}
       </div>
     </section>
   );

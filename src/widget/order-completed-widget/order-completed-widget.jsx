@@ -19,17 +19,23 @@ function OrderCompletedWidget() {
   return (
     <section className="order-completed">
       <div className="order-completed__container">
-        {orders.map((completedOrder) => (
-          <OrderNumber
-            number={completedOrder.id}
-            date={completedOrder.orderDate}
-          >
-            <OrderComplete
-              completedOrder={completedOrder}
-              key={completedOrder.id}
-            />
-          </OrderNumber>
-        ))}
+        {orders.length === 0 ? (
+          <p className="order-completed__caption">
+            У вас пока нет завершенных заказов
+          </p>
+        ) : (
+          orders.map((completedOrder) => (
+            <OrderNumber
+              number={completedOrder.id}
+              date={completedOrder.orderDate}
+            >
+              <OrderComplete
+                completedOrder={completedOrder}
+                key={completedOrder.id}
+              />
+            </OrderNumber>
+          ))
+        )}
       </div>
     </section>
   );
