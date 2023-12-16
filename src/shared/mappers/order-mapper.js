@@ -28,10 +28,10 @@ export function mapOrderDataFromBackend(data) {
     towin: data.towin,
     comment: data.addition,
     total: data.price,
-    driver: data.tow_truck.driver,
-    modelCar: data.tow_truck.model_car,
-    licensePlates: data.tow_truck.license_plates,
-    avarageScore: data.tow_truck.avarage_score || 0,
+    driver: data.tow_truck?.driver,
+    modelCar: data.tow_truck?.model_car,
+    licensePlates: data.tow_truck?.license_plates,
+    avarageScore: data.tow_truck?.avarage_score || 0,
   };
 }
 

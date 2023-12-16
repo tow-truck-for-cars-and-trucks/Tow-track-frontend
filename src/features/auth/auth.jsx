@@ -40,8 +40,12 @@ function Auth() {
 
   const continueOrder = async () => {
     if (getLocalStorageToken()) {
-      const order = await dispatch(placeAnOrder(temporaryOrder)).unwrap();
-      navigate(`/order/${order.id}`);
+      try {
+        const order = await dispatch(placeAnOrder(temporaryOrder)).unwrap();
+        navigate(`/order/${order.id}`);
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 

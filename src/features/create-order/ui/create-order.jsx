@@ -32,14 +32,22 @@ function CreateOrder() {
   const timerRef = useRef(null);
 
   function calculatePrice(order) {
-    dispatch(getOrderPrice(order));
+    try {
+      dispatch(getOrderPrice(order));
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const createOrder = useCallback(
     async (order) => {
       if (getLocalStorageToken()) {
-        const data = await dispatch(placeAnOrder(order)).unwrap();
-        navigate(`/order/${data.id}`);
+        try {
+          const data = await dispatch(placeAnOrder(order)).unwrap();
+          navigate(`/order/${data.id}`);
+        } catch (err) {
+          console.error(err);
+        }
       } else {
         dispatch(saveTemporaryOrder(order));
         navigate('/register?mode=login');
