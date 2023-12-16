@@ -36,7 +36,7 @@ function PasswordInput({ value, placeholder, onChange, invalid, id }) {
           type="button"
           tabIndex={0}
           aria-label="Стереть текст"
-          className="password-input__button password-input_delete-icon "
+          className="password-input__button password-input__button_delete-icon"
           onMouseDown={() => {
             onChange('');
           }}
