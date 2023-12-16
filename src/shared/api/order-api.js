@@ -32,17 +32,12 @@ class OrderApi {
     return mapOrderDataFromBackend(res);
   }
 
-  async updateOrderStatus(id, status, newStatus) {
-    const statusString = new URLSearchParams({ status }).toString();
-    const queryStatusString = status ? `?${statusString}` : '';
-    const res = await request(
-      `${this.baseUrl}/api/order/${id}/${queryStatusString}`,
-      {
-        method: 'PATCH',
-        headers: this.getHeaders(),
-        body: JSON.stringify({ status: newStatus }),
-      }
-    );
+  async updateOrderStatus(id, newStatus) {
+    const res = await request(`${this.baseUrl}/api/order/${id}/`, {
+      method: 'PATCH',
+      headers: this.getHeaders(),
+      body: JSON.stringify({ status: newStatus }),
+    });
 
     return mapOrderDataFromBackend(res);
   }
@@ -57,26 +52,15 @@ class OrderApi {
   }
 
   async getAllOrders(status) {
-    const statusString = new URLSearchParams({ status }).toString();
-    const res = await request(`${this.baseUrl}/api/order/?${statusString}`, {
-      method: 'GET',
-      headers: this.getHeaders(),
-    });
-
-    return res.map((r) => mapOrderDataFromBackend(r));
-  }
-
-  async getOrderWithParams(id, params = {}) {
-    const paramsString = new URLSearchParams(params).toString();
     const res = await request(
-      `${this.baseUrl}/api/order/${id}/?${paramsString}`,
+      `${this.baseUrl}/api/order/?status__istartswith=${status}`,
       {
         method: 'GET',
         headers: this.getHeaders(),
       }
     );
 
-    return mapOrderDataFromBackend(res);
+    return res.map((r) => mapOrderDataFromBackend(r));
   }
 
   async getOrderPrice(order) {

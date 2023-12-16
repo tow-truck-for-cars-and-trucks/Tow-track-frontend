@@ -24,14 +24,14 @@ function OrderSuccessWidget() {
 
   useEffect(() => {
     orderApi
-      .getOrderWithParams(id, { status: 'Активный' })
+      .getOrder(id, { status: 'Активный' })
       .then((order) => setActiveOrder(order))
       .catch(console.error);
   }, []);
 
   function cancelOrder() {
     orderApi
-      .updateOrderStatus(id, 'Активный', 'Отмененный')
+      .updateOrderStatus(id, 'Отмененный')
       .then(() => {
         navigate('/?open=main', { replace: true });
       })

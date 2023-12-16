@@ -82,10 +82,10 @@ function OrderActive({ activeOrder, cancelOrder }) {
         </Accordion>
         <Accordion title="Информация о машине и водителе" withBorder>
           <AboutTrack
-            carModel="Isuzu NPR-75LK"
-            carNumber="А 123 АА 77 RUS"
-            carDriver="Константинопольский Иван"
-            rating="5,0"
+            modelCar={activeOrder.modelCar}
+            licensePlates={activeOrder.modelCar}
+            driver={activeOrder.driver}
+            avarageScore={activeOrder.avarageScore}
           />
         </Accordion>
       </div>
