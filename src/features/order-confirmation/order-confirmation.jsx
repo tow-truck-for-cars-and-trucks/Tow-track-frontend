@@ -96,7 +96,7 @@ function OrderConfirmation() {
           carType={carType}
           wheelLock={newOrder.wheelLock}
           towin={newOrder.towin ? 'Да' : 'Нет'}
-          delay={newOrder.orderDate ? 'Да' : 'Нет'}
+          delay={newOrder.delay ? 'Да' : 'Нет'}
           comment={newOrder.comment}
         />
         <div className="order-confirmation__price">

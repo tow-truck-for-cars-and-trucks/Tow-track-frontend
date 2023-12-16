@@ -48,7 +48,7 @@ function OrderComplete({ completedOrder }) {
             carType={carType}
             wheelLock={completedOrder.wheelLock}
             towin={completedOrder.towin ? 'Да' : 'Нет'}
-            delay={completedOrder.orderDate ? 'Да' : 'Нет'}
+            delay={completedOrder.delay ? 'Да' : 'Нет'}
             comment={completedOrder.comment}
           />
         </Accordion>

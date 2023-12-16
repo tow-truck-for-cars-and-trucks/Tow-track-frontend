@@ -33,7 +33,7 @@ function OrderCancel({ cancelledOrder, deleteOrder }) {
             carType={carType}
             wheelLock={cancelledOrder.wheelLock}
             towin={cancelledOrder.towin ? 'Да' : 'Нет'}
-            delay={cancelledOrder.orderDate ? 'Да' : 'Нет'}
+            delay={cancelledOrder.delay ? 'Да' : 'Нет'}
             comment={cancelledOrder.comment}
           />
         </Accordion>
