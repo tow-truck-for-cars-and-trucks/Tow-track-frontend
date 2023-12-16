@@ -76,14 +76,14 @@ function OrderActive({ activeOrder, cancelOrder }) {
             carType={carType}
             wheelLock={activeOrder.wheelLock}
             towin={activeOrder.towin ? 'Да' : 'Нет'}
-            delay={activeOrder.orderDate ? 'Да' : 'Нет'}
+            delay={activeOrder.delay ? 'Да' : 'Нет'}
             comment={activeOrder.comment}
           />
         </Accordion>
         <Accordion title="Информация о машине и водителе" withBorder>
           <AboutTrack
             modelCar={activeOrder.modelCar}
-            licensePlates={activeOrder.modelCar}
+            licensePlates={activeOrder.licensePlates}
             driver={activeOrder.driver}
             avarageScore={activeOrder.avarageScore}
           />

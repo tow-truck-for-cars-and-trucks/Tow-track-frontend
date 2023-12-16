@@ -2,10 +2,10 @@ import './about-truck.scss';
 import StarFillIcon from '../icons/star-fill-icon';
 
 /**
- * @param {string} carModel - title of the car model
- * @param {string} carNumber - title of the car number
- * @param {string} carDriver - car driver name
- * @param {string} rating - driver rating
+ * @param {string} modelCar - title of the car model
+ * @param {string} licensePlates - title of the car number
+ * @param {string} driver - car driver name
+ * @param {number} avarageScore - driver rating
  */
 
 function AboutTrack({ modelCar, licensePlates, avarageScore, driver }) {
