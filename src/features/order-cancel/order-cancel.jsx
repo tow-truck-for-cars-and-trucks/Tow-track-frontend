@@ -40,7 +40,7 @@ function OrderCancel({ cancelledOrder, deleteOrder }) {
         <Accordion title="Информация о машине и водителе" withBorder>
           <AboutTrack
             modelCar={cancelledOrder.modelCar}
-            licensePlates={cancelledOrder.modelCar}
+            licensePlates={cancelledOrder.licensePlates}
             driver={cancelledOrder.driver}
             avarageScore={cancelledOrder.avarageScore}
           />

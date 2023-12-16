@@ -14,6 +14,6 @@ export const Default = {
     modelCar: 'Isuzu NPR-75LK',
     licensePlates: 'А 123 АА 77 RUS',
     driver: 'Константинопольский Иван',
-    avarageScore: '5,0',
+    avarageScore: 5,
   },
 };

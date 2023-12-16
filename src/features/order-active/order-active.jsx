@@ -83,7 +83,7 @@ function OrderActive({ activeOrder, cancelOrder }) {
         <Accordion title="Информация о машине и водителе" withBorder>
           <AboutTrack
             modelCar={activeOrder.modelCar}
-            licensePlates={activeOrder.modelCar}
+            licensePlates={activeOrder.licensePlates}
             driver={activeOrder.driver}
             avarageScore={activeOrder.avarageScore}
           />

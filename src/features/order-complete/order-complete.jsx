@@ -55,7 +55,7 @@ function OrderComplete({ completedOrder }) {
         <Accordion title="Информация о машине и водителе" withBorder>
           <AboutTrack
             modelCar={completedOrder.modelCar}
-            licensePlates={completedOrder.modelCar}
+            licensePlates={completedOrder.licensePlates}
             driver={completedOrder.driver}
             avarageScore={completedOrder.avarageScore}
           />
