@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import orderApi from '../../shared/api/order-api';
 import OrderSuccess from '../../features/order-success/order-success';
 import './order-success-widget.scss';
+import redirectUnauthUser from '../../shared/utils/redirect-user';
 
 /**
  * @param {number} orderNumber - number of the order
@@ -35,7 +36,10 @@ function OrderSuccessWidget() {
       .then(() => {
         navigate('/?open=main', { replace: true });
       })
-      .catch(console.error);
+      .catch((error) => {
+        console.log(error);
+        if (error.response.status === 401) redirectUnauthUser();
+      });
   }
 
   return (

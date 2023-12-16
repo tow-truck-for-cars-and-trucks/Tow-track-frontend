@@ -3,6 +3,7 @@ import orderApi from '../../shared/api/order-api';
 import OrderActive from '../../features/order-active/order-active';
 import './order-active-widget.scss';
 import OrderNumber from '../../shared/ui/order-number/order-number';
+import redirectUnauthUser from '../../shared/utils/redirect-user';
 
 function OrderActiveWidget() {
   const [orders, setOrders] = useState([]);
@@ -13,6 +14,7 @@ function OrderActiveWidget() {
       .then((order) => setOrders(order))
       .catch((error) => {
         console.log(error);
+        if (error.response.status === 401) redirectUnauthUser();
       });
   }, []);
 
@@ -25,6 +27,7 @@ function OrderActiveWidget() {
         })
         .catch((error) => {
           console.log(error);
+          if (error.response.status === 401) redirectUnauthUser();
         });
     },
     [orders]

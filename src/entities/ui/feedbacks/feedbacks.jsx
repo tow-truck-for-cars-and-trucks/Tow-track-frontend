@@ -11,7 +11,11 @@ function Feedbacks() {
   const { elRef } = useHorizontalScroll();
 
   useEffect(() => {
-    dispatch(getFeedbacks());
+    try {
+      dispatch(getFeedbacks());
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return (
