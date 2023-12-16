@@ -45,8 +45,8 @@ function CreateOrder() {
         try {
           const data = await dispatch(placeAnOrder(order)).unwrap();
           navigate(`/order/${data.id}`);
-        } catch (err) {
-          console.error(err);
+        } catch (error) {
+          console.error(error);
         }
       } else {
         dispatch(saveTemporaryOrder(order));
