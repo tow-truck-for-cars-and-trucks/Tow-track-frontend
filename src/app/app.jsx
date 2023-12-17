@@ -15,16 +15,8 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    try {
-      dispatch(getPlan());
-    } catch (error) {
-      console.log(error);
-    }
-    try {
-      dispatch(getCarType());
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(getPlan());
+    dispatch(getCarType());
   }, []);
 
   return (

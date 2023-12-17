@@ -32,11 +32,7 @@ function CreateOrder() {
   const timerRef = useRef(null);
 
   function calculatePrice(order) {
-    try {
-      dispatch(getOrderPrice(order));
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(getOrderPrice(order));
   }
 
   const createOrder = useCallback(

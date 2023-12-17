@@ -1,21 +1,23 @@
 @keyframes dots {
-  from {
+  0% {
     background-color: var(--accent-yellow-light, #fc0);
   }
+
   50% {
+    background-color: var(--accent-yellow-light, #fc0);
     opacity: 0.745;
-    background-color: var(--accent-yellow-light, #fc0);
   }
-  to {
-    opacity: 0.57;
+
+  100% {
     background-color: var(--accent-yellow-light, #fc0);
+    opacity: 0.57;
   }
 }
 
 .price-preloader {
-  height: 100%;
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .price-preloader__cell {
