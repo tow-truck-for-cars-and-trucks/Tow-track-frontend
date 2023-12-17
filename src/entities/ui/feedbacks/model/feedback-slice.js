@@ -3,7 +3,9 @@ import feedbackApi from '../../../../shared/api/feedback-api';
 import redirectUnauthUser from '../../../../shared/utils/redirect-user';
 
 const initialState = {
-  feedbacks: [],
+  allFeedbacks: [],
+  // feedback: null,
+  ordersWithFeedback: [],
 };
 
 export const getFeedbacks = createAsyncThunk(
@@ -20,6 +22,19 @@ export const getFeedbacks = createAsyncThunk(
   }
 );
 
+export const createNewFeedback = createAsyncThunk(
+  'feedback/post',
+  async ({ feedback, id }, { rejectWithValue }) => {
+    try {
+      await feedbackApi.createFeedback(feedback, id);
+
+      return id;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const feedbacksSlice = createSlice({
   name: 'feedback',
   initialState,
@@ -27,7 +42,11 @@ const feedbacksSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getFeedbacks.fulfilled, (state, { payload }) => ({
       ...state,
-      feedbacks: payload,
+      allFeedbacks: payload,
+    }));
+    builder.addCase(createNewFeedback.fulfilled, (state, { payload }) => ({
+      ...state,
+      ordersWithFeedback: [...state.ordersWithFeedback, payload],
     }));
   },
 });

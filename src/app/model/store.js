@@ -13,7 +13,7 @@ const store = configureStore({
     totalPrice: orderPriceSlice,
     pricePreloader: pricePreloaderSlice,
     createOrder: createOrderSlice,
-    allFeedbacks: feedbacksSlice,
+    feedbacks: feedbacksSlice,
   },
 });
 

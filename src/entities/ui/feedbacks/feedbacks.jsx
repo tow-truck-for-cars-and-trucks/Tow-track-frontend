@@ -7,7 +7,7 @@ import { getFeedbacks } from './model/feedback-slice';
 
 function Feedbacks() {
   const dispatch = useDispatch();
-  const allFeedbacks = useSelector((store) => store.allFeedbacks.feedbacks);
+  const feedbacks = useSelector((store) => store.feedbacks.allFeedbacks);
   const { elRef } = useHorizontalScroll();
 
   useEffect(() => {
@@ -23,7 +23,7 @@ function Feedbacks() {
       <h2 className="feedbacks__title">Отзывы</h2>
       <div className="feedbacks__cards" ref={elRef}>
         <div className="feedbacks__card">
-          {allFeedbacks.map((feedback) => (
+          {feedbacks.map((feedback) => (
             <Feedback feedback={feedback} key={feedback.id} />
           ))}
         </div>
