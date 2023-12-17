@@ -33,18 +33,24 @@ function OrderCancelWidget() {
   return (
     <section className="order-cancelled">
       <div className="order-cancelled__container">
-        {orders.map((cancelledOrder) => (
-          <OrderNumber
-            number={cancelledOrder.id}
-            date={cancelledOrder.orderDate}
-          >
-            <OrderCancel
-              deleteOrder={deleteOrder}
-              cancelledOrder={cancelledOrder}
-              key={cancelledOrder.id}
-            />
-          </OrderNumber>
-        ))}
+        {orders.length === 0 ? (
+          <p className="order-cancelled__caption">
+            У вас пока нет отменных заказов
+          </p>
+        ) : (
+          orders.map((cancelledOrder) => (
+            <OrderNumber
+              number={cancelledOrder.id}
+              date={cancelledOrder.orderDate}
+            >
+              <OrderCancel
+                deleteOrder={deleteOrder}
+                cancelledOrder={cancelledOrder}
+                key={cancelledOrder.id}
+              />
+            </OrderNumber>
+          ))
+        )}
       </div>
     </section>
   );
