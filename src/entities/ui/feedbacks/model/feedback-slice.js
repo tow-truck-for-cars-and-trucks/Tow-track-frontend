@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import feedbackApi from '../../../../shared/api/feedback-api';
+import redirectUnauthUser from '../../../../shared/utils/redirect-user';
 
 const initialState = {
   feedbacks: [],
@@ -13,6 +14,7 @@ export const getFeedbacks = createAsyncThunk(
 
       return result;
     } catch (error) {
+      if (error.response.status === 401) redirectUnauthUser();
       return rejectWithValue(error.message);
     }
   }

@@ -8,6 +8,7 @@ import { addressFormSchema } from '../../../shared/schema/schema';
 import { getLocalStorageToken } from '../../../shared/api/storage-api';
 import { getOrderPrice } from '../model/total-price-slice';
 import { placeAnOrder, saveTemporaryOrder } from '../model/create-order-slice';
+import { togglePreloader } from '../model/price-preloader-slice';
 import Input from '../../../shared/ui/input/input';
 import NavigationArrowIcon from '../../../shared/ui/icons/navigation-arrow-icon';
 import Description from '../../../shared/ui/description/description';
@@ -31,14 +32,22 @@ function CreateOrder() {
   const timerRef = useRef(null);
 
   function calculatePrice(order) {
-    dispatch(getOrderPrice(order));
+    try {
+      dispatch(getOrderPrice(order));
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const createOrder = useCallback(
     async (order) => {
       if (getLocalStorageToken()) {
-        const data = await dispatch(placeAnOrder(order)).unwrap();
-        navigate(`/order/${data.id}`);
+        try {
+          const data = await dispatch(placeAnOrder(order)).unwrap();
+          navigate(`/order/${data.id}`);
+        } catch (error) {
+          console.error(error);
+        }
       } else {
         dispatch(saveTemporaryOrder(order));
         navigate('/register?mode=login');
@@ -77,6 +86,7 @@ function CreateOrder() {
   useEffect(() => {
     const subscription = watch(() => {
       clearTimeout(timerRef.current);
+      dispatch(togglePreloader());
 
       timerRef.current = setTimeout(() => {
         handleSubmit(calculatePrice).apply(this);

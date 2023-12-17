@@ -5,13 +5,9 @@
   padding: 48px 0;
   background: var(--white);
 
-  &__header {
-    padding: 0 16px;
-  }
-
   &__title {
     margin: 0;
-    padding: 24px 0 36px;
+    padding: 24px 16px 36px;
     color: var(--text-black-90);
     font-weight: 700;
     font-size: 24px;

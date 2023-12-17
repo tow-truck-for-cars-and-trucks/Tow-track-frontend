@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import orderApi from '../../../shared/api/order-api';
+import redirectUnauthUser from '../../../shared/utils/redirect-user';
 
 const initialState = {
   order: null,
@@ -14,6 +15,7 @@ export const placeAnOrder = createAsyncThunk(
 
       return result;
     } catch (error) {
+      if (error.response.status === 401) redirectUnauthUser();
       return rejectWithValue(error.message);
     }
   }

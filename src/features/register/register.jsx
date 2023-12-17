@@ -9,6 +9,7 @@ import Button from '../../shared/ui/button/button';
 import Checkbox from '../../shared/ui/checkbox/checkbox';
 import CheckboxAuthDescription from '../../shared/ui/checkbox-auth-description/checkbox-auth-description';
 import registerApi from '../../shared/api/register-api';
+import errorHandler from '../../shared/utils/error-handler';
 
 function Register() {
   const location = useLocation();
@@ -42,12 +43,7 @@ function Register() {
         navigate('/register?mode=login', { state: location.state });
       })
       .catch(({ error }) => {
-        Object.entries(error).forEach(([key, value]) => {
-          if (value) {
-            setError(key, { message: value.join(', ') });
-          }
-        });
-        console.log(error);
+        errorHandler(error, setError);
       });
   };
 
@@ -171,7 +167,9 @@ function Register() {
             )}
           />
         </div>
-        <p className="register__field-error">{errors.fieldErrors?.message}</p>
+        <p className="register__field-error">
+          {!isValid ? errors.fieldErrors?.message : ''}
+        </p>
       </form>
       <div className="register__button">
         <Button

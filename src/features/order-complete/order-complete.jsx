@@ -48,16 +48,16 @@ function OrderComplete({ completedOrder }) {
             carType={carType}
             wheelLock={completedOrder.wheelLock}
             towin={completedOrder.towin ? 'Да' : 'Нет'}
-            delay={completedOrder.orderDate ? 'Да' : 'Нет'}
+            delay={completedOrder.delay ? 'Да' : 'Нет'}
             comment={completedOrder.comment}
           />
         </Accordion>
         <Accordion title="Информация о машине и водителе" withBorder>
           <AboutTrack
-            carModel="Isuzu NPR-75LK"
-            carNumber="А 123 АА 77 RUS"
-            carDriver="Константинопольский Иван"
-            rating="5,0"
+            modelCar={completedOrder.modelCar}
+            licensePlates={completedOrder.licensePlates}
+            driver={completedOrder.driver}
+            avarageScore={completedOrder.avarageScore}
           />
         </Accordion>
       </div>

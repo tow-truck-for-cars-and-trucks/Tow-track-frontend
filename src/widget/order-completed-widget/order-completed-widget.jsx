@@ -3,16 +3,18 @@ import orderApi from '../../shared/api/order-api';
 import OrderComplete from '../../features/order-complete/order-complete';
 import './order-completed-widget.scss';
 import OrderNumber from '../../shared/ui/order-number/order-number';
+import redirectUnauthUser from '../../shared/utils/redirect-user';
 
 function OrderCompletedWidget() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     orderApi
-      .getAllOrders('Завершенный')
+      .getAllOrders('завершенный')
       .then((order) => setOrders(order))
       .catch((error) => {
         console.log(error);
+        if (error.response.status === 401) redirectUnauthUser();
       });
   }, []);
 

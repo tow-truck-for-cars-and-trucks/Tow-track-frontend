@@ -3,28 +3,31 @@ import orderApi from '../../shared/api/order-api';
 import OrderActive from '../../features/order-active/order-active';
 import './order-active-widget.scss';
 import OrderNumber from '../../shared/ui/order-number/order-number';
+import redirectUnauthUser from '../../shared/utils/redirect-user';
 
 function OrderActiveWidget() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     orderApi
-      .getAllOrders('Активный')
+      .getAllOrders('акт')
       .then((order) => setOrders(order))
       .catch((error) => {
         console.log(error);
+        if (error.response.status === 401) redirectUnauthUser();
       });
   }, []);
 
   const cancelOrder = useCallback(
     (activeOrder) => {
       orderApi
-        .updateOrderStatus(activeOrder.id, 'Активный', 'Отмененный')
+        .updateOrderStatus(activeOrder.id, 'Отмененный')
         .then(() => {
           setOrders(orders.filter((o) => o.id !== activeOrder.id));
         })
         .catch((error) => {
           console.log(error);
+          if (error.response.status === 401) redirectUnauthUser();
         });
     },
     [orders]

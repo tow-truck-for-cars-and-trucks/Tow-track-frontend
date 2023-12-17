@@ -18,7 +18,7 @@ function Footer() {
             <div className="footer__main-contacts">
               <div className="footer__phone-block">
                 <span className="footer__phone-number">8 880 111 2222</span>
-                <div>Круглосуточно</div>
+                <p className="footer__time">Круглосуточно</p>
               </div>
               <Link className="footer__link footer__contacts" to="/contacts">
                 Контакты
@@ -41,10 +41,12 @@ function Footer() {
           </div>
         </div>
         <div className="footer__copyright">
-          <div>
+          <p className="footer__offer">
             Информация, представленная на сайте, не является публичной офертой
-          </div>
-          <div>&copy; 2023 TT Express</div>
+          </p>
+          <p className="footer__copyright-date-company">
+            &copy; {new Date().getFullYear()} TT Express
+          </p>
         </div>
       </div>
     </footer>

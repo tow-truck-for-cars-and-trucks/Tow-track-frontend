@@ -33,16 +33,16 @@ function OrderCancel({ cancelledOrder, deleteOrder }) {
             carType={carType}
             wheelLock={cancelledOrder.wheelLock}
             towin={cancelledOrder.towin ? 'Да' : 'Нет'}
-            delay={cancelledOrder.orderDate ? 'Да' : 'Нет'}
+            delay={cancelledOrder.delay ? 'Да' : 'Нет'}
             comment={cancelledOrder.comment}
           />
         </Accordion>
         <Accordion title="Информация о машине и водителе" withBorder>
           <AboutTrack
-            carModel="Isuzu NPR-75LK"
-            carNumber="А 123 АА 77 RUS"
-            carDriver="Константинопольский Иван"
-            rating="5,0"
+            modelCar={cancelledOrder.modelCar}
+            licensePlates={cancelledOrder.licensePlates}
+            driver={cancelledOrder.driver}
+            avarageScore={cancelledOrder.avarageScore}
           />
         </Accordion>
       </div>

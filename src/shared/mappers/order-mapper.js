@@ -4,7 +4,7 @@ export function mapOrderDataToBackend(data) {
     address_to: data.addressTo,
     delay: data.delay,
     car_type: data.carType,
-    order_date: data.orderDate || null,
+    delivery_time: data.orderDate || new Date().toISOString,
     addition: data.comment,
     tariff: data.tariff,
     price: {
@@ -17,17 +17,21 @@ export function mapOrderDataToBackend(data) {
 
 export function mapOrderDataFromBackend(data) {
   return {
+    id: data.id,
     addressFrom: data.address_from,
     addressTo: data.address_to,
     delay: data.delay,
-    orderDate: data.order_date,
+    orderDate: data.delivery_time,
     carType: data.car_type,
     tariff: data.tariff,
     wheelLock: data.wheel_lock,
     towin: data.towin,
     comment: data.addition,
-    id: data.id,
     total: data.price,
+    driver: data.tow_truck?.driver,
+    modelCar: data.tow_truck?.model_car,
+    licensePlates: data.tow_truck?.license_plates,
+    avarageScore: data.tow_truck?.avarage_score || 0,
   };
 }
 

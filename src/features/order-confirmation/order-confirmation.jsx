@@ -12,6 +12,7 @@ import ChipsList from '../../entities/ui/chips-list/chips-list';
 import OrderDetails from '../../shared/ui/order-details/order-details';
 import BackButton from '../../shared/ui/back-button/back-button';
 import TotalPrice from '../../shared/ui/total-price/total-price';
+import redirectUnauthUser from '../../shared/utils/redirect-user';
 
 function OrderConfirmation() {
   const [activeTab, setActiveTab] = useState('cash');
@@ -37,17 +38,19 @@ function OrderConfirmation() {
       .then((order) => setNewOrder(order))
       .catch((error) => {
         console.log(error);
+        if (error.response.status === 401) redirectUnauthUser();
       });
   }, []);
 
   function createActiveOrder() {
     orderApi
-      .updateOrderStatus(id, 'Созданный', 'Активный')
+      .updateOrderStatus(id, 'Активный')
       .then((data) => {
         navigate(`/success-order/${data.id}`, { replace: true });
       })
       .catch((error) => {
         console.log(error);
+        if (error.response.status === 401) redirectUnauthUser();
       });
   }
 
@@ -100,7 +103,7 @@ function OrderConfirmation() {
           carType={carType}
           wheelLock={newOrder.wheelLock}
           towin={newOrder.towin ? 'Да' : 'Нет'}
-          delay={newOrder.orderDate ? 'Да' : 'Нет'}
+          delay={newOrder.delay ? 'Да' : 'Нет'}
           comment={newOrder.comment}
         />
         <div className="order-confirmation__price">

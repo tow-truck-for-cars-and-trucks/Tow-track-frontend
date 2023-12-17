@@ -11,12 +11,16 @@ function Feedbacks() {
   const { elRef } = useHorizontalScroll();
 
   useEffect(() => {
-    dispatch(getFeedbacks());
+    try {
+      dispatch(getFeedbacks());
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return (
     <section className="feedbacks">
-      <h1 className="feedbacks__title">Отзывы</h1>
+      <h2 className="feedbacks__title">Отзывы</h2>
       <div className="feedbacks__cards" ref={elRef}>
         <div className="feedbacks__card">
           {allFeedbacks.map((feedback) => (

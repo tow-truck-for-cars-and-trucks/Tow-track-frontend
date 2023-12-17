@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import orderApi from '../../shared/api/order-api';
 import OrderSuccess from '../../features/order-success/order-success';
 import './order-success-widget.scss';
+import redirectUnauthUser from '../../shared/utils/redirect-user';
 
 /**
  * @param {number} orderNumber - number of the order
@@ -24,21 +25,20 @@ function OrderSuccessWidget() {
 
   useEffect(() => {
     orderApi
-      .getOrderWithParams(id, { status: 'Активный' })
+      .getOrder(id, { status: 'Активный' })
       .then((order) => setActiveOrder(order))
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(console.error);
   }, []);
 
   function cancelOrder() {
     orderApi
-      .updateOrderStatus(id, 'Активный', 'Отмененный')
+      .updateOrderStatus(id, 'Отмененный')
       .then(() => {
         navigate('/?open=main', { replace: true });
       })
       .catch((error) => {
         console.log(error);
+        if (error.response.status === 401) redirectUnauthUser();
       });
   }
 
@@ -49,9 +49,9 @@ function OrderSuccessWidget() {
           <h1 className="order-successfully__title-border">
             Заказ №{activeOrder.id}{' '}
           </h1>
-          <h1 className="order-successfully__title">успешно</h1>
+          <p className="order-successfully__title">успешно</p>
         </div>
-        <h1 className="order-successfully__title">оформлен!</h1>
+        <p className="order-successfully__title">оформлен!</p>
       </div>
       <OrderSuccess
         activeOrder={activeOrder}
