@@ -6,7 +6,7 @@ import IcMinusIcon from '../../../shared/ui/icons/ic-minus-icon';
  * @param {string} label - frequently asked question
  * @param {string} primary - answer to the question
  */
-function QuestionInfo({ label, primary }) {
+function QuestionInfo({ data }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = () => {
@@ -20,7 +20,7 @@ function QuestionInfo({ label, primary }) {
         className="question__button"
         onClick={toggleAccordion}
       >
-        {label}
+        {data.label}
         <span className="question__icon" aria-hidden="true">
           {isOpen ? (
             <IcMinusIcon width="40px" height="40px" />
@@ -30,7 +30,7 @@ function QuestionInfo({ label, primary }) {
         </span>
       </button>
 
-      {isOpen && <div className="question__answer">{primary}</div>}
+      {isOpen && <div className="question__answer">{data.primary}</div>}
     </div>
   );
 }
