@@ -1,5 +1,8 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import Pricing from '../../../shared/ui/pricing/pricing';
+import PricingInfo from '../../../shared/ui/pricing-info/pricing-info';
+import './pricing-list.scss';
+import getInfoForPricing from '../../../shared/utils/price-info';
 
 /**
  * @param {Array} pricings - Chip component array
@@ -7,25 +10,15 @@ import Pricing from '../../../shared/ui/pricing/pricing';
  * @param {string} value - value of the Chip component
  * @param {function} onChange - (e: string) => void - tracks id changes
  */
-function getInfoForPricing(pricingId) {
-  switch (pricingId) {
-    case 1:
-      return 'Предоставляется стандартный эвакуатор, способный перевозить легковые и некрупные автомобили.';
-    case 2:
-      return 'Используется специальный эвакуатор, обеспечивающий быструю перевозку с минимальными задержками.';
-    case 3:
-      return 'Предназначен для перевозки крупногабаритных и специальных автомобилей, требующих особых условий и оборудования.';
-    default:
-      return '';
-  }
-}
+function PricingList({ pricings, onChange }) {
+  const [activePricing, setActivePricing] = useState(null);
 
-function PricingList({ pricings, onActivate, value, onChange }) {
   const onPricingActivation = useCallback(
     (id) => {
       onChange(id);
+      setActivePricing(id);
     },
-    [onActivate]
+    [onChange]
   );
 
   const pricingsWithInfo = pricings.map((pricing) => ({
@@ -34,19 +27,24 @@ function PricingList({ pricings, onActivate, value, onChange }) {
   }));
 
   return (
-    <>
-      {pricingsWithInfo.map((pricing) => (
-        <Pricing
-          key={pricing.id}
-          title={pricing.title}
-          description={pricing.description}
-          price={pricing.price}
-          info={pricing.info}
-          isActive={value === pricing.id}
-          setActive={() => onPricingActivation(pricing.id)}
-        />
-      ))}
-    </>
+    <div className="pricing-list">
+      <div className="pricing-list__container">
+        {pricingsWithInfo.map((pricing) => (
+          <Pricing
+            key={pricing.id}
+            title={pricing.title}
+            description={pricing.description}
+            price={pricing.price}
+            info={pricing.info}
+            isActive={activePricing === pricing.id}
+            setActive={() => onPricingActivation(pricing.id)}
+          />
+        ))}
+      </div>
+      {activePricing !== null && (
+        <PricingInfo info={getInfoForPricing(activePricing)} />
+      )}
+    </div>
   );
 }
 
