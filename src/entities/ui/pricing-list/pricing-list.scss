@@ -1,13 +1,11 @@
 .pricing-list {
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
 
   &__container {
     display: flex;
     max-width: 100%;
     overflow-x: auto;
     white-space: nowrap;
-    border: 1px solid green;
   }
 }
