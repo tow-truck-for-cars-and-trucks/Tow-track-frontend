@@ -13,6 +13,14 @@ import PopupReviews from '../../entities/ui/popup-reviews/popup-reviews';
 
 function OrderComplete({ completedOrder }) {
   const [isPopupReviews, setIsPopupReviews] = useState(false);
+  const reviewDisabled = useSelector((state) => {
+    console.log();
+
+    return state.feedbacks.ordersWithFeedback.some(
+      (id) => id === completedOrder.id
+    );
+  });
+
   const carType = useSelector((state) =>
     getCarTypeTitle(state, completedOrder)
   );
@@ -30,14 +38,17 @@ function OrderComplete({ completedOrder }) {
         <p className="order-complete__price-title">Стоимость заказа</p>
         <p className="order-complete__price-total">{completedOrder.total} ₽</p>
       </div>
-      <div className="order-complete__button">
-        <Button
-          primary="true"
-          label="Оставить отзыв"
-          onClick={() => setIsPopupReviews(true)}
-        />
-      </div>
+      {reviewDisabled ? null : (
+        <div className="order-complete__button">
+          <Button
+            primary="true"
+            label="Оставить отзыв"
+            onClick={() => setIsPopupReviews(true)}
+          />
+        </div>
+      )}
       <PopupReviews
+        id={completedOrder.id}
         isOpen={isPopupReviews}
         onClose={() => setIsPopupReviews(false)}
       />
@@ -54,10 +65,10 @@ function OrderComplete({ completedOrder }) {
         </Accordion>
         <Accordion title="Информация о машине и водителе" withBorder>
           <AboutTrack
-            modelCar={completedOrder.modelCar}
-            licensePlates={completedOrder.licensePlates}
-            driver={completedOrder.driver}
-            avarageScore={completedOrder.avarageScore}
+            modelCar={completedOrder?.modelCar}
+            licensePlates={completedOrder?.licensePlates}
+            driver={completedOrder?.driver}
+            avarageScore={completedOrder?.avarageScore}
           />
         </Accordion>
       </div>

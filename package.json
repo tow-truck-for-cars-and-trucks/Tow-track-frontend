@@ -103,7 +103,8 @@
     "webpack": "^5.89.0"
   },
   "lint-staged": {
-    "*.{js,jsx}": "npm run lint",
+    "*.{js,jsx}": "npm run lint:fix",
+    "*{.css,.scss}": "npm run stylelint:fix",
     "*.{js,jsx,scss,md,html,json}": "npm run format"
   },
   "config": {

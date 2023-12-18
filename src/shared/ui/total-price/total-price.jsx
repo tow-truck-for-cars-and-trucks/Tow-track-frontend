@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import './total-price.scss';
 import Button from '../button/button';
 import { selectPreloader } from '../../../features/create-order/model/price-preloader-slice';
+import PricePreloader from '../price-preloader/price-preloader';
 
 /**
  * @param {number} total - total price of the order
@@ -17,7 +18,7 @@ function TotalPrice({ total, onClick, isButtonActive }) {
         <h2 className="total-price__title">Стоимость заказа:</h2>
         <h2 className="total-price__full-price">
           {' '}
-          {isPreloading ? '...' : total} ₽
+          {isPreloading ? <PricePreloader /> : `${total} ₽`}
         </h2>
       </div>
       <Button

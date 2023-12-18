@@ -2,12 +2,13 @@
   position: absolute;
   top: 16px;
   right: 16px;
+  cursor: pointer;
 }
 
 .comment {
   &__container {
     position: relative;
-    max-width: 768px;
+    width: 100%;
     min-height: 98px;
   }
 
@@ -60,16 +61,6 @@
     &:not(:focus, :placeholder-shown) {
       border: 2px solid var(--accent-yellow-light);
       caret-color: var(--accent-yellow-light);
-    }
-
-    .popup-reviews__form & {
-      width: 240px;
-      margin-bottom: 32px;
-    }
-
-    .popup-cancellations__container & {
-      width: 245px;
-      margin-top: 28px;
     }
   }
 }

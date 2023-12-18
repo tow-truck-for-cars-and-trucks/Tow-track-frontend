@@ -16,10 +16,10 @@ export const AboutTruckStory = {
     title: 'Информация о машине и водителе',
     children: [
       <AboutTruck
-        carModel="Isuzu NPR-75LK"
-        carNumber="А 123 АА 77 RUS"
-        carDriver="Константинопольский Иван"
-        rating="5,0"
+        modelCar="Isuzu NPR-75LK"
+        licensePlates="А 123 АА 77 RUS"
+        driver="Константинопольский Иван"
+        avarageScore="5,0"
       />,
     ],
   },
@@ -31,10 +31,10 @@ export const AboutTruckWithOutBorder = {
     withBorder: false,
     children: [
       <AboutTruck
-        carModel="Isuzu NPR-75LK"
-        carNumber="А 123 АА 77 RUS"
-        carDriver="Константинопольский Иван"
-        rating="5,0"
+        modelCar="Isuzu NPR-75LK"
+        licensePlates="А 123 АА 77 RUS"
+        driver="Константинопольский Иван"
+        avarageScore="5,0"
       />,
     ],
   },

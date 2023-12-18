@@ -1,4 +1,9 @@
 import request from '../utils/utils';
+import { getLocalStorageToken } from './storage-api';
+import {
+  mapFeedbackDataToBackend,
+  mapFeedbackDataFromBackend,
+} from '../mappers/feedback-mapper';
 
 const { REACT_APP_BASE_URL } = process.env;
 
@@ -11,37 +16,25 @@ class FeedbackApi {
   getHeaders() {
     return {
       ...this.headers,
-      authorization: `Token ${localStorage.getItem('token')}`,
+      authorization: `Token ${getLocalStorageToken()}`,
     };
   }
 
-  getFeedbacks() {
-    return request(`${this.baseUrl}/api/feedback/`);
+  async getFeedbacks() {
+    const res = await request(`${this.baseUrl}/api/feedback/`);
+
+    return res.map((r) => mapFeedbackDataFromBackend(r));
   }
 
-  async postFeedback(feedback) {
+  async createFeedback(feedback, id) {
     const res = await request(`${this.baseUrl}/api/feedback/`, {
       method: 'POST',
       headers: this.getHeaders(),
-      body: JSON.stringify(feedback),
+      body: JSON.stringify(
+        mapFeedbackDataToBackend({ ...feedback, order: id })
+      ),
     });
-    return res;
-  }
-
-  async getFeedback(id) {
-    const res = await request(`${this.baseUrl}/api/feedback/${id}/`, {
-      method: 'GET',
-      headers: this.getHeaders(),
-    });
-    return res;
-  }
-
-  async putFeedback(id) {
-    const res = await request(`${this.baseUrl}/api/feedback/${id}/`, {
-      method: 'PUT',
-      headers: this.getHeaders(),
-    });
-    return res;
+    return mapFeedbackDataFromBackend(res);
   }
 
   async editFeedback(id, feedback) {

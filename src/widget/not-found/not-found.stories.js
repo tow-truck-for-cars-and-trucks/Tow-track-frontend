@@ -1,8 +1,8 @@
-import Banner from './banner';
+import NotFound from './not-found';
 
 export default {
-  title: 'widget/Banner',
-  component: Banner,
+  title: 'widget/MyOrder',
+  component: NotFound,
   tags: ['autodocs'],
   arg: {
     primary: true,
