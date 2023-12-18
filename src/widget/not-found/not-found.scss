@@ -4,9 +4,9 @@
   align-items: center;
   width: 390px;
   min-height: calc(100vh - 64px);
-  background: var(--Background-GreyLightBlue40, #eff5f8);
+  background: var(--Background-GreyLightBlue40);
 
-  &__404 {
+  &__error {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -15,8 +15,8 @@
     position: relative;
     width: 175px;
   }
-  &__4 {
-    color: var(--Accent-YellowLight, #fc0);
+  &__number {
+    color: var(--Accent-YellowLight);
     font-size: 114px;
     font-style: normal;
     font-weight: 700;
@@ -35,7 +35,7 @@
   &__caption {
     padding: 0;
     margin: 0 0 26px 0;
-    color: var(--Text-Black80, #3b3e49);
+    color: var(--Text-Black80);
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
@@ -45,7 +45,7 @@
     text-align: center;
     padding: 0;
     margin: 0 0 102px 0;
-    color: var(--Text-Black80, #3b3e49);
+    color: var(--Text-Black80);
     font-size: 18px;
     font-style: normal;
     font-weight: 500;

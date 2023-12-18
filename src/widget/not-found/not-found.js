@@ -1,7 +1,7 @@
 import React from 'react';
 import './not-found.scss';
 import { useNavigate } from 'react-router-dom';
-import wheelIimg from '../../shared/ui/icons/wheel.png';
+import wheelImg from '../../shared/ui/icons/wheel.png';
 import Button from '../../shared/ui/button/button';
 
 function NotFound() {
@@ -9,14 +9,14 @@ function NotFound() {
 
   return (
     <section className="not-found">
-      <div className="not-found__404">
-        <h2 className="not-found__4">4</h2>
+      <div className="not-found__error">
+        <h2 className="not-found__number">4</h2>
         <img
-          src={wheelIimg}
+          src={wheelImg}
           alt="Колесо на диске"
           className="not-found__wheel"
         />
-        <h2 className="not-found__4">4</h2>
+        <h2 className="not-found__number">4</h2>
       </div>
       <p className="not-found__caption">Страница не найдена</p>
       <p className="not-found__post-caption">
