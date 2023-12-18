@@ -3,6 +3,9 @@
 }
 
 .about-track {
+  padding-top: 4px;
+  padding-bottom: 28px;
+
   &__info-content {
     display: flex;
     flex-direction: row;
@@ -38,7 +41,7 @@
     @extend %text-style;
 
     display: inline-block;
-    margin-top: 24px;
+    padding-top: 12px;
     padding-bottom: 4px;
     color: var(--text-black-80);
     font-weight: 700;

@@ -1,25 +1,28 @@
+import { useArgs } from '@storybook/preview-api';
 import Comment from './comment';
 
 export default {
   title: 'Shared/Comment',
   component: Comment,
-  tags: ['autodocs'],
-};
+  decorators: [
+    function Component(Story, ctx) {
+      const [, setArgs] = useArgs();
 
-export const Default = {
-  args: {
-    // variant: 'default',
+      const onChange = (value) => {
+        setArgs({ value });
+      };
+
+      return <Story args={{ ...ctx.args, onChange }} />;
+    },
+  ],
+  parameters: {
+    layout: 'centered',
   },
-};
-export const Writing = {
-  args: {
-    content: 'Не крутится руль, слома',
-    initialCount: 23,
-  },
+  tags: ['autodocs'],
 };
 
 export const Done = {
   args: {
-    content: 'Не крутится руль, сломался усилитель',
+    value: 'Не крутится руль, сломался усилитель',
   },
 };
