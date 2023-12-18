@@ -30,7 +30,7 @@ function Auth() {
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      email: '',
+      phoneNumber: '',
       password: '',
     },
     mode: 'onChange',
@@ -70,17 +70,17 @@ function Auth() {
       <form>
         <div className="auth__input">
           <Controller
-            name="email"
+            name="phoneNumber"
             control={control}
             rules={{ required: true }}
             render={({ field: { value, onChange } }) => (
               <Input
-                invalid={errors.email?.message}
                 value={value}
-                type="email"
                 onChange={onChange}
-                placeholder="Введите почту"
-                id="email-input"
+                invalid={errors.phoneNumber?.message}
+                mask="+7 (999) 999 99 99"
+                placeholder="Телефон"
+                id="phoneNumber"
               />
             )}
           />

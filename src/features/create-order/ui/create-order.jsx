@@ -232,7 +232,7 @@ function CreateOrder() {
         <div className="create-order__price">
           <TotalPrice
             onClick={handleSubmit((order) => createOrder(order))}
-            total={totalPrice}
+            total={totalPrice || 0}
             isButtonActive={isButtonActive}
           />
         </div>
