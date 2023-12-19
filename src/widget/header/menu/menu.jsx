@@ -1,5 +1,7 @@
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import './menu.scss';
+import authApi from '../../../shared/api/auth-api';
+import checkUserLogged from '../../../app/model/validation';
 
 /**
  *
@@ -12,6 +14,17 @@ function Menu({ visible = false, onCreateOrderClick }) {
 
   const { pathname } = useLocation();
   const [params] = useSearchParams();
+
+  const loggedIn = checkUserLogged();
+
+  const onLogout = () => {
+    authApi
+      .postLogout()
+      .then(() => {
+        navigate('/?open=main', { replace: true });
+      })
+      .catch(console.error);
+  };
 
   return (
     <div className={`menu ${!visible && 'menu_display-none'}`}>
@@ -60,6 +73,25 @@ function Menu({ visible = false, onCreateOrderClick }) {
           >
             Мои заказы
           </button>
+          {!loggedIn ? (
+            <button
+              type="button"
+              onClick={() =>
+                navigate('/register?mode=login', { replace: true })
+              }
+              className="menu__auth"
+            >
+              Войти
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => onLogout()}
+              className="menu__auth"
+            >
+              Выйти
+            </button>
+          )}
         </nav>
       </div>
     </div>
