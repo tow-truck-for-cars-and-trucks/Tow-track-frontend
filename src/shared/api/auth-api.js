@@ -24,11 +24,10 @@ class AuthApi {
     ).then((res) => res.auth_token);
   }
 
-  postLogout(inputs) {
+  postLogout() {
     return request(`${this.baseUrl}/api/auth/token/logout/`, {
       method: 'POST',
       headers: this.headers,
-      body: inputs,
     }).then((res) => res);
   }
 }
