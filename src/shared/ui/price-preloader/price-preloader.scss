@@ -17,10 +17,11 @@
 .price-preloader {
   display: flex;
   align-items: center;
+  gap: 6px;
   height: 100%;
 }
 
-.price-preloader__cell {
+.price-preloader__dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -29,7 +30,6 @@
   animation-iteration-count: infinite;
 
   &:nth-child(2) {
-    margin: 0 6px;
     animation-delay: 0.2s;
   }
 
