@@ -48,7 +48,7 @@ export const registerFormSchema = yup.object().shape({
     .max(20, 'Пароль слишком длинный. Максимум - 20 символов')
     .required('Введите пароль')
     .oneOf([yup.ref('password'), null], 'Пароли должны совпадать'),
-  checkbox: yup.boolean().oneOf([true]).required(),
+  consent: yup.boolean().oneOf([true]).required(),
 });
 
 export const addressFormSchema = yup.object().shape({

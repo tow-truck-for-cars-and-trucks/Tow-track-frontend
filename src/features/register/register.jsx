@@ -25,7 +25,7 @@ function Register() {
       phoneNumber: '',
       password: '',
       confirmPassword: '',
-      checkbox: false,
+      consent: false,
     },
     mode: 'onChange',
     reValidateMode: 'onChange',
@@ -118,7 +118,7 @@ function Register() {
         </div>
         <div className="register__checkbox">
           <Controller
-            name="checkbox"
+            name="consent"
             control={control}
             rules={{ required: true }}
             render={({ field: { value, onChange } }) => (
