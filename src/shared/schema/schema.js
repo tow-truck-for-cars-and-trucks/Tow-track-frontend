@@ -1,14 +1,16 @@
 import * as yup from 'yup';
 
 export const authFormSchema = yup.object().shape({
-  email: yup
+  phoneNumber: yup
     .string()
-    .min(4, 'Введите почту')
-    .matches(
-      /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.][a-zA-Z]{2,}$/,
-      'Почта должна соответствовать формату example@example.com. Попробуйте изменить раскладку'
-    )
-    .required('Введите почту'),
+    .required('Введите номер телефона')
+    .test('testFullNember', 'Телефонный номер введен не полностью.', (val) => {
+      const valLengthWithoutDashes = val.replace(/-|_/g, '').length;
+      if (valLengthWithoutDashes === 18) {
+        return true;
+      }
+      return false;
+    }),
   password: yup
     .string()
     .min(8, 'Пароль слишком короткий.Нужно миминум 8 символов')
@@ -25,22 +27,6 @@ export const registerFormSchema = yup.object().shape({
       'Используйте буквы и символы'
     )
     .required('Введите имя'),
-  lastName: yup
-    .string()
-    .max(50, 'Введенная фамилия слишком длинная')
-    .matches(
-      /(^[a-zA-Zа-яёА-ЯЁ\- ]*[a-zA-Zа-яёА-ЯЁ]$)/,
-      'Используйте буквы и символы'
-    )
-    .required('Введите фамилию'),
-  email: yup
-    .string()
-    .min(1, 'Введите почту')
-    .matches(
-      /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.][a-zA-Z]{2,}$/,
-      'Почта должна соответствовать формату example@example.com. Попробуйте изменить раскладку'
-    )
-    .required('Введите почту'),
   phoneNumber: yup
     .string()
     .required('Введите номер телефона')

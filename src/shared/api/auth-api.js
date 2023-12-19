@@ -1,5 +1,8 @@
 import request from '../utils/utils';
-import { mapUserDataFromBackend } from '../mappers/user-mapper';
+import {
+  mapAuthDataFromBackend,
+  mapAuthDataToBackend,
+} from '../mappers/user-mapper';
 
 const { REACT_APP_BASE_URL } = process.env;
 
@@ -15,9 +18,9 @@ class AuthApi {
       {
         method: 'POST',
         headers: this.headers,
-        body: JSON.stringify(inputs),
+        body: JSON.stringify(mapAuthDataToBackend(inputs)),
       },
-      mapUserDataFromBackend
+      mapAuthDataFromBackend
     ).then((res) => res.auth_token);
   }
 

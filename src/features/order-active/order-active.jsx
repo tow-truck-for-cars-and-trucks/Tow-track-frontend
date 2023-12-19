@@ -14,7 +14,7 @@ import Alert from '../../shared/ui/alert/alert';
 import Button from '../../shared/ui/button/button';
 import Accordion from '../../shared/ui/accordion/accordion';
 import OrderDetails from '../../shared/ui/order-details/order-details';
-import AboutTrack from '../../shared/ui/about-truck/about-truck';
+import AboutTruck from '../../shared/ui/about-truck/about-truck';
 import PopupCancel from '../../entities/ui/popup-cancel/popup-cancel';
 import handlePhoneCall from '../../shared/utils/helpers';
 
@@ -81,7 +81,7 @@ function OrderActive({ activeOrder, cancelOrder }) {
           />
         </Accordion>
         <Accordion title="Информация о машине и водителе" withBorder>
-          <AboutTrack
+          <AboutTruck
             modelCar={activeOrder.modelCar}
             licensePlates={activeOrder.licensePlates}
             driver={activeOrder.driver}
