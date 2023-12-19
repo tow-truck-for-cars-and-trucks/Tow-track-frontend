@@ -15,7 +15,7 @@ function Feedbacks() {
   }, []);
 
   return (
-    <section className="feedbacks">
+    <section className="feedbacks" data-testid="feedbacks">
       <h2 className="feedbacks__title">Отзывы</h2>
       <div className="feedbacks__cards" ref={elRef}>
         <div className="feedbacks__card">

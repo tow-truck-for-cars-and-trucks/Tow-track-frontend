@@ -38,6 +38,7 @@ function Header({ onCreateOrderClick }) {
             <LogoCombined width="88.8px" height="48px" />
           </button>
           <button
+            data-testid="burger-menu"
             className="header__button"
             type="button"
             onClick={handleClick}

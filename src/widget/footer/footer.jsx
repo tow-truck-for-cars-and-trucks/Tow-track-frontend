@@ -6,7 +6,7 @@ import ArrowScroll from '../../shared/ui/arrow-scroll/arrow-scroll';
 
 function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" data-testid="footer">
       <div className="footer__container">
         <ArrowScroll />
         <div className="footer__main">
