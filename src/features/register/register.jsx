@@ -22,9 +22,7 @@ function Register() {
   } = useForm({
     defaultValues: {
       firstName: '',
-      lastName: '',
       phoneNumber: '',
-      email: '',
       password: '',
       confirmPassword: '',
       checkbox: false,
@@ -68,22 +66,6 @@ function Register() {
         </div>
         <div className="register__input">
           <Controller
-            name="lastName"
-            control={control}
-            rules={{ required: true }}
-            render={({ field: { value, onChange } }) => (
-              <Input
-                invalid={errors.lastName?.message}
-                value={value}
-                onChange={onChange}
-                placeholder="Фамилия"
-                id="lastName"
-              />
-            )}
-          />
-        </div>
-        <div className="register__input">
-          <Controller
             name="phoneNumber"
             control={control}
             rules={{ required: true }}
@@ -95,22 +77,6 @@ function Register() {
                 mask="+7 (999) 999 99 99"
                 placeholder="Телефон"
                 id="phoneNumber"
-              />
-            )}
-          />
-        </div>
-        <div className="register__input">
-          <Controller
-            name="email"
-            control={control}
-            rules={{ required: true }}
-            render={({ field: { value, onChange } }) => (
-              <Input
-                value={value}
-                invalid={errors.email?.message}
-                onChange={onChange}
-                placeholder="Введите почту"
-                id="email"
               />
             )}
           />

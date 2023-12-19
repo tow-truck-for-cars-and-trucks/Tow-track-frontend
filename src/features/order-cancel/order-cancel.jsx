@@ -5,7 +5,7 @@ import { getPlanTitle } from '../create-order/model/plan-slice';
 import Address from '../../shared/ui/address/address';
 import Accordion from '../../shared/ui/accordion/accordion';
 import OrderDetails from '../../shared/ui/order-details/order-details';
-import AboutTrack from '../../shared/ui/about-truck/about-truck';
+import AboutTruck from '../../shared/ui/about-truck/about-truck';
 import CloseIcon from '../../shared/ui/icons/close-icon';
 
 function OrderCancel({ cancelledOrder, deleteOrder }) {
@@ -38,7 +38,7 @@ function OrderCancel({ cancelledOrder, deleteOrder }) {
           />
         </Accordion>
         <Accordion title="Информация о машине и водителе" withBorder>
-          <AboutTrack
+          <AboutTruck
             modelCar={cancelledOrder.modelCar}
             licensePlates={cancelledOrder.licensePlates}
             driver={cancelledOrder.driver}
