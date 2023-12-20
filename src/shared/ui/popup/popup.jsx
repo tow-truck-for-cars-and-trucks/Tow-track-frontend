@@ -45,6 +45,7 @@ function Popup({ children, active, setActive, contentBottom }) {
   return (
     <div>
       <div
+        data-testid="popup"
         className={active ? 'popup popup_active' : 'popup'}
         role="button"
         tabIndex={0}

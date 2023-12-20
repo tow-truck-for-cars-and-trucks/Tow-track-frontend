@@ -8,7 +8,7 @@ import './advantage-card.scss';
 
 function AdvantageCard({ icon, title, subtitle }) {
   return (
-    <article>
+    <article data-testid="advantage-card">
       <div className="advantage-card">
         {icon}
         <h2 className="advantage-card__title">{title}</h2>

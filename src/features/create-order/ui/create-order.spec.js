@@ -1,4 +1,4 @@
-import { act, screen } from '@testing-library/react';
+import { act, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import renderWithProviders from '../../../shared/utils/test-utils';
@@ -50,7 +50,7 @@ test('Проверка на наличие компоненента Input в к�
 test('Проверка на наличие компоненента Description в компоненте CreateOrder', () => {
   renderWithProviders(<CreateOrder />);
 
-  expect(screen.getByTestId('description')).toBeInTheDocument();
+  expect(screen.getAllByTestId('description').length).toBe(3);
 });
 
 test('Проверка на наличие компоненента ChipList в компоненте CreateOrder', () => {
@@ -85,7 +85,24 @@ test('Проверка на наличие компоненента Comment в �
 });
 
 test('Проверка на наличие компоненента TotalPrice в компоненте CreateOrder', () => {
-  renderWithProviders(<CreateOrder />);
+  renderWithProviders(<CreateOrder />, {
+    preloadedState: {
+      totalPrice: {
+        price: 1820,
+      },
+    },
+  });
 
   expect(screen.getByTestId('total-price')).toBeInTheDocument();
+  expect(screen.getByText(/1820/i)).toBeInTheDocument();
+});
+
+test('открытие попапа с отложенным заказом', () => {
+  renderWithProviders(<CreateOrder />);
+
+  expect(screen.getByTestId('popup')).toHaveClass('popup');
+
+  fireEvent.change(screen.getByTestId('delay'));
+
+  expect(screen.getByTestId('popup')).not.toHaveClass('popup popup_active');
 });

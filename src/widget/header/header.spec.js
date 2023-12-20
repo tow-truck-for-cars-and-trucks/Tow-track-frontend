@@ -1,18 +1,11 @@
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { render, screen, fireEvent } from '@testing-library/react';
-import store from '../../app/model/store';
+import { screen, fireEvent } from '@testing-library/react';
+import renderWithProviders from '../../shared/utils/test-utils';
 import Header from './header';
+
 import '@testing-library/jest-dom';
 
 test('Проверка на открытие меню при нажатии на кнопку бургера', () => {
-  render(
-    <BrowserRouter>
-      <Provider store={store}>
-        <Header />
-      </Provider>
-    </BrowserRouter>
-  );
+  renderWithProviders(<Header />);
 
   expect(screen.getByTestId('menu')).toHaveClass('menu_display-none');
 
