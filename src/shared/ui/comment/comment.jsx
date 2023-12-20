@@ -21,7 +21,7 @@ function Comment({ value, onChange }) {
   );
 
   return (
-    <div className="comment__container ">
+    <div className="comment__container" data-testid="comment">
       <textarea
         className="comment__textarea"
         placeholder="Комментарий"

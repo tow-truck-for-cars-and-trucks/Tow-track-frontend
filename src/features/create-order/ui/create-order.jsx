@@ -32,6 +32,7 @@ function CreateOrder() {
   const timerRef = useRef(null);
 
   function calculatePrice(order) {
+    dispatch(togglePreloader());
     dispatch(getOrderPrice(order));
   }
 
@@ -82,7 +83,6 @@ function CreateOrder() {
   useEffect(() => {
     const subscription = watch(() => {
       clearTimeout(timerRef.current);
-      dispatch(togglePreloader());
 
       timerRef.current = setTimeout(() => {
         handleSubmit(calculatePrice).apply(this);
@@ -92,7 +92,7 @@ function CreateOrder() {
   }, [handleSubmit, watch]);
 
   return (
-    <div className="create-order">
+    <div className="create-order" data-testid="createOrder">
       <h2 className="create-order__title">Адреса</h2>
       <form>
         <div className="create-order__input">

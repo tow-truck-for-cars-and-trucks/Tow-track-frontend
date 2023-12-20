@@ -8,6 +8,7 @@ function ButtonToggle({ id, children, onChange, value }) {
         className="button-toggle__input"
         type="checkbox"
         id={id}
+        data-testid={id}
         onChange={(e) => onChange(e.target.checked)}
         checked={value}
       />
