@@ -4,7 +4,6 @@ import redirectUnauthUser from '../../../../shared/utils/redirect-user';
 
 const initialState = {
   allFeedbacks: [],
-  // feedback: null,
   ordersWithFeedback: [],
 };
 
