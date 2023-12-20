@@ -1,28 +1,26 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import orderApi from '../../shared/api/order-api';
+import { getOrders } from '../my-order/model/all-orders-slice';
 import OrderCancel from '../../features/order-cancel/order-cancel';
 import './order-cancel-widget.scss';
 import OrderNumber from '../../shared/ui/order-number/order-number';
 import redirectUnauthUser from '../../shared/utils/redirect-user';
 
 function OrderCancelWidget() {
-  const [orders, setOrders] = useState([]);
+  const [allOrders, setAllOrders] = useState([]);
+  const dispatch = useDispatch();
+  const orders = useSelector((store) => store.allOrders.cancelledOrders);
 
   useEffect(() => {
-    orderApi
-      .getAllOrders('Отмененный')
-      .then((order) => setOrders(order))
-      .catch((error) => {
-        console.log(error);
-        if (error.response.status === 401) redirectUnauthUser();
-      });
+    dispatch(getOrders('отмененный'));
   }, []);
 
   const deleteOrder = useCallback((cancelledOrder) => {
     orderApi
       .deleteOrder(cancelledOrder.id, 'Отмененный')
       .then(() => {
-        setOrders(orders.filter((o) => o.id !== cancelledOrder.id));
+        setAllOrders(allOrders.filter((o) => o.id !== cancelledOrder.id));
       })
       .catch((error) => {
         console.log(error);
@@ -38,15 +36,12 @@ function OrderCancelWidget() {
             У вас пока нет отменных заказов
           </p>
         ) : (
-          orders.map((cancelledOrder) => (
-            <OrderNumber
-              number={cancelledOrder.id}
-              date={cancelledOrder.orderDate}
-            >
+          orders.map((order) => (
+            <OrderNumber number={order.id} date={order.orderDate}>
               <OrderCancel
                 deleteOrder={deleteOrder}
-                cancelledOrder={cancelledOrder}
-                key={cancelledOrder.id}
+                id={order.id}
+                key={order.id}
               />
             </OrderNumber>
           ))

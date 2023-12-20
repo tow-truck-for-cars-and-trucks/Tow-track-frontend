@@ -5,6 +5,7 @@ import orderPriceSlice from '../../features/create-order/model/total-price-slice
 import createOrderSlice from '../../features/create-order/model/create-order-slice';
 import feedbacksSlice from '../../entities/ui/feedbacks/model/feedback-slice';
 import pricePreloaderSlice from '../../features/create-order/model/price-preloader-slice';
+import allOrdersSlice from '../../widget/my-order/model/all-orders-slice';
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     pricePreloader: pricePreloaderSlice,
     createOrder: createOrderSlice,
     feedbacks: feedbacksSlice,
+    allOrders: allOrdersSlice,
   },
 });
 

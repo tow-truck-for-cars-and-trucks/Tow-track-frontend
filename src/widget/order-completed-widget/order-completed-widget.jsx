@@ -1,21 +1,16 @@
-import { useState, useEffect } from 'react';
-import orderApi from '../../shared/api/order-api';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getOrders } from '../my-order/model/all-orders-slice';
 import OrderComplete from '../../features/order-complete/order-complete';
 import './order-completed-widget.scss';
 import OrderNumber from '../../shared/ui/order-number/order-number';
-import redirectUnauthUser from '../../shared/utils/redirect-user';
 
 function OrderCompletedWidget() {
-  const [orders, setOrders] = useState([]);
+  const dispatch = useDispatch();
+  const orders = useSelector((store) => store.allOrders.completedOrders);
 
   useEffect(() => {
-    orderApi
-      .getAllOrders('завершенный')
-      .then((order) => setOrders(order))
-      .catch((error) => {
-        console.log(error);
-        if (error.response.status === 401) redirectUnauthUser();
-      });
+    dispatch(getOrders('завершенный'));
   }, []);
 
   return (
@@ -26,15 +21,9 @@ function OrderCompletedWidget() {
             У вас пока нет завершенных заказов
           </p>
         ) : (
-          orders.map((completedOrder) => (
-            <OrderNumber
-              number={completedOrder.id}
-              date={completedOrder.orderDate}
-            >
-              <OrderComplete
-                completedOrder={completedOrder}
-                key={completedOrder.id}
-              />
+          orders.map((order) => (
+            <OrderNumber number={order.id} date={order.orderDate}>
+              <OrderComplete key={order.id} id={order.id} />
             </OrderNumber>
           ))
         )}

@@ -1,5 +1,5 @@
 import Header from '../../widget/header/header';
-import MyOrder from '../../widget/my-order/my-order';
+import MyOrder from '../../widget/my-order/ui/my-order';
 import Footer from '../../widget/footer/footer';
 
 function MyOrderPage() {
