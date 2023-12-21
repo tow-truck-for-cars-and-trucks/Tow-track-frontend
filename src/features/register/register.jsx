@@ -46,7 +46,7 @@ function Register() {
   };
 
   return (
-    <main className="register">
+    <main className="register" data-testid="register">
       <form>
         <div className="register__input">
           <Controller

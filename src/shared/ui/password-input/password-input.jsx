@@ -25,6 +25,7 @@ function PasswordInput({ value, placeholder, onChange, invalid, id }) {
         <input
           type={showInput ? 'text' : 'password'}
           name={id}
+          data-testid={id}
           className="password-input__text"
           value={value}
           onChange={(e) => onChange(e.target.value)}

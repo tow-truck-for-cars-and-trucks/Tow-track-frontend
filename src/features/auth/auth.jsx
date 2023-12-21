@@ -66,7 +66,7 @@ function Auth() {
   };
 
   return (
-    <main className="auth">
+    <main className="auth" data-testid="auth">
       <form>
         <div className="auth__input">
           <Controller
