@@ -6,13 +6,18 @@ import Comment from '../../../shared/ui/comment/comment';
 import Button from '../../../shared/ui/button/button';
 
 function PopupCancellations({ isOpen, onClose, cancelOrder }) {
-  const [isValueError, setIsValueError] = useState('');
-  const [isValueNotSuit, setIsValueSuit] = useState('');
-  const [isValueLong, setIsValueLong] = useState('');
-  const [isValueCancell, setIsValueCancell] = useState('');
-  const [isValueFast, setIsValueFast] = useState('');
+  const [isValueError, setIsValueError] = useState(false);
+  const [isValueNotSuit, setIsValueSuit] = useState(false);
+  const [isValueLong, setIsValueLong] = useState(false);
+  const [isValueCancell, setIsValueCancell] = useState(false);
+  const [isValueFast, setIsValueFast] = useState(false);
   const [isValueNotNeed, setIsValueNotNeed] = useState(false);
-  const [isValue, setIsValue] = useState(false);
+  const [isValueComment, setIsValueComment] = useState(false);
+
+  const setIsValue = (evt, setValue) => {
+    setValue(evt);
+    setIsValueComment(false);
+  };
 
   return (
     <div className="popup-cancellations">
@@ -23,58 +28,51 @@ function PopupCancellations({ isOpen, onClose, cancelOrder }) {
           <RadioButton
             name="radio"
             value={isValueError}
-            onChange={(val) => setIsValueError(val)}
-            type="radio"
+            onChange={(evt) => setIsValue(evt, setIsValueError)}
             title="Заказал по ошибке"
           />
           <RadioButton
             name="radio"
             value={isValueCancell}
-            onChange={(val) => setIsValueCancell(val)}
-            type="radio"
+            onChange={(evt) => setIsValue(evt, setIsValueCancell)}
             title="Отменил по просьбе водителя"
           />
           <RadioButton
             name="radio"
             value={isValueNotSuit}
-            onChange={(val) => setIsValueSuit(val)}
-            type="radio"
+            onChange={(evt) => setIsValue(evt, setIsValueSuit)}
             title="Не устроил эвакуатор"
           />
           <RadioButton
             name="radio"
             value={isValueLong}
-            onChange={(val) => setIsValueLong(val)}
-            type="radio"
+            onChange={(evt) => setIsValue(evt, setIsValueLong)}
             title="Слишком долго жду эвакуатор"
           />
           <RadioButton
             id="fast"
             name="radio"
             value={isValueFast}
-            onChange={(val) => setIsValueFast(val)}
-            type="radio"
+            onChange={(evt) => setIsValue(evt, setIsValueFast)}
             title="Конкурент приехал быстрее"
           />
           <RadioButton
             id="need"
             name="radio"
             value={isValueNotNeed}
-            onChange={(e) => setIsValueNotNeed(e)}
-            type="radio"
+            onChange={(evt) => setIsValue(evt, setIsValueNotNeed)}
             title="Авто больше не нуждается в эвакуации"
           />
 
           <RadioButton
             id="other"
             name="radio"
-            value={isValue}
-            onChange={(e) => setIsValue(e)}
-            type="radio"
+            value={isValueComment}
+            onChange={(e) => setIsValueComment(e)}
             title="Другое"
           />
 
-          {isValue && <Comment placeholder="Опишите, что случилось" />}
+          {isValueComment && <Comment placeholder="Опишите, что случилось" />}
         </div>
         <Button
           label="Применить"
