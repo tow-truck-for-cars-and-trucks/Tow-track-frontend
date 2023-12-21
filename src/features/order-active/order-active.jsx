@@ -14,20 +14,23 @@ import Alert from '../../shared/ui/alert/alert';
 import Button from '../../shared/ui/button/button';
 import Accordion from '../../shared/ui/accordion/accordion';
 import OrderDetails from '../../shared/ui/order-details/order-details';
-import AboutTrack from '../../shared/ui/about-truck/about-truck';
+import AboutTruck from '../../shared/ui/about-truck/about-truck';
 import PopupCancel from '../../entities/ui/popup-cancel/popup-cancel';
 import handlePhoneCall from '../../shared/utils/helpers';
 
-function OrderActive({ activeOrder, cancelOrder }) {
+function OrderActive({ id, cancelOrder }) {
   const [isPopupCancel, setIsPopupCancel] = useState(false);
-  const carType = useSelector((state) => getCarTypeTitle(state, activeOrder));
-  const tariff = useSelector((state) => getPlanTitle(state, activeOrder));
+  const order = useSelector((store) =>
+    store.allOrders.activeOrders.find((o) => o.id === id)
+  );
+  const carType = useSelector((state) => getCarTypeTitle(state, order));
+  const tariff = useSelector((state) => getPlanTitle(state, order));
   const driverPhoneNumber = '88801112222';
 
   return (
     <main className="order-active">
       <div className="order-active__submission-time">
-        <DeliveryTime date={activeOrder.orderDate} />
+        <DeliveryTime date={order.orderDate} />
       </div>
       <ProgressBar
         icons={[
@@ -40,14 +43,11 @@ function OrderActive({ activeOrder, cancelOrder }) {
         activeText="В пути"
       />
       <div className="order-active__adress">
-        <Address
-          addressFrom={activeOrder.addressFrom}
-          addressTo={activeOrder.addressTo}
-        />
+        <Address addressFrom={order.addressFrom} addressTo={order.addressTo} />
       </div>
       <div className="order-active__price">
         <p className="order-active__price-title">Стоимость заказа</p>
-        <p className="order-active__price-total">{activeOrder.total} ₽</p>
+        <p className="order-active__price-total">{order.total} ₽</p>
       </div>
       <div className="order-active__alert">
         <Alert />
@@ -74,18 +74,18 @@ function OrderActive({ activeOrder, cancelOrder }) {
           <OrderDetails
             tariff={tariff}
             carType={carType}
-            wheelLock={activeOrder.wheelLock}
-            towin={activeOrder.towin ? 'Да' : 'Нет'}
-            delay={activeOrder.delay ? 'Да' : 'Нет'}
-            comment={activeOrder.comment}
+            wheelLock={order.wheelLock}
+            towin={order.towin ? 'Да' : 'Нет'}
+            delay={order.delay ? 'Да' : 'Нет'}
+            comment={order.comment}
           />
         </Accordion>
         <Accordion title="Информация о машине и водителе" withBorder>
-          <AboutTrack
-            modelCar={activeOrder.modelCar}
-            licensePlates={activeOrder.licensePlates}
-            driver={activeOrder.driver}
-            avarageScore={activeOrder.avarageScore}
+          <AboutTruck
+            modelCar={order.modelCar}
+            licensePlates={order.licensePlates}
+            driver={order.driver}
+            avarageScore={order.avarageScore}
           />
         </Accordion>
       </div>

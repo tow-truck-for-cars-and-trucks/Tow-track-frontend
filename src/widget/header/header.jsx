@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import './header.scss';
-import React from 'react';
+import { useState } from 'react';
 import BurgerIcon from '../../shared/ui/icons/burger-icon';
 import PhoneIcon from '../../shared/ui/icons/phone-icon';
 import LogoCombined from '../../shared/ui/icons/logo-combined';
@@ -9,7 +9,7 @@ import Menu from './menu/menu';
 import handlePhoneCall from '../../shared/utils/helpers';
 
 function Header({ onCreateOrderClick }) {
-  const [showMenu, setIsShowMenu] = React.useState(false);
+  const [showMenu, setIsShowMenu] = useState(false);
   const handleClick = () => {
     setIsShowMenu(!showMenu);
   };
@@ -19,7 +19,7 @@ function Header({ onCreateOrderClick }) {
 
   return (
     <>
-      <header className="header" id="header">
+      <header className="header" id="header" data-testid="header">
         <div className="header__container">
           <button
             className="header__call"
@@ -38,6 +38,7 @@ function Header({ onCreateOrderClick }) {
             <LogoCombined width="88.8px" height="48px" />
           </button>
           <button
+            data-testid="burger-menu"
             className="header__button"
             type="button"
             onClick={handleClick}

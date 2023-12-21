@@ -31,6 +31,7 @@ function CreateOrder() {
   const timerRef = useRef(null);
 
   function calculatePrice(order) {
+    // dispatch(togglePreloader());
     dispatch(getOrderPrice(order));
   }
 
@@ -86,7 +87,7 @@ function CreateOrder() {
   }, [handleSubmit, watch]);
 
   return (
-    <div className="create-order">
+    <div className="create-order" data-testid="createOrder">
       <h2 className="create-order__title">Адреса</h2>
       <form>
         <div className="create-order__input">
@@ -226,7 +227,7 @@ function CreateOrder() {
         <div className="create-order__price">
           <TotalPrice
             onClick={handleSubmit((order) => createOrder(order))}
-            total={totalPrice}
+            total={totalPrice || 0}
             isButtonActive={isButtonActive}
           />
         </div>

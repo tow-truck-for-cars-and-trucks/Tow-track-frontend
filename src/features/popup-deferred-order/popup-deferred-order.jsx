@@ -49,6 +49,7 @@ function PopupDeferredOrder({ isOpen, onClose, onSave }) {
   return (
     <Popup active={isOpen} setActive={onClose} contentBottom>
       <div
+        data-testid="popup-deffered-order"
         role="button"
         tabIndex={0}
         onMouseDown={() => setActiveDropdown(null)}

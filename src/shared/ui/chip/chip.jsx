@@ -8,6 +8,7 @@ import './chip.scss';
 function Chip({ label, disabled, setActive, isActive }) {
   return (
     <button
+      data-testid="chip"
       type="button"
       disabled={disabled}
       className={`chip ${isActive ? 'chip_active' : ''}`}

@@ -15,7 +15,7 @@ function ChipsList({ chips, value, onChange }) {
   );
 
   return (
-    <>
+    <div data-testid="chip-list">
       {chips.map((chip) => (
         <Chip
           key={chip.id}
@@ -25,7 +25,7 @@ function ChipsList({ chips, value, onChange }) {
           setActive={() => onChipActivation(chip.id)}
         />
       ))}
-    </>
+    </div>
   );
 }
 

@@ -43,6 +43,7 @@ function Input({
         <InputMask
           mask={mask}
           name={id}
+          data-testid={id}
           readOnly={readonly}
           type={type || 'text'}
           className="input__text"

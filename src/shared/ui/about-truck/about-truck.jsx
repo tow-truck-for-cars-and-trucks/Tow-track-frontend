@@ -8,36 +8,36 @@ import StarFillIcon from '../icons/star-fill-icon';
  * @param {number} avarageScore - driver rating
  */
 
-function AboutTrack({ modelCar, licensePlates, avarageScore, driver }) {
+function AboutTruck({ modelCar, licensePlates, avarageScore, driver }) {
   return (
-    <div className="about-track">
-      <div className="about-track__info-content">
-        <div className="about-track__info">
-          <p className="about-track__description">Марка и модель</p>
-          <p className="about-track__data">{modelCar}</p>
+    <div className="about-truck">
+      <div className="about-truck__info-content">
+        <div className="about-truck__info">
+          <p className="about-truck__description">Марка и модель</p>
+          <p className="about-truck__data">{modelCar}</p>
         </div>
-        <div className="about-track__info">
-          <p className="about-track__description">ГРЗ</p>
-          <p className="about-track__data">{licensePlates}</p>
+        <div className="about-truck__info">
+          <p className="about-truck__description">ГРЗ</p>
+          <p className="about-truck__data">{licensePlates}</p>
         </div>
       </div>
-      <a href="/" className="about-track__certificate">
+      <a href="/" className="about-truck__certificate">
         Сертификат
       </a>
-      <div className="about-track__info">
-        <p className="about-track__description">Водитель</p>
-        <div className="about-track__rating-content">
+      <div className="about-truck__info">
+        <p className="about-truck__description">Водитель</p>
+        <div className="about-truck__rating-content">
           <StarFillIcon width="16px" height="16px" color="#3B3E49" />
-          <p className="about-track__rating">{avarageScore}</p>
+          <p className="about-truck__rating">{avarageScore}</p>
         </div>
-        <p className="about-track__data">{driver}</p>
+        <p className="about-truck__data">{driver}</p>
       </div>
     </div>
   );
 }
 
-AboutTrack.defaultProps = {
+AboutTruck.defaultProps = {
   isShow: false,
 };
 
-export default AboutTrack;
+export default AboutTruck;

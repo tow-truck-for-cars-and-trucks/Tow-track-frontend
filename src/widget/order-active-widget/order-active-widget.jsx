@@ -1,29 +1,27 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import orderApi from '../../shared/api/order-api';
+import { getOrders } from '../my-order/model/all-orders-slice';
 import OrderActive from '../../features/order-active/order-active';
 import './order-active-widget.scss';
 import OrderNumber from '../../shared/ui/order-number/order-number';
 import redirectUnauthUser from '../../shared/utils/redirect-user';
 
 function OrderActiveWidget() {
-  const [orders, setOrders] = useState([]);
+  const [allOrders, setAllOrders] = useState([]);
+  const dispatch = useDispatch();
+  const orders = useSelector((store) => store.allOrders.activeOrders);
 
   useEffect(() => {
-    orderApi
-      .getAllOrders('акт')
-      .then((order) => setOrders(order))
-      .catch((error) => {
-        console.log(error);
-        if (error.response.status === 401) redirectUnauthUser();
-      });
+    dispatch(getOrders('активный'));
   }, []);
 
   const cancelOrder = useCallback(
     (activeOrder) => {
       orderApi
-        .updateOrderStatus(activeOrder.id, 'Отмененный')
+        .updateOrderStatus(activeOrder.id, 'Отменный')
         .then(() => {
-          setOrders(orders.filter((o) => o.id !== activeOrder.id));
+          setAllOrders(allOrders.filter((o) => o.id !== activeOrder.id));
         })
         .catch((error) => {
           console.log(error);
@@ -41,12 +39,12 @@ function OrderActiveWidget() {
             У вас пока нет активных заказов
           </p>
         ) : (
-          orders.map((activeOrder) => (
-            <OrderNumber number={activeOrder.id} date={activeOrder.orderDate}>
+          orders.map((order) => (
+            <OrderNumber number={order.id} date={order.orderDate}>
               <OrderActive
-                activeOrder={activeOrder}
-                key={activeOrder.id}
-                cancelOrder={() => cancelOrder(activeOrder)}
+                id={order.id}
+                key={order.id}
+                cancelOrder={() => cancelOrder(order)}
               />
             </OrderNumber>
           ))

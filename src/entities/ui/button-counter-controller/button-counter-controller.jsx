@@ -9,7 +9,7 @@ import Description from '../../../shared/ui/description/description';
 function ButtonCounterController({ value, onChange }) {
   const count = Number(value);
   return (
-    <div className="button-controller">
+    <div className="button-controller" data-testid="button-controller">
       <Description title="Блокировка колес" subtitle="Не могут вращаться" />
       <div className="button-controller__count">
         <ButtonCounter

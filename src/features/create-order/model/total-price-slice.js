@@ -18,7 +18,7 @@ export const getOrderPrice = createAsyncThunk(
   }
 );
 
-const orderPriceSlice = createSlice({
+export const orderPriceSlice = createSlice({
   name: 'orderPrice',
   initialState,
   reducers: {},
@@ -29,5 +29,3 @@ const orderPriceSlice = createSlice({
     }));
   },
 });
-
-export default orderPriceSlice.reducer;

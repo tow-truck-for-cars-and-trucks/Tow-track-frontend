@@ -12,5 +12,6 @@ export function mapFeedbackDataFromBackend(data) {
     score: data.score,
     comment: data.comment,
     name: data.name,
+    order: data.order,
   };
 }
