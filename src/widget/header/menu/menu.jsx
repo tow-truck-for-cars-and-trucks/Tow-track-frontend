@@ -27,7 +27,10 @@ function Menu({ visible = false, onCreateOrderClick }) {
   };
 
   return (
-    <div className={`menu ${!visible && 'menu_display-none'}`}>
+    <div
+      className={`menu ${!visible && 'menu_display-none'}`}
+      data-testid="menu"
+    >
       <div className="menu__container">
         <nav className="menu__nav">
           <button

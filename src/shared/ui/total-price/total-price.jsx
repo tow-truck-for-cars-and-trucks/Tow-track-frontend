@@ -13,7 +13,7 @@ function TotalPrice({ total, onClick, isButtonActive }) {
   const isPreloading = useSelector(selectPreloader);
 
   return (
-    <div className="total-price">
+    <div className="total-price" data-testid="total-price">
       <div className="total-price__wrapper">
         <h2 className="total-price__title">Стоимость заказа:</h2>
         <h2 className="total-price__full-price">

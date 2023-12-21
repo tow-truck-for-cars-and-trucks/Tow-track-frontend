@@ -16,7 +16,7 @@ function PricingList({ pricings, onActivate, value, onChange }) {
   );
 
   return (
-    <>
+    <div data-testid="pricing-list">
       {pricings.map((pricing) => (
         <Pricing
           key={pricing.id}
@@ -27,7 +27,7 @@ function PricingList({ pricings, onActivate, value, onChange }) {
           setActive={() => onPricingActivation(pricing.id)}
         />
       ))}
-    </>
+    </div>
   );
 }
 

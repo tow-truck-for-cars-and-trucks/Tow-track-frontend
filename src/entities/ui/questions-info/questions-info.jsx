@@ -14,7 +14,10 @@ function QuestionInfo({ data }) {
   };
 
   return (
-    <div className={`question ${isOpen ? 'open' : ''}`}>
+    <div
+      className={`question ${isOpen ? 'open' : ''}`}
+      data-testid="question-info"
+    >
       <button
         type="button"
         className="question__button"

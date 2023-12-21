@@ -6,11 +6,11 @@ import RatingIcon from '../../shared/ui/icons/rating-icon';
 
 function Banner() {
   return (
-    <section className="banner">
+    <section className="banner" data-testid="banner">
       <div className="banner__header">
-        <p className="banner__title">TT Express - </p>
-        <p className="banner__title">удобный сервис для вызова</p>
-        <p className="banner__title">эвакуатора 24/7</p>
+        <h1 className="banner__title">TT Express - </h1>
+        <span className="banner__title">удобный сервис для вызова</span>
+        <span className="banner__title">эвакуатора 24/7</span>
       </div>
       <div className="banner__cards">
         <div className="banner__card">
