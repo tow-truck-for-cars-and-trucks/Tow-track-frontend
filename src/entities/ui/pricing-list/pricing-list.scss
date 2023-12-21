@@ -1,0 +1,11 @@
+.pricing-list {
+  display: flex;
+  flex-direction: column;
+
+  &__container {
+    display: flex;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
