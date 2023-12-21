@@ -6,7 +6,7 @@ import './button.scss';
  * @param {string} disabled - flag indicating that the button is disabled for clicking
  * @param {function} onClick - callback called by pressing a button
  */
-function Button({ primary, label, onClick, disabled }) {
+function Button({ primary, label, onClick, disabled, id }) {
   const mode = primary ? 'button__primary' : 'button__secondary';
   return (
     <button
@@ -14,6 +14,7 @@ function Button({ primary, label, onClick, disabled }) {
       className={['button', mode].join(' ')}
       disabled={disabled}
       onClick={onClick}
+      data-testid={id}
     >
       {label}
     </button>
