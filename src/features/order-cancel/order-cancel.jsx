@@ -1,5 +1,7 @@
 import './order-cancel.scss';
-import { useSelector } from 'react-redux';
+import { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteOrder } from '../../widget/my-order/model/all-orders-slice';
 import { getCarTypeTitle } from '../create-order/model/car-type-slice';
 import { getPlanTitle } from '../create-order/model/plan-slice';
 import Address from '../../shared/ui/address/address';
@@ -8,9 +10,15 @@ import OrderDetails from '../../shared/ui/order-details/order-details';
 import AboutTruck from '../../shared/ui/about-truck/about-truck';
 import CloseIcon from '../../shared/ui/icons/close-icon';
 
-function OrderCancel({ id, deleteOrder }) {
+function OrderCancel({ id }) {
+  const dispatch = useDispatch();
+
+  const deletedOrder = useCallback(() => {
+    dispatch(deleteOrder(id));
+  }, []);
+
   const order = useSelector((store) =>
-    store.allOrders.cancelleddOrders.find((o) => o.id === id)
+    store.allOrders.cancelledOrders.find((o) => o.id === id)
   );
   const carType = useSelector((state) => getCarTypeTitle(state, order));
   const tariff = useSelector((state) => getPlanTitle(state, order));
@@ -47,7 +55,7 @@ function OrderCancel({ id, deleteOrder }) {
       <button
         className="order-cancel__delete"
         type="button"
-        onClick={() => deleteOrder(order)}
+        onClick={() => deletedOrder()}
       >
         <CloseIcon width="16px" height="16px" />
         Удалить запись
