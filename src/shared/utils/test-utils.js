@@ -39,5 +39,6 @@ export const mockTestData = [
     modelCar: 'Isuzu NPR-75LK',
     licensePlates: 'А 123 АА 77 RUS',
     avarageScore: 4,
+    isHavingFeedback: false,
   },
 ];
