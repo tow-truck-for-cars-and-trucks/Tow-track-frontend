@@ -73,10 +73,8 @@ class OrderApi {
     return mapOrderPriceFromBackend(res);
   }
 
-  async deleteOrder(id, status) {
-    const statusString = new URLSearchParams({ status }).toString();
-
-    await request(`${this.baseUrl}/api/order/${id}/?${statusString}`, {
+  async deleteOrder(id) {
+    await request(`${this.baseUrl}/api/order/${id}/`, {
       method: 'DELETE',
       headers: this.getHeaders(),
     });

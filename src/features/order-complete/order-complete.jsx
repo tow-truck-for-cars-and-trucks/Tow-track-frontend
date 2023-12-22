@@ -1,7 +1,8 @@
 import './order-complete.scss';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useState, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { getCarTypeTitle } from '../create-order/model/car-type-slice';
+import { deleteOrder } from '../../widget/my-order/model/all-orders-slice';
 import { getPlanTitle } from '../create-order/model/plan-slice';
 import Address from '../../shared/ui/address/address';
 import Button from '../../shared/ui/button/button';
@@ -13,6 +14,11 @@ import PopupReviews from '../../entities/ui/popup-reviews/popup-reviews';
 
 function OrderComplete({ id }) {
   const [isPopupReviews, setIsPopupReviews] = useState(false);
+  const dispatch = useDispatch();
+
+  const deletedOrder = useCallback(() => {
+    dispatch(deleteOrder(id));
+  }, []);
   const order = useSelector((store) =>
     store.allOrders.completedOrders.find((o) => o.id === id)
   );
@@ -20,7 +26,7 @@ function OrderComplete({ id }) {
   const tariff = useSelector((state) => getPlanTitle(state, order));
 
   return (
-    <main className="order-complete">
+    <main className="order-complete" data-testid="complete-order">
       <div className="order-complete__address">
         <Address addressFrom={order.addressFrom} addressTo={order.addressTo} />
       </div>
@@ -62,7 +68,11 @@ function OrderComplete({ id }) {
           />
         </Accordion>
       </div>
-      <button className="order-complete__delete" type="button">
+      <button
+        className="order-complete__delete"
+        type="button"
+        onClick={() => deletedOrder()}
+      >
         <CloseIcon width="16px" height="16px" />
         Удалить запись
       </button>
