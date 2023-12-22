@@ -64,14 +64,14 @@ function OrderConfirmation() {
         <div className="order-confirmation__adress">
           <Input
             placeholder="Откуда забрать"
-            readonly="true"
+            readonly
             value={newOrder.addressFrom}
           />
         </div>
         <div className="order-confirmation__adress">
           <Input
             placeholder="Куда доставить"
-            readonly="true"
+            readonly
             value={newOrder.addressTo}
           />
         </div>

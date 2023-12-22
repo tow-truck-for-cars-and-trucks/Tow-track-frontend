@@ -28,6 +28,7 @@ export const setupStore = (preloadedState) =>
       pricePreloader: pricePreloaderSlice,
       createOrder: createOrderSlice,
       feedbacks: feedbacksSlice,
+      allOrders: allOrdersSlice,
     },
     preloadedState,
   });

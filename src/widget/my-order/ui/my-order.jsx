@@ -23,7 +23,7 @@ function MyOrder() {
   }, [activeTab]);
 
   return (
-    <main className="my-order">
+    <main className="my-order" data-testid="my-order">
       <div className="my-order__title">
         <PagesTitle title="Мои заказы" />
       </div>

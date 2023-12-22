@@ -48,6 +48,7 @@ function Dropdown({
           <div
             role="button"
             tabIndex={0}
+            key={option.id}
             aria-label="Дробдаун-меню"
             className="dropdown__item"
             onMouseDown={() => onValueSelect(option)}

@@ -5,7 +5,11 @@ import './pages-title.scss';
  */
 
 function PagesTitle({ title }) {
-  return <h1 className="pages-title">{title}</h1>;
+  return (
+    <h1 className="pages-title" data-testid="page-title">
+      {title}
+    </h1>
+  );
 }
 
 PagesTitle.defaultProps = {

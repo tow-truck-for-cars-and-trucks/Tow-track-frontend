@@ -42,17 +42,22 @@ function OrderDetails({ tariff, carType, wheelLock, towin, delay, comment }) {
       </ul>
       <ul className="order-details__content">
         <li className="order-details__title">Кюветные работы</li>
-        <li className="order-details__selected">{towin}</li>
+        <li className="order-details__selected" data-testid="towin-caption">
+          {towin}
+        </li>
       </ul>
       <ul className="order-details__content">
         <li className="order-details__title">Отложенный заказ</li>
-        <li className="order-details__selected">{delay}</li>
+        <li className="order-details__selected" data-testid="delay-caption">
+          {delay}
+        </li>
       </ul>
       <ul className="order-details__content">
         <li className="order-details__title">Комментарий</li>
         {comment ? (
           <button
             type="button"
+            data-testid="comment-button"
             aria-label={isShow ? 'Свернуть' : 'Читaть'}
             className="order-details__button"
             onClick={() => setIsShow(!isShow)}
