@@ -26,7 +26,6 @@ function TotalPrice({ total, onClick, isButtonActive }) {
         label="Оформить заказ"
         onClick={() => onClick()}
         disabled={!isButtonActive}
-        id="confirm-order"
       />
     </div>
   );

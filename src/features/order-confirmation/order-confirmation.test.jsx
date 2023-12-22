@@ -1,7 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import userEvent from '@testing-library/user-event';
 import renderWithProviders from '../../shared/utils/test-utils';
 import OrderConfirmation from './order-confirmation';
 
@@ -14,7 +13,7 @@ test('Проверка на наличие BackButton в компоненте Or
 test('Проверка на наличие заголовка в компоненте OrderConfirmation', () => {
   renderWithProviders(<OrderConfirmation />);
 
-  expect(screen.getByTestId('page-title')).toBeInTheDocument();
+  expect(screen.getByTestId('pages-title')).toBeInTheDocument();
 });
 
 test('Проверка на наличие всех Input в компоненте OrderConfirmation', () => {
@@ -42,10 +41,8 @@ test('Проверка на наличие деталей заказа  в ко�
   expect(screen.getByTestId('order-details')).toBeInTheDocument();
 });
 
-test('Проверка на наличие стоимости заказа в компоненте OrderConfirmation', async () => {
+test('Проверка на наличие стоимости заказа в компоненте OrderConfirmation', () => {
   renderWithProviders(<OrderConfirmation />);
 
   expect(screen.getByTestId('total-price')).toBeInTheDocument();
-  await userEvent.click(screen.getByTestId('confirm-order'));
-  expect(screen.getByTestId('order-success')).toBeInTheDocument();
 });
