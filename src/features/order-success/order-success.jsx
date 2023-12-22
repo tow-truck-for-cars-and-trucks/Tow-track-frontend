@@ -31,7 +31,7 @@ function OrderSuccess({ activeOrder, cancelOrder }) {
   };
 
   return (
-    <section className="order-success">
+    <section className="order-success" data-testid="order-success">
       <div className="order-success__time">
         <DeliveryTime date={activeOrder.orderDate} />
       </div>

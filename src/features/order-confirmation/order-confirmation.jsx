@@ -66,6 +66,7 @@ function OrderConfirmation() {
             placeholder="Откуда забрать"
             readonly="true"
             value={newOrder.addressFrom}
+            id="referencePoint"
           />
         </div>
         <div className="order-confirmation__adress">
@@ -73,13 +74,17 @@ function OrderConfirmation() {
             placeholder="Куда доставить"
             readonly="true"
             value={newOrder.addressTo}
+            id="arrivalPoint"
           />
         </div>
         <div className="order-confirmation__submission-time">
           <p className="order-confirmation__description">
             Примерное время <span>подачи эвакуатора</span>
           </p>
-          <p className="order-confirmation__description">
+          <p
+            className="order-confirmation__description"
+            data-testid="timeOfArrival"
+          >
             {' '}
             {String(getHours(new Date(newOrder.orderDate))).padStart(2, '0')}:
             {String(getMinutes(new Date(newOrder.orderDate))).padEnd(2, '0')}

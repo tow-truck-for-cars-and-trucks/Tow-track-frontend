@@ -24,7 +24,7 @@ function OrderDetails({ tariff, carType, wheelLock, towin, delay, comment }) {
   }
 
   return (
-    <div className="order-details">
+    <div className="order-details" data-testid="order-details">
       <ul className="order-details__content">
         <li className="order-details__title">Выбранный тариф</li>
         <li className="order-details__selected">{tariff}</li>
