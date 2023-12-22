@@ -1,27 +1,9 @@
 import { screen, fireEvent } from '@testing-library/react';
-import renderWithProviders from '../../shared/utils/test-utils';
+import renderWithProviders, {
+  mockTestData,
+} from '../../shared/utils/test-utils';
 import OrderActiveWidget from './order-active-widget';
 import '@testing-library/jest-dom';
-
-const mockTestData = [
-  {
-    id: 18,
-    addressFrom: 'Москва, Красная пл., д.1',
-    addressTo: 'Москва, Красная пл., д.2',
-    carType: 2,
-    delay: false,
-    orderDate: '2023-12-21T16:02:45+03:00',
-    tariff: 1,
-    wheelLock: 1,
-    towin: false,
-    comment: 'Какой-то комментарий',
-    total: 1820,
-    driver: 'Констанитин Константиновский',
-    modelCar: 'Isuzu NPR-75LK',
-    licensePlates: 'А 123 АА 77 RUS',
-    avarageScore: 4,
-  },
-];
 
 test('Проверка на наличие компоненента OrderNumber в компоненте OrderActiveWidget', () => {
   renderWithProviders(<OrderActiveWidget />, {

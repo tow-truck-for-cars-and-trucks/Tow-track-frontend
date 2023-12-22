@@ -19,7 +19,7 @@ function OrderActiveWidget() {
   const cancelOrder = useCallback(
     (activeOrder) => {
       orderApi
-        .updateOrderStatus(activeOrder.id, 'Отменный')
+        .updateOrderStatus(activeOrder.id, 'Отмененный')
         .then(() => {
           setAllOrders(allOrders.filter((o) => o.id !== activeOrder.id));
         })
