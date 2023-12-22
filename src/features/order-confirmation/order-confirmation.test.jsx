@@ -54,6 +54,7 @@ test('Проверка на наличие стоимости заказа в к
 test('Проверка перехода на OrderSuccessfully в компоненте OrderConfirmation', async () => {
   renderWithProviders(<OrderConfirmation />);
   await userEvent.click(screen.getByText('Оформить заказ'));
+  // тут дизэблю строку так как по документации в таком случае доолжен выдавать варнинг, а не ошибку, тест при этом отрабатывает
   // eslint-disable-next-line
   expect(pattern.match(window.location.pathname));
 });
