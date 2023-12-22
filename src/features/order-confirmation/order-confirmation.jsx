@@ -1,6 +1,6 @@
 import './order-confirmation.scss';
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getMinutes, getHours } from 'date-fns';
 import { getCarTypeTitle } from '../create-order/model/car-type-slice';
@@ -13,6 +13,10 @@ import OrderDetails from '../../shared/ui/order-details/order-details';
 import BackButton from '../../shared/ui/back-button/back-button';
 import TotalPrice from '../../shared/ui/total-price/total-price';
 import redirectUnauthUser from '../../shared/utils/redirect-user';
+import {
+  activeCreatedOrder,
+  resetState,
+} from './model/order-confirmation-slice';
 
 function OrderConfirmation() {
   const [activeTab, setActiveTab] = useState('cash');
@@ -32,27 +36,25 @@ function OrderConfirmation() {
 
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { status } = useSelector((store) => store.orderConfirmation);
   useEffect(() => {
     orderApi
       .getOrder(id)
       .then((order) => setNewOrder(order))
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         if (error.response.status === 401) redirectUnauthUser();
       });
-  }, []);
+  }, [id]);
 
-  function createActiveOrder() {
-    orderApi
-      .updateOrderStatus(id, 'Активный')
-      .then((data) => {
-        navigate(`/success-order/${data.id}`, { replace: true });
-      })
-      .catch((error) => {
-        console.log(error);
-        if (error.response.status === 401) redirectUnauthUser();
-      });
-  }
+  useEffect(() => {
+    if (status === 'active') {
+      navigate(`/success-order/${id}`, { replace: true });
+    }
+  }, [status, navigate, id]);
+
+  useEffect(() => () => dispatch(resetState()), [dispatch]);
 
   return (
     <main className="order-confirmation">
@@ -110,7 +112,7 @@ function OrderConfirmation() {
           <TotalPrice
             total={newOrder.total}
             isButtonActive
-            onClick={() => createActiveOrder()}
+            onClick={() => dispatch(activeCreatedOrder(id))}
           />
         </div>
       </form>

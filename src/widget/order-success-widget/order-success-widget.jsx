@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import orderApi from '../../shared/api/order-api';
 import OrderSuccess from '../../features/order-success/order-success';
 import './order-success-widget.scss';
-import redirectUnauthUser from '../../shared/utils/redirect-user';
+import { cancelOrderRequest, resetState } from './model/success-order-slice';
 
 /**
  * @param {number} orderNumber - number of the order
@@ -11,6 +12,8 @@ import redirectUnauthUser from '../../shared/utils/redirect-user';
 function OrderSuccessWidget() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { status } = useSelector((store) => store.successOrder);
+  const dispatch = useDispatch();
   const [activeOrder, setActiveOrder] = useState({
     addressFrom: null,
     addressTo: null,
@@ -26,21 +29,17 @@ function OrderSuccessWidget() {
   useEffect(() => {
     orderApi
       .getOrder(id, { status: 'Активный' })
-      .then((order) => setActiveOrder(order))
-      .catch(console.error);
-  }, []);
+      .then((order) => setActiveOrder(order));
+    // .catch(console.error);
+  }, [id]);
 
-  function cancelOrder() {
-    orderApi
-      .updateOrderStatus(id, 'Отмененный')
-      .then(() => {
-        navigate('/?open=main', { replace: true });
-      })
-      .catch((error) => {
-        console.log(error);
-        if (error.response.status === 401) redirectUnauthUser();
-      });
-  }
+  useEffect(() => {
+    if (status === 'canceled') {
+      navigate('/?open=main', { replace: true });
+    }
+  }, [status, navigate]);
+
+  useEffect(() => () => dispatch(resetState()), [dispatch]);
 
   return (
     <section className="order-successfully">
@@ -49,13 +48,19 @@ function OrderSuccessWidget() {
           <h1 className="order-successfully__title-border">
             Заказ №{activeOrder.id}{' '}
           </h1>
-          <p className="order-successfully__title">успешно</p>
+          {status === 'active' ? (
+            <p className="order-successfully__title">успешно</p>
+          ) : (
+            <p className="order-successfully__title">отменен!</p>
+          )}
         </div>
-        <p className="order-successfully__title">оформлен!</p>
+        {status === 'active' && (
+          <p className="order-successfully__title">оформлен!</p>
+        )}
       </div>
       <OrderSuccess
         activeOrder={activeOrder}
-        cancelOrder={() => cancelOrder()}
+        cancelOrder={() => dispatch(cancelOrderRequest(id))}
       />
     </section>
   );
