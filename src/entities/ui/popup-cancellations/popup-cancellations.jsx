@@ -16,7 +16,9 @@ function PopupCancellations({ isOpen, onClose, cancelOrder }) {
 
   const setIsValue = (evt, setValue) => {
     setValue(evt);
-    setIsValueComment(false);
+    if (isValueComment) {
+      setIsValueComment(false);
+    }
   };
 
   return (
