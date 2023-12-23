@@ -97,7 +97,7 @@ function PopupReviews({ isOpen, onClose, name, id }) {
             label="Оставить отзыв"
             primary
             onClick={() => {
-              handleSubmit(onSubmit, () => console.log('ERROR'))();
+              handleSubmit(onSubmit)();
             }}
           />
         </form>

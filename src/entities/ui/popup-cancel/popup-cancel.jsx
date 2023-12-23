@@ -11,7 +11,10 @@ function PopupCancel({ isOpen, onClose, cancelOrder }) {
   };
   return (
     <div>
-      <div className={isOpen ? 'popup-cancel active' : 'popup-cancel'}>
+      <div
+        data-testid="popup-cancel-order"
+        className={isOpen ? 'popup-cancel active' : 'popup-cancel'}
+      >
         <div className="popup-cancel__content">
           <h1 className="popup-cancel__title">
             {' '}

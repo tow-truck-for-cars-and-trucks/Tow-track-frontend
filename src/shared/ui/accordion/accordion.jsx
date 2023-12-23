@@ -22,6 +22,7 @@ function Accordion({ title, children, withBorder }) {
             type="button"
             aria-label="Развернуть"
             className="accordion__icon"
+            data-testid="accordion-icon"
             onClick={() => setIsShow(true)}
           >
             <ArrowDownIcon width="16px" height="16px" fill="#3B3E49" />
@@ -32,6 +33,7 @@ function Accordion({ title, children, withBorder }) {
             type="button"
             aria-label="Свернуть"
             className="accordion__icon"
+            data-testid="accordion-icon"
             onClick={() => setIsShow(false)}
           >
             <ArrowUpIcon width="16px" height="16px" fill="#3B3E49" />

@@ -14,7 +14,7 @@ function OrderCompletedWidget() {
   }, []);
 
   return (
-    <section className="order-completed">
+    <section className="order-completed" data-testid="comleted-order-widget">
       <div className="order-completed__container">
         {orders.length === 0 ? (
           <p className="order-completed__caption">
@@ -22,7 +22,11 @@ function OrderCompletedWidget() {
           </p>
         ) : (
           orders.map((order) => (
-            <OrderNumber number={order.id} date={order.orderDate}>
+            <OrderNumber
+              key={order.id}
+              number={order.id}
+              date={order.orderDate}
+            >
               <OrderComplete key={order.id} id={order.id} />
             </OrderNumber>
           ))
