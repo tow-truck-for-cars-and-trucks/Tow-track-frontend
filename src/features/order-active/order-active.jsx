@@ -28,7 +28,7 @@ function OrderActive({ id, cancelOrder }) {
   const driverPhoneNumber = '88801112222';
 
   return (
-    <main className="order-active">
+    <main className="order-active" data-testid="order-active">
       <div className="order-active__submission-time">
         <DeliveryTime date={order.orderDate} />
       </div>

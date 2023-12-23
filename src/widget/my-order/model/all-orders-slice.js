@@ -23,6 +23,20 @@ export const getOrders = createAsyncThunk(
   }
 );
 
+export const deleteOrder = createAsyncThunk(
+  'orders/delete',
+  async (id, { rejectWithValue }) => {
+    try {
+      const result = await orderApi.deleteOrder(id);
+
+      return { id, result };
+    } catch (error) {
+      if (error.response.status === 401) redirectUnauthUser();
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const allOrdersSlice = createSlice({
   name: 'allOrders',
   initialState,
@@ -56,6 +70,16 @@ const allOrdersSlice = createSlice({
     builder.addCase(createNewFeedback.fulfilled, (state, { payload }) => {
       const newOrder = state.completedOrders.find((o) => o.id === payload);
       newOrder.isHavingFeedback = true;
+    });
+    builder.addCase(deleteOrder.fulfilled, (state, { payload: { id } }) => {
+      const cancelledOrders = state.cancelledOrders.filter((v) => v.id !== id);
+      const completedOrders = state.completedOrders.filter((v) => v.id !== id);
+
+      return {
+        ...state,
+        cancelledOrders,
+        completedOrders,
+      };
     });
   },
 });

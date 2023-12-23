@@ -7,6 +7,10 @@ import Button from '../../shared/ui/button/button';
 function NotFound() {
   const navigate = useNavigate();
 
+  const handleNavigate = () => {
+    navigate('/', { replace: true });
+  };
+
   return (
     <section className="not-found">
       <div className="not-found__error">
@@ -25,7 +29,7 @@ function NotFound() {
       <div className="not-found__button-container">
         <Button
           label="Эвакуироваться на главную"
-          onClick={navigate('/', { replace: true })}
+          onClick={handleNavigate}
           primary
         />
       </div>

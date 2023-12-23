@@ -64,7 +64,7 @@ function OrderConfirmation() {
         <div className="order-confirmation__adress">
           <Input
             placeholder="Откуда забрать"
-            readonly="true"
+            readonly
             value={newOrder.addressFrom}
             id="referencePoint"
           />
@@ -72,7 +72,7 @@ function OrderConfirmation() {
         <div className="order-confirmation__adress">
           <Input
             placeholder="Куда доставить"
-            readonly="true"
+            readonly
             value={newOrder.addressTo}
             id="arrivalPoint"
           />

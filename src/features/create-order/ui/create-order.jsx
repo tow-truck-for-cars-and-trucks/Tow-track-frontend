@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addressFormSchema } from '../../../shared/schema/schema';
 import { getLocalStorageToken } from '../../../shared/api/storage-api';
 import { getOrderPrice } from '../model/total-price-slice';
+import { togglePreloader } from '../model/price-preloader-slice';
 import { placeAnOrder, saveTemporaryOrder } from '../model/create-order-slice';
 import Input from '../../../shared/ui/input/input';
 import NavigationArrowIcon from '../../../shared/ui/icons/navigation-arrow-icon';
@@ -31,15 +32,19 @@ function CreateOrder() {
   const timerRef = useRef(null);
 
   function calculatePrice(order) {
-    // dispatch(togglePreloader());
+    dispatch(togglePreloader());
     dispatch(getOrderPrice(order));
   }
 
   const createOrder = useCallback(
     async (order) => {
       if (getLocalStorageToken()) {
-        const data = await dispatch(placeAnOrder(order)).unwrap();
-        navigate(`/order/${data.id}`);
+        try {
+          const data = await dispatch(placeAnOrder(order)).unwrap();
+          navigate(`/order/${data.id}`);
+        } catch (error) {
+          console.error(error);
+        }
       } else {
         dispatch(saveTemporaryOrder(order));
         navigate('/register?mode=login');
