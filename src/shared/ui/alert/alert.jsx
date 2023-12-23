@@ -3,7 +3,7 @@ import WarnIcon from '../icons/warn-icon';
 
 function Alert() {
   return (
-    <div className="alert">
+    <div className="alert" data-testid="alert">
       <div className="alert__icon">
         <WarnIcon width="16px" height="16px" />
       </div>

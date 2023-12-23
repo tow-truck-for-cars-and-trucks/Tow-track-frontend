@@ -13,7 +13,7 @@ function OrderNumber({ number, date, children }) {
   const [isShow, setIsShow] = useState(false);
 
   return (
-    <div className="order-number">
+    <div className="order-number" data-testid="order-number">
       <div
         className={`order-number__container ${
           isShow ? 'order-number__container_opened' : ''
@@ -25,6 +25,7 @@ function OrderNumber({ number, date, children }) {
           </h2>
           {!isShow && (
             <button
+              data-testid="arrow-button"
               type="button"
               aria-label="Развернуть"
               className="order-number__icon"

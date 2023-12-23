@@ -26,7 +26,7 @@ function OrderComplete({ id }) {
   const tariff = useSelector((state) => getPlanTitle(state, order));
 
   return (
-    <main className="order-complete">
+    <main className="order-complete" data-testid="complete-order">
       <div className="order-complete__address">
         <Address addressFrom={order.addressFrom} addressTo={order.addressTo} />
       </div>
