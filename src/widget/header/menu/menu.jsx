@@ -23,7 +23,7 @@ function Menu({ visible = false, onCreateOrderClick }) {
       .postLogout()
       .then(() => {
         navigate('/?open=main', { replace: true });
-        setLocalStorageToken(false);
+        setLocalStorageToken(null);
       })
       .catch(console.error);
   };
