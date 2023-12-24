@@ -1,10 +1,11 @@
 import './order-confirmation.scss';
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getMinutes, getHours } from 'date-fns';
 import { getCarTypeTitle } from '../create-order/model/car-type-slice';
 import { getPlanTitle } from '../create-order/model/plan-slice';
+import { getOrder } from '../create-order/model/create-order-slice';
 import orderApi from '../../shared/api/order-api';
 import PagesTitle from '../../shared/ui/pages-title/pages-title';
 import Input from '../../shared/ui/input/input';
@@ -16,31 +17,18 @@ import redirectUnauthUser from '../../shared/utils/redirect-user';
 
 function OrderConfirmation() {
   const [activeTab, setActiveTab] = useState('cash');
-  const [newOrder, setNewOrder] = useState({
-    addressFrom: null,
-    addressTo: null,
-    carType: null,
-    orderDate: null,
-    tariff: null,
-    wheelLock: null,
-    delay: null,
-    towin: null,
-    comment: null,
-  });
-  const carType = useSelector((state) => getCarTypeTitle(state, newOrder));
-  const tariff = useSelector((state) => getPlanTitle(state, newOrder));
 
   const { id } = useParams();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   useEffect(() => {
-    orderApi
-      .getOrder(id)
-      .then((order) => setNewOrder(order))
-      .catch((error) => {
-        console.log(error);
-        if (error.response.status === 401) redirectUnauthUser();
-      });
-  }, []);
+    dispatch(getOrder(id));
+  }, [dispatch, id]);
+
+  const newOrder = useSelector((store) => store.createOrder.order);
+  const carType = useSelector((state) => getCarTypeTitle(state, newOrder));
+  const tariff = useSelector((state) => getPlanTitle(state, newOrder));
 
   function createActiveOrder() {
     orderApi

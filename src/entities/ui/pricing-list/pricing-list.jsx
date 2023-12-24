@@ -11,7 +11,7 @@ import getInfoForPricing from '../../../shared/utils/price-info';
  * @param {function} onChange - (e: string) => void - tracks id changes
  */
 function PricingList({ pricings, onChange }) {
-  const [activePricing, setActivePricing] = useState(null);
+  const [activePricing, setActivePricing] = useState(1);
 
   const onPricingActivation = useCallback(
     (id) => {

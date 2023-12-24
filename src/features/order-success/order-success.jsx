@@ -19,7 +19,8 @@ import PopupCancel from '../../entities/ui/popup-cancel/popup-cancel';
 /**
  * @param {object} activeOrder - object of success order
  */
-function OrderSuccess({ activeOrder, cancelOrder }) {
+function OrderSuccess({ cancelOrder }) {
+  const activeOrder = useSelector((store) => store.createOrder.order);
   const carType = useSelector((state) => getCarTypeTitle(state, activeOrder));
   const tariff = useSelector((state) => getPlanTitle(state, activeOrder));
   const driverPhoneNumber = '88801112222';
