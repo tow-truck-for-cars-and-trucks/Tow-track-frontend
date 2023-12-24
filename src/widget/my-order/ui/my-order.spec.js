@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 test('Проверка на наличие компоненента PagesTitle в компоненте MyOrder', () => {
   renderWithProviders(<MyOrder />);
 
-  expect(screen.getByTestId('page-title')).toBeInTheDocument();
+  expect(screen.getByTestId('pages-title')).toBeInTheDocument();
 });
 
 test('Проверка на наличие компоненента ChipList в компоненте MyOrder', () => {

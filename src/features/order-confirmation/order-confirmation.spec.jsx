@@ -13,7 +13,7 @@ test('Проверка на наличие BackButton в компоненте Or
 test('Проверка на наличие заголовка в компоненте OrderConfirmation', () => {
   renderWithProviders(<OrderConfirmation />);
 
-  expect(screen.getByTestId('page-title')).toBeInTheDocument();
+  expect(screen.getByTestId('pages-title')).toBeInTheDocument();
 });
 
 test('Проверка на наличие всех Input в компоненте OrderConfirmation', () => {
