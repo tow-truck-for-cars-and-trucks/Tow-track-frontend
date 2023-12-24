@@ -28,24 +28,28 @@ function PopupCancellations({ isOpen, onClose, cancelOrder }) {
         <h2 className="popup-cancellations__subtitle">Что пошло не так?</h2>
         <div className="popup-cancellations__container">
           <RadioButton
+            id="error-radio"
             name="radio"
             value={isValueError}
             onChange={(evt) => setIsValue(evt, setIsValueError)}
             title="Заказал по ошибке"
           />
           <RadioButton
+            id="cancell-radio"
             name="radio"
             value={isValueCancell}
             onChange={(evt) => setIsValue(evt, setIsValueCancell)}
             title="Отменил по просьбе водителя"
           />
           <RadioButton
+            id="not-suit-radio"
             name="radio"
             value={isValueNotSuit}
             onChange={(evt) => setIsValue(evt, setIsValueSuit)}
             title="Не устроил эвакуатор"
           />
           <RadioButton
+            id="long-radio"
             name="radio"
             value={isValueLong}
             onChange={(evt) => setIsValue(evt, setIsValueLong)}
@@ -73,7 +77,6 @@ function PopupCancellations({ isOpen, onClose, cancelOrder }) {
             onChange={(e) => setIsValueComment(e)}
             title="Другое"
           />
-
           {isValueComment && <Comment placeholder="Опишите, что случилось" />}
         </div>
         <Button

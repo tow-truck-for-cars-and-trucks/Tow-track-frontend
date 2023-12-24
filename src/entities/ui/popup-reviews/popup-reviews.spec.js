@@ -4,31 +4,31 @@ import '@testing-library/jest-dom';
 import renderWithProviders from '../../../shared/utils/test-utils';
 import PopupReviews from './popup-reviews';
 
-test('Проверка на наличие компоненента Popup в компоненте PopupDeferredOrder', () => {
+test('Проверка на наличие компоненента Popup в компоненте PopupReviews', () => {
   renderWithProviders(<PopupReviews />);
 
   expect(screen.getByTestId('popup')).toBeInTheDocument();
 });
 
-test('Проверка на наличие buttonStar в компоненте PopupDeferredOrder', () => {
+test('Проверка на наличие buttonStar в компоненте PopupReviews', () => {
   renderWithProviders(<PopupReviews />);
 
   expect(screen.getByTestId('button-star')).toBeInTheDocument();
 });
 
-test('Проверка на наличие checkbox в компоненте PopupDeferredOrder', () => {
+test('Проверка на наличие checkbox в компоненте PopupReviews', () => {
   renderWithProviders(<PopupReviews />);
 
   expect(screen.getAllByTestId('checkbox')[0]).toBeInTheDocument();
 });
 
-test('Проверка на наличие comment в компоненте PopupDeferredOrder', () => {
+test('Проверка на наличие comment в компоненте PopupReviews', () => {
   renderWithProviders(<PopupReviews />);
 
   expect(screen.getByTestId('comment')).toBeInTheDocument();
 });
 
-test('Проверка на наличие компоненента кнопки "Оставить отзыв" в компоненте PopupDeferredOrder', () => {
+test('Проверка на наличие компоненента кнопки "Оставить отзыв" в компоненте PopupReviews', () => {
   renderWithProviders(<PopupReviews />);
 
   expect(
