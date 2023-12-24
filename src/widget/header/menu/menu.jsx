@@ -2,6 +2,7 @@ import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import './menu.scss';
 import authApi from '../../../shared/api/auth-api';
 import checkUserLogged from '../../../app/model/validation';
+import { setLocalStorageToken } from '../../../shared/api/storage-api';
 
 /**
  *
@@ -22,7 +23,7 @@ function Menu({ visible = false, onCreateOrderClick }) {
       .postLogout()
       .then(() => {
         navigate('/?open=main', { replace: true });
-        localStorage.removeItem('token');
+        setLocalStorageToken(false);
       })
       .catch(console.error);
   };
