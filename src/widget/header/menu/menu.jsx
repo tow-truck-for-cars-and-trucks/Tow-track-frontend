@@ -22,6 +22,7 @@ function Menu({ visible = false, onCreateOrderClick }) {
       .postLogout()
       .then(() => {
         navigate('/?open=main', { replace: true });
+        localStorage.removeItem('token');
       })
       .catch(console.error);
   };
