@@ -1,14 +1,19 @@
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
 import './register-widget.scss';
 import ChipsList from '../../entities/ui/chips-list/chips-list';
 import Auth from '../../features/auth/auth';
 import Register from '../../features/register/register';
 import BackButton from '../../shared/ui/back-button/back-button';
+import PopupRegistration from '../../features/popup-registration/popup-registration';
 
 function RegisterWidget() {
   const [params] = useSearchParams();
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isInfoToolTipPopupOpen, setInfoToolTipPopupOpen] = useState(false);
 
   return (
     <main className="register-widget">
@@ -28,7 +33,21 @@ function RegisterWidget() {
         />
       </div>
 
-      {params.get('mode') === 'login' ? <Auth /> : <Register />}
+      {params.get('mode') === 'login' ? (
+        <Auth />
+      ) : (
+        <Register
+          setIsSuccess={setIsSuccess}
+          setInfoToolTipPopupOpen={setInfoToolTipPopupOpen}
+        />
+      )}
+      <PopupRegistration
+        isOpen={isInfoToolTipPopupOpen}
+        onClose={() => {
+          setInfoToolTipPopupOpen(false);
+        }}
+        isSuccess={isSuccess}
+      />
     </main>
   );
 }

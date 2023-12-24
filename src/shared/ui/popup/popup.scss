@@ -20,7 +20,7 @@
   &__content {
     position: relative;
     width: 308px;
-    min-height: 292px;
+    min-height: 180px;
     padding: 40px 28px 28px;
     background: var(--background-white, #fff);
     border-radius: 20px;
@@ -29,7 +29,7 @@
   &__content_bottom {
     align-self: flex-end;
     width: 358px;
-    min-height: 379px;
+    min-height: 348px;
     padding: 44px 16px;
     border-radius: 28px 28px 0 0;
   }
