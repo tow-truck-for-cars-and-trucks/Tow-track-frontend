@@ -1,0 +1,38 @@
+.popup-registration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 180px;
+  padding-right: -3px;
+  padding-left: -3px;
+
+  &__tooltip-icon {
+    display: block;
+  }
+
+  &__tooltip-message {
+    width: 100%;
+    margin: 28px 0 0;
+    padding: 0;
+    color: var(--accent-black-80);
+    font-weight: 700;
+    font-size: 24px;
+    font-family: Mulish, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    line-height: 125%;
+  }
+
+  &__tooltip-message-caption {
+    width: 100%;
+    margin: 16px 0 28px;
+    padding: 0;
+    color: var(--accent-black-80);
+    font-weight: 500;
+    font-size: 18px;
+    font-family: Mulish, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    line-height: 120%;
+  }
+}

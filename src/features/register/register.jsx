@@ -11,7 +11,7 @@ import CheckboxAuthDescription from '../../shared/ui/checkbox-auth-description/c
 import registerApi from '../../shared/api/register-api';
 import errorHandler from '../../shared/utils/error-handler';
 
-function Register() {
+function Register({ setIsSuccess, setInfoToolTipPopupOpen }) {
   const location = useLocation();
 
   const {
@@ -38,10 +38,15 @@ function Register() {
     registerApi
       .postRegister(inputData)
       .then(() => {
+        setIsSuccess(true);
         navigate('/register?mode=login', { state: location.state });
       })
       .catch(({ error }) => {
+        setIsSuccess(false);
         errorHandler(error, setError);
+      })
+      .finally(() => {
+        setInfoToolTipPopupOpen(true);
       });
   };
 
