@@ -15,7 +15,6 @@ function PopupReviews({ isOpen, onClose, name, id }) {
       score: 0,
       comment: '',
       onTimeCheckbox: false,
-      questionCheckbox: false,
     },
     mode: 'onChange',
     reValidateMode: 'onChange',
@@ -59,24 +58,6 @@ function PopupReviews({ isOpen, onClose, name, id }) {
                 <span className="popup-reviews__text">
                   {' '}
                   Водитель приехал вовремя?
-                </span>
-              </Checkbox>
-            )}
-          />
-          <Controller
-            name="questionCheckbox"
-            control={control}
-            render={({ field: { value, onChange } }) => (
-              <Checkbox
-                width="24px"
-                height="24px"
-                value={value}
-                onChange={onChange}
-                isRight
-              >
-                <span className="popup-reviews__text">
-                  {' '}
-                  Что еще можно спросить?
                 </span>
               </Checkbox>
             )}

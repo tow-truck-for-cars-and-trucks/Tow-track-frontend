@@ -19,7 +19,7 @@ function Dropdown({
   );
 
   return (
-    <div className="dropdown">
+    <div className="dropdown" data-testid="dropdown">
       <div
         className={`dropdown__header ${
           isActive ? 'dropdown__header_active' : ''
