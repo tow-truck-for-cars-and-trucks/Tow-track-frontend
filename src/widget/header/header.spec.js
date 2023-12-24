@@ -13,3 +13,9 @@ test('Проверка на открытие меню при нажатии на
 
   expect(screen.getByTestId('menu')).not.toHaveClass('menu_display-none');
 });
+
+test('Проверка на наличие DesktopMenu в компоненте Header', () => {
+  renderWithProviders(<Header />);
+
+  expect(screen.getByTestId('desktop-menu')).toBeInTheDocument();
+});

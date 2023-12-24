@@ -41,6 +41,15 @@ function App() {
         path="/my-orders"
         element={<ProtectedRoute forLoggedUser element={<MyOrderPage />} />}
       />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute
+            forLoggedUser
+            element={<h1>Эта страница в разработке</h1>}
+          />
+        }
+      />
     </Routes>
   );
 }
