@@ -24,6 +24,7 @@ function OrderSuccess({ activeOrder, cancelOrder }) {
   const tariff = useSelector((state) => getPlanTitle(state, activeOrder));
   const driverPhoneNumber = '88801112222';
   const [isPopupCancel, setIsPopupCancel] = useState(false);
+  const { status } = useSelector((store) => store.successOrder);
 
   const handleCallDriver = () => {
     console.log('Выполняется вызов водителя:', driverPhoneNumber);
@@ -75,13 +76,15 @@ function OrderSuccess({ activeOrder, cancelOrder }) {
           onClick={handleCallDriver}
         />
       </div>
-      <Button
-        secondary
-        label="Отменить заказ"
-        onClick={() => {
-          setIsPopupCancel(true);
-        }}
-      />
+      {status === 'active' && (
+        <Button
+          secondary
+          label="Отменить заказ"
+          onClick={() => {
+            setIsPopupCancel(true);
+          }}
+        />
+      )}
       <PopupCancel
         isOpen={isPopupCancel}
         cancelOrder={cancelOrder}

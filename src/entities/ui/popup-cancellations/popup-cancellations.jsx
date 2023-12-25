@@ -83,8 +83,8 @@ function PopupCancellations({ isOpen, onClose, cancelOrder }) {
           label="Применить"
           primary
           onClick={() => {
-            onClose();
             cancelOrder();
+            onClose();
           }}
         />
       </Popup>
