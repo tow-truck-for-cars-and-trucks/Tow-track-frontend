@@ -8,6 +8,7 @@ import pricePreloaderSlice from '../../features/create-order/model/price-preload
 import allOrdersSlice from '../../widget/my-order/model/all-orders-slice';
 import successOrderSlice from '../../widget/order-success-widget/model/success-order-slice';
 import orderConfirmationSlice from '../../features/order-confirmation/model/order-confirmation-slice';
+import popupsSlice from '../../shared/ui/popup/model/popup-slice';
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     allOrders: allOrdersSlice,
     successOrder: successOrderSlice,
     orderConfirmation: orderConfirmationSlice,
+    popups: popupsSlice,
   },
 });
 
@@ -33,6 +35,7 @@ export const setupStore = (preloadedState) =>
       createOrder: createOrderSlice,
       feedbacks: feedbacksSlice,
       allOrders: allOrdersSlice,
+      popups: popupsSlice,
     },
     preloadedState,
   });

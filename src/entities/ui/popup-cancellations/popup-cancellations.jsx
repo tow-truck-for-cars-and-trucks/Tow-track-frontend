@@ -1,11 +1,16 @@
 import './popup-cancellations.scss';
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setPopupsClose,
+  isPopupOpen,
+} from '../../../shared/ui/popup/model/popup-slice';
 import Popup from '../../../shared/ui/popup/popup';
 import RadioButton from '../../../shared/ui/radio-button/radio-button';
 import Comment from '../../../shared/ui/comment/comment';
 import Button from '../../../shared/ui/button/button';
 
-function PopupCancellations({ isOpen, onClose, cancelOrder }) {
+function PopupCancellations({ cancelOrder }) {
   const [isValueError, setIsValueError] = useState(false);
   const [isValueNotSuit, setIsValueSuit] = useState(false);
   const [isValueLong, setIsValueLong] = useState(false);
@@ -14,6 +19,10 @@ function PopupCancellations({ isOpen, onClose, cancelOrder }) {
   const [isValueNotNeed, setIsValueNotNeed] = useState(false);
   const [isValueComment, setIsValueComment] = useState(false);
 
+  const isOpen = useSelector((state) =>
+    isPopupOpen(state, 'popup-cancellations')
+  );
+
   const setIsValue = (evt, setValue) => {
     setValue(evt);
     if (isValueComment) {
@@ -21,9 +30,16 @@ function PopupCancellations({ isOpen, onClose, cancelOrder }) {
     }
   };
 
+  const dispatch = useDispatch();
+
   return (
     <div className="popup-cancellations">
-      <Popup active={isOpen} setActive={onClose}>
+      <Popup
+        active={isOpen}
+        setActive={() => {
+          dispatch(setPopupsClose('popup-cancellations'));
+        }}
+      >
         <h1 className="popup-cancellations__title">Заказ отменен!</h1>
         <h2 className="popup-cancellations__subtitle">Что пошло не так?</h2>
         <div className="popup-cancellations__container">
@@ -84,7 +100,8 @@ function PopupCancellations({ isOpen, onClose, cancelOrder }) {
           primary
           onClick={() => {
             cancelOrder();
-            onClose();
+            dispatch(setPopupsClose('popup-cancellations'));
+            dispatch(setPopupsClose('popup-cancel'));
           }}
         />
       </Popup>

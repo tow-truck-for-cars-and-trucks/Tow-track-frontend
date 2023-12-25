@@ -1,7 +1,9 @@
 import './register.scss';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { setPopupsOpen } from '../../shared/ui/popup/model/popup-slice';
 import Input from '../../shared/ui/input/input';
 import { registerFormSchema } from '../../shared/schema/schema';
 import PasswordInput from '../../shared/ui/password-input/password-input';
@@ -11,8 +13,9 @@ import CheckboxAuthDescription from '../../shared/ui/checkbox-auth-description/c
 import registerApi from '../../shared/api/register-api';
 import errorHandler from '../../shared/utils/error-handler';
 
-function Register({ setIsSuccess, setInfoToolTipPopupOpen }) {
+function Register({ setIsSuccess }) {
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const {
     control,
@@ -46,7 +49,7 @@ function Register({ setIsSuccess, setInfoToolTipPopupOpen }) {
         errorHandler(error, setError);
       })
       .finally(() => {
-        setInfoToolTipPopupOpen(true);
+        dispatch(setPopupsOpen('popup-register'));
       });
   };
 

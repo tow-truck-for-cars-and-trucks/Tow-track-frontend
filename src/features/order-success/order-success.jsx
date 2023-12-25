@@ -1,6 +1,7 @@
 import './order-success.scss';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+// import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPopupsOpen } from '../../shared/ui/popup/model/popup-slice';
 import { getCarTypeTitle } from '../create-order/model/car-type-slice';
 import { getPlanTitle } from '../create-order/model/plan-slice';
 import DeliveryTime from '../../shared/ui/delivery-time/delivery-time';
@@ -23,8 +24,8 @@ function OrderSuccess({ activeOrder, cancelOrder }) {
   const carType = useSelector((state) => getCarTypeTitle(state, activeOrder));
   const tariff = useSelector((state) => getPlanTitle(state, activeOrder));
   const driverPhoneNumber = '88801112222';
-  const [isPopupCancel, setIsPopupCancel] = useState(false);
   const { status } = useSelector((store) => store.successOrder);
+  const dispatch = useDispatch();
 
   const handleCallDriver = () => {
     console.log('Выполняется вызов водителя:', driverPhoneNumber);
@@ -80,16 +81,10 @@ function OrderSuccess({ activeOrder, cancelOrder }) {
         <Button
           secondary
           label="Отменить заказ"
-          onClick={() => {
-            setIsPopupCancel(true);
-          }}
+          onClick={() => dispatch(setPopupsOpen('popup-cancel'))}
         />
       )}
-      <PopupCancel
-        isOpen={isPopupCancel}
-        cancelOrder={cancelOrder}
-        onClose={() => setIsPopupCancel(false)}
-      />
+      <PopupCancel cancelOrder={cancelOrder} />
     </section>
   );
 }

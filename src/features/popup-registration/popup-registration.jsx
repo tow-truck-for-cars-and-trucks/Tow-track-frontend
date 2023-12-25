@@ -1,18 +1,30 @@
 import './popup-registration.scss';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setPopupsClose,
+  isPopupOpen,
+} from '../../shared/ui/popup/model/popup-slice';
 import successIcon from '../../shared/ui/icons/successIcon.png';
 import failIcon from '../../shared/ui/icons/failIcon.png';
 import Popup from '../../shared/ui/popup/popup';
 import Button from '../../shared/ui/button/button';
 
-function PopupRegistration({ isOpen, onClose, isSuccess }) {
+function PopupRegistration({ isSuccess }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isOpen = useSelector((state) => isPopupOpen(state, 'popup-register'));
 
   const handleNavigate = () => {
     navigate('/', { replace: true });
   };
   return (
-    <Popup active={isOpen} setActive={onClose}>
+    <Popup
+      active={isOpen}
+      setActive={() => {
+        dispatch(setPopupsClose('popup-register'));
+      }}
+    >
       <div className="popup-registration">
         {isSuccess ? (
           <>

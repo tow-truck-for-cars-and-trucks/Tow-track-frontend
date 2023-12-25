@@ -1,6 +1,10 @@
 import './popup-reviews.scss';
 import { Controller, useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setPopupsClose,
+  isPopupOpen,
+} from '../../../shared/ui/popup/model/popup-slice';
 import Popup from '../../../shared/ui/popup/popup';
 import { createNewFeedback } from '../feedbacks/model/feedback-slice';
 import Checkbox from '../../../shared/ui/checkbox/checkbox';
@@ -8,7 +12,7 @@ import Button from '../../../shared/ui/button/button';
 import Comment from '../../../shared/ui/comment/comment';
 import ButtonStar from '../../../shared/ui/button-star/button-star';
 
-function PopupReviews({ isOpen, onClose, name, id }) {
+function PopupReviews({ name, id }) {
   const dispatch = useDispatch();
   const { control, handleSubmit } = useForm({
     defaultValues: {
@@ -20,10 +24,12 @@ function PopupReviews({ isOpen, onClose, name, id }) {
     reValidateMode: 'onChange',
   });
 
+  const isOpen = useSelector((state) => isPopupOpen(state, 'popup-reviews'));
+
   const onSubmit = async (feedback) => {
     try {
       await dispatch(createNewFeedback({ feedback, id })).unwrap();
-      onClose();
+      dispatch(setPopupsClose('popup-reviews'));
     } catch (error) {
       console.log(error);
     }
@@ -31,7 +37,12 @@ function PopupReviews({ isOpen, onClose, name, id }) {
 
   return (
     <section className="popup-reviews">
-      <Popup active={isOpen} setActive={onClose}>
+      <Popup
+        active={isOpen}
+        setActive={() => {
+          dispatch(setPopupsClose('popup-reviews'));
+        }}
+      >
         <form className="popup-reviews__form" name={name} onSubmit={onSubmit}>
           <h2 className="popup-reviews__title">Как все прошло?</h2>
           <div className="popup-reviews__stars">
