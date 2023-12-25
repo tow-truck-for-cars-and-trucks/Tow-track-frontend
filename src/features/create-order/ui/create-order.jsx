@@ -2,13 +2,17 @@ import './create-order.scss';
 import { Controller, useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addressFormSchema } from '../../../shared/schema/schema';
 import { getLocalStorageToken } from '../../../shared/api/storage-api';
 import { getOrderPrice } from '../model/total-price-slice';
 import { togglePreloader } from '../model/price-preloader-slice';
 import { placeAnOrder, saveTemporaryOrder } from '../model/create-order-slice';
+import {
+  setPopupsOpen,
+  setPopupsClose,
+} from '../../../shared/ui/popup/model/popup-slice';
 import Input from '../../../shared/ui/input/input';
 import NavigationArrowIcon from '../../../shared/ui/icons/navigation-arrow-icon';
 import Description from '../../../shared/ui/description/description';
@@ -24,7 +28,6 @@ function CreateOrder() {
   const allPricing = useSelector((store) => store.allPricing.tariff);
   const allCars = useSelector((store) => store.allCars.carType);
   const totalPrice = useSelector((store) => store.totalPrice.price);
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -198,7 +201,7 @@ function CreateOrder() {
                 value={value}
                 onChange={(toggle) => {
                   if (toggle) {
-                    setIsPopupOpen(true);
+                    dispatch(setPopupsOpen('popup-deffered-order'));
                   } else {
                     setValue('delay', false);
                   }
@@ -208,15 +211,13 @@ function CreateOrder() {
           />
         </div>
         <PopupDeferredOrder
-          isOpen={isPopupOpen}
           onClose={() => {
-            setIsPopupOpen(false);
             setValue('delay', false);
           }}
           onSave={(date) => {
             setValue('orderDate', date);
             setValue('delay', true);
-            setIsPopupOpen(false);
+            dispatch(setPopupsClose('popup-deffered-order'));
           }}
         />
         <div className="create-order__comment">

@@ -1,14 +1,17 @@
 import './popup-cancel.scss';
-import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  isPopupOpen,
+  setPopupsClose,
+  setPopupsOpen,
+} from '../../../shared/ui/popup/model/popup-slice';
 import Button from '../../../shared/ui/button/button';
 import PopupCancellations from '../popup-cancellations/popup-cancellations';
 
-function PopupCancel({ isOpen, onClose, cancelOrder }) {
-  const [isPopupCancellation, setIsPopupCancellation] = useState(false);
-  const handleClose = () => {
-    setIsPopupCancellation(false);
-    onClose();
-  };
+function PopupCancel({ cancelOrder }) {
+  const isOpen = useSelector((state) => isPopupOpen(state, 'popup-cancel'));
+  const dispatch = useDispatch();
+
   return (
     <div>
       <div
@@ -21,19 +24,21 @@ function PopupCancel({ isOpen, onClose, cancelOrder }) {
             Вы уверены, что хотите отменить заказ?
           </h1>
           <div className="popup-cancel__btn">
-            <Button label="Вернуться" primary onClick={onClose} />
+            <Button
+              label="Вернуться"
+              primary
+              onClick={() => {
+                dispatch(setPopupsClose('popup-cancel'));
+              }}
+            />
             <Button
               label="Да, отменить"
               onClick={() => {
-                setIsPopupCancellation(true);
+                dispatch(setPopupsOpen('popup-cancellations'));
               }}
             />
           </div>
-          <PopupCancellations
-            cancelOrder={cancelOrder}
-            isOpen={isPopupCancellation}
-            onClose={handleClose}
-          />
+          <PopupCancellations cancelOrder={cancelOrder} />
         </div>
       </div>
     </div>

@@ -43,7 +43,6 @@ function OrderConfirmation() {
       .getOrder(id)
       .then((order) => setNewOrder(order))
       .catch((error) => {
-        // console.log(error);
         if (error.response.status === 401) redirectUnauthUser();
       });
   }, [id]);

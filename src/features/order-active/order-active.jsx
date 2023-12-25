@@ -1,8 +1,8 @@
 import './order-active.scss';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getCarTypeTitle } from '../create-order/model/car-type-slice';
 import { getPlanTitle } from '../create-order/model/plan-slice';
+import { setPopupsOpen } from '../../shared/ui/popup/model/popup-slice';
 import DeliveryTime from '../../shared/ui/delivery-time/delivery-time';
 import ProgressBar from '../../shared/ui/progress-bar/progress-bar';
 import StepOneDefaultIcon from '../../shared/ui/icons/step-one-default-icon';
@@ -19,7 +19,8 @@ import PopupCancel from '../../entities/ui/popup-cancel/popup-cancel';
 import handlePhoneCall from '../../shared/utils/helpers';
 
 function OrderActive({ id, cancelOrder }) {
-  const [isPopupCancel, setIsPopupCancel] = useState(false);
+  const dispatch = useDispatch();
+
   const order = useSelector((store) =>
     store.allOrders.activeOrders.find((o) => o.id === id)
   );
@@ -62,13 +63,9 @@ function OrderActive({ id, cancelOrder }) {
       <Button
         secondary
         label="Отменить заказ"
-        onClick={() => setIsPopupCancel(true)}
+        onClick={() => dispatch(setPopupsOpen('popup-cancel'))}
       />
-      <PopupCancel
-        isOpen={isPopupCancel}
-        cancelOrder={cancelOrder}
-        onClose={() => setIsPopupCancel(false)}
-      />
+      <PopupCancel cancelOrder={cancelOrder} />
       <div className="order-active__info">
         <Accordion title="Детали заказа" withBorder>
           <OrderDetails

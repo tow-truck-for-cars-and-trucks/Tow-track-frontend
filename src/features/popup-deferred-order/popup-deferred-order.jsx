@@ -1,5 +1,6 @@
 import './popup-deferred-order.scss';
 import { useCallback, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   startOfDay,
   getMinutes,
@@ -10,13 +11,22 @@ import {
   getDate,
   add,
 } from 'date-fns';
+import {
+  setPopupsClose,
+  isPopupOpen,
+} from '../../shared/ui/popup/model/popup-slice';
 import Button from '../../shared/ui/button/button';
 import MinuteDropdown from '../minute-dropdown/minute-dropdown';
 import HourDropdown from '../hour-dropdown/hour-dropdown';
 import MonthDropdown from '../month-dropdown/month-dropdown';
 import Popup from '../../shared/ui/popup/popup';
 
-function PopupDeferredOrder({ isOpen, onClose, onSave }) {
+function PopupDeferredOrder({ onClose, onSave }) {
+  const dispatch = useDispatch();
+  const isOpen = useSelector((state) =>
+    isPopupOpen(state, 'popup-deffered-order')
+  );
+
   const getNextTenMinutes = () =>
     (Math.ceil(getMinutes(new Date()) / 10) % 6) * 10;
 
@@ -47,7 +57,14 @@ function PopupDeferredOrder({ isOpen, onClose, onSave }) {
   const [activeDropdown, setActiveDropdown] = useState(null);
 
   return (
-    <Popup active={isOpen} setActive={onClose} contentBottom>
+    <Popup
+      active={isOpen}
+      setActive={() => {
+        dispatch(setPopupsClose('popup-deffered-order'));
+        onClose();
+      }}
+      contentBottom
+    >
       <div
         data-testid="popup-deffered-order"
         role="button"

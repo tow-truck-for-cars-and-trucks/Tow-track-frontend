@@ -13,7 +13,6 @@ function RegisterWidget() {
   const location = useLocation();
 
   const [isSuccess, setIsSuccess] = useState(false);
-  const [isInfoToolTipPopupOpen, setInfoToolTipPopupOpen] = useState(false);
 
   return (
     <main className="register-widget">
@@ -36,18 +35,9 @@ function RegisterWidget() {
       {params.get('mode') === 'login' ? (
         <Auth />
       ) : (
-        <Register
-          setIsSuccess={setIsSuccess}
-          setInfoToolTipPopupOpen={setInfoToolTipPopupOpen}
-        />
+        <Register setIsSuccess={setIsSuccess} />
       )}
-      <PopupRegistration
-        isOpen={isInfoToolTipPopupOpen}
-        onClose={() => {
-          setInfoToolTipPopupOpen(false);
-        }}
-        isSuccess={isSuccess}
-      />
+      <PopupRegistration isSuccess={isSuccess} />
     </main>
   );
 }
