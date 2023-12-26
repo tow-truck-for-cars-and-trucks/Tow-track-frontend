@@ -23,8 +23,12 @@ function OrderSuccessWidget() {
   const activeOrder = useSelector((store) => store.createOrder.order);
 
   const updateOrderStatus = useCallback(() => {
-    dispatch(updateOrder({ id, status: 'Завершенный' })).unwrap();
-    navigate('/?open=main', { replace: true });
+    try {
+      dispatch(updateOrder({ id, status: 'Отмененный' })).unwrap();
+      navigate('/?open=main', { replace: true });
+    } catch (error) {
+      console.log(error);
+    }
   }, [id, navigate]);
 
   return (

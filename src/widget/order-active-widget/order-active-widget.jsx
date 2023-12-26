@@ -16,7 +16,7 @@ function OrderActiveWidget() {
 
   const updateOrderStatus = useCallback(
     (activeOrder) => {
-      dispatch(updateOrder({ id: activeOrder.id, status: 'Завершенный' }));
+      dispatch(updateOrder({ id: activeOrder.id, status: 'Отмененный' }));
     },
     [dispatch]
   );

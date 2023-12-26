@@ -32,8 +32,12 @@ function OrderConfirmation() {
   const tariff = useSelector((state) => getPlanTitle(state, newOrder));
 
   const updateOrderStatus = useCallback(() => {
-    dispatch(updateOrder({ id, status: 'Активный' })).unwrap();
-    navigate(`/success-order/${id}`, { replace: true });
+    try {
+      dispatch(updateOrder({ id, status: 'Активный' })).unwrap();
+      navigate(`/success-order/${id}`, { replace: true });
+    } catch (error) {
+      console.log(error);
+    }
   }, [dispatch, id, navigate]);
 
   return (
