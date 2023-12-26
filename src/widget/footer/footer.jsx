@@ -25,7 +25,7 @@ function Footer() {
         <div className="footer__express-logo-desktop">
           <ExpressLogo width="241px" height="107px" />
         </div>
-        <div className="footer__main-contacts">
+        <div className="footer__main-pages">
           <button
             className="footer__phone-block"
             type="button"
