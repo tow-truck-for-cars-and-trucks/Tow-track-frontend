@@ -1,17 +1,33 @@
 .questions {
+  box-sizing: border-box;
   width: fit-content;
   width: 100%;
-  max-width: 768px;
-  padding: 48px 0;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 43px 0 48px;
   background: var(--white);
 
   &__title {
     margin: 0;
-    padding: 24px 16px 36px;
+    padding: 0 16px 28px;
     color: var(--text-black-90);
     font-weight: 700;
     font-size: 24px;
     font-style: normal;
     line-height: 1.25;
+  }
+
+  @media (width >= 1024px) {
+    &__title {
+      padding: 0 0 44px;
+      font-size: 40px;
+      line-height: 1.35;
+    }
+  }
+}
+
+@media (width >= 1024px) {
+  .questions {
+    padding: 100px 60px 97px;
   }
 }

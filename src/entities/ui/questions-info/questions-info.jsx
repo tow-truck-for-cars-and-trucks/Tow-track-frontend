@@ -23,7 +23,7 @@ function QuestionInfo({ data }) {
         className="question__button"
         onClick={toggleAccordion}
       >
-        {data.label}
+        <h3 className="question__title">{data.label}</h3>
         <span className="question__icon" aria-hidden="true">
           {isOpen ? (
             <IcMinusIcon width="40px" height="40px" />

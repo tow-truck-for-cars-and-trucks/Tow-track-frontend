@@ -5,9 +5,7 @@ import questionsData from '../../shared/utils/questions';
 function Questions() {
   return (
     <section className="questions" data-testid="questions">
-      <div className="questions__header">
-        <h2 className="questions__title">Частые вопросы</h2>
-      </div>
+      <h2 className="questions__title">Частые вопросы</h2>
       {questionsData.map((question) => (
         <QuestionInfo key={question.id} data={question} />
       ))}
