@@ -6,7 +6,7 @@ import { format } from 'date-fns';
  */
 function DeliveryTime({ date }) {
   return (
-    <div className="delivery-time">
+    <div className="delivery-time" data-testid="delivery-time">
       <p className="delivery-time__description">
         Примерное время подачи эвакуатора
       </p>

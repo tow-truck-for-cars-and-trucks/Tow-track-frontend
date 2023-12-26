@@ -14,7 +14,7 @@ function OrderCancelWidget() {
   }, []);
 
   return (
-    <section className="order-cancelled">
+    <section className="order-cancelled" data-testid="cancelled-order-widget">
       <div className="order-cancelled__container">
         {orders.length === 0 ? (
           <p className="order-cancelled__caption">
@@ -22,7 +22,11 @@ function OrderCancelWidget() {
           </p>
         ) : (
           orders.map((order) => (
-            <OrderNumber number={order.id} date={order.orderDate}>
+            <OrderNumber
+              key={order.id}
+              number={order.id}
+              date={order.orderDate}
+            >
               <OrderCancel id={order.id} key={order.id} />
             </OrderNumber>
           ))

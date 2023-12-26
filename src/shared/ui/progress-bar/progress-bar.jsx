@@ -7,7 +7,7 @@ import './progress-bar.scss';
  */
 function ProgressBar({ icons, activeIndex, activeText }) {
   return (
-    <div className="progress-bar">
+    <div className="progress-bar" data-testid="progress-bar">
       <div className="progress-bar__container">
         {icons.map((icon) => (
           <div className="progress-bar__item">{icon}</div>

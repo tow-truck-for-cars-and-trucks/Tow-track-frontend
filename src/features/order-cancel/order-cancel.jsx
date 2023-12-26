@@ -24,7 +24,7 @@ function OrderCancel({ id }) {
   const tariff = useSelector((state) => getPlanTitle(state, order));
 
   return (
-    <main className="order-cancel">
+    <main className="order-cancel" data-testid="order-cancel">
       <div className="order-cancel__address">
         <Address addressFrom={order.addressFrom} addressTo={order.addressTo} />
       </div>

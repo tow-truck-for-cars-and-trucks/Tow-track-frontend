@@ -1,6 +1,7 @@
 import './order-complete.scss';
-import { useState, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { setPopupsOpen } from '../../shared/ui/popup/model/popup-slice';
 import { getCarTypeTitle } from '../create-order/model/car-type-slice';
 import { deleteOrder } from '../../widget/my-order/model/all-orders-slice';
 import { getPlanTitle } from '../create-order/model/plan-slice';
@@ -13,7 +14,6 @@ import CloseIcon from '../../shared/ui/icons/close-icon';
 import PopupReviews from '../../entities/ui/popup-reviews/popup-reviews';
 
 function OrderComplete({ id }) {
-  const [isPopupReviews, setIsPopupReviews] = useState(false);
   const dispatch = useDispatch();
 
   const deletedOrder = useCallback(() => {
@@ -26,7 +26,7 @@ function OrderComplete({ id }) {
   const tariff = useSelector((state) => getPlanTitle(state, order));
 
   return (
-    <main className="order-complete">
+    <main className="order-complete" data-testid="complete-order">
       <div className="order-complete__address">
         <Address addressFrom={order.addressFrom} addressTo={order.addressTo} />
       </div>
@@ -39,15 +39,11 @@ function OrderComplete({ id }) {
           <Button
             primary="true"
             label="Оставить отзыв"
-            onClick={() => setIsPopupReviews(true)}
+            onClick={() => dispatch(setPopupsOpen('popup-reviews'))}
           />
         </div>
       )}
-      <PopupReviews
-        id={order.id}
-        isOpen={isPopupReviews}
-        onClose={() => setIsPopupReviews(false)}
-      />
+      <PopupReviews id={order.id} />
       <div className="order-complete__info">
         <Accordion title="Детали заказа" withBorder>
           <OrderDetails

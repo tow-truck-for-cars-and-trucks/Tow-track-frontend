@@ -1,11 +1,17 @@
 .header {
   position: relative;
   z-index: 100;
-  max-width: 768px;
+  max-width: 1440px;
   height: 64px;
   color: var(--text-black-80);
   background-color: white;
   box-shadow: 0 0 20px 0 rgb(134 146 159 / 15%);
+
+  @media (width >= 1440px) {
+    & {
+      max-width: none;
+    }
+  }
 
   &__container {
     display: flex;
@@ -14,9 +20,23 @@
     padding: 6px 24px 8px;
   }
 
+  @media (width >= 1024px) {
+    &__container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 6px 60px 8px;
+    }
+  }
+
   &__call {
     background-color: white;
     border: none;
+  }
+
+  @media (width >= 1024px) {
+    &__call {
+      display: none;
+    }
   }
 
   &__phone-number {
@@ -31,5 +51,11 @@
     background-color: white;
     border: none;
     cursor: pointer;
+
+    @media (width >= 1024px) {
+      &:last-of-type {
+        display: none;
+      }
+    }
   }
 }

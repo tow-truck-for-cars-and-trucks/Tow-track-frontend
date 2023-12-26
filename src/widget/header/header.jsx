@@ -6,6 +6,7 @@ import PhoneIcon from '../../shared/ui/icons/phone-icon';
 import LogoCombined from '../../shared/ui/icons/logo-combined';
 import CloseIcon from '../../shared/ui/icons/close-icon';
 import Menu from './menu/menu';
+import DesktopMenu from './desktop-menu/desktop-menu';
 import handlePhoneCall from '../../shared/utils/helpers';
 
 function Header({ onCreateOrderClick }) {
@@ -49,6 +50,7 @@ function Header({ onCreateOrderClick }) {
               <BurgerIcon width="24px" height="24px" />
             )}
           </button>
+          <DesktopMenu phoneNumber={companyPhoneNumber} />
         </div>
       </header>
       <Menu visible={showMenu} onCreateOrderClick={onCreateOrderClick} />

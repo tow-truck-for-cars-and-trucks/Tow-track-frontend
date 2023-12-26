@@ -6,7 +6,7 @@ import './pages-title.scss';
 
 function PagesTitle({ title }) {
   return (
-    <h1 className="pages-title" data-testid="pages-title">
+    <h1 className="pages-title" id="pages-title" data-testid="pages-title">
       {title}
     </h1>
   );

@@ -19,7 +19,7 @@ function Dropdown({
   );
 
   return (
-    <div className="dropdown">
+    <div className="dropdown" data-testid="dropdown">
       <div
         className={`dropdown__header ${
           isActive ? 'dropdown__header_active' : ''
@@ -48,6 +48,7 @@ function Dropdown({
           <div
             role="button"
             tabIndex={0}
+            key={option.id}
             aria-label="Дробдаун-меню"
             className="dropdown__item"
             onMouseDown={() => onValueSelect(option)}

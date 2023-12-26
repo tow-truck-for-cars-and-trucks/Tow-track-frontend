@@ -1,0 +1,37 @@
+.desktop-menu {
+  display: none;
+
+  @media (width >= 1024px) {
+    & {
+      display: flex;
+    }
+  }
+
+  &__nav {
+    display: flex;
+  }
+
+  &__item {
+    margin: 0 36px 0 0;
+    padding: 0 0 5px;
+    color: var(--accent-black-80, #3b3e49);
+    font-weight: 500;
+    font-size: 20px;
+    font-family: Mulish, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    line-height: 125%;
+    letter-spacing: -0.22px;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:last-of-type {
+      margin: 0;
+    }
+
+    &_active {
+      font-weight: 700;
+    }
+  }
+}

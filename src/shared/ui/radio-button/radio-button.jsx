@@ -6,6 +6,7 @@ function RadioButton({ value, onChange, name, title, id, subtitle }) {
       <span className="radio-button__span">{title}</span>
       <input
         id={id}
+        data-testid={id}
         className="radio-button__input"
         type="radio"
         name={name}

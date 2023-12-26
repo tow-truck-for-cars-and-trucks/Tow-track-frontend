@@ -27,7 +27,7 @@ function PricingList({ pricings, onChange }) {
   }));
 
   return (
-    <div className="pricing-list">
+    <div className="pricing-list" data-testid="pricing-list">
       <div className="pricing-list__container">
         {pricingsWithInfo.map((pricing) => (
           <Pricing
