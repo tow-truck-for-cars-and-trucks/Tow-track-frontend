@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import orderApi from '../../../shared/api/order-api';
 import redirectUnauthUser from '../../../shared/utils/redirect-user';
 import { createNewFeedback } from '../../../entities/ui/feedbacks/model/feedback-slice';
+import { updateOrder } from '../../../features/create-order/model/create-order-slice';
 
 const initialState = {
   activeOrders: [],
@@ -81,6 +82,25 @@ const allOrdersSlice = createSlice({
         completedOrders,
       };
     });
+    builder.addCase(
+      updateOrder.fulfilled,
+      (state, { payload: { id, status } }) => {
+        if (status === 'Отмененный') {
+          return {
+            ...state,
+            activeOrders: state.activeOrders.filter((v) => v.id !== id),
+          };
+        }
+        if (status === 'Завершенный') {
+          return {
+            ...state,
+            activeOrders: state.activeOrders.filter((v) => v.id !== id),
+            cancelledOrders: state.cancelledOrders.filter((v) => v.id !== id),
+          };
+        }
+        return state;
+      }
+    );
   },
 });
 

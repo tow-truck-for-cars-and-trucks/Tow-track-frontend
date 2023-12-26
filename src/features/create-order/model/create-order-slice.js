@@ -35,6 +35,20 @@ export const getOrder = createAsyncThunk(
   }
 );
 
+export const updateOrder = createAsyncThunk(
+  'order/patch',
+  async ({ id, status }, { rejectWithValue }) => {
+    try {
+      const result = await orderApi.updateOrderStatus(id, status);
+
+      return result;
+    } catch (error) {
+      if (error.response.status === 401) redirectUnauthUser();
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const createOrderSlice = createSlice({
   name: 'createOrder',
   initialState,
@@ -51,6 +65,10 @@ const createOrderSlice = createSlice({
       temporaryOrder: null,
     }));
     builder.addCase(getOrder.fulfilled, (state, { payload }) => ({
+      ...state,
+      order: payload,
+    }));
+    builder.addCase(updateOrder.fulfilled, (state, { payload }) => ({
       ...state,
       order: payload,
     }));

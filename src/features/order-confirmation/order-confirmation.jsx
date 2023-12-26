@@ -1,21 +1,20 @@
 import './order-confirmation.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getMinutes, getHours } from 'date-fns';
 import { getCarTypeTitle } from '../create-order/model/car-type-slice';
 import { getPlanTitle } from '../create-order/model/plan-slice';
-import { getOrder } from '../create-order/model/create-order-slice';
+import {
+  getOrder,
+  updateOrder,
+} from '../create-order/model/create-order-slice';
 import PagesTitle from '../../shared/ui/pages-title/pages-title';
 import Input from '../../shared/ui/input/input';
 import ChipsList from '../../entities/ui/chips-list/chips-list';
 import OrderDetails from '../../shared/ui/order-details/order-details';
 import BackButton from '../../shared/ui/back-button/back-button';
 import TotalPrice from '../../shared/ui/total-price/total-price';
-import {
-  activeCreatedOrder,
-  resetState,
-} from './model/order-confirmation-slice';
 
 function OrderConfirmation() {
   const [activeTab, setActiveTab] = useState('cash');
@@ -23,7 +22,6 @@ function OrderConfirmation() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { status } = useSelector((store) => store.orderConfirmation);
 
   useEffect(() => {
     dispatch(getOrder(id));
@@ -33,13 +31,10 @@ function OrderConfirmation() {
   const carType = useSelector((state) => getCarTypeTitle(state, newOrder));
   const tariff = useSelector((state) => getPlanTitle(state, newOrder));
 
-  useEffect(() => {
-    if (status === 'active') {
-      navigate(`/success-order/${id}`, { replace: true });
-    }
-  }, [status, navigate, id]);
-
-  useEffect(() => () => dispatch(resetState()), [dispatch]);
+  const updateOrderStatus = useCallback(() => {
+    dispatch(updateOrder({ id, status: 'Активный' })).unwrap();
+    navigate(`/success-order/${id}`, { replace: true });
+  }, [dispatch, id, navigate]);
 
   return (
     <main className="order-confirmation">
@@ -102,7 +97,7 @@ function OrderConfirmation() {
           <TotalPrice
             total={newOrder.total}
             isButtonActive
-            onClick={() => dispatch(activeCreatedOrder(id))}
+            onClick={() => updateOrderStatus()}
           />
         </div>
       </form>
