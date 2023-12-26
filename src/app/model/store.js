@@ -6,8 +6,6 @@ import createOrderSlice from '../../features/create-order/model/create-order-sli
 import feedbacksSlice from '../../entities/ui/feedbacks/model/feedback-slice';
 import pricePreloaderSlice from '../../features/create-order/model/price-preloader-slice';
 import allOrdersSlice from '../../widget/my-order/model/all-orders-slice';
-import successOrderSlice from '../../widget/order-success-widget/model/success-order-slice';
-import orderConfirmationSlice from '../../features/order-confirmation/model/order-confirmation-slice';
 import popupsSlice from '../../shared/ui/popup/model/popup-slice';
 
 const store = configureStore({
@@ -19,8 +17,6 @@ const store = configureStore({
     createOrder: createOrderSlice,
     feedbacks: feedbacksSlice,
     allOrders: allOrdersSlice,
-    successOrder: successOrderSlice,
-    orderConfirmation: orderConfirmationSlice,
     popups: popupsSlice,
   },
 });

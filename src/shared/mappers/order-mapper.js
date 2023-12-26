@@ -26,6 +26,7 @@ export function mapOrderDataFromBackend(data) {
     tariff: data.tariff,
     wheelLock: data.wheel_lock,
     towin: data.towin,
+    status: data.status,
     comment: data.addition,
     total: data.price,
     isHavingFeedback: data.is_having_feedback,

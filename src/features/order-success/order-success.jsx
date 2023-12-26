@@ -1,5 +1,4 @@
 import './order-success.scss';
-// import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPopupsOpen } from '../../shared/ui/popup/model/popup-slice';
 import { getCarTypeTitle } from '../create-order/model/car-type-slice';
@@ -25,7 +24,6 @@ function OrderSuccess({ cancelOrder }) {
   const carType = useSelector((state) => getCarTypeTitle(state, activeOrder));
   const tariff = useSelector((state) => getPlanTitle(state, activeOrder));
   const driverPhoneNumber = '88801112222';
-  const { status } = useSelector((store) => store.successOrder);
   const dispatch = useDispatch();
 
   const handleCallDriver = () => {
@@ -36,7 +34,7 @@ function OrderSuccess({ cancelOrder }) {
   return (
     <section className="order-success" data-testid="order-success">
       <div className="order-success__time">
-        <DeliveryTime date={activeOrder.orderDate} />
+        {activeOrder ? <DeliveryTime date={activeOrder?.orderDate} /> : ''}
       </div>
       <ProgressBar
         icons={[
@@ -50,22 +48,22 @@ function OrderSuccess({ cancelOrder }) {
       />
       <div className="order-success__adress">
         <Address
-          addressFrom={activeOrder.addressFrom}
-          addressTo={activeOrder.addressTo}
+          addressFrom={activeOrder?.addressFrom}
+          addressTo={activeOrder?.addressTo}
         />
       </div>
       <div className="order-success__price">
         <p className="order-success__price-title">Стоимость заказа</p>
-        <p className="order-success__price-total">{activeOrder.total} ₽</p>
+        <p className="order-success__price-total">{activeOrder?.total} ₽</p>
       </div>
       <Accordion title="Информация о машине и водителе" withBorder={false}>
         <OrderDetails
           tariff={tariff}
           carType={carType}
-          wheelLock={activeOrder.wheelLock}
-          towin={activeOrder.towin ? 'Да' : 'Нет'}
-          delay={activeOrder.delay ? 'Да' : 'Нет'}
-          comment={activeOrder.comment}
+          wheelLock={activeOrder?.wheelLock}
+          towin={activeOrder?.towin ? 'Да' : 'Нет'}
+          delay={activeOrder?.delay ? 'Да' : 'Нет'}
+          comment={activeOrder?.comment}
         />
       </Accordion>
       <div className="order-success__alert">
@@ -78,13 +76,11 @@ function OrderSuccess({ cancelOrder }) {
           onClick={handleCallDriver}
         />
       </div>
-      {status === 'active' && (
-        <Button
-          secondary
-          label="Отменить заказ"
-          onClick={() => dispatch(setPopupsOpen('popup-cancel'))}
-        />
-      )}
+      <Button
+        secondary
+        label="Отменить заказ"
+        onClick={() => dispatch(setPopupsOpen('popup-cancel'))}
+      />
       <PopupCancel cancelOrder={cancelOrder} />
     </section>
   );

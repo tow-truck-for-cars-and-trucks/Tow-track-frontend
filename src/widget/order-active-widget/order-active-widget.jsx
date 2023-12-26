@@ -1,14 +1,12 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import orderApi from '../../shared/api/order-api';
 import { getOrders } from '../my-order/model/all-orders-slice';
+import { updateOrder } from '../../features/create-order/model/create-order-slice';
 import OrderActive from '../../features/order-active/order-active';
 import './order-active-widget.scss';
 import OrderNumber from '../../shared/ui/order-number/order-number';
-import redirectUnauthUser from '../../shared/utils/redirect-user';
 
 function OrderActiveWidget() {
-  const [allOrders, setAllOrders] = useState([]);
   const dispatch = useDispatch();
   const orders = useSelector((store) => store.allOrders.activeOrders);
 
@@ -16,19 +14,11 @@ function OrderActiveWidget() {
     dispatch(getOrders('активный'));
   }, []);
 
-  const cancelOrder = useCallback(
+  const updateOrderStatus = useCallback(
     (activeOrder) => {
-      orderApi
-        .updateOrderStatus(activeOrder.id, 'Отмененный')
-        .then(() => {
-          setAllOrders(allOrders.filter((o) => o.id !== activeOrder.id));
-        })
-        .catch((error) => {
-          console.log(error);
-          if (error.response.status === 401) redirectUnauthUser();
-        });
+      dispatch(updateOrder({ id: activeOrder.id, status: 'Отмененный' }));
     },
-    [orders]
+    [dispatch]
   );
 
   return (
@@ -48,7 +38,7 @@ function OrderActiveWidget() {
               <OrderActive
                 id={order.id}
                 key={order.id}
-                cancelOrder={() => cancelOrder(order)}
+                cancelOrder={() => updateOrderStatus(order)}
               />
             </OrderNumber>
           ))

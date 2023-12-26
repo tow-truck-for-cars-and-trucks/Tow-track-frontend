@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import './chips-list.scss';
 import Chip from '../../../shared/ui/chip/chip';
 
 /**
@@ -15,7 +16,7 @@ function ChipsList({ chips, value, onChange }) {
   );
 
   return (
-    <div data-testid="chip-list">
+    <div className="chips-list" data-testid="chip-list">
       {chips.map((chip) => (
         <Chip
           key={chip.id}
