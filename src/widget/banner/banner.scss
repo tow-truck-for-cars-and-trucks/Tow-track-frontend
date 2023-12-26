@@ -1,12 +1,13 @@
 .banner {
-  height: 570px;
+  min-height: 570px;
   background-image: url('../../../assets/images/banner.png');
   background-repeat: no-repeat;
   background-size: cover;
 
-  @media (width >= 1440px) {
+  @media (width >= 1024px) {
     & {
-      background-position: 25% 25%;
+      min-height: 672px;
+      background-position: 25% 26.6%;
     }
   }
 
@@ -42,7 +43,7 @@
 
   &__cards {
     display: flex;
-    max-width: 1320px;
+    max-width: 1360px;
     margin: 179px auto 0;
     padding-left: 20px;
     overflow-x: auto;
@@ -56,8 +57,9 @@
 
     @media (width >= 1024px) {
       & {
-        margin: 72px auto 0;
-        padding: 0 88px 0 32px;
+        flex-direction: row-reverse;
+        margin: 183px auto;
+        padding: 0 80px 0 0;
       }
     }
   }
@@ -73,6 +75,12 @@
 
     &:last-child {
       margin-right: 16px;
+    }
+
+    @media (width >= 1024px) {
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 }
