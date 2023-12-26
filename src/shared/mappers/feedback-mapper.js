@@ -1,7 +1,7 @@
 export function mapFeedbackDataToBackend(data) {
   return {
     score: data.score,
-    comment: data.comment,
+    comment: data.comment || null,
     order: data.order,
     ontime: data.onTime,
   };

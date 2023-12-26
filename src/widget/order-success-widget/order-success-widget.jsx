@@ -18,14 +18,14 @@ function OrderSuccessWidget() {
 
   useEffect(() => {
     dispatch(getOrder(id));
-  }, [dispatch, id]);
+  }, [id]);
 
   const activeOrder = useSelector((store) => store.createOrder.order);
 
   const updateOrderStatus = useCallback(() => {
-    dispatch(updateOrder({ id, status: 'Отмененный' })).unwrap();
+    dispatch(updateOrder({ id, status: 'Завершенный' })).unwrap();
     navigate('/?open=main', { replace: true });
-  }, [dispatch, id, navigate]);
+  }, [id, navigate]);
 
   return (
     <section className="order-successfully">
