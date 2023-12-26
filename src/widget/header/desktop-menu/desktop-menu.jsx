@@ -56,7 +56,7 @@ function DesktopMenu({ phoneNumber }) {
           label="Связаться с компанией"
           onClick={() => handlePhoneCall(phoneNumber, 'в компанию')}
         >
-          <PhoneIcon width="16px" height="16px" />
+          <PhoneIcon width="16px" height="16px" color="#3B3E49" />
           &ensp;
           {[
             [

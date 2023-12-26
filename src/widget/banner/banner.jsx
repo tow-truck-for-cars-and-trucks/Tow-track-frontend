@@ -8,23 +8,23 @@ function Banner() {
   return (
     <section className="banner" data-testid="banner">
       <div className="banner__header">
-        <h1 className="banner__title">TT Express - </h1>
+        <h1 className="banner__title">TT Express &mdash; </h1>
         <span className="banner__title">удобный сервис для вызова</span>
         <span className="banner__title">эвакуатора 24/7</span>
       </div>
       <div className="banner__cards">
         <div className="banner__card">
           <AdvantageCard
-            icon={<CashIcon width="64px" height="64px" />}
-            title="Цена известна заранее"
-            subtitle="Оплата наличными или картой через СПБ"
+            icon={<TrackIcon width="64px" height="64px" />}
+            title="Быстрая подача"
+            subtitle="Приедем оперативно, за 20-30 мин. в пределах города"
           />
         </div>
         <div className="banner__card">
           <AdvantageCard
-            icon={<TrackIcon width="64px" height="64px" />}
-            title="Быстрая подача"
-            subtitle="Приедем оперативно, за 20-30 мин. в пределах города"
+            icon={<CashIcon width="64px" height="64px" />}
+            title="Цена известна заранее"
+            subtitle="Оплата наличными или картой через СПБ"
           />
         </div>
         <div className="banner__card">
