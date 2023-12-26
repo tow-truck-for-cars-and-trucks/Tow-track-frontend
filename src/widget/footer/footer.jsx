@@ -3,42 +3,78 @@ import { Link } from 'react-router-dom';
 import ExpressLogo from '../../shared/ui/icons/express-logo';
 import Logo from '../../shared/ui/icons/logo';
 import ArrowScroll from '../../shared/ui/arrow-scroll/arrow-scroll';
+import PhoneIcon from '../../shared/ui/icons/phone-icon';
+import handlePhoneCall from '../../shared/utils/helpers';
+
+const companyPhoneNumber = '88801112222';
 
 function Footer() {
   return (
     <footer className="footer" data-testid="footer">
       <div className="footer__container">
         <ArrowScroll />
-        <div className="footer__main">
-          <div className="footer__logo">
-            <Logo width="100px" height="100px" />
-          </div>
-          <div className="footer__column">
-            <ExpressLogo width="158px" height="70px" />
-            <div className="footer__main-contacts">
-              <div className="footer__phone-block">
-                <span className="footer__phone-number">8 880 111 2222</span>
-                <p className="footer__time">Круглосуточно</p>
-              </div>
-              <Link className="footer__link footer__contacts" to="/contacts">
-                Контакты
-              </Link>
+        <div className="footer__logo-mobile">
+          <Logo width="100px" height="100px" />
+        </div>
+        <div className="footer__logo-desktop">
+          <Logo width="136px" height="136px" />
+        </div>
+        <div className="footer__express-logo-mobile">
+          <ExpressLogo width="158px" height="70px" />
+        </div>
+        <div className="footer__express-logo-desktop">
+          <ExpressLogo width="241px" height="107px" />
+        </div>
+        <div className="footer__main-contacts">
+          <button
+            className="footer__phone-block"
+            type="button"
+            label="Связаться с компанией"
+            onClick={() => handlePhoneCall(companyPhoneNumber, 'в компанию')}
+          >
+            <div className="footer__phone-icon">
+              <PhoneIcon width="16px" height="16px" color="#fff" />
             </div>
-            <div className="footer__documents">
-              <a href="/" className="footer__link">
-                Оферта
-              </a>
-              <a href="/" className="footer__link">
-                Политика конфиденциальности
-              </a>
-              <a href="/" className="footer__link">
-                Пользовательское соглашение
-              </a>
-              <a href="/" className="footer__link">
-                Сертификация эвакуаторов
-              </a>
-            </div>
-          </div>
+            {[
+              [
+                companyPhoneNumber.substring(0, 1),
+                companyPhoneNumber.substring(1, 4),
+                companyPhoneNumber.substring(4, 7),
+              ].join(' '),
+              companyPhoneNumber.substring(7, 9),
+              companyPhoneNumber.substring(9),
+            ].join(' ')}
+          </button>
+          <p className="footer__time">Круглосуточно</p>
+          <Link className="footer__link footer__pages" to="/contacts">
+            Контакты
+          </Link>
+          <Link
+            className="footer__link footer__pages footer__pages-desktop"
+            to="/my-orders"
+          >
+            Мои заказы
+          </Link>
+          <Link
+            className="footer__link footer__pages footer__pages-desktop"
+            to="/?open=order"
+          >
+            Заказать эвакуатор
+          </Link>
+        </div>
+        <div className="footer__documents">
+          <a href="/" className="footer__link">
+            Оферта
+          </a>
+          <a href="/" className="footer__link">
+            Политика конфиденциальности
+          </a>
+          <a href="/" className="footer__link">
+            Пользовательское соглашение
+          </a>
+          <a href="/" className="footer__link footer__link-certification">
+            Сертификация эвакуаторов
+          </a>
         </div>
         <div className="footer__copyright">
           <p className="footer__offer">
