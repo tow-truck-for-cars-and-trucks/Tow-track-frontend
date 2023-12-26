@@ -7,6 +7,12 @@
   border-radius: 28px;
   box-shadow: 0 0 20px 0 rgb(134 146 159 / 15%);
 
+  @media (width >= 1024px) {
+    & {
+      margin-left: 28px;
+    }
+  }
+
   &__title {
     margin: 0;
     padding-top: 20px;

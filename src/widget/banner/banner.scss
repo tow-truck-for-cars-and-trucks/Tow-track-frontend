@@ -1,5 +1,4 @@
 .banner {
-  max-width: 768px;
   height: 570px;
   background-image: url('../../../assets/images/banner.png');
   background-repeat: no-repeat;
@@ -8,8 +7,16 @@
   &__header {
     display: flex;
     flex-direction: column;
+    max-width: 1320px;
+    margin: 0 auto;
     padding-top: 29px;
     padding-left: 20px;
+
+    @media (width >= 1024px) {
+      & {
+        padding: 52px 60px 0;
+      }
+    }
   }
 
   &__title {
@@ -18,11 +25,19 @@
     font-weight: 700;
     font-size: 24px;
     line-height: 1.25;
+
+    @media (width >= 1024px) {
+      & {
+        font-size: 40px;
+        line-height: 135%;
+      }
+    }
   }
 
   &__cards {
     display: flex;
-    margin-top: 179px;
+    max-width: 1320px;
+    margin: 179px auto 0;
     padding-left: 20px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -31,6 +46,13 @@
 
     &::-webkit-scrollbar {
       display: none;
+    }
+
+    @media (width >= 1024px) {
+      & {
+        margin: 72px auto 0;
+        padding: 0 88px 0 32px;
+      }
     }
   }
 
