@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import orderApi from '../../shared/api/order-api';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getOrder } from '../../features/create-order/model/create-order-slice';
 import OrderSuccess from '../../features/order-success/order-success';
 import './order-success-widget.scss';
 import { cancelOrderRequest, resetState } from './model/success-order-slice';
@@ -11,27 +11,15 @@ import { cancelOrderRequest, resetState } from './model/success-order-slice';
  */
 function OrderSuccessWidget() {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { status } = useSelector((store) => store.successOrder);
-  const dispatch = useDispatch();
-  const [activeOrder, setActiveOrder] = useState({
-    addressFrom: null,
-    addressTo: null,
-    carType: null,
-    orderDate: null,
-    tariff: null,
-    wheelLock: null,
-    delay: null,
-    towin: null,
-    comment: null,
-  });
 
   useEffect(() => {
-    orderApi
-      .getOrder(id, { status: 'Активный' })
-      .then((order) => setActiveOrder(order));
-    // .catch(console.error);
-  }, [id]);
+    dispatch(getOrder(id));
+  }, [dispatch, id]);
+
+  const activeOrder = useSelector((store) => store.createOrder.order);
 
   useEffect(() => {
     if (status === 'canceled') {
@@ -58,10 +46,7 @@ function OrderSuccessWidget() {
           <p className="order-successfully__title">оформлен!</p>
         )}
       </div>
-      <OrderSuccess
-        activeOrder={activeOrder}
-        cancelOrder={() => dispatch(cancelOrderRequest(id))}
-      />
+      <OrderSuccess cancelOrder={() => cancelOrderRequest(id)} />
     </section>
   );
 }
