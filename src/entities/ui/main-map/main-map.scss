@@ -1,0 +1,22 @@
+.main-map {
+  max-width: 536px;
+  border-radius: 12px;
+
+  &__contaner {
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__ymap {
+    width: 320px;
+    height: 797px;
+    overflow: hidden;
+    border-radius: 12px;
+
+    @media (width >= 1440px) {
+      & {
+        width: 596px;
+      }
+    }
+  }
+}
