@@ -24,7 +24,7 @@
       height: 248px;
       margin: 0 auto;
       padding: 48px 30px 64px;
-      row-gap: 35px;
+      row-gap: 0;
     }
   }
 
@@ -96,8 +96,8 @@
   @media (width >= 1024px) {
     &__documents {
       flex-direction: row;
-      margin-top: -5px;
       margin-bottom: 0;
+      margin-bottom: 13px;
       column-gap: 24px;
     }
   }
@@ -124,7 +124,6 @@
     &__copyright {
       grid-column: 2;
       align-content: flex-start;
-      margin-top: -20px;
     }
   }
 
@@ -149,6 +148,8 @@
       justify-self: start;
       width: 51.25vw;
       margin-top: 8px;
+      margin-bottom: 24px;
+      row-gap: none;
     }
   }
 
