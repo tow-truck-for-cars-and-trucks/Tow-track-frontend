@@ -25,6 +25,7 @@ import PopupDeferredOrder from '../../popup-deferred-order/popup-deferred-order'
 import TotalPrice from '../../../shared/ui/total-price/total-price';
 import ButtonCounterController from '../../../entities/ui/button-counter-controller/button-counter-controller';
 import MainMap from '../../../entities/ui/main-map/main-map';
+import MarkerIcon from '../../../shared/ui/icons/marker-icon';
 
 function CreateOrder() {
   const ymaps = useYMaps([
@@ -148,6 +149,10 @@ function CreateOrder() {
                 )}
               />
             </div>
+            <button type="button" className="create-order__check-map">
+              <MarkerIcon width="20px" height="20px" />
+              Проверить на карте
+            </button>
             <h2 className="create-order__title">Что перевозим?</h2>
             <div className="create-order__views">
               <Controller
