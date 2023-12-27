@@ -1,6 +1,6 @@
 .arrow {
   position: absolute;
-  top: -38px;
+  top: -32px;
   right: 16px;
   display: flex;
   flex-shrink: 0;
@@ -19,7 +19,6 @@
 
 @media (width >= 1024px) {
   .arrow {
-    top: -32px;
     right: 60px;
   }
 }
