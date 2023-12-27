@@ -5,6 +5,7 @@ import { getPlan } from '../features/create-order/model/plan-slice';
 import { getCarType } from '../features/create-order/model/car-type-slice';
 import Main from '../pages/main/main';
 import Preloader from '../shared/ui/preloader/preloader';
+import ProtectedRoute from './router/ProtectedRoute';
 
 const ContactsPage = lazy(() => import('../pages/contacts-page/contacts-page'));
 const Order = lazy(() => import('../pages/order/order'));
@@ -13,7 +14,6 @@ const SuccessOrderPage = lazy(() =>
   import('../pages/success-order-page/success-order-page')
 );
 const MyOrderPage = lazy(() => import('../pages/my-order-page/my-order-page'));
-const ProtectedRoute = lazy(() => import('./router/ProtectedRoute'));
 
 function App() {
   const dispatch = useDispatch();

@@ -29,6 +29,7 @@ function Input({
   password,
   id,
   type,
+  onClick,
 }) {
   return (
     <div
@@ -58,7 +59,9 @@ function Input({
         <label htmlFor={id} className="input__placeholder">
           {placeholder}
         </label>
-        <div className="input__icon">{icon}</div>
+        <button type="button" className="input__icon" onClick={onClick}>
+          {icon}
+        </button>
         <button
           type="button"
           aria-label="Стереть текст"

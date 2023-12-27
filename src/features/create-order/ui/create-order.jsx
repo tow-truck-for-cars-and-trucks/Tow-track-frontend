@@ -2,7 +2,8 @@ import './create-order.scss';
 import { Controller, useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useCallback, useEffect, useRef } from 'react';
+import { useYMaps } from '@pbe/react-yandex-maps';
+import { useCallback, useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addressFormSchema } from '../../../shared/schema/schema';
 import { getLocalStorageToken } from '../../../shared/api/storage-api';
@@ -26,6 +27,16 @@ import ButtonCounterController from '../../../entities/ui/button-counter-control
 import MainMap from '../../../entities/ui/main-map/main-map';
 
 function CreateOrder() {
+  const ymaps = useYMaps([
+    'Map',
+    'route',
+    'GeoObject',
+    'geolocation',
+    'geocode',
+  ]);
+
+  const [from, setFrom] = useState();
+
   const allPricing = useSelector((store) => store.allPricing.tariff);
   const allCars = useSelector((store) => store.allCars.carType);
   const totalPrice = useSelector((store) => store.totalPrice.price);
@@ -85,15 +96,19 @@ function CreateOrder() {
   const isButtonActive = !(errors.addressFrom || errors.addressTo);
 
   useEffect(() => {
-    const subscription = watch(() => {
+    const subscription = watch(({ addressFrom, addressTo }) => {
       clearTimeout(timerRef.current);
 
       timerRef.current = setTimeout(() => {
         handleSubmit(calculatePrice).apply(this);
+
+        ymaps.route([addressFrom, addressTo]).then((result) => {
+          setFrom(result);
+        });
       }, 1000);
     });
     return () => subscription.unsubscribe();
-  }, [handleSubmit, watch]);
+  }, [handleSubmit, watch, ymaps]);
 
   return (
     <div className="create-order" data-testid="createOrder">
@@ -259,7 +274,7 @@ function CreateOrder() {
           </form>
         </div>
         <div className="create-order__map">
-          <MainMap />
+          <MainMap from={from} />
         </div>
       </div>
     </div>
