@@ -28,7 +28,7 @@ function Header({ onCreateOrderClick }) {
             label="Связаться с компанией"
             onClick={() => handlePhoneCall(companyPhoneNumber, 'в компанию')}
           >
-            <PhoneIcon width="24px" height="24px" />
+            <PhoneIcon width="24px" height="24px" color="#3b3e49" />
           </button>
           <button
             className="header__button"

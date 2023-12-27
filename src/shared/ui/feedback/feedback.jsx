@@ -13,7 +13,7 @@ function Feedback({ feedback }) {
       <div className="feedback-card">
         <div>
           <StarFillIcon width="16px" height="16px" color="#FFCC00" />
-          <span className="feedback-card__rating">{feedback.score}</span>
+          <span className="feedback-card__rating">{feedback.score},0</span>
         </div>
         <h3 className="feedback-card__name">{feedback.name}</h3>
         <p className="feedback-card__feedback">{feedback.comment}</p>

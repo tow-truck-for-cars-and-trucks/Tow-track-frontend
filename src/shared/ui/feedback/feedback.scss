@@ -4,11 +4,12 @@
 }
 
 .feedback-card {
+  width: 264px;
   max-width: 264px;
   height: 180px;
   margin-right: 4px;
   margin-left: 16px;
-  padding: 28px;
+  padding: 19px 28px 37px;
   background-color: var(--white);
   border-radius: 28px;
   box-shadow: 0 0 20px 0 rgb(134 146 159 / 15%);
@@ -25,7 +26,7 @@
   &__name {
     @extend %text-style;
 
-    padding-top: 16px;
+    margin-top: 9px;
     overflow: hidden;
     font-weight: 500;
     font-size: 18px;
@@ -38,11 +39,23 @@
     @extend %text-style;
 
     display: -webkit-box;
-    padding-top: 16px;
+    margin-top: 16px;
     overflow: hidden;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.35;
     text-overflow: ellipsis;
+  }
+
+  @media (width >= 1024px) {
+    &__feedback {
+      margin-top: 13px;
+    }
+  }
+}
+
+@media (width >= 1024px) {
+  .feedback-card {
+    width: 320px;
   }
 }
