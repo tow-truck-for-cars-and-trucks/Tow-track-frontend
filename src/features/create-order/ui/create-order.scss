@@ -1,7 +1,7 @@
 .create-order {
   padding-left: 16px;
 
-  &__form {
+  &__content {
     @media (width >= 768px) {
       & {
         display: grid;
@@ -10,6 +10,14 @@
       }
 
       @media (width >= 1024px) {
+        & {
+          display: grid;
+          grid-template-columns: 500px 1fr;
+          column-gap: 52px;
+        }
+      }
+
+      @media (width >= 1280px) {
         & {
           display: grid;
           grid-template-columns: 709px 1fr;
@@ -69,7 +77,6 @@
     @media (width >= 1440px) {
       & {
         flex-direction: row;
-        justify-content: space-between;
       }
     }
   }
@@ -115,5 +122,17 @@
 
   &__comment {
     padding: 0 16px 28px 0;
+
+    @media (width >= 1440px) {
+      & {
+        padding-bottom: 48px;
+      }
+    }
+  }
+
+  &__map {
+    position: sticky;
+    top: 0;
+    height: fit-content;
   }
 }

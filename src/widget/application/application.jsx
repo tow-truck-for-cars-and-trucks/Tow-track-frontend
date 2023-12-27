@@ -4,10 +4,12 @@ import CreateOrder from '../../features/create-order/ui/create-order';
 function Application({ innerRef }) {
   return (
     <section className="application" ref={innerRef} data-testid="application">
-      <h1 className="application__title">
-        Вызвать эвакуатор в <span className="application__span">Москве</span>
-      </h1>
-      <CreateOrder />
+      <div className="application__content">
+        <h1 className="application__title">
+          Вызвать эвакуатор в <span className="application__span">Москве</span>
+        </h1>
+        <CreateOrder />
+      </div>
     </section>
   );
 }
