@@ -1,0 +1,41 @@
+.main-map {
+  display: none;
+
+  @media (width >= 768px) {
+    & {
+      display: inherit;
+      max-width: 536px;
+      border-radius: 12px;
+    }
+  }
+
+  &__ymap {
+    display: none;
+
+    @media (width >= 768px) {
+      & {
+        display: inherit;
+        width: 320px;
+        height: 797px;
+        overflow: hidden;
+        border-radius: 12px;
+      }
+    }
+
+    @media (width >= 1024px) {
+      & {
+        display: inherit;
+        width: 400px;
+        height: 797px;
+        overflow: hidden;
+        border-radius: 12px;
+      }
+    }
+
+    @media (width >= 1440px) {
+      & {
+        width: 596px;
+      }
+    }
+  }
+}

@@ -2,7 +2,8 @@ import './create-order.scss';
 import { Controller, useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useCallback, useEffect, useRef } from 'react';
+import { useYMaps } from '@pbe/react-yandex-maps';
+import { useCallback, useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addressFormSchema } from '../../../shared/schema/schema';
 import { getLocalStorageToken } from '../../../shared/api/storage-api';
@@ -23,8 +24,19 @@ import Comment from '../../../shared/ui/comment/comment';
 import PopupDeferredOrder from '../../popup-deferred-order/popup-deferred-order';
 import TotalPrice from '../../../shared/ui/total-price/total-price';
 import ButtonCounterController from '../../../entities/ui/button-counter-controller/button-counter-controller';
+import MainMap from '../../../entities/ui/main-map/main-map';
 
 function CreateOrder() {
+  const ymaps = useYMaps([
+    'Map',
+    'route',
+    'GeoObject',
+    'geolocation',
+    'geocode',
+  ]);
+
+  const [from, setFrom] = useState();
+
   const allPricing = useSelector((store) => store.allPricing.tariff);
   const allCars = useSelector((store) => store.allCars.carType);
   const totalPrice = useSelector((store) => store.totalPrice.price);
@@ -84,160 +96,187 @@ function CreateOrder() {
   const isButtonActive = !(errors.addressFrom || errors.addressTo);
 
   useEffect(() => {
-    const subscription = watch(() => {
+    const subscription = watch(({ addressFrom, addressTo }) => {
       clearTimeout(timerRef.current);
 
       timerRef.current = setTimeout(() => {
         handleSubmit(calculatePrice).apply(this);
+
+        ymaps.route([addressFrom, addressTo]).then((result) => {
+          setFrom(result);
+        });
       }, 1000);
     });
     return () => subscription.unsubscribe();
-  }, [handleSubmit, watch]);
+  }, [handleSubmit, watch, ymaps]);
 
   return (
     <div className="create-order" data-testid="createOrder">
-      <h2 className="create-order__title">Адреса</h2>
-      <form>
-        <div className="create-order__input">
-          <Controller
-            name="addressFrom"
-            control={control}
-            rules={{ required: true }}
-            render={({ field: { value, onChange } }) => (
-              <Input
-                invalid={errors.addressFrom?.message}
-                placeholder="Откуда забрать"
-                icon={<NavigationArrowIcon width="16px" height="16px" />}
-                value={value}
-                onChange={onChange}
-                id="addressFrom"
+      <div className="create-order__content">
+        <div>
+          <h2 className="create-order__title">Адреса</h2>
+          <form>
+            <div className="create-order__input">
+              <Controller
+                name="addressFrom"
+                control={control}
+                rules={{ required: true }}
+                render={({ field: { value, onChange } }) => (
+                  <Input
+                    invalid={errors.addressFrom?.message}
+                    placeholder="Откуда забрать"
+                    icon={<NavigationArrowIcon width="16px" height="16px" />}
+                    value={value}
+                    onChange={onChange}
+                    id="addressFrom"
+                  />
+                )}
               />
-            )}
-          />
-          <Controller
-            name="addressTo"
-            control={control}
-            rules={{ required: true }}
-            render={({ field: { value, onChange } }) => (
-              <Input
-                placeholder="Куда доставить"
-                invalid={errors.addressTo?.message}
-                icon={<NavigationArrowIcon width="16px" height="16px" />}
-                value={value}
-                onChange={onChange}
-                id="addressTo"
+              <Controller
+                name="addressTo"
+                control={control}
+                rules={{ required: true }}
+                render={({ field: { value, onChange } }) => (
+                  <Input
+                    placeholder="Куда доставить"
+                    invalid={errors.addressTo?.message}
+                    icon={<NavigationArrowIcon width="16px" height="16px" />}
+                    value={value}
+                    onChange={onChange}
+                    id="addressTo"
+                  />
+                )}
               />
-            )}
-          />
-        </div>
-        <h2 className="create-order__title">Что перевозим?</h2>
-        <div className="create-order__views">
-          <Controller
-            name="carType"
-            control={control}
-            render={({ field: { value, onChange } }) => (
-              <ChipsList
-                chips={allCars.map((carType) => ({
-                  label: carType.car_type,
-                  id: carType.id,
-                }))}
-                value={value}
-                onChange={onChange}
+            </div>
+            <h2 className="create-order__title">Что перевозим?</h2>
+            <div className="create-order__views">
+              <Controller
+                name="carType"
+                control={control}
+                render={({ field: { value, onChange } }) => (
+                  <ChipsList
+                    chips={allCars.map((carType) => ({
+                      label: carType.car_type,
+                      id: carType.id,
+                    }))}
+                    value={value}
+                    onChange={onChange}
+                  />
+                )}
               />
-            )}
-          />
-        </div>
-        <div className="create-order__ditch">
-          <Description title="Кюветные работы" subtitle="Сложность доступа" />
-          <div className="create-order__toggle">
-            <Controller
-              name="towin"
-              control={control}
-              render={({ field: { value, onChange } }) => (
-                <ButtonToggle id="towin" value={value} onChange={onChange} />
-              )}
-            />
-          </div>
-        </div>
-        <h2 className="create-order__title">Выберите тариф</h2>
-        {allPricing && (
-          <div className="create-order__views">
-            <Controller
-              name="tariff"
-              control={control}
-              render={({ field: { value, onChange } }) => (
-                <PricingList
-                  pricings={allPricing.map((tariff) => ({
-                    title: tariff.name,
-                    description: tariff.description,
-                    price: tariff.price,
-                    id: tariff.id,
-                  }))}
-                  value={value}
-                  onChange={onChange}
+            </div>
+            <div className="create-order__container">
+              <div className="create-order__ditch">
+                <Controller
+                  name="wheelLock"
+                  control={control}
+                  render={({ field: { value, onChange } }) => (
+                    <ButtonCounterController
+                      value={value}
+                      onChange={onChange}
+                    />
+                  )}
                 />
-              )}
-            />
-          </div>
-        )}
-        <Controller
-          name="wheelLock"
-          control={control}
-          render={({ field: { value, onChange } }) => (
-            <ButtonCounterController value={value} onChange={onChange} />
-          )}
-        />
-        <div className="create-order__ditch">
-          <Description
-            title="Отложенный заказ"
-            subtitle="Выберите день и время"
-          />
-          <Controller
-            name="delay"
-            control={control}
-            render={({ field: { value } }) => (
-              <ButtonToggle
-                id="delay"
-                value={value}
-                onChange={(toggle) => {
-                  if (toggle) {
-                    dispatch(setPopupsOpen('popup-deffered-order'));
-                  } else {
-                    setValue('delay', false);
-                  }
-                }}
+              </div>
+              <div className="create-order__ditch">
+                <Description
+                  title="Кюветные работы"
+                  subtitle="Сложность доступа"
+                />
+                <div className="create-order__button">
+                  <Controller
+                    name="towin"
+                    control={control}
+                    render={({ field: { value, onChange } }) => (
+                      <ButtonToggle
+                        id="towin"
+                        value={value}
+                        onChange={onChange}
+                      />
+                    )}
+                  />
+                </div>
+              </div>
+            </div>
+            <h2 className="create-order__title">Выберите тариф</h2>
+            {allPricing && (
+              <div className="create-order__views">
+                <Controller
+                  name="tariff"
+                  control={control}
+                  render={({ field: { value, onChange } }) => (
+                    <PricingList
+                      pricings={allPricing.map((tariff) => ({
+                        title: tariff.name,
+                        description: tariff.description,
+                        price: tariff.price,
+                        id: tariff.id,
+                      }))}
+                      value={value}
+                      onChange={onChange}
+                    />
+                  )}
+                />
+              </div>
+            )}
+            <div className="create-order__ditch create-order__ditch_container">
+              <Description
+                title="Отложенный заказ"
+                subtitle="Выберите день и время"
               />
-            )}
-          />
+              <div className="create-order__button">
+                <Controller
+                  name="delay"
+                  control={control}
+                  render={({ field: { value } }) => (
+                    <ButtonToggle
+                      id="delay"
+                      value={value}
+                      onChange={(toggle) => {
+                        if (toggle) {
+                          dispatch(setPopupsOpen('popup-deffered-order'));
+                        } else {
+                          setValue('delay', false);
+                        }
+                      }}
+                    />
+                  )}
+                />
+              </div>
+            </div>
+            <PopupDeferredOrder
+              onClose={() => {
+                setValue('delay', false);
+              }}
+              onSave={(date) => {
+                setValue('orderDate', date);
+                setValue('delay', true);
+                dispatch(setPopupsClose('popup-deffered-order'));
+              }}
+            />
+            <div className="create-order__comment">
+              <h2 className="create-order__title">Дополнительно</h2>
+              <Controller
+                name="comment"
+                control={control}
+                render={({ field: { value, onChange } }) => (
+                  <Comment value={value} onChange={onChange} />
+                )}
+              />
+            </div>
+            <div className="create-order__price">
+              <TotalPrice
+                onClick={handleSubmit((order) => createOrder(order))}
+                total={totalPrice || 0}
+                isButtonActive={isButtonActive}
+              />
+            </div>
+          </form>
         </div>
-        <PopupDeferredOrder
-          onClose={() => {
-            setValue('delay', false);
-          }}
-          onSave={(date) => {
-            setValue('orderDate', date);
-            setValue('delay', true);
-            dispatch(setPopupsClose('popup-deffered-order'));
-          }}
-        />
-        <div className="create-order__comment">
-          <h2 className="create-order__title">Дополнительно</h2>
-          <Controller
-            name="comment"
-            control={control}
-            render={({ field: { value, onChange } }) => (
-              <Comment value={value} onChange={onChange} />
-            )}
-          />
+        <div className="create-order__map">
+          <MainMap from={from} />
         </div>
-        <div className="create-order__price">
-          <TotalPrice
-            onClick={handleSubmit((order) => createOrder(order))}
-            total={totalPrice || 0}
-            isButtonActive={isButtonActive}
-          />
-        </div>
-      </form>
+      </div>
     </div>
   );
 }

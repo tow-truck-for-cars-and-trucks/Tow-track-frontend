@@ -5,8 +5,20 @@
   padding-top: 32px;
   padding-right: 16px;
 
+  @media (width >= 1440px) {
+    & {
+      padding: 0;
+    }
+  }
+
   &__count {
     display: flex;
+
+    @media (width >= 1440px) {
+      & {
+        padding-left: 40px;
+      }
+    }
   }
 
   &__span {

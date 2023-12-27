@@ -1,0 +1,19 @@
+.popup-map {
+  display: inherit;
+  max-width: 100%px;
+  border-radius: 12px;
+
+  @media (width >= 768px) {
+    & {
+      display: none;
+    }
+  }
+
+  &__ymap {
+    display: inherit;
+    width: 100%;
+    height: 680px;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+}
