@@ -71,7 +71,7 @@ function Register({ setIsSuccess }) {
 
     document.addEventListener('focusout', handleFocus);
     return () => document.removeEventListener('focusout', handleFocus);
-  }, [getValues, setValue, registerInputRef]);
+  }, [getValues, setValue, trigger, registerInputRef]);
 
   return (
     <main className="register" data-testid="register">
