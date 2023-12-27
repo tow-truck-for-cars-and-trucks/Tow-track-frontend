@@ -1,4 +1,5 @@
 import './register.scss';
+import { useEffect, createRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
@@ -14,11 +15,15 @@ import registerApi from '../../shared/api/register-api';
 import errorHandler from '../../shared/utils/error-handler';
 
 function Register({ setIsSuccess }) {
+  const registerInputRef = createRef();
   const location = useLocation();
   const dispatch = useDispatch();
 
   const {
     control,
+    setValue,
+    getValues,
+    trigger,
     handleSubmit,
     formState: { errors, isValid },
     setError,
@@ -53,10 +58,25 @@ function Register({ setIsSuccess }) {
       });
   };
 
+  useEffect(() => {
+    const handleFocus = (e) => {
+      if (
+        registerInputRef.current &&
+        !registerInputRef.current.contains(e.relatedTarget)
+      ) {
+        setValue('firstName', getValues('firstName').trim());
+        trigger('firstName');
+      }
+    };
+
+    document.addEventListener('focusout', handleFocus);
+    return () => document.removeEventListener('focusout', handleFocus);
+  }, [getValues, setValue, registerInputRef]);
+
   return (
     <main className="register" data-testid="register">
       <form>
-        <div className="register__input">
+        <div className="register__input" ref={registerInputRef}>
           <Controller
             name="firstName"
             control={control}
