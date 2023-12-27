@@ -1,4 +1,5 @@
 import './register.scss';
+import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
@@ -16,6 +17,7 @@ import errorHandler from '../../shared/utils/error-handler';
 function Register({ setIsSuccess }) {
   const location = useLocation();
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     control,
@@ -38,6 +40,7 @@ function Register({ setIsSuccess }) {
   const navigate = useNavigate();
 
   const onSubmit = (inputData) => {
+    setIsLoading(true);
     registerApi
       .postRegister(inputData)
       .then(() => {
@@ -50,6 +53,7 @@ function Register({ setIsSuccess }) {
       })
       .finally(() => {
         dispatch(setPopupsOpen('popup-register'));
+        setIsLoading(false);
       });
   };
 
@@ -150,7 +154,7 @@ function Register({ setIsSuccess }) {
           label="Зарегистрироваться"
           onClick={handleSubmit(onSubmit)}
           primary
-          disabled={!isValid}
+          disabled={!isValid || isLoading}
         />
       </div>
     </main>

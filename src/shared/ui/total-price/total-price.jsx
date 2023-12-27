@@ -9,7 +9,7 @@ import PricePreloader from '../price-preloader/price-preloader';
  * @param {boolean} isRegister - is the user logged in or not
  */
 
-function TotalPrice({ total, onClick, isButtonActive }) {
+function TotalPrice({ total, onClick, isButtonActive, isLoading }) {
   const isPreloading = useSelector(selectPreloader);
 
   return (
@@ -25,7 +25,7 @@ function TotalPrice({ total, onClick, isButtonActive }) {
         primary
         label="Оформить заказ"
         onClick={() => onClick()}
-        disabled={!isButtonActive}
+        disabled={!isButtonActive || isLoading}
       />
     </div>
   );
