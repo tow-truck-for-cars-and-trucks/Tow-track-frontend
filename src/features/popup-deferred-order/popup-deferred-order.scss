@@ -1,4 +1,12 @@
 .popup-deferred {
+  margin: 44px 16px;
+
+  @media (width >= 768px) {
+    & {
+      margin: 20px 16px;
+    }
+  }
+
   &__title {
     margin: 0 0 24px;
     color: var(--text-black-80, #3b3e49);

@@ -53,7 +53,7 @@ function Popup({ children, active, setActive, contentBottom }) {
         ref={popupRef}
       >
         <div
-          className={`popup__content${
+          className={`popup__content ${
             contentBottom ? ' popup__content_bottom' : ''
           }`}
         >

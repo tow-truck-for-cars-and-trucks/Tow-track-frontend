@@ -3,19 +3,20 @@ import { useYMaps } from '@pbe/react-yandex-maps';
 import { useRef, useEffect, useState } from 'react';
 import mapPlacemark from '../../../assets/images/pin.svg';
 
-function MainMap({ from }) {
+function MainMap({ coordinates, onFromChange, onToChange }) {
   const mapRef = useRef(null);
   const ymaps = useYMaps(['Map', 'GeoObject', 'geolocation', 'geocode']);
 
   const [myMap, setMyMap] = useState(null);
-  const [tochki, setTochki] = useState([]);
+
+  const [selectionMode, setSelectionMode] = useState('from');
 
   useEffect(() => {
-    if (from) {
+    if (coordinates) {
       myMap.geoObjects.removeAll();
-      myMap?.geoObjects.add(from);
+      myMap?.geoObjects.add(coordinates);
     }
-  }, [myMap, from]);
+  }, [myMap, coordinates]);
 
   useEffect(() => {
     if (!ymaps || !mapRef.current) {
@@ -39,34 +40,40 @@ function MainMap({ from }) {
       // Получение координат щелчка
       const coords = e.get('coords');
 
-      if (tochki.length >= 2) {
-        return;
-      }
+      ymaps.geocode(coords).then((res) => {
+        const text = res.geoObjects.get(0).properties.get('text');
 
-      const newGeoObject = new ymaps.GeoObject(
-        {
-          geometry: {
-            type: 'Point', // тип геометрии - точка
-            coordinates: coords, // координаты точки
-          },
-        },
-        {
-          iconLayout: 'default#image',
-          iconImageHref: mapPlacemark,
-          iconImageSize: [44, 52],
+        if (selectionMode === 'from') {
+          onFromChange(text);
+        } else {
+          onToChange(text);
         }
-      );
 
-      setTochki([...tochki, newGeoObject]);
+        const newGeoObject = new ymaps.GeoObject(
+          {
+            geometry: {
+              type: 'Point', // тип геометрии - точка
+              coordinates: coords, // координаты точки
+            },
+          },
+          {
+            iconLayout: 'default#image',
+            iconImageHref: mapPlacemark,
+            iconImageSize: [44, 52],
+          }
+        );
 
-      myMap.geoObjects.add(newGeoObject);
+        setSelectionMode(selectionMode === 'from' ? 'to' : 'from');
+
+        myMap.geoObjects.add(newGeoObject);
+      });
     };
     myMap.events.add('click', callback);
 
     return () => {
       myMap.events.remove('click', callback);
     };
-  }, [myMap, tochki]);
+  }, [myMap, selectionMode]);
 
   return (
     <div className="main-map">

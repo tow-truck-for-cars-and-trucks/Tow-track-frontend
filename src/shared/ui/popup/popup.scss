@@ -28,18 +28,23 @@
 
   &__content_bottom {
     align-self: flex-end;
-    width: 358px;
-    min-height: 379px;
-    padding: 44px 16px;
+    width: 100%;
+    min-height: 467px;
+    padding: 0;
     border-radius: 28px 28px 0 0;
 
     @media (width >= 768px) {
       & {
         align-self: center;
-        min-height: 427px;
+        width: 390px;
+        min-height: 467px;
         border-radius: 28px;
       }
     }
+  }
+
+  &__content_map {
+    min-height: 70%;
   }
 
   &__close {

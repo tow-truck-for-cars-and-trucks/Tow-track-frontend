@@ -26,6 +26,9 @@ import TotalPrice from '../../../shared/ui/total-price/total-price';
 import ButtonCounterController from '../../../entities/ui/button-counter-controller/button-counter-controller';
 import MainMap from '../../../entities/ui/main-map/main-map';
 import MarkerIcon from '../../../shared/ui/icons/marker-icon';
+import PopupMap from '../../../entities/ui/popup-map/popup-map';
+import mapPointA from '../../../assets/images/pin_point-A.svg';
+import mapPointB from '../../../assets/images/pin_point-B.svg';
 
 function CreateOrder() {
   const ymaps = useYMaps([
@@ -34,9 +37,10 @@ function CreateOrder() {
     'GeoObject',
     'geolocation',
     'geocode',
+    'multiRouter.MultiRoute',
   ]);
 
-  const [from, setFrom] = useState();
+  const [coordinates, setCoordinates] = useState();
 
   const allPricing = useSelector((store) => store.allPricing.tariff);
   const allCars = useSelector((store) => store.allCars.carType);
@@ -94,7 +98,7 @@ function CreateOrder() {
     resolver: yupResolver(addressFormSchema),
   });
 
-  const isButtonActive = !(errors.addressFrom || errors.addressTo);
+  const isButtonValid = !(errors.addressFrom || errors.addressTo);
 
   useEffect(() => {
     const subscription = watch(({ addressFrom, addressTo }) => {
@@ -103,9 +107,25 @@ function CreateOrder() {
       timerRef.current = setTimeout(() => {
         handleSubmit(calculatePrice).apply(this);
 
-        ymaps.route([addressFrom, addressTo]).then((result) => {
-          setFrom(result);
-        });
+        const multiRoute = new ymaps.multiRouter.MultiRoute(
+          {
+            referencePoints: [addressFrom, addressTo],
+          },
+          {
+            wayPointStartIconLayout: 'default#image',
+            wayPointStartIconImageHref: mapPointA,
+            wayPointStartIconImageSize: [44, 52],
+            wayPointFinishIconLayout: 'default#image',
+            wayPointFinishIconImageHref: mapPointB,
+            wayPointFinishIconImageSize: [44, 52],
+            routeActiveStrokeWidth: 4,
+            routeActiveStrokeColor: '#BEBEBF',
+            boundsAutoApply: true,
+            zoomMargin: 10,
+          }
+        );
+
+        setCoordinates(multiRoute);
       }, 1000);
     });
     return () => subscription.unsubscribe();
@@ -149,10 +169,29 @@ function CreateOrder() {
                 )}
               />
             </div>
-            <button type="button" className="create-order__check-map">
-              <MarkerIcon width="20px" height="20px" />
-              Проверить на карте
-            </button>
+            <div className="create-order__check-map">
+              <button
+                type="button"
+                className="create-order__map-button"
+                onClick={() => {
+                  dispatch(setPopupsOpen('popup-map'));
+                }}
+              >
+                <div className="create-order__icon">
+                  <MarkerIcon width="20px" height="20px" />
+                </div>
+                Указать на карте
+              </button>
+            </div>
+            <PopupMap
+              coordinates={coordinates}
+              onFromChange={(v) => {
+                setValue('addressFrom', v);
+              }}
+              onToChange={(v) => {
+                setValue('addressTo', v);
+              }}
+            />
             <h2 className="create-order__title">Что перевозим?</h2>
             <div className="create-order__views">
               <Controller
@@ -273,13 +312,21 @@ function CreateOrder() {
               <TotalPrice
                 onClick={handleSubmit((order) => createOrder(order))}
                 total={totalPrice || 0}
-                isButtonActive={isButtonActive}
+                isButtonActive={isButtonValid}
               />
             </div>
           </form>
         </div>
         <div className="create-order__map">
-          <MainMap from={from} />
+          <MainMap
+            coordinates={coordinates}
+            onFromChange={(v) => {
+              setValue('addressFrom', v);
+            }}
+            onToChange={(v) => {
+              setValue('addressTo', v);
+            }}
+          />
         </div>
       </div>
     </div>
