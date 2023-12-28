@@ -11,7 +11,7 @@
   }
 
   &__title {
-    margin: 0;
+    margin: 0 0 74px;
     padding-left: 16px;
     color: var(--text-black-80);
     font-weight: 700;
@@ -21,57 +21,15 @@
 
   @media (width >= 1024px) {
     &__title {
-      margin-bottom: 37px;
+      margin-bottom: 82px;
       padding-left: 60px;
       font-size: 40px;
       line-height: 1.45;
     }
   }
 
-  &__sort {
-    width: 143px;
-    color: var(--accent-black-80);
-    font-weight: 500;
-    font-size: 16px;
-    font-style: normal;
-    line-height: 135%;
-    letter-spacing: 0.5px;
-    background-color: transparent;
-    background-image: url('../../../shared/ui/icons/ic_chevron-down.svg');
-    background-repeat: no-repeat;
-    background-position: center right;
-    border: none;
-    outline: none;
-    appearance: none;
-  }
-
-  &__sort-text {
-    display: inline-block;
-    margin: 29px 9px 0 16px;
-    padding: 0;
-    color: var(--text-black-40);
-    font-weight: 500;
-    font-size: 16px;
-    font-style: normal;
-    line-height: 135%;
-  }
-
-  @media (width >= 1024px) {
-    &__sort-text {
-      margin: 0 8px 0 60px;
-      font-weight: 400;
-    }
-
-    &__sort {
-      margin: 0;
-      padding: 0;
-      font-weight: 400;
-    }
-  }
-
   &__cards {
     display: flex;
-    margin-top: 24px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
