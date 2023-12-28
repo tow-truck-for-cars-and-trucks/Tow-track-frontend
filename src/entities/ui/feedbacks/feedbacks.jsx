@@ -18,18 +18,6 @@ function Feedbacks() {
     <section className="feedbacks" data-testid="feedbacks">
       <div className="feedbacks__container">
         <h2 className="feedbacks__title">Отзывы</h2>
-        <p className="feedbacks__sort-text">Показать:</p>
-        <select size={1} className="feedbacks__sort">
-          <option selected value="new" className="feedbacks__sort-item">
-            cначала новые
-          </option>
-          <option value="new" className="feedbacks__sort-item">
-            cначала новые
-          </option>
-          <option value="new" className="feedbacks__sort-item">
-            cначала новые
-          </option>
-        </select>
         <div className="feedbacks__cards" ref={elRef}>
           <div className="feedbacks__card">
             {feedbacks.map((feedback) => (

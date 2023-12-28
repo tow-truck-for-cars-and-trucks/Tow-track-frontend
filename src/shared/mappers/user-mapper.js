@@ -17,6 +17,7 @@ export function mapUserDataFromBackend(data) {
     confirmPassword: data.re_password,
     consent: data.consent,
     fieldErrors: data?.non_field_errors,
+    non_field_errors: data?.fieldErrors,
   };
 }
 
