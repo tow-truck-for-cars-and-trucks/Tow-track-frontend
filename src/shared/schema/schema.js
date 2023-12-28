@@ -23,7 +23,7 @@ export const registerFormSchema = yup.object().shape({
     .string()
     .max(50, 'Введенное имя слишком длинное')
     .matches(
-      /(^[a-zA-Zа-яёА-ЯЁ\- ]*[a-zA-Zа-яёА-ЯЁ]$)/,
+      /^[a-zA-Zа-яёА-ЯЁ]+ ?(-?[a-zA-Zа-яёА-ЯЁ]{1,})?$/,
       'Используйте буквы и символы'
     )
     .required('Введите имя'),
