@@ -1,5 +1,5 @@
 import './register.scss';
-import { useState, createRef, useEffect } from 'react';
+import { useEffect, createRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
