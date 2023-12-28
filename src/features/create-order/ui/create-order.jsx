@@ -36,6 +36,7 @@ function CreateOrder() {
   ]);
 
   const [from, setFrom] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const allPricing = useSelector((store) => store.allPricing.tariff);
   const allCars = useSelector((store) => store.allCars.carType);
@@ -53,12 +54,15 @@ function CreateOrder() {
 
   const createOrder = useCallback(
     async (order) => {
+      setIsLoading(true);
       if (getLocalStorageToken()) {
         try {
           const data = await dispatch(placeAnOrder(order)).unwrap();
           navigate(`/order/${data.id}`);
         } catch (error) {
           console.error(error);
+        } finally {
+          setIsLoading(false);
         }
       } else {
         dispatch(saveTemporaryOrder(order));
@@ -269,6 +273,7 @@ function CreateOrder() {
                 onClick={handleSubmit((order) => createOrder(order))}
                 total={totalPrice || 0}
                 isButtonActive={isButtonActive}
+                isLoading={isLoading}
               />
             </div>
           </form>

@@ -1,4 +1,5 @@
 import './auth.scss';
+import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -38,6 +39,8 @@ function Auth() {
     resolver: yupResolver(authFormSchema),
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const continueOrder = async () => {
     if (getLocalStorageToken()) {
       try {
@@ -50,6 +53,7 @@ function Auth() {
   };
 
   const onSubmit = (inputData) => {
+    setIsLoading(true);
     authApi
       .postLogin(inputData)
       .then((data) => {
@@ -62,7 +66,8 @@ function Auth() {
       })
       .catch(({ error }) => {
         errorHandler(error, setError);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -109,7 +114,7 @@ function Auth() {
             label="Войти"
             onClick={handleSubmit(onSubmit)}
             primary
-            disabled={!isValid}
+            disabled={!isValid || isLoading}
           />
         </div>
       </form>

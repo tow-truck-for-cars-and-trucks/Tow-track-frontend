@@ -3,7 +3,7 @@ import './button.scss';
 /**
  * @param {string} label - title of the button
  * @param {boolean} primary - flag indicating the style of the button
- * @param {string} disabled - flag indicating that the button is disabled for clicking
+ * @param {boolean} disabled - flag indicating that the button is disabled for clicking
  * @param {function} onClick - callback called by pressing a button
  */
 function Button({ primary, label, onClick, disabled, id }) {

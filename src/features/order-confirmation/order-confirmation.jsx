@@ -18,6 +18,7 @@ import TotalPrice from '../../shared/ui/total-price/total-price';
 
 function OrderConfirmation() {
   const [activeTab, setActiveTab] = useState('cash');
+  const [isLoading, setIsLoading] = useState(false);
 
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -32,11 +33,14 @@ function OrderConfirmation() {
   const tariff = useSelector((state) => getPlanTitle(state, newOrder));
 
   const updateOrderStatus = useCallback(() => {
+    setIsLoading(true);
     try {
       dispatch(updateOrder({ id, status: 'Активный' })).unwrap();
       navigate(`/success-order/${id}`, { replace: true });
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   }, [dispatch, id, navigate]);
 
@@ -102,6 +106,7 @@ function OrderConfirmation() {
             total={newOrder.total}
             isButtonActive
             onClick={() => updateOrderStatus()}
+            isLoading={isLoading}
           />
         </div>
       </form>
