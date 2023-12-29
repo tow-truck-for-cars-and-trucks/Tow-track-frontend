@@ -322,17 +322,21 @@ function CreateOrder() {
             </div>
           </form>
         </div>
-        <div className="create-order__map">
-          <MainMap
-            coordinates={coordinates}
-            onFromChange={(v) => {
-              setValue('addressFrom', v);
-            }}
-            onToChange={(v) => {
-              setValue('addressTo', v);
-            }}
-          />
-        </div>
+        {window.innerWidth > 768 ? (
+          <div className="create-order__map">
+            <MainMap
+              coordinates={coordinates}
+              onFromChange={(v) => {
+                setValue('addressFrom', v);
+              }}
+              onToChange={(v) => {
+                setValue('addressTo', v);
+              }}
+            />
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     </div>
   );

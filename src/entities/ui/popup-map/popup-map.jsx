@@ -10,7 +10,7 @@ import mapPlacemark from '../../../assets/images/pin.svg';
 import Button from '../../../shared/ui/button/button';
 import Popup from '../../../shared/ui/popup/popup';
 
-function MainMap({ coordinates, onFromChange, onToChange }) {
+function PopupMap({ coordinates, onFromChange, onToChange }) {
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => isPopupOpen(state, 'popup-map'));
   const mapRef = useRef(null);
@@ -108,4 +108,4 @@ function MainMap({ coordinates, onFromChange, onToChange }) {
   );
 }
 
-export default MainMap;
+export default PopupMap;
