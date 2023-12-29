@@ -13,6 +13,7 @@ function HourDropdown({ value, onChange, isActive, setIsActive, startHour }) {
           id: index + startHour,
           label: (index + startHour).toString().padStart(2, '0'),
         }))}
+      isDefferedOrder
     />
   );
 }

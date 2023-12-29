@@ -19,6 +19,7 @@ function MonthDropdown({ value, onChange, isActive, setIsActive }) {
       isActive={isActive}
       setIsActive={setIsActive}
       valueComparator={(option, innerValue) => isEqual(option.id, innerValue)}
+      isDefferedOrder
     />
   );
 }
