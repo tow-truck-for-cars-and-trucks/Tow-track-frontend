@@ -19,6 +19,7 @@ function MinuteDropdown({
           id: index * 10 + startMinute,
           label: (index * 10 + startMinute).toString().padEnd(2, '0'),
         }))}
+      isDefferedOrder
     />
   );
 }

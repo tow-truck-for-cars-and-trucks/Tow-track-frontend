@@ -7,6 +7,7 @@ import feedbacksSlice from '../../entities/ui/feedbacks/model/feedback-slice';
 import pricePreloaderSlice from '../../features/create-order/model/price-preloader-slice';
 import allOrdersSlice from '../../widget/my-order/model/all-orders-slice';
 import popupsSlice from '../../shared/ui/popup/model/popup-slice';
+import addressHintsSlice from '../../features/create-order/model/address-hints-slice';
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     feedbacks: feedbacksSlice,
     allOrders: allOrdersSlice,
     popups: popupsSlice,
+    addressHints: addressHintsSlice,
   },
 });
 
@@ -32,6 +34,7 @@ export const setupStore = (preloadedState) =>
       feedbacks: feedbacksSlice,
       allOrders: allOrdersSlice,
       popups: popupsSlice,
+      addressHints: addressHintsSlice,
     },
     preloadedState,
   });

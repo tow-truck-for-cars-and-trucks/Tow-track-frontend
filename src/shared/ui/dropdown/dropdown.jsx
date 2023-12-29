@@ -9,6 +9,8 @@ function Dropdown({
   options,
   onChange,
   valueComparator,
+  isCreateOrder,
+  isDefferedOrder,
 }) {
   const onValueSelect = useCallback(
     (option) => {
@@ -19,28 +21,37 @@ function Dropdown({
   );
 
   return (
-    <div className="dropdown" data-testid="dropdown">
-      <div
-        className={`dropdown__header ${
-          isActive ? 'dropdown__header_active' : ''
-        }`}
-        onMouseDown={(e) => {
-          e.stopPropagation();
-          setIsActive(!isActive);
-        }}
-        role="button"
-        tabIndex={0}
-        aria-label="Дробдаун-меню"
-      >
-        <div className="dropdown__title">
-          {options.find((option) => valueComparator(option, value))?.label}
+    <div
+      className={`dropdown ${
+        isDefferedOrder ? 'dropdown_style_deffered-order' : ''
+      } ${isCreateOrder ? 'dropdown_style_create-order' : ''}`}
+      data-testid="dropdown"
+    >
+      {!isCreateOrder && (
+        <div
+          className={`dropdown__header ${
+            isActive ? 'dropdown__header_active' : ''
+          }`}
+          onMouseDown={(e) => {
+            e.stopPropagation();
+            setIsActive(!isActive);
+          }}
+          role="button"
+          tabIndex={0}
+          aria-label="Дробдаун-меню"
+        >
+          <div className="dropdown__title">
+            {options.find((option) => valueComparator(option, value))?.label}
+          </div>
+          <div className="dropdown__icon">
+            <ArrowDownIcon width="16px" height="16px" fill="#3B3E49" />
+          </div>
         </div>
-        <div className="dropdown__icon">
-          <ArrowDownIcon width="16px" height="16px" fill="#3B3E49" />
-        </div>
-      </div>
+      )}
       <div
         className={`dropdown__content ${
+          isDefferedOrder ? 'dropdown__content_style_deffered-order' : ''
+        } ${isCreateOrder ? 'dropdown__content_style_create-order' : ''} ${
           isActive ? 'dropdown__content_active' : ''
         }`}
       >
