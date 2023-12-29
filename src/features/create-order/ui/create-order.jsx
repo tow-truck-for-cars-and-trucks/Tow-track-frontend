@@ -65,12 +65,8 @@ function CreateOrder() {
   }
 
   const handleAddressHints = useCallback(
-    async (address) => {
-      try {
-        await dispatch(getAddressHints(address));
-      } catch (error) {
-        console.error(error);
-      }
+    (address) => {
+      dispatch(getAddressHints(address));
     },
     [dispatch]
   );
