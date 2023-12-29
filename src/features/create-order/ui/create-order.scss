@@ -58,6 +58,37 @@
     }
   }
 
+  &__check-map {
+    display: flex;
+    justify-content: center;
+
+    @media (width >= 768px) {
+      & {
+        display: none;
+      }
+    }
+  }
+
+  &__map-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+    color: var(--accent-black-90);
+    font-weight: 500;
+    font-size: 18px;
+    font-family: Mulish, Helvetica, Arial, sans-serif;
+    line-height: 1.2;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__icon {
+    padding-right: 5px;
+  }
+
   &__views {
     display: flex;
     overflow-x: auto;
@@ -88,6 +119,10 @@
     margin-top: 29px;
     padding-right: 16px;
     padding-bottom: 32px;
+
+    &:first-of-type {
+      padding-bottom: 0;
+    }
 
     &_container {
       @media (width >= 1440px) {
