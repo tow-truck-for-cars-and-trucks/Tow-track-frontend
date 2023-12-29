@@ -24,6 +24,7 @@ export function mapAuthDataToBackend(data) {
   return {
     phone: data.phoneNumber,
     password: data.password,
+    non_field_errors: data?.fieldErrors,
   };
 }
 
@@ -31,5 +32,6 @@ export function mapAuthDataFromBackend(data) {
   return {
     phoneNumber: data.phone,
     password: data.password,
+    fieldErrors: data?.non_field_errors,
   };
 }
