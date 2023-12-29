@@ -14,6 +14,7 @@ import {
   setPopupsOpen,
   setPopupsClose,
 } from '../../../shared/ui/popup/model/popup-slice';
+import useWindowSize from '../../../entities/hooks/useWindowSize';
 import Input from '../../../shared/ui/input/input';
 import NavigationArrowIcon from '../../../shared/ui/icons/navigation-arrow-icon';
 import Description from '../../../shared/ui/description/description';
@@ -135,6 +136,8 @@ function CreateOrder() {
     return () => subscription.unsubscribe();
   }, [handleSubmit, watch, ymaps]);
 
+  const { width } = useWindowSize();
+
   return (
     <div className="create-order" data-testid="createOrder">
       <div className="create-order__content">
@@ -187,15 +190,17 @@ function CreateOrder() {
                 Указать на карте
               </button>
             </div>
-            <PopupMap
-              coordinates={coordinates}
-              onFromChange={(v) => {
-                setValue('addressFrom', v);
-              }}
-              onToChange={(v) => {
-                setValue('addressTo', v);
-              }}
-            />
+            {width < 768 ? (
+              <PopupMap
+                coordinates={coordinates}
+                onFromChange={(v) => {
+                  setValue('addressFrom', v);
+                }}
+                onToChange={(v) => {
+                  setValue('addressTo', v);
+                }}
+              />
+            ) : null}
             <h2 className="create-order__title">Что перевозим?</h2>
             <div className="create-order__views">
               <Controller
@@ -322,7 +327,7 @@ function CreateOrder() {
             </div>
           </form>
         </div>
-        {window.innerWidth > 768 ? (
+        {width > 768 ? (
           <div className="create-order__map">
             <MainMap
               coordinates={coordinates}
@@ -334,9 +339,7 @@ function CreateOrder() {
               }}
             />
           </div>
-        ) : (
-          ''
-        )}
+        ) : null}
       </div>
     </div>
   );

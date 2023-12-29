@@ -22,7 +22,7 @@ function PopupMap({ coordinates, onFromChange, onToChange }) {
 
   useEffect(() => {
     if (coordinates) {
-      myMap.geoObjects.removeAll();
+      myMap?.geoObjects.removeAll();
       myMap?.geoObjects.add(coordinates);
     }
   }, [myMap, coordinates]);
