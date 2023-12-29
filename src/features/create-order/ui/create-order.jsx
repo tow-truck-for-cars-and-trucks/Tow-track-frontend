@@ -190,6 +190,7 @@ function CreateOrder() {
                       if (e !== '') setIsAddressFromDropdown(true);
                     }}
                     id="addressFrom"
+                    autoComplete="off"
                   />
                 )}
               />
@@ -216,6 +217,7 @@ function CreateOrder() {
                       if (e !== '') setIsAddressToDropdown(true);
                     }}
                     id="addressTo"
+                    autoComplete="off"
                   />
                 )}
               />

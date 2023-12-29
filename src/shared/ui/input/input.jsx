@@ -30,6 +30,7 @@ function Input({
   id,
   type,
   onClick,
+  autoComplete,
 }) {
   return (
     <div
@@ -45,6 +46,7 @@ function Input({
           mask={mask}
           name={id}
           data-testid={id}
+          autoComplete={autoComplete}
           readOnly={readonly}
           type={type || 'text'}
           className="input__text"
