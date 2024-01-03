@@ -57,7 +57,8 @@ function CreateOrder() {
   const location = useLocation();
   const timerRef = useRef(null);
 
-  const addressRef = useRef();
+  const addressFromRef = useRef();
+  const addressToRef = useRef();
 
   function calculatePrice(order) {
     dispatch(togglePreloader());
@@ -65,12 +66,8 @@ function CreateOrder() {
   }
 
   const handleAddressHints = useCallback(
-    async (address) => {
-      try {
-        await dispatch(getAddressHints(address));
-      } catch (error) {
-        console.error(error);
-      }
+    (address) => {
+      dispatch(getAddressHints(address));
     },
     [dispatch]
   );
@@ -155,15 +152,21 @@ function CreateOrder() {
 
   useEffect(() => {
     const handleFocus = (e) => {
-      if (addressRef.current && !addressRef.current.contains(e.relatedTarget)) {
+      if (
+        addressFromRef.current &&
+        !addressFromRef.current.contains(e.relatedTarget)
+      )
         setIsAddressFromDropdown(false);
+      if (
+        addressToRef.current &&
+        !addressToRef.current.contains(e.relatedTarget)
+      )
         setIsAddressToDropdown(false);
-      }
     };
 
     document.addEventListener('focusout', handleFocus);
     return () => document.removeEventListener('focusout', handleFocus);
-  }, [setIsAddressFromDropdown, addressRef]);
+  }, [setIsAddressFromDropdown, addressFromRef, addressToRef]);
 
   const { width } = useWindowSize();
 
@@ -173,7 +176,7 @@ function CreateOrder() {
         <div>
           <h2 className="create-order__title">Адреса</h2>
           <form>
-            <div className="create-order__input" ref={addressRef}>
+            <div className="create-order__input">
               <Controller
                 name="addressFrom"
                 control={control}
@@ -190,6 +193,8 @@ function CreateOrder() {
                       if (e !== '') setIsAddressFromDropdown(true);
                     }}
                     id="addressFrom"
+                    autoComplete="off"
+                    inputСontainerRef={addressFromRef}
                   />
                 )}
               />
@@ -216,6 +221,8 @@ function CreateOrder() {
                       if (e !== '') setIsAddressToDropdown(true);
                     }}
                     id="addressTo"
+                    autoComplete="off"
+                    inputСontainerRef={addressToRef}
                   />
                 )}
               />

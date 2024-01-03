@@ -30,6 +30,8 @@ function Input({
   id,
   type,
   onClick,
+  autoComplete,
+  inputСontainerRef,
 }) {
   return (
     <div
@@ -40,11 +42,12 @@ function Input({
       ${readonly ? 'input_readonly' : ''}
       ${password ? 'input_password' : ''}`}
     >
-      <div className="input__container">
+      <div className="input__container" ref={inputСontainerRef}>
         <InputMask
           mask={mask}
           name={id}
           data-testid={id}
+          autoComplete={autoComplete}
           readOnly={readonly}
           type={type || 'text'}
           className="input__text"
