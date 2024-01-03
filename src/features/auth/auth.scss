@@ -1,8 +1,14 @@
 .auth {
-  min-width: 358px;
+  width: 358px;
   height: 100vh;
   padding: 4px 16px 0;
   background-color: var(--background-grey-light-blue-40);
+
+  @media (width >= 768px) {
+    & {
+      width: 666px;
+    }
+  }
 
   &__input {
     padding-top: 24px;

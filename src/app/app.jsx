@@ -14,6 +14,7 @@ const SuccessOrderPage = lazy(() =>
   import('../pages/success-order-page/success-order-page')
 );
 const MyOrderPage = lazy(() => import('../pages/my-order-page/my-order-page'));
+const NotFound = lazy(() => import('../widget/not-found/not-found'));
 
 function App() {
   const dispatch = useDispatch();
@@ -93,6 +94,14 @@ function App() {
               forLoggedUser
               element={<h1>Эта страница в разработке</h1>}
             />
+          </Suspense>
+        }
+      />
+      <Route
+        path="*"
+        element={
+          <Suspense fallback={<Preloader />}>
+            <NotFound />
           </Suspense>
         }
       />

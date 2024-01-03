@@ -19,25 +19,26 @@ function RegisterWidget() {
       <div className="register-widget__back-button">
         <BackButton />
       </div>
-      <div className="register-widget__navigation">
-        <ChipsList
-          chips={[
-            { label: 'Вход', id: 'login' },
-            { label: 'Регистрация', id: 'register' },
-          ]}
-          value={params.get('mode')}
-          onChange={(chips) =>
-            navigate(`/register?mode=${chips}`, { state: location.state })
-          }
-        />
+      <div className="register-widget__content">
+        <div className="register-widget__navigation">
+          <ChipsList
+            chips={[
+              { label: 'Вход', id: 'login' },
+              { label: 'Регистрация', id: 'register' },
+            ]}
+            value={params.get('mode')}
+            onChange={(chips) =>
+              navigate(`/register?mode=${chips}`, { state: location.state })
+            }
+          />
+        </div>
+        {params.get('mode') === 'login' ? (
+          <Auth />
+        ) : (
+          <Register setIsSuccess={setIsSuccess} />
+        )}
+        <PopupRegistration isSuccess={isSuccess} />
       </div>
-
-      {params.get('mode') === 'login' ? (
-        <Auth />
-      ) : (
-        <Register setIsSuccess={setIsSuccess} />
-      )}
-      <PopupRegistration isSuccess={isSuccess} />
     </main>
   );
 }

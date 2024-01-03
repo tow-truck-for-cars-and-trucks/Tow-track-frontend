@@ -1,8 +1,17 @@
 .my-order {
   min-width: 390px;
-  max-width: 768px;
+  min-height: 100vh;
   padding-top: 56px;
   background: var(--background-grey-light-blue-40);
+
+  &__content {
+    @media (width >= 768px) {
+      & {
+        width: 709px;
+        margin: 0 auto;
+      }
+    }
+  }
 
   &__title {
     padding-bottom: 40px;

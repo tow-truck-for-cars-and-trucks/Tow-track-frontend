@@ -2,9 +2,17 @@
   display: flex;
   flex-flow: column wrap;
   align-content: center;
-  max-width: 736px;
   padding: 48px 16px 56px;
   background-color: var(--background-grey-light-blue-40);
+
+  &__content {
+    @media (width >= 768px) {
+      & {
+        width: 100%;
+        margin: 0 auto;
+      }
+    }
+  }
 
   &__header {
     display: flex;
@@ -13,10 +21,21 @@
     justify-content: space-between;
     max-width: 358px;
     padding-bottom: 28px;
+
+    @media (width >= 768px) {
+      & {
+        padding-left: 60px;
+      }
+    }
+
+    @media (width >= 1440px) {
+      & {
+        padding-left: 100px;
+      }
+    }
   }
 
   &__subtitle {
-    // width: fit-content;
     margin: 0;
     padding: 12px 20px;
     color: var(--accent-black-90);

@@ -33,16 +33,18 @@ function OrderSuccessWidget() {
 
   return (
     <section className="order-successfully">
-      <div className="order-successfully__header">
-        <div className="order-successfully__wrapper">
-          <h1 className="order-successfully__title-border">
-            Заказ №{activeOrder?.id}{' '}
-          </h1>
-          <p className="order-successfully__title">успешно</p>
+      <div className="order-successfully__content">
+        <div className="order-successfully__header">
+          <div className="order-successfully__wrapper">
+            <h1 className="order-successfully__title-border">
+              Заказ №{activeOrder?.id}{' '}
+            </h1>
+            <p className="order-successfully__title">успешно</p>
+          </div>
+          <p className="order-successfully__title"> оформлен!</p>
         </div>
-        <p className="order-successfully__title"> оформлен!</p>
+        <OrderSuccess cancelOrder={() => updateOrderStatus()} />
       </div>
-      <OrderSuccess cancelOrder={() => updateOrderStatus()} />
     </section>
   );
 }
