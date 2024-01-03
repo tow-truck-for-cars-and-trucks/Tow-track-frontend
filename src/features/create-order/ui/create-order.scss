@@ -46,14 +46,20 @@
   &__input {
     display: flex;
     flex-direction: column;
-    gap: 20px;
     padding-right: 16px;
     padding-bottom: 28px;
 
+    :nth-child(2) {
+      margin-bottom: 20px;
+    }
+
     @media (width >= 1440px) {
       & {
-        gap: 40px;
         padding-bottom: 48px;
+      }
+
+      :nth-child(2) {
+        margin-bottom: 40px;
       }
     }
   }

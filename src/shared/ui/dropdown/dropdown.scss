@@ -74,15 +74,9 @@
     }
 
     &_style_create-order {
-      top: -20px;
+      top: 0;
       max-width: 100%;
       border-radius: 12px;
-
-      @media (width >= 1440px) {
-        & {
-          top: -40px;
-        }
-      }
     }
   }
 
