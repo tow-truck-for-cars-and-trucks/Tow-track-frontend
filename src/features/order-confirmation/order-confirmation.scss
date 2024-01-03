@@ -12,14 +12,34 @@
 
 .order-confirmation {
   min-width: 358px;
-  max-width: 736px;
   padding-right: 16px;
   padding-left: 16px;
   background-color: var(--background-grey-light-blue-40);
 
+  &__content {
+    @media (width >= 768px) {
+      & {
+        width: 709px;
+        margin: 0 auto;
+      }
+    }
+  }
+
   &__back-button {
     padding-top: 20px;
     padding-bottom: 20px;
+
+    @media (width >= 768px) {
+      & {
+        padding-left: 50px;
+      }
+    }
+
+    @media (width >= 1024px) {
+      & {
+        padding-left: 80px;
+      }
+    }
   }
 
   &__form {

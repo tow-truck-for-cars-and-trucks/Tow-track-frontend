@@ -8,9 +8,17 @@
 }
 
 .order-successfully {
-  max-width: 738px;
   padding: 56px 15px;
   background-color: var(--background-grey-light-blue-40);
+
+  &__content {
+    @media (width >= 768px) {
+      & {
+        width: 709px;
+        margin: 0 auto;
+      }
+    }
+  }
 
   &__header {
     padding-bottom: 40px;

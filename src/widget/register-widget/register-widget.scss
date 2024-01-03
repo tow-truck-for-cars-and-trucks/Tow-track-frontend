@@ -3,11 +3,31 @@
   flex-direction: column;
   align-content: center;
   min-width: 390px;
-  max-width: 768px;
   background-color: var(--background-grey-light-blue-40);
+
+  &__content {
+    @media (width >= 768px) {
+      & {
+        max-width: 768px;
+        margin: 0 auto;
+      }
+    }
+  }
 
   &__back-button {
     padding-top: 20px;
+
+    @media (width >= 768px) {
+      & {
+        padding-left: 50px;
+      }
+    }
+
+    @media (width >= 1024px) {
+      & {
+        padding-left: 100px;
+      }
+    }
   }
 
   &__navigation {

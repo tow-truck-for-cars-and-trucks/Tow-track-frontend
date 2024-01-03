@@ -49,67 +49,69 @@ function OrderConfirmation() {
       <div className="order-confirmation__back-button">
         <BackButton />
       </div>
-      <PagesTitle title="Подтверждение заказа" />
-      <form className="order-confirmation__form">
-        <div className="order-confirmation__adress">
-          <Input
-            placeholder="Откуда забрать"
-            readonly
-            value={newOrder.addressFrom}
-            id="referencePoint"
-          />
-        </div>
-        <div className="order-confirmation__adress">
-          <Input
-            placeholder="Куда доставить"
-            readonly
-            value={newOrder.addressTo}
-            id="arrivalPoint"
-          />
-        </div>
-        <div className="order-confirmation__submission-time">
-          <p className="order-confirmation__description">
-            Примерное время <span>подачи эвакуатора</span>
-          </p>
-          <p
-            className="order-confirmation__description"
-            data-testid="timeOfArrival"
-          >
-            {' '}
-            {String(getHours(new Date(newOrder.orderDate))).padStart(2, '0')}:
-            {String(getMinutes(new Date(newOrder.orderDate))).padEnd(2, '0')}
-          </p>
-        </div>
-        <div className="order-confirmation__payment">
-          <h2 className="order-confirmation__payment-title">Способ оплаты</h2>
-          <div className="order-confirmation__payment-container">
-            <ChipsList
-              chips={[
-                { label: 'Наличные', id: 'cash' },
-                { label: 'Оплата по СБП', disabled: true, id: 'byCard' },
-              ]}
-              value={activeTab}
-              onChange={(chips) => setActiveTab(chips)}
+      <div className="order-confirmation__content">
+        <PagesTitle title="Подтверждение заказа" />
+        <form className="order-confirmation__form">
+          <div className="order-confirmation__adress">
+            <Input
+              placeholder="Откуда забрать"
+              readonly
+              value={newOrder.addressFrom}
+              id="referencePoint"
             />
           </div>
-        </div>
-        <OrderDetails
-          tariff={tariff}
-          carType={carType}
-          wheelLock={newOrder.wheelLock}
-          towin={newOrder.towin ? 'Да' : 'Нет'}
-          delay={newOrder.delay ? 'Да' : 'Нет'}
-          comment={newOrder.comment}
-        />
-        <div className="order-confirmation__price">
-          <TotalPrice
-            total={newOrder.total}
-            isButtonActive
-            onClick={() => updateOrderStatus()}
-            isLoading={isLoading}
+          <div className="order-confirmation__adress">
+            <Input
+              placeholder="Куда доставить"
+              readonly
+              value={newOrder.addressTo}
+              id="arrivalPoint"
+            />
+          </div>
+          <div className="order-confirmation__submission-time">
+            <p className="order-confirmation__description">
+              Примерное время <span>подачи эвакуатора</span>
+            </p>
+            <p
+              className="order-confirmation__description"
+              data-testid="timeOfArrival"
+            >
+              {' '}
+              {String(getHours(new Date(newOrder.orderDate))).padStart(2, '0')}:
+              {String(getMinutes(new Date(newOrder.orderDate))).padEnd(2, '0')}
+            </p>
+          </div>
+          <div className="order-confirmation__payment">
+            <h2 className="order-confirmation__payment-title">Способ оплаты</h2>
+            <div className="order-confirmation__payment-container">
+              <ChipsList
+                chips={[
+                  { label: 'Наличные', id: 'cash' },
+                  { label: 'Оплата по СБП', disabled: true, id: 'byCard' },
+                ]}
+                value={activeTab}
+                onChange={(chips) => setActiveTab(chips)}
+              />
+            </div>
+          </div>
+          <OrderDetails
+            tariff={tariff}
+            carType={carType}
+            wheelLock={newOrder.wheelLock}
+            towin={newOrder.towin ? 'Да' : 'Нет'}
+            delay={newOrder.delay ? 'Да' : 'Нет'}
+            comment={newOrder.comment}
           />
-        </div>
-      </form>
+          <div className="order-confirmation__price">
+            <TotalPrice
+              total={newOrder.total}
+              isButtonActive
+              onClick={() => updateOrderStatus()}
+              isLoading={isLoading}
+            />
+          </div>
+        </form>
+      </div>
     </main>
   );
 }
