@@ -7,11 +7,19 @@ function Alert() {
       <div className="alert__icon">
         <WarnIcon width="16px" height="16px" />
       </div>
-      <p className="alert__description">
-        Для погрузки понадобится свидетельство&nbsp;о&nbsp;регистрации&nbsp;ТС,
-        водительское&nbsp;удостоверение или&nbsp;документы&nbsp;удостоверяющие
-        личность
-      </p>
+      <div className="alert__description">
+        {/*
+        Текст разделён на отдельные элементы,
+        т.к html-спецсимволы (пример: &nbsp;)
+        некорректно отображаются в safari
+        на мобильных устройствах.
+        */}
+        <p className="alert__text">Для погрузки понадобится</p>
+        <p className="alert__text">свидетельство о регистрации ТС,</p>
+        <p className="alert__text">водительское удостоверение</p>
+        <p className="alert__text">или документы удостоверяющие</p>
+        <p className="alert__text">личность</p>
+      </div>
     </div>
   );
 }

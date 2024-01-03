@@ -6,8 +6,14 @@ function ContactsInfo() {
       <ul className="contacts-info__item">
         <li className="contacts-info__title">Адрес</li>
         <li className="contacts-info__description">
-          123123,&nbsp;г.&nbsp;Москва,
-          ул.&nbsp;Ленинградская,&nbsp;28А,&nbsp;стр.&nbsp;6{' '}
+          {/*
+          Текст разделён на отдельные элементы,
+          т.к html-спецсимволы (пример: &nbsp;)
+          некорректно отображаются в safari
+          на мобильных устройствах.
+          */}
+          <p className="contacts-info__text">123123, г. Москва,</p>
+          <p className="contacts-info__text">ул. Ленинградская, 28А, стр. 6 </p>
         </li>
       </ul>
       <ul className="contacts-info__item">
