@@ -2,9 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 390px;
+  min-width: 390px;
   min-height: calc(100vh - 64px);
-  background: var(--background-grey-light-blue40);
+  background: var(--background-grey-light-blue-40);
+
+  @media (width >= 768px) {
+    & {
+      min-width: 100vh;
+      min-height: 100vh;
+    }
+  }
 
   &__error {
     position: relative;

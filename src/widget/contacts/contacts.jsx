@@ -5,11 +5,13 @@ import PagesTitle from '../../shared/ui/pages-title/pages-title';
 function Contacts() {
   return (
     <main className="contacts" data-testid="contacts">
-      <div className="contacts__header">
-        <PagesTitle title="Контакты" />
-        <p className="contacts__subtitle">Работаем 24/7</p>
+      <div className="contacts__content">
+        <div className="contacts__header">
+          <PagesTitle title="Контакты" />
+          <p className="contacts__subtitle">Работаем 24/7</p>
+        </div>
+        <ContactsMap />
       </div>
-      <ContactsMap />
     </main>
   );
 }

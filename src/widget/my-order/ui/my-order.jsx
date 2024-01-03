@@ -24,22 +24,23 @@ function MyOrder() {
 
   return (
     <main className="my-order" data-testid="my-order">
-      <div className="my-order__title">
-        <PagesTitle title="Мои заказы" />
+      <div className="my-order__content">
+        <div className="my-order__title">
+          <PagesTitle title="Мои заказы" />
+        </div>
+        <div className="my-order__navigation">
+          <ChipsList
+            chips={[
+              { label: 'Активные', id: 'active' },
+              { label: 'Завершенные', id: 'completed' },
+              { label: 'Отмененные', id: 'cancelled' },
+            ]}
+            value={activeTab}
+            onChange={(chips) => setActiveTab(chips)}
+          />
+        </div>
+        {selectedWidget}
       </div>
-      <div className="my-order__navigation">
-        <ChipsList
-          chips={[
-            { label: 'Активные', id: 'active' },
-            { label: 'Завершенные', id: 'completed' },
-            { label: 'Отмененные', id: 'cancelled' },
-          ]}
-          value={activeTab}
-          onChange={(chips) => setActiveTab(chips)}
-        />
-      </div>
-
-      {selectedWidget}
     </main>
   );
 }
