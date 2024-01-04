@@ -24,9 +24,10 @@
     line-height: 1.25;
   }
 
-  &__description {
+  &__text {
     @extend %text-style;
 
+    margin: 0;
     color: var(--text-black-80);
     font-size: 18px;
     line-height: 1.2;

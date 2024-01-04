@@ -8,7 +8,7 @@ function Banner() {
   return (
     <section className="banner" data-testid="banner">
       <div className="banner__header">
-        <h1 className="banner__title">TT Express &mdash; </h1>
+        <h1 className="banner__title">TT Express — </h1>
         <span className="banner__title">удобный сервис для вызова</span>
         <span className="banner__title">эвакуатора 24/7</span>
       </div>
