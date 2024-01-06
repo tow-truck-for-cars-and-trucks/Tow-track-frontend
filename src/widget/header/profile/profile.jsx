@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './profile.scss';
 import authApi from '../../../shared/api/auth-api';
 import checkUserLogged from '../../../app/model/validation';
+import useWindowSize from '../../../entities/hooks/useWindowSize';
 import { setLocalStorageToken } from '../../../shared/api/storage-api';
 
 /**
@@ -15,6 +16,8 @@ function Profile({ visible = false }) {
 
   const loggedIn = checkUserLogged();
 
+  const { width } = useWindowSize();
+
   const onLogout = () => {
     authApi
       .postLogout()
@@ -26,13 +29,13 @@ function Profile({ visible = false }) {
   };
 
   useEffect(() => {
-    if (visible) {
+    if (visible && width < 1024) {
       document.body.style.overflow = 'hidden';
     }
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [visible]);
+  }, [visible, width]);
 
   return (
     <div
