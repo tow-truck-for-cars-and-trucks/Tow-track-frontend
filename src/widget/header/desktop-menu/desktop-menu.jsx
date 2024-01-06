@@ -1,14 +1,16 @@
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import './desktop-menu.scss';
 import PhoneIcon from '../../../shared/ui/icons/phone-icon';
+import UserIcon from '../../../shared/ui/icons/user-icon';
 import handlePhoneCall from '../../../shared/utils/helpers';
 
 /**
  *
  * @param {string} phoneNumber - defines company number
+ * @param {function} handleClickProfile - callback function for opening a profile
  *
  */
-function DesktopMenu({ phoneNumber }) {
+function DesktopMenu({ phoneNumber, handleClickProfile }) {
   const navigate = useNavigate();
 
   const { pathname } = useLocation();
@@ -30,25 +32,24 @@ function DesktopMenu({ phoneNumber }) {
         </button>
         <button
           type="button"
-          onClick={() => {
-            navigate('/profile', { replace: true });
-          }}
-          className={`desktop-menu__item ${
-            pathname === '/profile' && params.get('open') === 'order'
-              ? 'desktop-menu__item_active'
-              : ''
-          }`}
-        >
-          Профиль
-        </button>
-        <button
-          type="button"
           onClick={() => navigate('/contacts', { replace: true })}
           className={`desktop-menu__item ${
             pathname === '/contacts' ? 'desktop-menu__item_active' : ''
           }`}
         >
           Контакты
+        </button>
+        <button
+          type="button"
+          onClick={() => handleClickProfile()}
+          className={`desktop-menu__item ${
+            pathname === '/profile' && params.get('open') === 'order'
+              ? 'desktop-menu__item_active'
+              : ''
+          }`}
+        >
+          <UserIcon width="16px" height="16px" color="#3B3E49" />
+          &nbsp; Профиль
         </button>
         <button
           className="desktop-menu__item"

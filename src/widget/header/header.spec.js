@@ -19,3 +19,9 @@ test('Проверка на наличие DesktopMenu в компоненте H
 
   expect(screen.getByTestId('desktop-menu')).toBeInTheDocument();
 });
+
+test('Проверка на наличие Profile в компоненте Header', () => {
+  renderWithProviders(<Header />);
+
+  expect(screen.getByTestId('profile')).toBeInTheDocument();
+});
