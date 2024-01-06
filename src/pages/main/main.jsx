@@ -11,11 +11,7 @@ export default function Main() {
   const createOrderRef = useRef(null);
   return (
     <>
-      <Header
-        onCreateOrderClick={() => {
-          createOrderRef.current.scrollIntoView({ behavior: 'smooth' });
-        }}
-      />
+      <Header />
       <Banner />
       <Application innerRef={createOrderRef} />
       <Feedbacks />

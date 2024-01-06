@@ -8,9 +8,12 @@ import CloseIcon from '../../shared/ui/icons/close-icon';
 import Menu from './menu/menu';
 import DesktopMenu from './desktop-menu/desktop-menu';
 import handlePhoneCall from '../../shared/utils/helpers';
+import Profile from './profile/profile';
 
-function Header({ onCreateOrderClick }) {
+function Header() {
   const [showMenu, setIsShowMenu] = useState(false);
+  const [showProfile, setIsShowProfile] = useState(false);
+
   const handleClick = () => {
     setIsShowMenu(!showMenu);
   };
@@ -34,7 +37,10 @@ function Header({ onCreateOrderClick }) {
             className="header__button"
             type="button"
             label="Перейти на главную"
-            onClick={() => navigate('/?open=main', { replace: true })}
+            onClick={() => {
+              navigate('/?open=main', { replace: true });
+              setIsShowProfile(false);
+            }}
           >
             <LogoCombined width="88.8px" height="48px" />
           </button>
@@ -50,10 +56,21 @@ function Header({ onCreateOrderClick }) {
               <BurgerIcon width="24px" height="24px" />
             )}
           </button>
-          <DesktopMenu phoneNumber={companyPhoneNumber} />
+          <DesktopMenu
+            phoneNumber={companyPhoneNumber}
+            handleClickProfile={() => setIsShowProfile(!showProfile)}
+          />
         </div>
       </header>
-      <Menu visible={showMenu} onCreateOrderClick={onCreateOrderClick} />
+      <Menu
+        visible={showMenu}
+        showProfile={showProfile}
+        handleClickProfile={() => {
+          setIsShowMenu(!showMenu);
+          setIsShowProfile(!showProfile);
+        }}
+      />
+      <Profile visible={showProfile} />
     </>
   );
 }

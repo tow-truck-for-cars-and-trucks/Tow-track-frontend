@@ -7,7 +7,7 @@ import Questions from '../../widget/questions/questions';
 function Order() {
   return (
     <>
-      <Header onCreateOrderClick={() => {}} />
+      <Header />
       <OrderConfirmation />
       <Feedbacks />
       <Questions />

@@ -1,32 +1,18 @@
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import './menu.scss';
-import authApi from '../../../shared/api/auth-api';
-import checkUserLogged from '../../../app/model/validation';
-import { setLocalStorageToken } from '../../../shared/api/storage-api';
 
 /**
  *
  * @param {boolean} visible - determines whether the menu is displayed
- * @param {string} location - determines the current route to highlight link
+ * @param {boolean} showProfile - determines whether the profile is displayed
+ * @param {function} handleClickProfile - callback function for opening a profile
  *
  */
-function Menu({ visible = false, onCreateOrderClick }) {
+function Menu({ visible = false, handleClickProfile }) {
   const navigate = useNavigate();
 
   const { pathname } = useLocation();
   const [params] = useSearchParams();
-
-  const loggedIn = checkUserLogged();
-
-  const onLogout = () => {
-    authApi
-      .postLogout()
-      .then(() => {
-        navigate('/?open=main', { replace: true });
-        setLocalStorageToken(null);
-      })
-      .catch(console.error);
-  };
 
   return (
     <div
@@ -48,17 +34,10 @@ function Menu({ visible = false, onCreateOrderClick }) {
           </button>
           <button
             type="button"
-            onClick={() => {
-              onCreateOrderClick();
-              navigate('/?open=order', { replace: true });
-            }}
-            className={`menu__item ${
-              pathname === '/' && params.get('open') === 'order'
-                ? 'menu__item_active'
-                : ''
-            }`}
+            onClick={handleClickProfile}
+            className="menu__item"
           >
-            Заказать эвакуатор
+            Профиль
           </button>
           <button
             type="button"
@@ -69,34 +48,6 @@ function Menu({ visible = false, onCreateOrderClick }) {
           >
             Контакты
           </button>
-          <button
-            type="button"
-            onClick={() => navigate('/my-orders', { replace: true })}
-            className={`menu__item ${
-              pathname === './my-orders' ? 'menu__item_active' : ''
-            }`}
-          >
-            Мои заказы
-          </button>
-          {!loggedIn ? (
-            <button
-              type="button"
-              onClick={() =>
-                navigate('/register?mode=login', { replace: true })
-              }
-              className="menu__auth"
-            >
-              Войти
-            </button>
-          ) : (
-            <button
-              type="button"
-              onClick={() => onLogout()}
-              className="menu__auth"
-            >
-              Выйти
-            </button>
-          )}
         </nav>
       </div>
     </div>
