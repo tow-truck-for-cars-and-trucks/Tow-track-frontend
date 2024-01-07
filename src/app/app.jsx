@@ -15,6 +15,7 @@ const SuccessOrderPage = lazy(() =>
 );
 const MyOrderPage = lazy(() => import('../pages/my-order-page/my-order-page'));
 const NotFound = lazy(() => import('../widget/not-found/not-found'));
+const ProfilePage = lazy(() => import('../pages/profile/profile'));
 
 function App() {
   const dispatch = useDispatch();
@@ -89,12 +90,14 @@ function App() {
       <Route
         path="/profile"
         element={
-          <Suspense fallback={<Preloader />}>
-            <ProtectedRoute
-              forLoggedUser
-              element={<h1>Эта страница в разработке</h1>}
-            />
-          </Suspense>
+          <ProtectedRoute
+            forLoggedUser
+            element={
+              <Suspense fallback={<Preloader />}>
+                <ProfilePage />
+              </Suspense>
+            }
+          />
         }
       />
       <Route
