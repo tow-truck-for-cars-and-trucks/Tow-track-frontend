@@ -5,12 +5,11 @@ import UserIcon from '../../../shared/ui/icons/user-icon';
 import handlePhoneCall from '../../../shared/utils/helpers';
 
 /**
- *
+ * @param {boolean} isShowProfile - determines whether the profile is displayed
  * @param {string} phoneNumber - defines company number
  * @param {function} handleClickProfile - callback function for opening a profile
- *
  */
-function DesktopMenu({ phoneNumber, handleClickProfile }) {
+function DesktopMenu({ isShowProfile, phoneNumber, handleClickProfile }) {
   const navigate = useNavigate();
 
   const { pathname } = useLocation();
@@ -42,10 +41,8 @@ function DesktopMenu({ phoneNumber, handleClickProfile }) {
         <button
           type="button"
           onClick={() => handleClickProfile()}
-          className={`desktop-menu__item ${
-            pathname === '/profile' && params.get('open') === 'order'
-              ? 'desktop-menu__item_active'
-              : ''
+          className={`desktop-menu__item${
+            isShowProfile ? ' desktop-menu__item_active' : ''
           }`}
         >
           <UserIcon width="16px" height="16px" color="#3B3E49" />

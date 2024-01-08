@@ -27,6 +27,13 @@ class ProfileApi {
       mapProfileDataFromBackend
     ).then((res) => mapProfileDataFromBackend(res));
   }
+
+  deleteProfile() {
+    return request(`${this.baseUrl}/api/user/me/`, {
+      method: 'DELETE',
+      headers: this.getHeaders(),
+    }).then((res) => res);
+  }
 }
 
 const profileApi = new ProfileApi({

@@ -25,3 +25,11 @@ test('Проверка на наличие Profile в компоненте Heade
 
   expect(screen.getByTestId('profile')).toBeInTheDocument();
 });
+
+test('Проверка на наличие PopupCancel в компоненте Header', () => {
+  renderWithProviders(<Header />);
+
+  fireEvent.click(screen.getByTestId('profile-button'));
+
+  expect(screen.getByTestId('popup-cancel-order')).toBeInTheDocument();
+});

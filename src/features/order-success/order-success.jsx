@@ -1,6 +1,10 @@
 import './order-success.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { setPopupsOpen } from '../../shared/ui/popup/model/popup-slice';
+import {
+  setPopupsOpen,
+  setPopupsClose,
+  isPopupOpen,
+} from '../../shared/ui/popup/model/popup-slice';
 import { getCarTypeTitle } from '../create-order/model/car-type-slice';
 import { getPlanTitle } from '../create-order/model/plan-slice';
 import DeliveryTime from '../../shared/ui/delivery-time/delivery-time';
@@ -15,6 +19,7 @@ import StepTwoFillIcon from '../../shared/ui/icons/step-two-fill-icon';
 import StepThreeDisableIcon from '../../shared/ui/icons/step-three-disable-icon';
 import StepFourDisableIcon from '../../shared/ui/icons/step-four-disable-icon';
 import PopupCancel from '../../entities/ui/popup-cancel/popup-cancel';
+import PopupCancellations from '../../entities/ui/popup-cancellations/popup-cancellations';
 
 /**
  * @param {object} activeOrder - object of success order
@@ -81,7 +86,15 @@ function OrderSuccess({ cancelOrder }) {
         label="Отменить заказ"
         onClick={() => dispatch(setPopupsOpen('popup-cancel'))}
       />
-      <PopupCancel cancelOrder={cancelOrder} />
+      <PopupCancel
+        isOpen={useSelector((state) => isPopupOpen(state, 'popup-cancel'))}
+        messageText="Вы уверены, что хотите отменить заказ?"
+        secondaryText="отменить"
+        onClickPrimary={() => dispatch(setPopupsClose('popup-cancel'))}
+        onClickSecondary={() => dispatch(setPopupsOpen('popup-cancellations'))}
+      >
+        <PopupCancellations cancelOrder={cancelOrder} />
+      </PopupCancel>
     </section>
   );
 }
