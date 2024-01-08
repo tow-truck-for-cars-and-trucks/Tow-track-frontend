@@ -11,11 +11,11 @@ import handlePhoneCall from '../../shared/utils/helpers';
 import Profile from './profile/profile';
 
 function Header() {
-  const [showMenu, setIsShowMenu] = useState(false);
-  const [showProfile, setIsShowProfile] = useState(false);
+  const [isShowMenu, setIsShowMenu] = useState(false);
+  const [isShowProfile, setIsShowProfile] = useState(false);
 
-  const handleClick = () => {
-    setIsShowMenu(!showMenu);
+  const handleClickMenu = () => {
+    setIsShowMenu(!isShowMenu);
   };
 
   const navigate = useNavigate();
@@ -48,29 +48,30 @@ function Header() {
             data-testid="burger-menu"
             className="header__button"
             type="button"
-            onClick={handleClick}
+            onClick={handleClickMenu}
           >
-            {showMenu ? (
+            {isShowMenu ? (
               <CloseIcon width="24px" height="24px" />
             ) : (
               <BurgerIcon width="24px" height="24px" />
             )}
           </button>
           <DesktopMenu
+            isShowProfile={isShowProfile}
             phoneNumber={companyPhoneNumber}
-            handleClickProfile={() => setIsShowProfile(!showProfile)}
+            handleClickProfile={() => setIsShowProfile(!isShowProfile)}
           />
         </div>
       </header>
       <Menu
-        visible={showMenu}
-        showProfile={showProfile}
+        visible={isShowMenu}
+        isShowProfile={isShowProfile}
         handleClickProfile={() => {
-          setIsShowMenu(!showMenu);
-          setIsShowProfile(!showProfile);
+          setIsShowMenu(!isShowMenu);
+          setIsShowProfile(!isShowProfile);
         }}
       />
-      <Profile visible={showProfile} />
+      <Profile visible={isShowProfile} />
     </>
   );
 }
