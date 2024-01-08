@@ -33,6 +33,7 @@ function Menu({ visible = false, handleClickProfile }) {
             Главная
           </button>
           <button
+            data-testid="profile-button"
             type="button"
             onClick={handleClickProfile}
             className="menu__item"

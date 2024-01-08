@@ -1,9 +1,17 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setPopupsOpen,
+  setPopupsClose,
+  isPopupOpen,
+} from '../../../shared/ui/popup/model/popup-slice';
 import './profile.scss';
 import authApi from '../../../shared/api/auth-api';
+import profileApi from '../../../shared/api/profile-api';
 import checkUserLogged from '../../../app/model/validation';
 import useWindowSize from '../../../entities/hooks/useWindowSize';
+import PopupCancel from '../../../entities/ui/popup-cancel/popup-cancel';
 import { setLocalStorageToken } from '../../../shared/api/storage-api';
 
 /**
@@ -18,9 +26,21 @@ function Profile({ visible = false }) {
 
   const { width } = useWindowSize();
 
+  const dispatch = useDispatch();
+
   const onLogout = () => {
     authApi
       .postLogout()
+      .then(() => {
+        navigate('/?open=main', { replace: true });
+        setLocalStorageToken(null);
+      })
+      .catch(console.error);
+  };
+
+  const handleDeleteProfile = () => {
+    profileApi
+      .deleteProfile()
       .then(() => {
         navigate('/?open=main', { replace: true });
         setLocalStorageToken(null);
@@ -78,16 +98,35 @@ function Profile({ visible = false }) {
               Войти
             </button>
           ) : (
-            <button
-              type="button"
-              onClick={() => onLogout()}
-              className="profile__item profile__item_color_grey"
-            >
-              Выйти
-            </button>
+            <>
+              <button
+                type="button"
+                onClick={() => onLogout()}
+                className="profile__item profile__item_color_grey"
+              >
+                Выйти
+              </button>
+              <button
+                type="button"
+                onClick={() => dispatch(setPopupsOpen('popup-delete'))}
+                className="profile__item profile__item_color_grey"
+              >
+                Удалить профиль
+              </button>
+            </>
           )}
         </nav>
       </div>
+      <PopupCancel
+        isOpen={useSelector((state) => isPopupOpen(state, 'popup-delete'))}
+        messageText="Вы уверены, что хотите удалить профиль?"
+        secondaryText="удалить"
+        onClickPrimary={() => dispatch(setPopupsClose('popup-delete'))}
+        onClickSecondary={() => {
+          handleDeleteProfile();
+          dispatch(setPopupsClose('popup-delete'));
+        }}
+      />
     </div>
   );
 }

@@ -23,7 +23,9 @@ function Popup({ children, active, setActive, contentBottom }) {
       }
     };
 
-    document.addEventListener('focusout', handleFocus);
+    if (active) {
+      document.addEventListener('focusout', handleFocus);
+    }
     return () => document.removeEventListener('focusout', handleFocus);
   }, [active, setActive, popupRef]);
 

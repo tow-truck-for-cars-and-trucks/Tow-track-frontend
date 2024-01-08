@@ -2,7 +2,11 @@ import './order-active.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCarTypeTitle } from '../create-order/model/car-type-slice';
 import { getPlanTitle } from '../create-order/model/plan-slice';
-import { setPopupsOpen } from '../../shared/ui/popup/model/popup-slice';
+import {
+  setPopupsOpen,
+  setPopupsClose,
+  isPopupOpen,
+} from '../../shared/ui/popup/model/popup-slice';
 import DeliveryTime from '../../shared/ui/delivery-time/delivery-time';
 import ProgressBar from '../../shared/ui/progress-bar/progress-bar';
 import StepOneDefaultIcon from '../../shared/ui/icons/step-one-default-icon';
@@ -17,6 +21,7 @@ import OrderDetails from '../../shared/ui/order-details/order-details';
 import AboutTruck from '../../shared/ui/about-truck/about-truck';
 import PopupCancel from '../../entities/ui/popup-cancel/popup-cancel';
 import handlePhoneCall from '../../shared/utils/helpers';
+import PopupCancellations from '../../entities/ui/popup-cancellations/popup-cancellations';
 
 function OrderActive({ id, cancelOrder }) {
   const dispatch = useDispatch();
@@ -65,7 +70,15 @@ function OrderActive({ id, cancelOrder }) {
         label="Отменить заказ"
         onClick={() => dispatch(setPopupsOpen('popup-cancel'))}
       />
-      <PopupCancel cancelOrder={cancelOrder} />
+      <PopupCancel
+        isOpen={useSelector((state) => isPopupOpen(state, 'popup-cancel'))}
+        messageText="Вы уверены, что хотите отменить заказ?"
+        secondaryText="отменить"
+        onClickPrimary={() => dispatch(setPopupsClose('popup-cancel'))}
+        onClickSecondary={() => dispatch(setPopupsOpen('popup-cancellations'))}
+      >
+        <PopupCancellations cancelOrder={cancelOrder} />
+      </PopupCancel>
       <div className="order-active__info">
         <Accordion title="Детали заказа" withBorder>
           <OrderDetails
