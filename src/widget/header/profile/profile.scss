@@ -34,9 +34,10 @@
   &__title {
     margin: 0;
     margin-bottom: 32px;
-    color: var(--text-black80);
+    color: var(--text-black-80);
     font-weight: 700;
     font-size: 24px;
+    font-family: Mulish, Helvetica, Arial, sans-serif;
     font-style: normal;
     line-height: 125%;
 
@@ -88,6 +89,7 @@
     padding: 0;
     font-weight: 700;
     font-size: 18px;
+    font-family: Mulish, Helvetica, Arial, sans-serif;
     font-style: normal;
     line-height: 125%;
     text-decoration: none;
