@@ -4,11 +4,11 @@ import './menu.scss';
 /**
  *
  * @param {boolean} visible - determines whether the menu is displayed
- * @param {boolean} showProfile - determines whether the profile is displayed
+ * @param {boolean} isShowProfile - determines whether the profile is displayed
  * @param {function} handleClickProfile - callback function for opening a profile
  *
  */
-function Menu({ visible = false, handleClickProfile }) {
+function Menu({ visible = false, isShowProfile, handleClickProfile }) {
   const navigate = useNavigate();
 
   const { pathname } = useLocation();
@@ -33,9 +33,10 @@ function Menu({ visible = false, handleClickProfile }) {
             Главная
           </button>
           <button
+            data-testid="profile-button"
             type="button"
             onClick={handleClickProfile}
-            className="menu__item"
+            className={`menu__item${isShowProfile ? ' menu__item_active' : ''}`}
           >
             Профиль
           </button>
