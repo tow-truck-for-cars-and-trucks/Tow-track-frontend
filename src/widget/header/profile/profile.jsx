@@ -71,7 +71,7 @@ function Profile() {
   }, [isOpenDelete, isOpenProfile, width]);
 
   return (
-    <div
+    <section
       className={isOpenProfile ? 'profile profile_active' : 'profile'}
       data-testid="profile"
       role="dialog"
@@ -153,7 +153,7 @@ function Profile() {
           dispatch(setPopupsClose('popup-delete'));
         }}
       />
-    </div>
+    </section>
   );
 }
 
