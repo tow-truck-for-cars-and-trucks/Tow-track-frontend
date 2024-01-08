@@ -58,7 +58,7 @@ function Profile({ visible = false }) {
   }, [visible, width]);
 
   return (
-    <div
+    <section
       className={visible ? 'profile profile_active' : 'profile'}
       data-testid="profile"
     >
@@ -127,7 +127,7 @@ function Profile({ visible = false }) {
           dispatch(setPopupsClose('popup-delete'));
         }}
       />
-    </div>
+    </section>
   );
 }
 
