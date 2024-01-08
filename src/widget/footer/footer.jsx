@@ -19,10 +19,7 @@ function Footer() {
         <div className="footer__logo-desktop">
           <Logo width="136px" height="136px" />
         </div>
-        <div className="footer__express-logo-mobile">
-          <ExpressLogo width="158px" height="70px" />
-        </div>
-        <div className="footer__express-logo-desktop">
+        <div className="footer__express-logo">
           <ExpressLogo width="241px" height="107px" />
         </div>
         <div className="footer__main-pages">

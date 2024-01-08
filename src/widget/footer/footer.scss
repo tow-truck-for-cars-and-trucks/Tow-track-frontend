@@ -1,7 +1,7 @@
 .footer {
   position: relative;
   width: 100%;
-  height: 575px;
+  height: 426px;
   color: #fff;
   background-color: var(--accent-black-80);
 
@@ -11,7 +11,7 @@
     justify-content: space-between;
     margin: 0;
     padding: 34px 28px 52px 16px;
-    row-gap: 36px;
+    row-gap: 27px;
   }
 
   @media (width >= 1024px) {
@@ -56,17 +56,13 @@
     }
 
     &__logo-mobile {
-      grid-row: span 3;
+      grid-row: span 2;
       height: 100px;
     }
   }
 
   @media (width >= 1024px) {
-    &__express-logo-mobile {
-      display: none;
-    }
-
-    &__express-logo-desktop {
+    &__express-logo {
       grid-row: span 3;
       grid-column: 3;
       height: 107px;
@@ -74,12 +70,8 @@
   }
 
   @media (width < 1024px) {
-    &__express-logo-desktop {
+    &__express-logo {
       display: none;
-    }
-
-    &__express-logo-mobile {
-      height: 70px;
     }
   }
 
@@ -136,7 +128,8 @@
   &__main-pages {
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
+    row-gap: 19px;
+    margin-bottom: 10px;
   }
 
   @media (width >= 1024px) {
