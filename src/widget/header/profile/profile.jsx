@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, createRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -14,12 +14,7 @@ import useWindowSize from '../../../entities/hooks/useWindowSize';
 import PopupCancel from '../../../entities/ui/popup-cancel/popup-cancel';
 import { setLocalStorageToken } from '../../../shared/api/storage-api';
 
-/**
- *
- * @param {boolean} visible - determines whether the profile is displayed
- *
- */
-function Profile({ visible = false }) {
+function Profile() {
   const navigate = useNavigate();
 
   const loggedIn = checkUserLogged();
@@ -27,6 +22,13 @@ function Profile({ visible = false }) {
   const { width } = useWindowSize();
 
   const dispatch = useDispatch();
+
+  const isOpenProfile = useSelector((state) => isPopupOpen(state, 'profile'));
+  const isOpenDelete = useSelector((state) =>
+    isPopupOpen(state, 'popup-delete')
+  );
+
+  const profileRef = createRef();
 
   const onLogout = () => {
     authApi
@@ -44,30 +46,47 @@ function Profile({ visible = false }) {
       .then(() => {
         navigate('/?open=main', { replace: true });
         setLocalStorageToken(null);
+        dispatch(setPopupsClose('profile'));
       })
       .catch(console.error);
   };
 
   useEffect(() => {
-    if (visible && width < 1024) {
+    const handleFocus = (e) => {
+      if (profileRef.current && !profileRef.current.contains(e.relatedTarget))
+        profileRef.current.focus();
+    };
+
+    if (width < 1024) document.addEventListener('focusout', handleFocus);
+    return () => document.removeEventListener('focusout', handleFocus);
+  }, [isOpenDelete, profileRef, width]);
+
+  useEffect(() => {
+    if (isOpenProfile && width < 1024) {
       document.body.style.overflow = 'hidden';
     }
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [visible, width]);
+  }, [isOpenDelete, isOpenProfile, width]);
 
   return (
     <div
-      className={visible ? 'profile profile_active' : 'profile'}
+      className={isOpenProfile ? 'profile profile_active' : 'profile'}
       data-testid="profile"
+      role="dialog"
+      tabIndex={-1}
+      ref={profileRef}
     >
       <div className="profile__container">
         <h2 className="profile__title">Профиль</h2>
         <nav className="profile__nav-route">
           <button
             type="button"
-            onClick={() => navigate('/my-orders', { replace: true })}
+            onClick={() => {
+              navigate('/my-orders', { replace: true });
+              dispatch(setPopupsClose('profile'));
+            }}
             className={`profile__item profile__item_color_black${
               loggedIn ? '' : ' profile__item_disabled'
             }`}
@@ -77,7 +96,10 @@ function Profile({ visible = false }) {
           </button>
           <button
             type="button"
-            onClick={() => navigate('/profile', { replace: true })}
+            onClick={() => {
+              navigate('/profile', { replace: true });
+              dispatch(setPopupsClose('profile'));
+            }}
             className={`profile__item profile__item_color_black${
               loggedIn ? '' : ' profile__item_disabled'
             }`}
@@ -90,9 +112,10 @@ function Profile({ visible = false }) {
           {!loggedIn ? (
             <button
               type="button"
-              onClick={() =>
-                navigate('/register?mode=login', { replace: true })
-              }
+              onClick={() => {
+                navigate('/register?mode=login', { replace: true });
+                dispatch(setPopupsClose('profile'));
+              }}
               className="profile__item profile__item_color_black"
             >
               Войти
@@ -101,7 +124,10 @@ function Profile({ visible = false }) {
             <>
               <button
                 type="button"
-                onClick={() => onLogout()}
+                onClick={() => {
+                  onLogout();
+                  dispatch(setPopupsClose('profile'));
+                }}
                 className="profile__item profile__item_color_grey"
               >
                 Выйти
