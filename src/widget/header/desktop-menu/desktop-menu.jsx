@@ -1,19 +1,32 @@
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setPopupsOpen,
+  setPopupsClose,
+  isPopupOpen,
+} from '../../../shared/ui/popup/model/popup-slice';
 import './desktop-menu.scss';
 import PhoneIcon from '../../../shared/ui/icons/phone-icon';
 import UserIcon from '../../../shared/ui/icons/user-icon';
 import handlePhoneCall from '../../../shared/utils/helpers';
 
 /**
- * @param {boolean} isShowProfile - determines whether the profile is displayed
  * @param {string} phoneNumber - defines company number
- * @param {function} handleClickProfile - callback function for opening a profile
  */
-function DesktopMenu({ isShowProfile, phoneNumber, handleClickProfile }) {
+function DesktopMenu({ phoneNumber }) {
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const isOpenProfile = useSelector((state) => isPopupOpen(state, 'profile'));
 
   const { pathname } = useLocation();
   const [params] = useSearchParams();
+
+  const handleClickProfile = () => {
+    if (isOpenProfile) dispatch(setPopupsClose('profile'));
+    else dispatch(setPopupsOpen('profile'));
+  };
 
   return (
     <div className="desktop-menu" data-testid="desktop-menu">
@@ -40,9 +53,9 @@ function DesktopMenu({ isShowProfile, phoneNumber, handleClickProfile }) {
         </button>
         <button
           type="button"
-          onClick={() => handleClickProfile()}
+          onClick={handleClickProfile}
           className={`desktop-menu__item${
-            isShowProfile ? ' desktop-menu__item_active' : ''
+            isOpenProfile ? ' desktop-menu__item_active' : ''
           }`}
         >
           <UserIcon width="16px" height="16px" color="#3B3E49" />

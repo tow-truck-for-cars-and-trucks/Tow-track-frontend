@@ -1,6 +1,11 @@
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setPopupsOpen,
+  setPopupsClose,
+  isPopupOpen,
+} from '../../shared/ui/popup/model/popup-slice';
 import './header.scss';
-import { useState } from 'react';
 import BurgerIcon from '../../shared/ui/icons/burger-icon';
 import PhoneIcon from '../../shared/ui/icons/phone-icon';
 import LogoCombined from '../../shared/ui/icons/logo-combined';
@@ -11,11 +16,13 @@ import handlePhoneCall from '../../shared/utils/helpers';
 import Profile from './profile/profile';
 
 function Header() {
-  const [isShowMenu, setIsShowMenu] = useState(false);
-  const [isShowProfile, setIsShowProfile] = useState(false);
+  const dispatch = useDispatch();
+
+  const isOpenMenu = useSelector((state) => isPopupOpen(state, 'menu'));
 
   const handleClickMenu = () => {
-    setIsShowMenu(!isShowMenu);
+    if (isOpenMenu) dispatch(setPopupsClose('menu'));
+    else dispatch(setPopupsOpen('menu'));
   };
 
   const navigate = useNavigate();
@@ -39,7 +46,7 @@ function Header() {
             label="Перейти на главную"
             onClick={() => {
               navigate('/?open=main', { replace: true });
-              setIsShowProfile(false);
+              dispatch(setPopupsClose('profile'));
             }}
           >
             <LogoCombined width="88.8px" height="48px" />
@@ -50,28 +57,17 @@ function Header() {
             type="button"
             onClick={handleClickMenu}
           >
-            {isShowMenu ? (
+            {isOpenMenu ? (
               <CloseIcon width="24px" height="24px" />
             ) : (
               <BurgerIcon width="24px" height="24px" />
             )}
           </button>
-          <DesktopMenu
-            isShowProfile={isShowProfile}
-            phoneNumber={companyPhoneNumber}
-            handleClickProfile={() => setIsShowProfile(!isShowProfile)}
-          />
+          <DesktopMenu phoneNumber={companyPhoneNumber} />
         </div>
       </header>
-      <Menu
-        visible={isShowMenu}
-        isShowProfile={isShowProfile}
-        handleClickProfile={() => {
-          setIsShowMenu(!isShowMenu);
-          setIsShowProfile(!isShowProfile);
-        }}
-      />
-      <Profile visible={isShowProfile} />
+      <Menu />
+      <Profile />
     </>
   );
 }
