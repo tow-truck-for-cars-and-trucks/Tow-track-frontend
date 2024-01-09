@@ -21,7 +21,7 @@ function Feedbacks() {
         <div className="feedbacks__cards" ref={elRef}>
           <div className="feedbacks__card">
             {feedbacks.map((feedback) => (
-              <Feedback feedback={feedback} key={feedback.id} />
+              <Feedback feedback={feedback} key={feedback.order} />
             ))}
           </div>
         </div>
