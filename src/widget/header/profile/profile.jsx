@@ -105,7 +105,7 @@ function Profile() {
             }`}
             disabled={!loggedIn}
           >
-            Редактировать профиль
+            Мой профиль
           </button>
         </nav>
         <nav className="profile__nav-auth">
