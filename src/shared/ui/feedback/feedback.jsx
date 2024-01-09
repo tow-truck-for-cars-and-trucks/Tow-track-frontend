@@ -9,7 +9,7 @@ import StarFillIcon from '../icons/star-fill-icon';
 
 function Feedback({ feedback }) {
   return (
-    <article data-testid="feedback">
+    <article data-testid="feedback" key={feedback.order}>
       <div className="feedback-card">
         <div>
           <StarFillIcon width="16px" height="16px" color="#FFCC00" />
