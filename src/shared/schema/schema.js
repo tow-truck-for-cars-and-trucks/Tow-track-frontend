@@ -52,13 +52,9 @@ export const registerFormSchema = yup.object().shape({
 });
 
 export const addressFormSchema = yup.object().shape({
-  addressFrom: yup
-    .string()
-    .max(100, 'Адрес слишком длинный. Максимальная длина - 100 символов')
-    .required('Заполните адрес подачи'),
+  addressFrom: yup.string().required('Заполните адрес подачи'),
   addressTo: yup
     .string()
-    .max(100, 'Адрес слишком длинный. Максимальная длина - 100 символов')
     .required('Заполните адрес доставки')
     .notOneOf([yup.ref('addressFrom'), null], 'Адреса не должны совпадать'),
 });

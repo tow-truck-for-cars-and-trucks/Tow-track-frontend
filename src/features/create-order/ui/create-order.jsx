@@ -245,7 +245,7 @@ function CreateOrder() {
                 <div className="create-order__icon">
                   <MarkerIcon width="20px" height="20px" />
                 </div>
-                Указать на карте
+                <span className="create-order__text">Проверить на карте</span>
               </button>
             </div>
             {width < 768 ? (

@@ -65,8 +65,7 @@
   }
 
   &__check-map {
-    display: flex;
-    justify-content: center;
+    display: inherit;
 
     @media (width >= 768px) {
       & {
@@ -78,21 +77,23 @@
   &__map-button {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 20px;
-    color: var(--accent-black-90);
-    font-weight: 500;
-    font-size: 18px;
-    font-family: Mulish, Helvetica, Arial, sans-serif;
-    line-height: 1.2;
+    padding-bottom: 28px;
     background-color: transparent;
     border: none;
     cursor: pointer;
   }
 
+  &__text {
+    color: var(--text-black-40);
+    font-weight: 500;
+    font-size: 16px;
+    font-family: Mulish, Helvetica, Arial, sans-serif;
+    line-height: 1.35;
+    border-bottom: solid 1px var(--accent-yellow-light);
+  }
+
   &__icon {
-    padding-right: 5px;
+    padding-right: 8px;
   }
 
   &__views {
