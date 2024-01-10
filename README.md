@@ -1,5 +1,36 @@
 ![TTExpress](https://github.com/tow-truck-for-cars-and-trucks/Tow-track-frontend/actions/workflows/develop.yml/badge.svg)
 
+# TTExpress
+
+<img src="/src/assets/screenshots/readme.PNG" width="700px">
+
+## 📖Описание
+
+TTExpress - веб-приложение, которое дает пользователям возможность вызвать эвакуатор в случае поломки или аварии.
+
+## 💪Команда Front-end разработчиков.
+
+- [Алексеев Андрей](https://github.com/cipher24)
+- [Зеленин Константин](https://github.com/Jambion808)
+- [Моисеева Анастасия](https://github.com/AnastasiaMoiseeva0)
+- [Поленов Сергей](https://github.com/Sengeer)
+- [Янюк Дмитрий](https://github.com/lopakadude)
+
+## 🛠️Технологии:
+
+- [HTML](https://html.spec.whatwg.org)
+- [Sass](https://sass-lang.com)
+- [React](https://ru.legacy.reactjs.org)
+- [Storybook](https://storybook.js.org)
+- [Redux Toolkit](https://redux-toolkit.js.org)
+- [Yup](https://github.com/jquense/yup)
+- [React Hook Form](https://github.com/jquense/yup)
+- [React Router](https://reactrouter.com/en/main)
+- [Jest](https://jestjs.io/)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [Yandex Maps Javascript API](https://yandex.ru/dev/jsapi30/doc/en/)
+- [FSD](https://feature-sliced.design/ru/docs)
+
 ## 📋Инструкция по запуску проекта:
 
 1. Склонировать репозиторий на свой компьютер:
